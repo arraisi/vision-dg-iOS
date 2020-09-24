@@ -1,0 +1,6 @@
+framework module Pods_Bank_Mestika {
+  umbrella header "Pods-Bank Mestika-umbrella.h"
+
+  export *
+  module * { export * }
+}
