@@ -87,7 +87,7 @@ struct RegisterView: View {
     
     var imageSlider: some View {
         GeometryReader{g in
-            Carousel(width: UIScreen.main.bounds.width, page: self.$page, height: UIScreen.main.bounds.height - 280)
+            Carousel(width: UIScreen.main.bounds.width, page: self.$page, height: UIScreen.main.bounds.height - 300)
       }
     }
     
@@ -199,19 +199,23 @@ struct Card : View {
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .font(.title3)
+                .padding(.top, 20)
+                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
               Text(self.data.desc)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
-                .font(.caption)
-                .padding(.horizontal, 15)
+                .font(.subheadline)
                 .padding(.top, 5)
+                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
               PageControl(page: self.$page)
                 .padding([.top], 10)
           }
           .background(Color(hex: "#2334D0"))
-          .cornerRadius(40)
+          .cornerRadius(50)
           .padding(.top, 25)
       }
       .padding(.horizontal, 30)

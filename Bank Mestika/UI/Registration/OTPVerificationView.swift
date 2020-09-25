@@ -142,7 +142,7 @@ struct OTPVerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            Button(action : {}) {
+            NavigationLink(destination: ChooseSavingsView()) {
                 Text("Verifikasi No. Telepon")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

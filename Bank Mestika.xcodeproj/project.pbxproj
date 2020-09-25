@@ -26,6 +26,8 @@
 		527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */; };
 		527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */; };
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
+		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
+		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HostingController+Utils.swift"; sourceTree = "<group>"; };
 		527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRekeningCardView.swift; sourceTree = "<group>"; };
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSavingsView.swift; sourceTree = "<group>"; };
+		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +173,7 @@
 		5202BA59251B1FDB00FCE527 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				52F01FC7251DD6DA00B0ABA5 /* Components */,
 				5202BA5A251B200300FCE527 /* Registration */,
 			);
 			path = UI;
@@ -182,6 +187,7 @@
 				5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */,
 				5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */,
 				5233DBB0251C95450064C59D /* OTPVerificationView.swift */,
+				52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -195,6 +201,14 @@
 				5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		52F01FC7251DD6DA00B0ABA5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		7BE233D2DFB3206B5AA1F279 /* Frameworks */ = {
@@ -396,9 +410,11 @@
 				5202BA26251B1FA000FCE527 /* SceneDelegate.swift in Sources */,
 				5202BA2B251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
+				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
 				5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */,
+				52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */,
 				5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */,
 				527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */,
 			);
