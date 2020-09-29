@@ -19,7 +19,8 @@ struct LabelTextField: View {
             
             Text(label)
                 .font(.caption)
-                .foregroundColor(Color(hex: "#232175"))
+                .fontWeight(.semibold)
+                .foregroundColor(.gray)
                 .multilineTextAlignment(.leading)
                 .padding(.horizontal, 20)
             
