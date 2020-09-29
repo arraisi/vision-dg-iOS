@@ -52,7 +52,7 @@ struct FormInformasiPerusahaanView: View {
                         .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 15)
+                        .padding(.vertical, 20)
                         .padding(.horizontal, 20)
                         .fixedSize(horizontal: false, vertical: true)
                     
