@@ -15,7 +15,6 @@ struct FormInformasiPerusahaanView: View {
     @State var kecamatan: String = ""
     @State var kelurahan: String = ""
     @State var noTlpPerusahaan: String = ""
-    
     @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -113,7 +112,6 @@ struct FormInformasiPerusahaanView: View {
                                         .padding(.vertical, 20)
                                     
                                 }
-                                .offset(y: kGuardian.slide).animation(.easeInOut(duration: 1.0))
                                 .frame(width: UIScreen.main.bounds.width - 70)
                                 .background(Color.white)
                                 .cornerRadius(15)
@@ -147,6 +145,7 @@ struct FormInformasiPerusahaanView: View {
                     }
                     
                 }
+                .KeyboardAwarePadding()
                 
             }
             
@@ -178,10 +177,15 @@ struct FormInformasiPerusahaanView: View {
                     .padding(.horizontal, 20)
                 
                 HStack {
+                    
                     Text("+62 ").foregroundColor(.gray)
+                    
                     Divider()
                         .frame(height: 30)
+                    
                     TextField("No. Telepon", text: $noTlpPerusahaan)
+                        .keyboardType(.numberPad)
+                    
                 }
                 .frame(height: 10)
                 .font(.subheadline)
