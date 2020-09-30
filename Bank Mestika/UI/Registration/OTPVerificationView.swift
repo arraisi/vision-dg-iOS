@@ -19,19 +19,24 @@ struct OTPVerificationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
-            Color(hex: "#232175")
-                .frame(height: 300)
-            appbar
-                .padding(.top, 45)
-                .padding(.horizontal, 30)
             VStack {
-                cardForm
-                    .padding(.top, 40)
-                Spacer()
+                Color(hex: "#232175")
+                    .frame(height: 300)
+                Color(hex: "#F6F8FB")
             }
-            .padding(.horizontal, 30)
-            .padding(.top, 65)
-            .padding(.bottom, 35)
+            VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
+                VStack {
+                    cardForm
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .padding(.top, 35)
+                .padding(.bottom, 35)
+            }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -158,7 +163,7 @@ struct OTPVerificationView: View {
         .frame(width: UIScreen.main.bounds.width - 30)
         .background(Color.white)
         .cornerRadius(15)
-        .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+        .shadow(radius: 30)
     }
 }
 

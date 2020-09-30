@@ -23,6 +23,9 @@
 		5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */; };
 		5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */; };
 		5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBB0251C95450064C59D /* OTPVerificationView.swift */; };
+		52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF1252452F80031392E /* PersonalIdentityView.swift */; };
+		52794BFA2524530F0031392E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF92524530F0031392E /* Coordinator.swift */; };
+		52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BFE2524532D0031392E /* EmailVerificationView.swift */; };
 		527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */; };
 		527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */; };
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
@@ -74,6 +77,9 @@
 		5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProvisionView.swift; sourceTree = "<group>"; };
 		5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationView.swift; sourceTree = "<group>"; };
 		5233DBB0251C95450064C59D /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		52794BF1252452F80031392E /* PersonalIdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalIdentityView.swift; sourceTree = "<group>"; };
+		52794BF92524530F0031392E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		52794BFE2524532D0031392E /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
 		527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HostingController+Utils.swift"; sourceTree = "<group>"; };
 		527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRekeningCardView.swift; sourceTree = "<group>"; };
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 		5202BA5A251B200300FCE527 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				52794BF0252452D20031392E /* Personal Identity */,
 				5202BA5B251B207500FCE527 /* RegisterView.swift */,
 				527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */,
 				5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */,
@@ -208,6 +215,16 @@
 				5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		52794BF0252452D20031392E /* Personal Identity */ = {
+			isa = PBXGroup;
+			children = (
+				52794BF1252452F80031392E /* PersonalIdentityView.swift */,
+				52794BF92524530F0031392E /* Coordinator.swift */,
+				52794BFE2524532D0031392E /* EmailVerificationView.swift */,
+			);
+			path = "Personal Identity";
 			sourceTree = "<group>";
 		};
 		52F01FC7251DD6DA00B0ABA5 /* Components */ = {
@@ -416,12 +433,15 @@
 				C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */,
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
+				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */,
 				5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */,
 				5202BA26251B1FA000FCE527 /* SceneDelegate.swift in Sources */,
 				5202BA2B251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld in Sources */,
+				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
+				52794BFA2524530F0031392E /* Coordinator.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
 				5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */,
