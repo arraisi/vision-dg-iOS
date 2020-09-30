@@ -114,6 +114,7 @@ struct RegisterProvisionView: View {
                 }
                 .padding(.top, 10)
                 .padding(.horizontal, 20)
+                .fixedSize(horizontal: false, vertical: true)
             }
             
             NavigationLink(destination: PhoneVerificationView()) {
@@ -121,7 +122,7 @@ struct RegisterProvisionView: View {
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
-                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
@@ -136,7 +137,7 @@ struct RegisterProvisionView: View {
                     .foregroundColor(.gray)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
-                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }
             .cornerRadius(12)
             .padding(.horizontal, 20)

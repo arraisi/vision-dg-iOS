@@ -116,7 +116,7 @@ struct InterviewRegistrationView: View {
                 .padding(.horizontal, 20)
                 .fixedSize(horizontal: false, vertical: true)
             
-            HStack {
+            HStack(alignment: .top) {
                 Text("KTP")
                     .font(.subheadline)
                     .foregroundColor(Color(hex: "#707070"))

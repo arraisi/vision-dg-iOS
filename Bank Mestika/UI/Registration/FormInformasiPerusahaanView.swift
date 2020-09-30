@@ -120,7 +120,7 @@ struct FormInformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                Button(action : {}) {
+                                NavigationLink(destination : Term_ConditionView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)

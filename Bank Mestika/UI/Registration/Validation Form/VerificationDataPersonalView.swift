@@ -150,7 +150,7 @@ struct VerificationDataPersonalView: View {
             }
             
             HStack {
-                Button(action : {}) {
+                NavigationLink(destination : VerificationAddressView()) {
                     Text("Data Valid")
                         .foregroundColor(.white)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

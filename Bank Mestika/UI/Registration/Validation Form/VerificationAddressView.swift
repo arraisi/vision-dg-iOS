@@ -40,7 +40,7 @@ struct VerificationAddressView: View {
                 }
                 
                 VStack {
-                    Button(action: {}) {
+                    NavigationLink(destination: VerificationPINView()) {
                         Text("Submit Data")
                             .foregroundColor(.white)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

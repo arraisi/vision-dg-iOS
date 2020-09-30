@@ -88,7 +88,7 @@ struct EmailVerificationView: View {
                 .padding(.vertical, 10)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: OTPVerificationView()) {
+            NavigationLink(destination: FormInformasiPerusahaanView()) {
                 Text("Verifikasi Email")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

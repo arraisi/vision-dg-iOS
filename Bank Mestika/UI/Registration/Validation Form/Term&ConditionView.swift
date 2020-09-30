@@ -123,7 +123,7 @@ struct Term_ConditionView: View {
                 .padding(.bottom, 20)
             }
             
-            NavigationLink(destination: OTPVerificationView()) {
+            NavigationLink(destination: VerificationDataPersonalView()) {
                 Text("Berikutnya")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

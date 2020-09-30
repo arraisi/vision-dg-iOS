@@ -85,6 +85,7 @@ struct EmailConfirmationView: View {
                 .multilineTextAlignment(.leading)
                 .padding(.top, 5)
                 .padding(.horizontal, 20)
+                .fixedSize(horizontal: false, vertical: true)
             
             TextField("Masukan alamat email anda", text: $email)
                 .frame(height: 30)

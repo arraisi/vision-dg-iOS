@@ -43,6 +43,7 @@ struct SavingSelectionModalView: View {
                 }
                 .padding(.top, 5)
                 .padding(.horizontal, 15)
+                .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(alignment: .top) {
                     Text("02")
@@ -55,6 +56,7 @@ struct SavingSelectionModalView: View {
                 }
                 .padding(.top, 5)
                 .padding(.horizontal, 15)
+                .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(alignment: .top) {
                     Text("03")
@@ -67,6 +69,7 @@ struct SavingSelectionModalView: View {
                 }
                 .padding(.top, 5)
                 .padding(.horizontal, 15)
+                .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(alignment: .top) {
                     Text("04")
@@ -79,6 +82,7 @@ struct SavingSelectionModalView: View {
                 }
                 .padding(.top, 5)
                 .padding(.horizontal, 15)
+                .fixedSize(horizontal: false, vertical: true)
                 
                 HStack(alignment: .top) {
                     Text("05")
@@ -91,11 +95,12 @@ struct SavingSelectionModalView: View {
                 }
                 .padding(.top, 5)
                 .padding(.horizontal, 15)
+                .fixedSize(horizontal: false, vertical: true)
             }
             
             Spacer()
             
-            Button(action: {}) {
+            NavigationLink(destination: PersonalIdentityView()) {
                 Text("Pilih Tabungan ini")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
