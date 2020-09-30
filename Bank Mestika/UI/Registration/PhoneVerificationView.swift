@@ -14,19 +14,24 @@ struct PhoneVerificationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
-            Color(hex: "#232175")
-                .frame(height: 300)
-            appbar
-                .padding(.top, 45)
-                .padding(.horizontal, 30)
             VStack {
-                cardForm
-                    .padding(.top, 40)
-                Spacer()
+                Color(hex: "#232175")
+                    .frame(height: 300)
+                Color(hex: "#F6F8FB")
             }
-            .padding(.horizontal, 30)
-            .padding(.top, 65)
-            .padding(.bottom, 35)
+            VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
+                VStack {
+                    cardForm
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .padding(.top, 35)
+                .padding(.bottom, 35)
+            }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -66,12 +71,14 @@ struct PhoneVerificationView: View {
                 .fontWeight(.bold)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
+            
             Text("Silahkan masukan No. Telepon Anda")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#232175"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
                 .padding(.horizontal, 20)
+            
             ZStack {
                 HStack (spacing: 0) {
                     Text("🇮🇩 +62")
@@ -86,7 +93,9 @@ struct PhoneVerificationView: View {
                 }.padding()
                 RoundedRectangle(cornerRadius: 10).stroke()
                     .frame(width: 280, height: 50)
+                    .foregroundColor(Color.secondary.opacity(0.2))
             }
+            
             NavigationLink(destination: OTPVerificationView()) {
                 Text("Verifikasi No. Telepon")
                     .foregroundColor(.white)
@@ -103,7 +112,7 @@ struct PhoneVerificationView: View {
         .frame(width: UIScreen.main.bounds.width - 30)
         .background(Color.white)
         .cornerRadius(15)
-        .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+        .shadow(radius: 30)
     }
 }
 

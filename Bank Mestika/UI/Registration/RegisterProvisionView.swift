@@ -35,20 +35,25 @@ struct RegisterProvisionView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
-            Color(hex: "#232175")
-                .frame(height: 300)
-            appbar
-                .padding(.top, 45)
-                .padding(.horizontal, 30)
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    cardForm
-                        .padding(.top, 40)
-                    Spacer()
+            VStack {
+                Color(hex: "#232175")
+                    .frame(height: 300)
+                Color(hex: "#F6F8FB")
+            }
+            VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack {
+                        cardForm
+                        Spacer()
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 35)
+                    .padding(.bottom, 35)
                 }
-                .padding(.horizontal, 30)
-                .padding(.top, 65)
-                .padding(.bottom, 35)
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -88,6 +93,7 @@ struct RegisterProvisionView: View {
                 .frame(width: 90, height: 90)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
+            
             Text("Sebelum Memulai..!!")
                 .font(.title2)
                 .foregroundColor(Color(hex: "#232175"))
@@ -122,6 +128,7 @@ struct RegisterProvisionView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 5)
             .padding(.top, 10)
+            
             Button(action : {
                 presentationMode.wrappedValue.dismiss()
             }) {
@@ -135,10 +142,10 @@ struct RegisterProvisionView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
         }
-        .frame(width: UIScreen.main.bounds.width - 30)
+        .frame(width: UIScreen.main.bounds.width - 30, height: .infinity)
         .background(Color.white)
         .cornerRadius(15)
-        .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+        .shadow(radius: 30)
     }
 }
 
