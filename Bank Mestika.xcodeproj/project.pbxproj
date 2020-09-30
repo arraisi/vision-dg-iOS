@@ -30,6 +30,9 @@
 		52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794C0925245EE60031392E /* Term&ConditionView.swift */; };
 		52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794C11252462710031392E /* VerificationDataPersonalView.swift */; };
 		52794C17252468490031392E /* VerificationAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794C16252468490031392E /* VerificationAddressView.swift */; };
+		52794C1C25246C730031392E /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794C1B25246C730031392E /* RadioButton.swift */; };
+		52794C21252471370031392E /* VerificationPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794C20252471370031392E /* VerificationPINView.swift */; };
+		52794C26252475290031392E /* InterviewRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794C25252475290031392E /* InterviewRegistrationView.swift */; };
 		527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */; };
 		527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */; };
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
@@ -88,6 +91,9 @@
 		52794C0925245EE60031392E /* Term&ConditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Term&ConditionView.swift"; sourceTree = "<group>"; };
 		52794C11252462710031392E /* VerificationDataPersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationDataPersonalView.swift; sourceTree = "<group>"; };
 		52794C16252468490031392E /* VerificationAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationAddressView.swift; sourceTree = "<group>"; };
+		52794C1B25246C730031392E /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		52794C20252471370031392E /* VerificationPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPINView.swift; sourceTree = "<group>"; };
+		52794C25252475290031392E /* InterviewRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewRegistrationView.swift; sourceTree = "<group>"; };
 		527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HostingController+Utils.swift"; sourceTree = "<group>"; };
 		527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRekeningCardView.swift; sourceTree = "<group>"; };
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
@@ -243,6 +249,8 @@
 				52794C0925245EE60031392E /* Term&ConditionView.swift */,
 				52794C11252462710031392E /* VerificationDataPersonalView.swift */,
 				52794C16252468490031392E /* VerificationAddressView.swift */,
+				52794C20252471370031392E /* VerificationPINView.swift */,
+				52794C25252475290031392E /* InterviewRegistrationView.swift */,
 			);
 			path = "Validation Form";
 			sourceTree = "<group>";
@@ -253,6 +261,7 @@
 				52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */,
 				C0C94DE72522F88F005B811C /* LabelTextField.swift */,
 				C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */,
+				52794C1B25246C730031392E /* RadioButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
+				52794C1C25246C730031392E /* RadioButton.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */,
 				5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */,
@@ -465,12 +475,14 @@
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
 				52794BFA2524530F0031392E /* Coordinator.swift in Sources */,
+				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
 				5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */,
 				52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */,
 				5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */,
 				527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */,
+				52794C26252475290031392E /* InterviewRegistrationView.swift in Sources */,
 				C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */,
 				52794C17252468490031392E /* VerificationAddressView.swift in Sources */,
 			);
