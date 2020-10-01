@@ -12,6 +12,10 @@ struct OTPVerificationView: View {
     @State private var numberOfCells: Int = 6
     @State private var currentlySelectedCell = 0
     
+    var disableForm: Bool {
+        currentlySelectedCell < 6
+    }
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
@@ -105,17 +109,18 @@ struct OTPVerificationView: View {
                 .padding(.horizontal, 20)
             
             NavigationLink(destination: ChooseSavingsView()) {
-                Text("Verifikasi No. Telepon")
+                Text("Verifikasi OTP")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
                     .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }
-            .background(Color(hex: "#2334D0"))
+            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
             .cornerRadius(12)
             .padding(.horizontal, 20)
             .padding(.top, 10)
             .padding(.bottom, 20)
+            .disabled(disableForm)
         }
         .frame(width: UIScreen.main.bounds.width - 30)
         .background(Color.white)

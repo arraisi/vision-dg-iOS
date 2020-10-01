@@ -58,6 +58,10 @@ struct RegisterView: View {
                     maxHeight: .infinity,
                     alignment: .leading
                 )
+                
+                if self.showingModal {
+                    ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+                }
             }
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
@@ -88,7 +92,7 @@ struct RegisterView: View {
     var imageSlider: some View {
         GeometryReader{g in
             Carousel(width: UIScreen.main.bounds.width, page: self.$page, height: UIScreen.main.bounds.height - 300)
-      }
+        }
     }
     
     var footerBtn: some View {
@@ -173,125 +177,125 @@ struct RegisterView_Previews: PreviewProvider {
 
 struct List : View {
     
-      @Binding var page : Int
-      var body: some View{
-          HStack(spacing: 0){
-              ForEach(data){ i in
-                  Card(page: self.$page, width: UIScreen.main.bounds.width, data: i)
-              }
-          }
-      }
+    @Binding var page : Int
+    var body: some View{
+        HStack(spacing: 0){
+            ForEach(data){ i in
+                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i)
+            }
+        }
+    }
 }
 
 struct Card : View {
-      
-  @Binding var page : Int
-  var width : CGFloat
-  var data : ImageCarousel
-
-  var body: some View{
-      VStack{
-          VStack{
-              Image(self.data.image)
-                .resizable()
-            
-              Text(self.data.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .font(.title3)
-                .padding(.top, 20)
-                .padding(.horizontal, 20)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-              Text(self.data.desc)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-                .font(.subheadline)
-                .padding(.top, 5)
-                .padding(.horizontal, 20)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-              PageControl(page: self.$page)
-                .padding([.top], 10)
-          }
-          .background(Color(hex: "#2334D0"))
-          .cornerRadius(50)
-          .padding(.top, 25)
-      }
-      .padding(.horizontal, 30)
-      .frame(width: self.width)
-      .animation(.default)
-  }
+    
+    @Binding var page : Int
+    var width : CGFloat
+    var data : ImageCarousel
+    
+    var body: some View{
+        VStack{
+            VStack{
+                Image(self.data.image)
+                    .resizable()
+                
+                Text(self.data.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .font(.title3)
+                    .padding(.top, 20)
+                    .padding(.horizontal, 20)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Text(self.data.desc)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .padding(.top, 5)
+                    .padding(.horizontal, 20)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                PageControl(page: self.$page)
+                    .padding([.top], 10)
+            }
+            .background(Color(hex: "#2334D0"))
+            .cornerRadius(50)
+            .padding(.top, 25)
+        }
+        .padding(.horizontal, 30)
+        .frame(width: self.width)
+        .animation(.default)
+    }
 }
-  
+
 struct Carousel : UIViewRepresentable {
-  
-  func makeCoordinator() -> Coordinator {
-      return Carousel.Coordinator(parent1: self)
-  }
-  
-  var width : CGFloat
-  @Binding var page : Int
-  var height : CGFloat
-  
-  func makeUIView(context: Context) -> UIScrollView{
-      let total = width * CGFloat(data.count)
-      let view = UIScrollView()
-      view.isPagingEnabled = true
-      //1.0  For Disabling Vertical Scroll....
-      view.contentSize = CGSize(width: total, height: 1.0)
-      view.bounces = true
-      view.showsVerticalScrollIndicator = false
-      view.showsHorizontalScrollIndicator = false
-      view.delegate = context.coordinator
-      
-      let view1 = UIHostingController(rootView: List(page: self.$page))
-      view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
-      view1.view.backgroundColor = .clear
-      
-      view.addSubview(view1.view)
-      
-      return view
-      
-  }
+    
+    func makeCoordinator() -> Coordinator {
+        return Carousel.Coordinator(parent1: self)
+    }
+    
+    var width : CGFloat
+    @Binding var page : Int
+    var height : CGFloat
+    
+    func makeUIView(context: Context) -> UIScrollView{
+        let total = width * CGFloat(data.count)
+        let view = UIScrollView()
+        view.isPagingEnabled = true
+        //1.0  For Disabling Vertical Scroll....
+        view.contentSize = CGSize(width: total, height: 1.0)
+        view.bounces = true
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        view.delegate = context.coordinator
+        
+        let view1 = UIHostingController(rootView: List(page: self.$page))
+        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
+        view1.view.backgroundColor = .clear
+        
+        view.addSubview(view1.view)
+        
+        return view
+        
+    }
+    
+    func updateUIView(_ uiView: UIScrollView, context: Context) {}
+    
+    class Coordinator : NSObject,UIScrollViewDelegate{
+        var parent : Carousel
+        init(parent1: Carousel) {
+            parent = parent1
+        }
+        
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            let page = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
+            self.parent.page = page
+        }
+    }
+}
 
-  func updateUIView(_ uiView: UIScrollView, context: Context) {}
-  
-  class Coordinator : NSObject,UIScrollViewDelegate{
-      var parent : Carousel
-      init(parent1: Carousel) {
-          parent = parent1
-      }
-      
-      func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-          let page = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
-          self.parent.page = page
-      }
-  }
-}
-  
 struct PageControl : UIViewRepresentable {
-  
-  @Binding var page : Int
-  func makeUIView(context: Context) -> UIPageControl {
-      
-      let view = UIPageControl()
-      view.currentPageIndicatorTintColor = .black
-      view.pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-      view.numberOfPages = data.count
-      return view
-  }
-  
-  func updateUIView(_ uiView: UIPageControl, context: Context) {
-      DispatchQueue.main.async {
-          uiView.currentPage = self.page
-      }
-  }
+    
+    @Binding var page : Int
+    func makeUIView(context: Context) -> UIPageControl {
+        
+        let view = UIPageControl()
+        view.currentPageIndicatorTintColor = .black
+        view.pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        view.numberOfPages = data.count
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIPageControl, context: Context) {
+        DispatchQueue.main.async {
+            uiView.currentPage = self.page
+        }
+    }
 }
-  
+
 struct ImageCarousel : Identifiable {
-  var id : Int
-  var title : String
-  var desc : String
-  var image : String
+    var id : Int
+    var title : String
+    var desc : String
+    var image : String
 }

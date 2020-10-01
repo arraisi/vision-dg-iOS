@@ -38,6 +38,9 @@
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
 		52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2744F25258FD200DD1443 /* OTPTextField.swift */; };
 		52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274572525924100DD1443 /* CharacterInputCell.swift */; };
+		52D2745D2525ADA100DD1443 /* EmailOTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2745C2525ADA100DD1443 /* EmailOTPVerificationView.swift */; };
+		52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274612525AECB00DD1443 /* VerificationRegisterDataView.swift */; };
+		52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274662525B56C00DD1443 /* ModalOverlay.swift */; };
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
 		C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */; };
@@ -101,6 +104,9 @@
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		52D2744F25258FD200DD1443 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		52D274572525924100DD1443 /* CharacterInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputCell.swift; sourceTree = "<group>"; };
+		52D2745C2525ADA100DD1443 /* EmailOTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOTPVerificationView.swift; sourceTree = "<group>"; };
+		52D274612525AECB00DD1443 /* VerificationRegisterDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationRegisterDataView.swift; sourceTree = "<group>"; };
+		52D274662525B56C00DD1443 /* ModalOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalOverlay.swift; sourceTree = "<group>"; };
 		52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSavingsView.swift; sourceTree = "<group>"; };
 		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 				527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */,
 				527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */,
 				5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */,
+				52D274662525B56C00DD1443 /* ModalOverlay.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 				52794BF92524530F0031392E /* Coordinator.swift */,
 				52794BFE2524532D0031392E /* EmailVerificationView.swift */,
 				52794C0325245C0C0031392E /* EmailConfirmationView.swift */,
+				52D2745C2525ADA100DD1443 /* EmailOTPVerificationView.swift */,
 			);
 			path = "Personal Identity";
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 				52794C16252468490031392E /* VerificationAddressView.swift */,
 				52794C20252471370031392E /* VerificationPINView.swift */,
 				52794C25252475290031392E /* InterviewRegistrationView.swift */,
+				52D274612525AECB00DD1443 /* VerificationRegisterDataView.swift */,
 			);
 			path = "Validation Form";
 			sourceTree = "<group>";
@@ -465,8 +474,10 @@
 			files = (
 				C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */,
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
+				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,
 				52794C0425245C0C0031392E /* EmailConfirmationView.swift in Sources */,
 				C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */,
+				52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */,
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
@@ -482,6 +493,7 @@
 				52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
 				52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */,
+				52D2745D2525ADA100DD1443 /* EmailOTPVerificationView.swift in Sources */,
 				52794BFA2524530F0031392E /* Coordinator.swift in Sources */,
 				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,

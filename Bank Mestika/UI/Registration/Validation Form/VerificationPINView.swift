@@ -16,6 +16,15 @@ struct VerificationPINView: View {
     @State var showingModal = false
     
     @State var pin: String = ""
+    @State private var secured: Bool = true
+    
+    @State var isChecked:Bool = false
+    
+    func toggle() { isChecked = !isChecked }
+    
+    var disableForm: Bool {
+        pin.count < 6
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -44,6 +53,10 @@ struct VerificationPINView: View {
                     .padding(.horizontal, 30)
                     .padding(.top, 35)
                 }
+            }
+            
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -90,24 +103,61 @@ struct VerificationPINView: View {
                 .padding(.horizontal, 20)
                 .fixedSize(horizontal: false, vertical: true)
             
-            ZStack {
-                HStack (spacing: 0) {
-                    TextField("Maukan PIN ATM", text: $pin)
-                        .padding()
-                        .frame(width: 200, height: 50)
-                        .foregroundColor(Color(hex: "#232175"))
-                        .keyboardType(.phonePad)
-                    
-                    Button(action: {}) {
-                        Text("show")
-                            .frame(width: 80, height: 50)
-                            .cornerRadius(10)
-                            .foregroundColor(Color(hex: "#3756DF"))
-                    }
-                }.padding()
-                RoundedRectangle(cornerRadius: 10).stroke()
-                    .frame(width: 280, height: 50)
-                    .foregroundColor(Color.secondary.opacity(0.2))
+            if (secured) {
+                ZStack {
+                    HStack (spacing: 0) {
+                        SecureField("Maukan PIN ATM", text: $pin)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }.padding()
+                    RoundedRectangle(cornerRadius: 10).stroke()
+                        .frame(width: 280, height: 50)
+                        .foregroundColor(Color.secondary.opacity(0.2))
+                }
+            } else {
+                ZStack {
+                    HStack (spacing: 0) {
+                        TextField("Maukan PIN ATM", text: $pin)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }.padding()
+                    RoundedRectangle(cornerRadius: 10).stroke()
+                        .frame(width: 280, height: 50)
+                        .foregroundColor(Color.secondary.opacity(0.2))
+                }
+            }
+            
+            Button(action: toggle) {
+                HStack(alignment: .top) {
+                    Image(systemName: isChecked ? "checkmark.square": "square")
+                    Text("* Rekening Anda tidak memiliki kartu ATM? \n Verifikasi Lewat Video Call")
+                        .font(.caption)
+                        .foregroundColor(Color(hex: "#707070"))
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 5)
             }
             
             Button(action: {
@@ -119,11 +169,12 @@ struct VerificationPINView: View {
                     .font(.system(size: 13))
                     .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }
-            .background(Color(hex: "#2334D0"))
+            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
             .cornerRadius(12)
             .padding(.horizontal, 20)
             .padding(.top, 10)
             .padding(.bottom, 20)
+            .disabled(disableForm)
         }
         .frame(width: UIScreen.main.bounds.width - 30)
         .background(Color.white)

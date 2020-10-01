@@ -11,12 +11,23 @@ struct PersonalIdentityView: View {
     
     @State var nik: String = ""
     @State var imageKTP: Image? = nil
+    @State var imageSelfie: Image? = nil
+    @State var imageSignature: Image? = nil
+    @State var imageNPWP: Image? = nil
     
-    @State var showCaptureImageView: Bool = false
+    @State var showCaptureKTP: Bool = false
+    @State var showCaptureSelfie: Bool = false
+    @State var showCaptureSignature: Bool = false
+    @State var showCaptureNPWP: Bool = false
+    
     @State private var collapsedFormKTP: Bool = false
     @State private var collapsedFormPersonal: Bool = true
     @State private var collapsedFormSignature: Bool = true
     @State private var collapsedFormNPWP: Bool = true
+    
+    @State var isChecked:Bool = false
+    
+    func toggle() { isChecked = !isChecked }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -74,8 +85,20 @@ struct PersonalIdentityView: View {
                 }
             }
             
-            if (showCaptureImageView) {
-                CaptureImageView(isShown: $showCaptureImageView, image: $imageKTP)
+            if (showCaptureKTP) {
+                CaptureImageView(isShown: $showCaptureKTP, image: $imageKTP)
+            }
+            
+            if (showCaptureSelfie) {
+                CaptureImageView(isShown: $showCaptureSelfie, image: $imageSelfie)
+            }
+            
+            if (showCaptureSignature) {
+                CaptureImageView(isShown: $showCaptureSignature, image: $imageSignature)
+            }
+            
+            if (showCaptureNPWP) {
+                CaptureImageView(isShown: $showCaptureSignature, image: $imageNPWP)
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -151,15 +174,15 @@ struct PersonalIdentityView: View {
                 )
                 
                 Button(action: {
-                    self.showCaptureImageView.toggle()
+                    self.showCaptureKTP.toggle()
                 }) {
-                    Text("Ambil Foto KTP")
-                        .foregroundColor(.white)
+                    Text(imageKTP == nil ? "Ambil Foto KTP" : "Ganti Foto Lain")
+                        .foregroundColor(imageKTP == nil ? .white : Color(hex: "#2334D0"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 13))
                         .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
                 }
-                .background(Color(hex: "#2334D0"))
+                .background(Color(hex: imageKTP == nil ? "#2334D0" : "#FFFFFF"))
                 .cornerRadius(12)
                 .padding(.horizontal, 20)
                 .padding([.top, .bottom], 15)
@@ -176,8 +199,19 @@ struct PersonalIdentityView: View {
                         .padding()
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
-                        .padding(.bottom, 20)
                         .padding(.horizontal, 20)
+                    
+                    Button(action: toggle) {
+                        HStack(alignment: .top) {
+                            Image(systemName: isChecked ? "checkmark.square": "square")
+                            Text("* Periksa kembali dan pastikan Nomor Kartu Tanda Penduduk (KTP) Anda telah sesuai")
+                                .font(.caption)
+                                .foregroundColor(Color(hex: "#707070"))
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
             }
             .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormKTP ? 0 : .none)
@@ -217,7 +251,7 @@ struct PersonalIdentityView: View {
                 ZStack {
                     Image("ic_camera")
                     VStack {
-                        imageKTP?
+                        imageSelfie?
                             .resizable()
                             .frame(maxWidth: 350, maxHeight: 200)
                             .cornerRadius(10)
@@ -232,7 +266,7 @@ struct PersonalIdentityView: View {
                 )
                 
                 Button(action: {
-                    self.showCaptureImageView.toggle()
+                    self.showCaptureSelfie.toggle()
                 }) {
                     Text("Ambil Gambar Selfie")
                         .foregroundColor(.white)
@@ -282,7 +316,7 @@ struct PersonalIdentityView: View {
                 ZStack {
                     Image("ic_camera")
                     VStack {
-                        imageKTP?
+                        imageSignature?
                             .resizable()
                             .frame(maxWidth: 350, maxHeight: 200)
                             .cornerRadius(10)
@@ -297,7 +331,7 @@ struct PersonalIdentityView: View {
                 )
                 
                 Button(action: {
-                    self.showCaptureImageView.toggle()
+                    self.showCaptureSignature.toggle()
                 }) {
                     Text("Ambil Foto Tanda Tangan")
                         .foregroundColor(.white)
@@ -347,7 +381,7 @@ struct PersonalIdentityView: View {
                 ZStack {
                     Image("ic_camera")
                     VStack {
-                        imageKTP?
+                        imageNPWP?
                             .resizable()
                             .frame(maxWidth: 350, maxHeight: 200)
                             .cornerRadius(10)
@@ -362,7 +396,7 @@ struct PersonalIdentityView: View {
                 )
                 
                 Button(action: {
-                    self.showCaptureImageView.toggle()
+                    self.showCaptureNPWP.toggle()
                 }) {
                     Text("Upload Gambar NPWP")
                         .foregroundColor(.white)

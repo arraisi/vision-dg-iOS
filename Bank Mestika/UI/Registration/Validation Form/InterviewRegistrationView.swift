@@ -37,6 +37,10 @@ struct InterviewRegistrationView: View {
                     .padding(.bottom, 35)
                 }
             }
+            
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+            }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -62,7 +66,7 @@ struct InterviewRegistrationView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 20))
                 .bold()
-    
+            
         }
     }
     

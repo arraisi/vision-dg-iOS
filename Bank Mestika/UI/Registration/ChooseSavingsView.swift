@@ -136,6 +136,10 @@ struct ChooseSavingsView: View {
                     .padding(.top, 35)
                 }
             }
+            
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+            }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -178,7 +182,7 @@ struct ChooseSavingsView: View {
             .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height - 100)
             .background(Color(.white))
             .cornerRadius(50)
-            .shadow(radius: 30)
+            .shadow(radius: 60)
     }
 }
 

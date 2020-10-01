@@ -1,18 +1,19 @@
 //
-//  EmailVerificationView.swift
+//  EmailOTPVerificationView.swift
 //  Bank Mestika
 //
-//  Created by Prima Jatnika on 29/09/20.
+//  Created by Prima Jatnika on 01/10/20.
 //
 
 import SwiftUI
 
-struct EmailVerificationView: View {
+struct EmailOTPVerificationView: View {
     
-    @State var email: String = ""
+    @State private var numberOfCells: Int = 6
+    @State private var currentlySelectedCell = 0
     
     var disableForm: Bool {
-        email.count < 6
+        currentlySelectedCell < 6
     }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -69,31 +70,46 @@ struct EmailVerificationView: View {
     
     var cardForm: some View {
         VStack(alignment: .center) {
-            Text("Email Verification")
+            Text("Kami telah mengirimkan Kode Verifikasi ke Email Anda")
                 .font(.title2)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
+                .multilineTextAlignment(.center)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
-            
-            Text("Silahkan masukan Alamat Email Anda")
+            Text("Silahkan masukan kode OTP")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#232175"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
+                .padding(.bottom, 20)
+                .padding(.horizontal, 20)
+        
+            HStack {
+                ForEach(0 ..< self.numberOfCells) { index in
+                    CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
+                }
+            }.lineSpacing(10)
+            
+            HStack {
+                Text("Tidak Menerima Kode?")
+                    .font(.caption2)
+                Text("Resend OTP")
+                    .font(.caption2)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            }
+            .padding(.top, 5)
+            
+            Text("Silahkan cek email Anda untuk melihat kode OTP")
+                .font(.caption)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)
+                .padding(.top, 15)
+                .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            TextField("Masukan alamat email anda", text: $email)
-                .frame(height: 30)
-                .font(.subheadline)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.vertical, 10)
-                .padding(.horizontal, 20)
-            
-            NavigationLink(destination: EmailOTPVerificationView()) {
-                Text("Verifikasi Email")
+            NavigationLink(destination: FormInformasiPerusahaanView()) {
+                Text("Verifikasi OTP")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
@@ -113,8 +129,8 @@ struct EmailVerificationView: View {
     }
 }
 
-struct EmailVerificationView_Previews: PreviewProvider {
+struct EmailOTPVerificationView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailVerificationView()
+        EmailOTPVerificationView()
     }
 }
