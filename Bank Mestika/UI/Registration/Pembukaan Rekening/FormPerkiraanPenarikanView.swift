@@ -142,6 +142,7 @@ struct FormPerkiraanPenarikanView: View {
                     .padding(.bottom, 25)
                     
                 }
+                .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
                 
             }

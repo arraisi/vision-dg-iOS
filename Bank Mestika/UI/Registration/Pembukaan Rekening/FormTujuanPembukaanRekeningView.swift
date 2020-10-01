@@ -139,6 +139,7 @@ struct FormTujuanPembukaanRekeningView: View {
                         }
                         
                     }
+                    .padding(.bottom, 0.1)
                     .padding(.bottom, 25)
                     
                 }

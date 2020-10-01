@@ -146,6 +146,7 @@ struct FormInformasiPerusahaanView: View {
                     .padding(.bottom, 25)
                     
                 }
+                .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
                 
             }
