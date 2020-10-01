@@ -11,19 +11,23 @@ struct FormInformasiPerusahaanView: View {
     
     @State var namaPerusahaan: String = ""
     @State var alamatPerusahaan: String = ""
-    @State var kodePos: String = ""
-    @State var kecamatan: String = ""
     @State var kelurahan: String = ""
     @State var noTlpPerusahaan: String = ""
     
-    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
+    
+    @State var kodePos : String? = nil
+    @State var arrkodePos = ["140256","140216","140216","140216","140216","140216"]
+    @State var selectionkodePosIndex = 0
+    
+    @State var kecamatan : String? = nil
+    @State var arrKecamatan = ["Rancasari","Antapani","Gede Bage","Cililin","Batujajar","Cimahi"]
+    @State var selectionKecamatanIndex = 0
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         
         ZStack(alignment: .top) {
-            
             Color(hex: "#232175")
             
             VStack {
@@ -108,7 +112,6 @@ struct FormInformasiPerusahaanView: View {
                                 
                                 // Forms input
                                 ZStack {
-                                    
                                     cardForm
                                         .padding(.vertical, 20)
                                     
@@ -118,7 +121,12 @@ struct FormInformasiPerusahaanView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                                NavigationLink(destination: FormPenghasilanKotorView()) {
+                               
+                                Button(action: {
+                                    
+//                                    print(kecamatan ?? "select picker")
+                                    
+                                }, label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -126,7 +134,7 @@ struct FormInformasiPerusahaanView: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
-                                }
+                                })
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
@@ -166,9 +174,43 @@ struct FormInformasiPerusahaanView: View {
             
             LabelTextField(value: $alamatPerusahaan, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan")
             
-            LabelTextField(value: $kodePos, label: "Kode Pos", placeHolder: "Kode Pos")
+            Group {
+                
+                Text("Kode Pos")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal, 20)
+                
+                TextFieldWithPickerAsInputView(data: self.arrkodePos, placeholder: "Pilih Kode Pos", selectionIndex: self.$selectionkodePosIndex, text: self.$kodePos)
+                    .frame(height: 10)
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(15)
+                    .padding(.horizontal, 20)
+                
+            }
             
-            LabelTextField(value: $kecamatan, label: "Kecamatan", placeHolder: "Kecamatan")
+            Group {
+                
+                Text("Kecamatan")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal, 20)
+                
+                TextFieldWithPickerAsInputView(data: self.arrKecamatan, placeholder: "Pilih Kecamatan", selectionIndex: self.$selectionKecamatanIndex, text: self.$kecamatan)
+                    .frame(height: 10)
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(15)
+                    .padding(.horizontal, 20)
+                
+            }
             
             Group {
                 
@@ -200,10 +242,9 @@ struct FormInformasiPerusahaanView: View {
             }
             
         }
-    }}
-
-
-
+    }
+    
+}
 
 struct FormInformasiPerusahaanView_Previews: PreviewProvider {
     static var previews: some View {
