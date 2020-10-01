@@ -96,14 +96,20 @@ struct VerificationAddressView: View {
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
             
-            HStack {
-                RadioButtonGroups { selected in
-                    print("\(selected)")
+            ZStack {
+
+                RadioButtonGroup(
+                    items: ["1", "2"],
+                    labels: ["Ya, alamat sesuai",
+                             "Tidak, alamat tidak sesuai"],
+                    selectedId: "Tujuan Pembukaan Rekening") { selected in
+                    print("Selected is: \(selected)")
                 }
+                .padding(.horizontal, 20)
+                .padding(.top, 15)
+                .padding(.bottom, 20)
+                
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 15)
-            .padding(.bottom, 20)
             
             Divider()
                 .padding(.horizontal, 20)
