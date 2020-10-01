@@ -68,7 +68,7 @@ struct RegisterView: View {
                 createBottomFloater()
             }
         }
-        .navigationBarTitle("BANK MESTIKA", displayMode:.inline)
+        .navigationBarHidden(true)
     }
     
     var header: some View {
