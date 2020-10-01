@@ -36,6 +36,8 @@
 		527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */; };
 		527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */; };
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
+		52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2744F25258FD200DD1443 /* OTPTextField.swift */; };
+		52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274572525924100DD1443 /* CharacterInputCell.swift */; };
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
 		C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */; };
@@ -97,6 +99,8 @@
 		527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HostingController+Utils.swift"; sourceTree = "<group>"; };
 		527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRekeningCardView.swift; sourceTree = "<group>"; };
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		52D2744F25258FD200DD1443 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
+		52D274572525924100DD1443 /* CharacterInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputCell.swift; sourceTree = "<group>"; };
 		52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSavingsView.swift; sourceTree = "<group>"; };
 		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				C0C94DE72522F88F005B811C /* LabelTextField.swift */,
 				C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */,
 				52794C1B25246C730031392E /* RadioButton.swift */,
+				52D2744F25258FD200DD1443 /* OTPTextField.swift */,
+				52D274572525924100DD1443 /* CharacterInputCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -473,7 +479,9 @@
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
+				52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
+				52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */,
 				52794BFA2524530F0031392E /* Coordinator.swift in Sources */,
 				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,

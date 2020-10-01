@@ -88,6 +88,7 @@ struct VerificationPINView: View {
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
+                .fixedSize(horizontal: false, vertical: true)
             
             ZStack {
                 HStack (spacing: 0) {

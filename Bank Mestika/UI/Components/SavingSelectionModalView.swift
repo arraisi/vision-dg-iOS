@@ -32,70 +32,72 @@ struct SavingSelectionModalView: View {
                     .padding(.horizontal, 15)
                     .foregroundColor(Color(hex: "#5A6876"))
                 
-                HStack(alignment: .top) {
-                    Text("01")
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#232175"))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "#5A6876"))
+                ScrollView {
+                    HStack(alignment: .top) {
+                        Text("01")
+                            .font(.subheadline)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "#5A6876"))
+                    }
+                    .padding(.top, 5)
+                    .padding(.horizontal, 15)
+                    .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack(alignment: .top) {
+                        Text("02")
+                            .font(.subheadline)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "#5A6876"))
+                    }
+                    .padding(.top, 5)
+                    .padding(.horizontal, 15)
+                    .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack(alignment: .top) {
+                        Text("03")
+                            .font(.subheadline)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "#5A6876"))
+                    }
+                    .padding(.top, 5)
+                    .padding(.horizontal, 15)
+                    .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack(alignment: .top) {
+                        Text("04")
+                            .font(.subheadline)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "#5A6876"))
+                    }
+                    .padding(.top, 5)
+                    .padding(.horizontal, 15)
+                    .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack(alignment: .top) {
+                        Text("05")
+                            .font(.subheadline)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                            .font(.caption)
+                            .foregroundColor(Color(hex: "#5A6876"))
+                    }
+                    .padding(.top, 5)
+                    .padding(.horizontal, 15)
+                    .fixedSize(horizontal: false, vertical: true)
                 }
-                .padding(.top, 5)
-                .padding(.horizontal, 15)
-                .fixedSize(horizontal: false, vertical: true)
-                
-                HStack(alignment: .top) {
-                    Text("02")
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#232175"))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "#5A6876"))
-                }
-                .padding(.top, 5)
-                .padding(.horizontal, 15)
-                .fixedSize(horizontal: false, vertical: true)
-                
-                HStack(alignment: .top) {
-                    Text("03")
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#232175"))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "#5A6876"))
-                }
-                .padding(.top, 5)
-                .padding(.horizontal, 15)
-                .fixedSize(horizontal: false, vertical: true)
-                
-                HStack(alignment: .top) {
-                    Text("04")
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#232175"))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "#5A6876"))
-                }
-                .padding(.top, 5)
-                .padding(.horizontal, 15)
-                .fixedSize(horizontal: false, vertical: true)
-                
-                HStack(alignment: .top) {
-                    Text("05")
-                        .font(.subheadline)
-                        .foregroundColor(Color(hex: "#232175"))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                        .font(.caption)
-                        .foregroundColor(Color(hex: "#5A6876"))
-                }
-                .padding(.top, 5)
-                .padding(.horizontal, 15)
-                .fixedSize(horizontal: false, vertical: true)
             }
             
             Spacer()

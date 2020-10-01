@@ -9,12 +9,8 @@ import SwiftUI
 
 struct OTPVerificationView: View {
     
-    @ObservedObject var otp1 = TextBindingManager(limit: 1)
-    @ObservedObject var otp2 = TextBindingManager(limit: 1)
-    @ObservedObject var otp3 = TextBindingManager(limit: 1)
-    @ObservedObject var otp4 = TextBindingManager(limit: 1)
-    @ObservedObject var otp5 = TextBindingManager(limit: 1)
-    @ObservedObject var otp6 = TextBindingManager(limit: 1)
+    @State private var numberOfCells: Int = 6
+    @State private var currentlySelectedCell = 0
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -84,50 +80,11 @@ struct OTPVerificationView: View {
                 .padding(.top, 5)
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
-            
+        
             HStack {
-                TextField("", text: $otp1.text)
-                    .frame(width: 40, height: 40)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "#232175"))
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                TextField("", text: $otp2.text)
-                    .frame(width: 40, height: 40)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "#232175"))
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                TextField("", text: $otp3.text)
-                    .frame(width: 40, height: 40)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "#232175"))
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                TextField("", text: $otp4.text)
-                    .frame(width: 40, height: 40)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "#232175"))
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                TextField("", text: $otp5.text)
-                    .frame(width: 40, height: 40)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "#232175"))
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                TextField("", text: $otp6.text)
-                    .frame(width: 40, height: 40)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: "#232175"))
-                    .multilineTextAlignment(.center)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
+                ForEach(0 ..< self.numberOfCells) { index in
+                    CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
+                }
             }.lineSpacing(10)
             
             HStack {
@@ -167,23 +124,10 @@ struct OTPVerificationView: View {
     }
 }
 
+#if DEBUG
 struct OTPVerificationView_Previews: PreviewProvider {
     static var previews: some View {
         OTPVerificationView()
     }
 }
-
-class TextBindingManager: ObservableObject {
-    @Published var text = "" {
-        didSet {
-            if text.count > characterLimit && oldValue.count <= characterLimit {
-                text = oldValue
-            }
-        }
-    }
-    let characterLimit: Int
-
-    init(limit: Int = 1){
-        characterLimit = limit
-    }
-}
+#endif
