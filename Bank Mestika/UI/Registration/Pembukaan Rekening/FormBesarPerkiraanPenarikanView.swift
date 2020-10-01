@@ -1,22 +1,13 @@
 //
-//  FormInformasiPerusahaanView.swift
+//  FormBesarPenarikanDanaView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 28/09/20.
+//  Created by Abdul R. Arraisi on 01/10/20.
 //
 
 import SwiftUI
 
-struct FormInformasiPerusahaanView: View {
-    
-    @State var namaPerusahaan: String = ""
-    @State var alamatPerusahaan: String = ""
-    @State var kodePos: String = ""
-    @State var kecamatan: String = ""
-    @State var kelurahan: String = ""
-    @State var noTlpPerusahaan: String = ""
-    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
-    
+struct FormBesarPerkiraanPenarikanView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -26,18 +17,15 @@ struct FormInformasiPerusahaanView: View {
             Color(hex: "#232175")
             
             VStack {
-                
                 Spacer()
-                
-                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                Rectangle()
                     .fill(Color.white)
-                    .frame(height: 450)
-                
+                    .frame(height: UIScreen.main.bounds.height / 2)
+                    .cornerRadius(radius: 25.0, corners: .topLeft)
+                    .cornerRadius(radius: 25.0, corners: .topRight)
             }
             
             VStack {
-                
-                Spacer()
                 
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
@@ -46,12 +34,12 @@ struct FormInformasiPerusahaanView: View {
                 ScrollView {
                     
                     // Title
-                    Text("DATA PEMBUKAAN REKENEING")
+                    Text("DATA PEMBUKAAN REKENING")
                         .font(.title)
                         .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 20)
+                        .padding(.vertical, 40)
                         .padding(.horizontal, 20)
                         .fixedSize(horizontal: false, vertical: true)
                     
@@ -81,13 +69,13 @@ struct FormInformasiPerusahaanView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("08")
-                                        .font(.headline)
+                                    Text("04")
+                                        .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
                                     
                                     Text(" / of 13 Forms")
-                                        .font(.headline)
+                                        .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.regular)
                                     
@@ -95,21 +83,28 @@ struct FormInformasiPerusahaanView: View {
                                     
                                 }
                                 .padding(.leading, 20)
-                                .padding(.top, 20)
+                                .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Masukan Informasi Perusahaan")
-                                    .font(.title3)
+                                Text("Berapa Besar Perkiraan Penarikan Dana Anda Setiap Bulannya")
+                                    .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
-                                    .padding(.horizontal, 20)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 40)
                                     .padding(.vertical, 20)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 
                                 // Forms input
                                 ZStack {
-                                    
-                                    cardForm
-                                        .padding(.vertical, 20)
+
+                                    RadioButtonGroup(
+                                        items: ["1", "2", "3"],
+                                        labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
+                                        selectedId: "Besar Penarikan Dana") { selected in
+                                        print("Selected is: \(selected)")
+                                    }
+                                    .padding()
                                     
                                 }
                                 .frame(width: UIScreen.main.bounds.width - 70)
@@ -118,16 +113,16 @@ struct FormInformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                Button(action : {}) {
+                                NavigationLink(destination: FormPerkiraanSetoranView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
-                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                        .font(.system(size: 13))
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
                                 }
-                                .frame(height: 40)
+                                .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 35)
@@ -143,6 +138,7 @@ struct FormInformasiPerusahaanView: View {
                         }
                         
                     }
+                    .padding(.bottom, 25)
                     
                 }
                 .KeyboardAwarePadding()
@@ -154,56 +150,10 @@ struct FormInformasiPerusahaanView: View {
         .navigationBarHidden(true)
         
     }
-    
-    var cardForm: some View {
-        
-        VStack(alignment: .leading) {
-            
-            LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan")
-            
-            LabelTextField(value: $alamatPerusahaan, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan")
-            
-            LabelTextField(value: $kodePos, label: "Kode Pos", placeHolder: "Kode Pos")
-            
-            LabelTextField(value: $kecamatan, label: "Kecamatan", placeHolder: "Kecamatan")
-            
-            Group {
-                
-                Text("No. Telepon Perusahaan")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                HStack {
-                    
-                    Text("+62 ").foregroundColor(.gray)
-                    
-                    Divider()
-                        .frame(height: 30)
-                    
-                    TextField("No. Telepon", text: $noTlpPerusahaan)
-                        .keyboardType(.numberPad)
-                    
-                }
-                .frame(height: 10)
-                .font(.subheadline)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.horizontal, 20)
-                
-            }
-            
-        }
-        
-    }
-    
 }
 
-struct FormInformasiPerusahaanView_Previews: PreviewProvider {
+struct FormBesarPenarikanDanaView_Previews: PreviewProvider {
     static var previews: some View {
-        FormInformasiPerusahaanView()
+        FormBesarPerkiraanPenarikanView()
     }
 }
