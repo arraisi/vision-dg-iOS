@@ -11,7 +11,7 @@ import ExytePopupView
 var data = [
     ImageCarousel(
         id: 0,
-        title: "Test conflicts",
+        title: "Nikmati Kemudahan Disetiap",
         desc: "Start an entirely new payment era with smart wallet",
         image: "Slider"
     ),
