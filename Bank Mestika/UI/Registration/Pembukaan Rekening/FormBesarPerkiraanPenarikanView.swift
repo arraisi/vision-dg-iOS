@@ -10,6 +10,8 @@ import SwiftUI
 struct FormBesarPerkiraanPenarikanView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var besarPerkiraanPenarikanId: String?
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -101,7 +103,7 @@ struct FormBesarPerkiraanPenarikanView: View {
                                     RadioButtonGroup(
                                         items: ["1", "2", "3"],
                                         labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
-                                        selectedId: "Besar Penarikan Dana") { selected in
+                                        selectedId: $besarPerkiraanPenarikanId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()

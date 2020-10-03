@@ -10,6 +10,7 @@ import SwiftUI
 struct VerificationAddressView: View {
     
     @State var alamat: String = ""
+    @State var verificationAddress: String?
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -102,7 +103,7 @@ struct VerificationAddressView: View {
                     items: ["1", "2"],
                     labels: ["Ya, alamat sesuai",
                              "Tidak, alamat tidak sesuai"],
-                    selectedId: "Tujuan Pembukaan Rekening") { selected in
+                    selectedId: $verificationAddress) { selected in
                     print("Selected is: \(selected)")
                 }
                 .padding(.horizontal, 20)

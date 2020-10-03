@@ -10,6 +10,8 @@ import SwiftUI
 struct FormPerkerjaanView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var pekerjaanId: String?
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -110,7 +112,7 @@ struct FormPerkerjaanView: View {
                                             "Polisi",
                                             "Militer",
                                             "Pensiunan"],
-                                        selectedId: "Besar Penarikan Dana") { selected in
+                                        selectedId: $pekerjaanId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()
