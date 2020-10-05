@@ -118,6 +118,15 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
+            
+            NavigationLink(destination: FormTujuanPembukaanRekeningView()) {
+                Text("PASS TO REGISTER FORM")
+                    .foregroundColor(.white)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .font(.system(size: 12))
+                    .frame(maxWidth: .infinity, maxHeight: 40)
+            }
+            .cornerRadius(12)
         }
     }
     

@@ -63,7 +63,7 @@ struct CheckBoxField: View {
 
 struct CheckBoxGroup: View {
     
-    let id : [Int]
+    let items : [Int]
     @Binding var markedId: [Int]
     let labels : [String]
     let callback: (Int, [Int])->()
@@ -73,8 +73,8 @@ struct CheckBoxGroup: View {
             
             VStack {
                 
-                ForEach(0..<id.count) { index in
-                    CheckBoxField(id: id[index], markedId: self.markedId, label: labels[index], callback: self.checkboxSelected)
+                ForEach(0..<items.count) { index in
+                    CheckBoxField(id: items[index], markedId: self.markedId, label: labels[index], callback: self.checkboxSelected)
                 }
                 
             }
@@ -83,7 +83,6 @@ struct CheckBoxGroup: View {
     }
     
     func checkboxSelected(id: Int, marked: [Int]) {
-        
         if markedId.contains(id) {
             
             markedId = markedId.filter {$0 != id}
@@ -100,8 +99,9 @@ struct CheckBoxGroup: View {
 
 struct CheckBoxGroup_Previews: PreviewProvider {
     static var previews: some View {
-        CheckBoxGroup(id: [0, 1], markedId: Binding.constant([1]), labels: ["A", "B"]) { id, marked  in
-            
+        CheckBoxGroup(items: [0, 1], markedId: Binding.constant([1]), labels: ["A", "B"]) {(id, marked) in
+            print(id)
+            print(marked)
         }
     }
 }

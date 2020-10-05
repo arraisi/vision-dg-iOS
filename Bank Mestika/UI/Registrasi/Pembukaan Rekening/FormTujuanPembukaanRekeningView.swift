@@ -15,7 +15,7 @@ struct FormTujuanPembukaanRekeningView: View {
     
     @State var isChecked:Bool = false
     
-    @State var selectedOptions: [Int] = []
+    @State var selectedItems: [Int] = []
     
     var body: some View {
         
@@ -103,13 +103,11 @@ struct FormTujuanPembukaanRekeningView: View {
                                 // Forms input
                                 ZStack {
                                     
-                                    CheckBoxGroup(id: [1, 2, 3, 4], markedId: $selectedOptions, labels: [
+                                    CheckBoxGroup(items: [1, 2, 3, 4], markedId: $selectedItems, labels: [
                                         "Pinjaman / Angsuran Kredit",
                                         "Keperluan Usaha", "Keperluan Sehari - hari", "Simpanan"
-                                    ]) { data, marked  in
-                                        
-                                        print(data)
-                                        print(marked)
+                                    ]) { id, marked in
+                                        print(selectedItems)
                                     }
                                     .padding()
                                     
