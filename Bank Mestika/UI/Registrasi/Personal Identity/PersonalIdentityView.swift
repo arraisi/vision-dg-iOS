@@ -172,6 +172,7 @@ struct PersonalIdentityView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.2))
                 )
+                .padding(.horizontal, 15)
                 
                 Button(action: {
                     self.showCaptureKTP.toggle()
@@ -264,6 +265,7 @@ struct PersonalIdentityView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.2))
                 )
+                .padding(.horizontal, 15)
                 
                 Button(action: {
                     self.showCaptureSelfie.toggle()
@@ -329,6 +331,7 @@ struct PersonalIdentityView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.2))
                 )
+                .padding(.horizontal, 15)
                 
                 Button(action: {
                     self.showCaptureSignature.toggle()
@@ -394,6 +397,7 @@ struct PersonalIdentityView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.2))
                 )
+                .padding(.horizontal, 15)
                 
                 Button(action: {
                     self.showCaptureNPWP.toggle()

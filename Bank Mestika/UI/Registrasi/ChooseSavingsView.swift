@@ -10,10 +10,30 @@ import ExytePopupView
 
 struct ChooseSavingsView: View {
     
+    @State var x : CGFloat = 0
+    @State var count : CGFloat = 0
+    @State var screen = UIScreen.main.bounds.width - 30
+    @State var op : CGFloat = 0
+    
     /*
      Boolean for Show Modal
      */
     @State var showingModal = false
+    
+    @State var data = [
+        JenisTabungan(
+            id: 1,
+            namaTabungan: "Nama Tabungan 1",
+            kartu: "Saving Image",
+            show: false
+        ),
+        JenisTabungan(
+            id: 2,
+            namaTabungan: "Nama Tabungan 2",
+            kartu: "Saving Image",
+            show: false
+        )
+    ]
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -35,8 +55,58 @@ struct ChooseSavingsView: View {
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .foregroundColor(Color(hex: "#232175"))
                             .padding(.horizontal, 15)
-                        Image("Saving Image")
-                            .padding(.bottom, 20)
+                        
+                        HStack(spacing: 15){
+                            ForEach(data) { i in
+                                JenisTabunganItem(data: i)
+                                    .offset(x: self.x)
+                                    .highPriorityGesture(
+                                        DragGesture()
+                                            .onChanged({ (value) in
+                                                if value.translation.width > 0 { self.x = value.location.x
+                                                } else {
+                                                    self.x = value.location.x - self.screen
+                                                }
+                                            })
+                                            .onEnded({ (value) in if
+                                                value.translation.width > 0 {
+                                                if value.translation.width > ((self.screen - 80) / 2) && Int(self.count) != 0{
+                                                    
+                                                    
+                                                    self.count -= 1
+                                                    self.updateHeight(value: Int(self.count))
+                                                    self.x = -((self.screen + 15) * self.count)
+                                                }
+                                                else {
+                                                    
+                                                    self.x = -((self.screen + 15) * self.count)
+                                                }
+                                            }
+                                            else {
+                                                if -value.translation.width > ((self.screen - 80) / 2) && Int(self.count) !=  (self.data.count - 1){
+                                                    
+                                                    self.count += 1
+                                                    self.updateHeight(value: Int(self.count))
+                                                    self.x = -((self.screen + 15) * self.count)
+                                                }
+                                                else {
+                                                    
+                                                    self.x = -((self.screen + 15) * self.count)
+                                                }
+                                            }
+                                            })
+                                    )
+                            }
+                        }
+                        .offset(x: self.op)
+                        .animation(.spring())
+                        .onAppear {
+                            
+                            self.op = ((self.screen + 15) * CGFloat(self.data.count / 2)) - (self.data.count % 2 == 0 ? ((self.screen + 15) / 2) : 0)
+                            
+                            self.data[0].show = true
+                        }
+                        
                         VStack(alignment: .leading) {
                             Text("Deposit Tabungan")
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -183,6 +253,24 @@ struct ChooseSavingsView: View {
             .background(Color(.white))
             .cornerRadius(50)
             .shadow(radius: 60)
+    }
+    
+    func updateHeight(value : Int) {
+        for i in 0..<data.count {
+            data[i].show = false
+        }
+        
+        data[value].show = true
+    }
+}
+
+struct JenisTabunganItem: View {
+    var data: JenisTabungan
+    
+    var body: some View {
+        Image(data.kartu)
+            .padding(.bottom, 20)
+            .frame(width: UIScreen.main.bounds.width - 30)
     }
 }
 

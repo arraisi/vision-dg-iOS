@@ -181,7 +181,7 @@ struct List : View {
     var body: some View{
         HStack(spacing: 0){
             ForEach(data){ i in
-                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i)
+                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i, height: UIScreen.main.bounds.height)
             }
         }
     }
@@ -192,39 +192,75 @@ struct Card : View {
     @Binding var page : Int
     var width : CGFloat
     var data : ImageCarousel
+    var height: CGFloat
     
     var body: some View{
-        VStack{
+        if (height < 800) {
             VStack{
-                Image(self.data.image)
-                    .resizable()
-                
-                Text(self.data.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .font(.title3)
-                    .padding(.top, 20)
-                    .padding(.horizontal, 20)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text(self.data.desc)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .font(.subheadline)
-                    .padding(.top, 5)
-                    .padding(.horizontal, 20)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                PageControl(page: self.$page)
-                    .padding([.top], 10)
+                VStack{
+                    Image(self.data.image)
+                        .resizable()
+                        .frame(height: 200)
+                    
+                    Text(self.data.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .font(.system(size: 14))
+                        .padding(.top, 20)
+                        .padding(.horizontal, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text(self.data.desc)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .font(.system(size: 11))
+                        .padding(.top, 5)
+                        .padding(.horizontal, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    PageControl(page: self.$page)
+                        .padding([.top], 10)
+                }
+                .background(Color(hex: "#2334D0"))
+                .cornerRadius(50)
+                .padding(.top, 25)
             }
-            .background(Color(hex: "#2334D0"))
-            .cornerRadius(50)
-            .padding(.top, 25)
+            .padding(.horizontal, 30)
+            .frame(width: self.width)
+            .animation(.default)
+        } else {
+            VStack{
+                VStack{
+                    Image(self.data.image)
+                        .resizable()
+                    
+                    Text(self.data.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .font(.title3)
+                        .padding(.top, 20)
+                        .padding(.horizontal, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text(self.data.desc)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+                        .padding(.top, 5)
+                        .padding(.horizontal, 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    PageControl(page: self.$page)
+                        .padding([.top], 10)
+                }
+                .background(Color(hex: "#2334D0"))
+                .cornerRadius(50)
+                .padding(.top, 25)
+            }
+            .padding(.horizontal, 30)
+            .frame(width: self.width)
+            .animation(.default)
         }
-        .padding(.horizontal, 30)
-        .frame(width: self.width)
-        .animation(.default)
     }
 }
 

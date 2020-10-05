@@ -78,27 +78,29 @@ struct PhoneVerificationView: View {
             
             Text("Silahkan masukan No. Telepon Anda")
                 .font(.subheadline)
-                .foregroundColor(Color(hex: "#232175"))
+                .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
+                .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            ZStack {
-                HStack (spacing: 0) {
-                    Text("🇮🇩 +62")
-                        .frame(width: 80, height: 50)
-                        .background(Color.secondary.opacity(0.2))
-                        .cornerRadius(10)
-                        .foregroundColor(.black)
-                    TextField("Phone Number", text: $phoneNumber)
-                        .padding()
-                        .frame(width: 200, height: 50)
-                        .keyboardType(.phonePad)
-                }.padding()
-                RoundedRectangle(cornerRadius: 10).stroke()
-                    .frame(width: 280, height: 50)
-                    .foregroundColor(Color.secondary.opacity(0.2))
+            HStack {
+                
+                Text("🇮🇩 +62 ").foregroundColor(.gray)
+                
+                Divider()
+                    .frame(height: 30)
+                
+                TextField("No. Telepon", text: $phoneNumber)
+                    .keyboardType(.numberPad)
+                
             }
+            .frame(height: 20)
+            .font(.subheadline)
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(15)
+            .padding(.horizontal, 20)
             
             NavigationLink(destination: OTPVerificationView()) {
                 Text("Verifikasi No. Telepon")
@@ -110,7 +112,7 @@ struct PhoneVerificationView: View {
             .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
             .cornerRadius(12)
             .padding(.horizontal, 20)
-            .padding(.top, 10)
+            .padding(.top, 30)
             .padding(.bottom, 20)
             .disabled(disableForm)
         }
