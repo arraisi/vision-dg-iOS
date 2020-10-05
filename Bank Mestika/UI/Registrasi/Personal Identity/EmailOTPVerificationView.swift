@@ -12,6 +12,9 @@ struct EmailOTPVerificationView: View {
     @State private var numberOfCells: Int = 6
     @State private var currentlySelectedCell = 0
     
+    @State private var timeRemaining = 40
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var disableForm: Bool {
         currentlySelectedCell < 6
     }
@@ -40,6 +43,11 @@ struct EmailOTPVerificationView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onReceive(timer) { time in
+            if self.timeRemaining > 0 {
+                self.timeRemaining -= 1
+            }
+        }
     }
     
     var appbar: some View {
@@ -79,7 +87,7 @@ struct EmailOTPVerificationView: View {
                 .padding(.horizontal, 20)
             Text("Silahkan masukan kode OTP")
                 .font(.subheadline)
-                .foregroundColor(Color(hex: "#232175"))
+                .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
                 .padding(.bottom, 20)
@@ -94,9 +102,16 @@ struct EmailOTPVerificationView: View {
             HStack {
                 Text("Tidak Menerima Kode?")
                     .font(.caption2)
-                Text("Resend OTP")
+                Button(action: {
+                    print("-> Resend OTP")
+                }) {
+                    Text("Resend OTP")
+                        .font(.caption2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(Color(hex: "#232175"))
+                }
+                Text("(00:\(timeRemaining))")
                     .font(.caption2)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             }
             .padding(.top, 5)
             
