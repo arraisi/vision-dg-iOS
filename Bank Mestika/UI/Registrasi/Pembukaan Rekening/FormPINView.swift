@@ -1,30 +1,19 @@
 //
-//  FormInformasiPerusahaanView.swift
+//  FormPINView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 28/09/20.
+//  Created by Prima Jatnika on 04/10/20.
 //
 
 import SwiftUI
 
-struct FormInformasiPerusahaanView: View {
+struct FormPINView: View {
+    @State var password: String = ""
+    @State var confirmationPassword: String = ""
     
-    @State var namaPerusahaan: String = ""
-    @State var alamatPerusahaan: String = ""
-    @State var kelurahan: String = ""
-    @State var noTlpPerusahaan: String = ""
-    
-    
-    @State var kodePos : String? = nil
-    @State var arrkodePos = ["140256","140216","140216","140216","140216","140216"]
-    @State var selectionkodePosIndex = 0
-    
-    @State var kecamatan : String? = nil
-    @State var arrKecamatan = ["Rancasari","Antapani","Gede Bage","Cililin","Batujajar","Cimahi"]
-    @State var selectionKecamatanIndex = 0
+    @State private var secured: Bool = true
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -86,7 +75,7 @@ struct FormInformasiPerusahaanView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("08")
+                                    Text("11")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -103,12 +92,20 @@ struct FormInformasiPerusahaanView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Masukan Informasi Perusahaan")
+                                Text("Masukan PIN Transaksi Perbankan")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
+                                    .multilineTextAlignment(.center)
                                     .padding(.horizontal, 20)
-                                    .padding(.vertical, 20)
+                                    .padding(.top, 20)
+                                
+                                Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
+                                    .font(.caption2)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 20)
+                                    .padding(.top, 3)
+                                    .padding(.bottom, 20)
                                 
                                 // Forms input
                                 ZStack {
@@ -122,11 +119,7 @@ struct FormInformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                
-                                Button(action: {
-                                    
-//                                    print(kecamatan ?? "select picker")
-                                    
-                                }, label:{
+                                NavigationLink(destination: Term_ConditionView(), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -167,87 +160,95 @@ struct FormInformasiPerusahaanView: View {
     }
     
     var cardForm: some View {
-        
         VStack(alignment: .leading) {
-            
-            LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan")
-            
-            LabelTextField(value: $alamatPerusahaan, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan")
-            
-            Group {
-                
-                Text("Kode Pos")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                TextFieldWithPickerAsInputView(data: self.arrkodePos, placeholder: "Pilih Kode Pos", selectionIndex: self.$selectionkodePosIndex, text: self.$kodePos)
-                    .frame(height: 10)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .padding(.horizontal, 20)
-                
-            }
-            
-            Group {
-                
-                Text("Kecamatan")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                TextFieldWithPickerAsInputView(data: self.arrKecamatan, placeholder: "Pilih Kecamatan", selectionIndex: self.$selectionKecamatanIndex, text: self.$kecamatan)
-                    .frame(height: 10)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .padding(.horizontal, 20)
-                
-            }
-            
-            Group {
-                
-                Text("No. Telepon Perusahaan")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                HStack {
-                    
-                    Text("+62 ").foregroundColor(.gray)
-                    
-                    Divider()
-                        .frame(height: 30)
-                    
-                    TextField("No. Telepon", text: $noTlpPerusahaan)
-                        .keyboardType(.numberPad)
-                    
+            if (secured) {
+                ZStack {
+                    HStack (spacing: 0) {
+                        SecureField("Masukan PIN", text: $password)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }.padding(.leading, 15)
                 }
-                .frame(height: 10)
-                .font(.subheadline)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.horizontal, 20)
-                
+            } else {
+                ZStack {
+                    HStack (spacing: 0) {
+                        TextField("Masukan PIN", text: $password)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }
+                }.padding(.leading, 15)
             }
             
+            Divider()
+                .padding(.horizontal, 15)
+            
+            if (secured) {
+                ZStack {
+                    HStack (spacing: 0) {
+                        SecureField("Konfirmasi PIN", text: $confirmationPassword)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }
+                }.padding(.leading, 15)
+            } else {
+                ZStack {
+                    HStack (spacing: 0) {
+                        TextField("Konfirmasi PIN", text: $confirmationPassword)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }
+                }.padding(.leading, 15)
+            }
         }
     }
-    
 }
 
-struct FormInformasiPerusahaanView_Previews: PreviewProvider {
+struct FormPINView_Previews: PreviewProvider {
     static var previews: some View {
-        FormInformasiPerusahaanView()
+        FormPINView()
     }
 }

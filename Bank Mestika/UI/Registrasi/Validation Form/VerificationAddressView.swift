@@ -9,6 +9,8 @@ import SwiftUI
 
 struct VerificationAddressView: View {
     
+    
+    @State var selected: String = "1"
     @State var alamat: String = ""
     @State var verificationAddress: String?
     
@@ -41,7 +43,7 @@ struct VerificationAddressView: View {
                 }
                 
                 VStack {
-                    NavigationLink(destination: VerificationPINView()) {
+                    NavigationLink(destination: FormPasswordView()) {
                         Text("Submit Data")
                             .foregroundColor(.white)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -105,6 +107,7 @@ struct VerificationAddressView: View {
                              "Tidak, alamat tidak sesuai"],
                     selectedId: $verificationAddress) { selected in
                     print("Selected is: \(selected)")
+                    self.selected = selected
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 15)
@@ -112,21 +115,26 @@ struct VerificationAddressView: View {
                 
             }
             
-            Divider()
-                .padding(.horizontal, 20)
-            
-            Group {
-                LabelTextField(value: $alamat, label: "Alamat", placeHolder: "Alamat")
-                
-                LabelTextField(value: $alamat, label: "RT/RW", placeHolder: "RT/RW")
-                
-                LabelTextField(value: $alamat, label: "Kelurahan", placeHolder: "Kelurahan")
-                
-                LabelTextField(value: $alamat, label: "Kecamatan", placeHolder: "Kecamatan")
-                
-                LabelTextField(value: $alamat, label: "Kode Pos", placeHolder: "Kode Pos")
-                    .padding(.bottom, 20)
+            if (selected == "2") {
+                Group {
+                    Divider()
+                        .padding(.horizontal, 20)
+                    
+                    LabelTextField(value: $alamat, label: "Alamat", placeHolder: "Alamat")
+                    
+                    LabelTextField(value: $alamat, label: "RT/RW", placeHolder: "RT/RW")
+                    
+                    LabelTextField(value: $alamat, label: "Kelurahan", placeHolder: "Kelurahan")
+                    
+                    LabelTextField(value: $alamat, label: "Kecamatan", placeHolder: "Kecamatan")
+                    
+                    LabelTextField(value: $alamat, label: "Kode Pos", placeHolder: "Kode Pos")
+                        .padding(.bottom, 20)
+                }
+            } else {
+                EmptyView()
             }
+        
         }
         .frame(width: UIScreen.main.bounds.width - 30)
         .background(Color.white)

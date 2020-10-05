@@ -51,7 +51,7 @@ struct VerificationRegisterDataView: View {
                 }
                 
                 VStack {
-                    NavigationLink(destination: VerificationPINView()) {
+                    NavigationLink(destination: SuccessRegisterView()) {
                         Text("Submit Data")
                             .foregroundColor(.white)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

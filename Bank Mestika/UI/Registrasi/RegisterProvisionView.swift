@@ -104,11 +104,11 @@ struct RegisterProvisionView: View {
             ForEach(data) { data in
                 HStack(alignment: .top) {
                     Text(data.number)
-                        .font(.subheadline)
+                        .font(.caption)
                         .foregroundColor(Color(hex: "#232175"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     Text(data.caption)
-                        .font(.subheadline)
+                        .font(.caption)
                         .foregroundColor(.gray)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }

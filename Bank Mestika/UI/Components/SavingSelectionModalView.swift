@@ -13,9 +13,10 @@ struct SavingSelectionModalView: View {
             Group {
                 Image("Saving Landscape")
                     .resizable()
-                    .frame(height: 250)
+                    .frame(height: 200)
                 
                 Text("Anda Telah memilih Tabungan")
+                    .font(.caption)
                     .padding(.horizontal, 15)
                     .padding(.top, 10)
                     .foregroundColor(Color(hex: "#5A6876"))
