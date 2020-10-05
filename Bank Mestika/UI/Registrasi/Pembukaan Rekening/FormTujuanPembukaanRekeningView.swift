@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct FormTujuanPembukaanRekeningView: View {
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State var tujuanPembukaanRekeningId: String?
     
     var body: some View {
         
@@ -102,7 +105,7 @@ struct FormTujuanPembukaanRekeningView: View {
                                                  "Keperluan Usaha",
                                                  "Keperluan Sehari - hari",
                                                  "Simpanan"],
-                                        selectedId: "Tujuan Pembukaan Rekening") { selected in
+                                        selectedId: $tujuanPembukaanRekeningId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()

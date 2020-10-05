@@ -22,7 +22,7 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
         Coordinator(textfield: self)
     }
     
-    func makeUIView(context: UIViewRepresentableContext<TextFieldWithPickerAsInputView>) -> UITextField {
+    func makeUIView(context: Context) -> UITextField {
         picker.delegate = context.coordinator
         picker.dataSource = context.coordinator
         picker.backgroundColor = #colorLiteral(red: 0.9567790627, green: 0.9569163918, blue: 0.9567491412, alpha: 1)
@@ -34,7 +34,7 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
         return textField
     }
     
-    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<TextFieldWithPickerAsInputView>) {
+    func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
     }
     

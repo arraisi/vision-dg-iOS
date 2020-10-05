@@ -11,6 +11,8 @@ struct FormPerkiraanPenarikanView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var perkiraanPenarikanId: String?
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -102,7 +104,7 @@ struct FormPerkiraanPenarikanView: View {
                                     RadioButtonGroup(
                                         items: ["1", "2", "3"],
                                         labels: ["0 - 10 Kali", "> 10 - 25 Kali", "> 25 Kali"],
-                                        selectedId: "Perkiraan Penarikan Dana") { selected in
+                                        selectedId: $perkiraanPenarikanId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()

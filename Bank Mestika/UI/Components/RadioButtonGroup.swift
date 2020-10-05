@@ -63,20 +63,22 @@ struct RadioButton: View {
     }
 }
 
+
+// MARK: - Radio Button Group
 struct RadioButtonGroup: View {
 
     let items : [String]
     
     let labels : [String]
 
-    @State var selectedId: String = ""
+    @Binding var selectedId: String?
 
     let callback: (String) -> ()
 
     var body: some View {
         VStack {
             ForEach(0..<items.count) { index in
-                RadioButton(self.items[index], label: self.labels[index], callback: self.radioGroupCallback, selectedID: self.selectedId)
+                RadioButton(self.items[index], label: self.labels[index], callback: self.radioGroupCallback, selectedID: self.selectedId ?? "0")
             }
         }
     }
@@ -89,7 +91,7 @@ struct RadioButtonGroup: View {
 
 struct RadioButtonGroup_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtonGroup(items: ["1", "2", "3", "4", "5"], labels: ["Rome", "London", "Paris", "Berlin", "New York"], selectedId: "London") { selected in
+        RadioButtonGroup(items: ["1", "2", "3", "4", "5"], labels: ["Rome", "London", "Paris", "Berlin", "New York"], selectedId: Binding.constant("1")) { selected in
             print("Selected is: \(selected)")
         }
     }
