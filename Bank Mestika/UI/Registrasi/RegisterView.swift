@@ -110,7 +110,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: FormTujuanPembukaanRekeningView()) {
+            NavigationLink(destination: PersonalIdentityView()) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -187,7 +187,7 @@ struct List : View {
     }
 }
 
-struct Card : View {
+private struct Card : View {
     
     @Binding var page : Int
     var width : CGFloat

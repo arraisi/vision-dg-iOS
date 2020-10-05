@@ -41,6 +41,8 @@
 		52BE530C2529793800ADE164 /* FormPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE530B2529793800ADE164 /* FormPasswordView.swift */; };
 		52BE531125297C3F00ADE164 /* FormPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE531025297C3F00ADE164 /* FormPINView.swift */; };
 		52BE531625297E8600ADE164 /* SuccessRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE531525297E8600ADE164 /* SuccessRegisterView.swift */; };
+		52CB435C252B0DBD001120AA /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB435B252B0DBD001120AA /* UIImage+Utils.swift */; };
+		52CB4362252B1092001120AA /* UserRegisterPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB4361252B1092001120AA /* UserRegisterPref.swift */; };
 		52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2744F25258FD200DD1443 /* OTPTextField.swift */; };
 		52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274572525924100DD1443 /* CharacterInputCell.swift */; };
 		52D2745D2525ADA100DD1443 /* EmailOTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2745C2525ADA100DD1443 /* EmailOTPVerificationView.swift */; };
@@ -124,6 +126,8 @@
 		52BE530B2529793800ADE164 /* FormPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPasswordView.swift; sourceTree = "<group>"; };
 		52BE531025297C3F00ADE164 /* FormPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPINView.swift; sourceTree = "<group>"; };
 		52BE531525297E8600ADE164 /* SuccessRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegisterView.swift; sourceTree = "<group>"; };
+		52CB435B252B0DBD001120AA /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		52CB4361252B1092001120AA /* UserRegisterPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterPref.swift; sourceTree = "<group>"; };
 		52D2744F25258FD200DD1443 /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		52D274572525924100DD1443 /* CharacterInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputCell.swift; sourceTree = "<group>"; };
 		52D2745C2525ADA100DD1443 /* EmailOTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOTPVerificationView.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		5202BA22251B1F9F00FCE527 /* Bank Mestika */ = {
 			isa = PBXGroup;
 			children = (
+				52CB4360252B1053001120AA /* Local Storage */,
 				52BE52E925295D3B00ADE164 /* Model */,
 				5202BA63251B269100FCE527 /* Utils */,
 				5202BA59251B1FDB00FCE527 /* UI */,
@@ -274,6 +279,7 @@
 				527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */,
 				5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */,
 				52D274662525B56C00DD1443 /* ModalOverlay.swift */,
+				52CB435B252B0DBD001120AA /* UIImage+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -320,6 +326,14 @@
 				52BE53032529620900ADE164 /* JenisTabunganData.swift */,
 			);
 			path = "Jenis Tabungan";
+			sourceTree = "<group>";
+		};
+		52CB4360252B1053001120AA /* Local Storage */ = {
+			isa = PBXGroup;
+			children = (
+				52CB4361252B1092001120AA /* UserRegisterPref.swift */,
+			);
+			path = "Local Storage";
 			sourceTree = "<group>";
 		};
 		52F01FC7251DD6DA00B0ABA5 /* Components */ = {
@@ -552,6 +566,7 @@
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
 				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,
 				52794C0425245C0C0031392E /* EmailConfirmationView.swift in Sources */,
+				52CB4362252B1092001120AA /* UserRegisterPref.swift in Sources */,
 				C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */,
 				52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */,
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
@@ -561,6 +576,7 @@
 				C09EA8882525A7CC007ABF8A /* FormPerkiraanPenarikanView.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				C09EA87C25259C9B007ABF8A /* FormSumberDanaView.swift in Sources */,
+				52CB435C252B0DBD001120AA /* UIImage+Utils.swift in Sources */,
 				527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */,
 				5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */,
 				52BE531625297E8600ADE164 /* SuccessRegisterView.swift in Sources */,

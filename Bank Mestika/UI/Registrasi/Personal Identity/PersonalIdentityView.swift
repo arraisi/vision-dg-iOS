@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct PersonalIdentityView: View {
     
@@ -28,6 +29,32 @@ struct PersonalIdentityView: View {
     @State var isChecked:Bool = false
     
     func toggle() { isChecked = !isChecked }
+    
+    /*
+     Fungsi untuk Simpan Gambar ke Local Storage
+     */
+    func storeImage(imgStore: Image, key: String) {
+        // Load Image
+        let image: UIImage = imgStore.asUIImage()
+
+        // Convert to Data
+        if let data = image.pngData() {
+            // Create URL
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let url = documents.appendingPathComponent("\(key).png")
+
+            do {
+                // Write to Disk
+                try data.write(to: url)
+
+                // Store URL in User Defaults
+                UserDefaults.standard.set(url, forKey: "\(key)")
+
+            } catch {
+                print("Unable to Write Data to Disk (\(error))")
+            }
+        }
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -84,6 +111,7 @@ struct PersonalIdentityView: View {
                     .padding(.bottom, 35)
                 }
             }
+            .KeyboardAwarePadding()
             
             if (showCaptureKTP) {
                 CaptureImageView(isShown: $showCaptureKTP, image: $imageKTP)
@@ -98,7 +126,7 @@ struct PersonalIdentityView: View {
             }
             
             if (showCaptureNPWP) {
-                CaptureImageView(isShown: $showCaptureSignature, image: $imageNPWP)
+                CaptureImageView(isShown: $showCaptureNPWP, image: $imageNPWP)
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -136,13 +164,24 @@ struct PersonalIdentityView: View {
             Button(
                 action: { self.collapsedFormKTP.toggle() },
                 label: {
-                    Text("Foto KTP dan No. Induk Penduduk")
-                        .font(.body)
-                        .foregroundColor(collapsedFormKTP ? Color(hex: "#2334D0") : .white)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                        .padding(.horizontal, 10)
-                        .background(collapsedFormKTP ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
+                    HStack {
+                        Text("Foto KTP dan No. Induk Penduduk")
+                            .font(.body)
+                            .foregroundColor(collapsedFormKTP ? Color(hex: "#2334D0") : .white)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        if (imageKTP != nil) {
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(collapsedFormKTP ? Color(hex: "#2334D0") : .white)
+                        } else { EmptyView() }
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    .padding(.horizontal, 10)
+                    .background(collapsedFormKTP ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
                 }
             )
             .buttonStyle(PlainButtonStyle())
@@ -182,6 +221,9 @@ struct PersonalIdentityView: View {
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 13))
                         .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.4))
+                        )
                 }
                 .background(Color(hex: imageKTP == nil ? "#2334D0" : "#FFFFFF"))
                 .cornerRadius(12)
@@ -201,6 +243,7 @@ struct PersonalIdentityView: View {
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                         .padding(.horizontal, 20)
+                        .disabled(!isChecked)
                     
                     Button(action: toggle) {
                         HStack(alignment: .top) {
@@ -213,6 +256,25 @@ struct PersonalIdentityView: View {
                         .padding(.bottom, 20)
                         .fixedSize(horizontal: false, vertical: true)
                     }
+                    
+                    if (imageKTP != nil) {
+                        Button(action: {
+                            self.collapsedFormKTP.toggle()
+                            self.collapsedFormPersonal.toggle()
+                            
+                            storeImage(imgStore: self.imageKTP!, key: "imageKTP")
+                        }) {
+                            Text("Simpan")
+                                .foregroundColor(.white)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .font(.system(size: 13))
+                                .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        }
+                        .background(Color(hex: "#2334D0"))
+                        .cornerRadius(12)
+                        .padding(.horizontal, 20)
+                        .padding([.top, .bottom], 15)
+                    } else { EmptyView() }
                 }
             }
             .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormKTP ? 0 : .none)
@@ -221,7 +283,8 @@ struct PersonalIdentityView: View {
             .transition(.slide)
         }
         .background(Color.white)
-        .shadow(color: Color(hex: "#E5E9F9"), radius: 15, x: 2, y: 25)
+        .cornerRadius(15)
+        .shadow(radius: 4)
     }
     
     var photoPersonalForm: some View {
@@ -229,13 +292,24 @@ struct PersonalIdentityView: View {
             Button(
                 action: { self.collapsedFormPersonal.toggle() },
                 label: {
-                    Text("Ambil Foto Sendiri atau Selfie")
-                        .font(.body)
-                        .foregroundColor(collapsedFormPersonal ? Color(hex: "#2334D0") : .white)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                        .padding(.horizontal, 20)
-                        .background(collapsedFormPersonal ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
+                    HStack {
+                        Text("Ambil Foto Sendiri atau Selfie")
+                            .font(.body)
+                            .foregroundColor(collapsedFormPersonal ? Color(hex: "#2334D0") : .white)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        if (imageSelfie != nil) {
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(collapsedFormPersonal ? Color(hex: "#2334D0") : .white)
+                        } else { EmptyView() }
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    .padding(.horizontal, 10)
+                    .background(collapsedFormPersonal ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
                 }
             )
             .buttonStyle(PlainButtonStyle())
@@ -270,16 +344,36 @@ struct PersonalIdentityView: View {
                 Button(action: {
                     self.showCaptureSelfie.toggle()
                 }) {
-                    Text("Ambil Gambar Selfie")
-                        .foregroundColor(.white)
+                    Text(imageSelfie == nil ? "Ambil Gambar Selfie" : "Ganti Foto Lain")
+                        .foregroundColor(imageSelfie == nil ? .white : Color(hex: "#2334D0"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 13))
                         .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.4))
+                        )
                 }
-                .background(Color(hex: "#2334D0"))
+                .background(Color(hex: imageSelfie == nil ? "#2334D0" : "#FFFFFF"))
                 .cornerRadius(12)
                 .padding(.horizontal, 20)
                 .padding([.top, .bottom], 15)
+                
+                if (imageSelfie != nil) {
+                    Button(action: {
+                        self.collapsedFormPersonal.toggle()
+                        self.collapsedFormSignature.toggle()
+                    }) {
+                        Text("Simpan")
+                            .foregroundColor(.white)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .font(.system(size: 13))
+                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                    }
+                    .background(Color(hex: "#2334D0"))
+                    .cornerRadius(12)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 15)
+                } else { EmptyView() }
             }
             .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormPersonal ? 0 : .none)
             .clipped()
@@ -287,7 +381,8 @@ struct PersonalIdentityView: View {
             .transition(.slide)
         }
         .background(Color.white)
-        .shadow(color: Color(hex: "#E5E9F9"), radius: 15, x: 2, y: 25)
+        .cornerRadius(15)
+        .shadow(radius: 4)
     }
     
     var photoSignatureForm: some View {
@@ -295,13 +390,24 @@ struct PersonalIdentityView: View {
             Button(
                 action: { self.collapsedFormSignature.toggle() },
                 label: {
-                    Text("Silahkan Foto Tanda Tangan Anda")
-                        .font(.body)
-                        .foregroundColor(collapsedFormSignature ? Color(hex: "#2334D0") : .white)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                        .padding(.horizontal, 20)
-                        .background(collapsedFormSignature ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
+                    HStack {
+                        Text("Silahkan Foto Tanda Tangan Anda")
+                            .font(.body)
+                            .foregroundColor(collapsedFormSignature ? Color(hex: "#2334D0") : .white)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        if (imageSignature != nil) {
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(collapsedFormSignature ? Color(hex: "#2334D0") : .white)
+                        } else { EmptyView() }
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    .padding(.horizontal, 10)
+                    .background(collapsedFormSignature ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
                 }
             )
             .buttonStyle(PlainButtonStyle())
@@ -336,16 +442,36 @@ struct PersonalIdentityView: View {
                 Button(action: {
                     self.showCaptureSignature.toggle()
                 }) {
-                    Text("Ambil Foto Tanda Tangan")
-                        .foregroundColor(.white)
+                    Text(imageSignature == nil ? "Ambil Gambar Tanda Tangan" : "Ganti Foto Lain")
+                        .foregroundColor(imageSignature == nil ? .white : Color(hex: "#2334D0"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 13))
                         .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.4))
+                        )
                 }
-                .background(Color(hex: "#2334D0"))
+                .background(Color(hex: imageSignature == nil ? "#2334D0" : "#FFFFFF"))
                 .cornerRadius(12)
                 .padding(.horizontal, 20)
                 .padding([.top, .bottom], 15)
+                
+                if (imageSignature != nil) {
+                    Button(action: {
+                        self.collapsedFormSignature.toggle()
+                        self.collapsedFormNPWP.toggle()
+                    }) {
+                        Text("Simpan")
+                            .foregroundColor(.white)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .font(.system(size: 13))
+                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                    }
+                    .background(Color(hex: "#2334D0"))
+                    .cornerRadius(12)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 15)
+                } else { EmptyView() }
             }
             .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormSignature ? 0 : .none)
             .clipped()
@@ -353,7 +479,8 @@ struct PersonalIdentityView: View {
             .transition(.slide)
         }
         .background(Color.white)
-        .shadow(color: Color(hex: "#E5E9F9"), radius: 15, x: 2, y: 25)
+        .cornerRadius(15)
+        .shadow(radius: 4)
     }
     
     var photoNPWPForm: some View {
@@ -361,13 +488,24 @@ struct PersonalIdentityView: View {
             Button(
                 action: { self.collapsedFormNPWP.toggle() },
                 label: {
-                    Text("Kartu NPWP Anda")
-                        .font(.body)
-                        .foregroundColor(collapsedFormNPWP ? Color(hex: "#2334D0") : .white)
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                        .padding(.horizontal, 20)
-                        .background(collapsedFormNPWP ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
+                    HStack {
+                        Text("Kartu NPWP Anda")
+                            .font(.body)
+                            .foregroundColor(collapsedFormNPWP ? Color(hex: "#2334D0") : .white)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        if (imageNPWP != nil) {
+                            Image(systemName: "checkmark.circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(collapsedFormNPWP ? Color(hex: "#2334D0") : .white)
+                        } else { EmptyView() }
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                    .padding(.horizontal, 10)
+                    .background(collapsedFormNPWP ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
                 }
             )
             .buttonStyle(PlainButtonStyle())
@@ -402,16 +540,35 @@ struct PersonalIdentityView: View {
                 Button(action: {
                     self.showCaptureNPWP.toggle()
                 }) {
-                    Text("Upload Gambar NPWP")
-                        .foregroundColor(.white)
+                    Text(imageKTP == nil ? "Ambil Foto NPWP" : "Ganti Foto Lain")
+                        .foregroundColor(imageNPWP == nil ? .white : Color(hex: "#2334D0"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 13))
                         .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.4))
+                        )
                 }
-                .background(Color(hex: "#2334D0"))
+                .background(Color(hex: imageNPWP == nil ? "#2334D0" : "#FFFFFF"))
                 .cornerRadius(12)
                 .padding(.horizontal, 20)
                 .padding([.top, .bottom], 15)
+                
+                if (imageNPWP != nil) {
+                    Button(action: {
+                        self.collapsedFormNPWP.toggle()
+                    }) {
+                        Text("Simpan")
+                            .foregroundColor(.white)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .font(.system(size: 13))
+                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                    }
+                    .background(Color(hex: "#2334D0"))
+                    .cornerRadius(12)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 15)
+                } else { EmptyView() }
             }
             .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormNPWP ? 0 : .none)
             .clipped()
@@ -419,7 +576,8 @@ struct PersonalIdentityView: View {
             .transition(.slide)
         }
         .background(Color.white)
-        .shadow(color: Color(hex: "#E5E9F9"), radius: 15, x: 2, y: 25)
+        .cornerRadius(15)
+        .shadow(radius: 4)
     }
 }
 
