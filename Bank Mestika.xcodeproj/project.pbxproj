@@ -48,6 +48,7 @@
 		52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274662525B56C00DD1443 /* ModalOverlay.swift */; };
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
+		C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
 		C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */; };
 		C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */; };
@@ -132,6 +133,7 @@
 		52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSavingsView.swift; sourceTree = "<group>"; };
 		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
+		C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxGroup.swift; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
 		C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInformasiPerusahaanView.swift; sourceTree = "<group>"; };
 		C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */,
 				C09EA8BB2525B454007ABF8A /* CornerRadiusStyle.swift */,
 				C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */,
+				C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
 				5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */,
+				C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */,
 				52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */,
 				C0E978392524685400FC5BDB /* FormPenghasilanKotorView.swift in Sources */,
 				C09EA8902525AAA9007ABF8A /* FormBesarPerkiraanPenarikanView.swift in Sources */,

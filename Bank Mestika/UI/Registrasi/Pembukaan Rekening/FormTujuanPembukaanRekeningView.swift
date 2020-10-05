@@ -13,6 +13,10 @@ struct FormTujuanPembukaanRekeningView: View {
     
     @State var tujuanPembukaanRekeningId: String?
     
+    @State var isChecked:Bool = false
+    
+    @State var selectedOptions: [Int] = []
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -98,15 +102,14 @@ struct FormTujuanPembukaanRekeningView: View {
                                 
                                 // Forms input
                                 ZStack {
-
-                                    RadioButtonGroup(
-                                        items: ["1", "2", "3", "4"],
-                                        labels: ["Pinjaman / Angsuran Kredit",
-                                                 "Keperluan Usaha",
-                                                 "Keperluan Sehari - hari",
-                                                 "Simpanan"],
-                                        selectedId: $tujuanPembukaanRekeningId) { selected in
-                                        print("Selected is: \(selected)")
+                                    
+                                    CheckBoxGroup(id: [1, 2, 3, 4], markedId: $selectedOptions, labels: [
+                                        "Pinjaman / Angsuran Kredit",
+                                        "Keperluan Usaha", "Keperluan Sehari - hari", "Simpanan"
+                                    ]) { data, marked  in
+                                        
+                                        print(data)
+                                        print(marked)
                                     }
                                     .padding()
                                     
