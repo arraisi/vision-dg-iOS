@@ -38,8 +38,8 @@
 		52BE52EC25295D8200ADE164 /* tabungan.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BE52EB25295D8200ADE164 /* tabungan.json */; };
 		52BE52FF252960C600ADE164 /* JenisTabungan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE52FE252960C600ADE164 /* JenisTabungan.swift */; };
 		52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE53032529620900ADE164 /* JenisTabunganData.swift */; };
-		52BE530C2529793800ADE164 /* FormPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE530B2529793800ADE164 /* FormPasswordView.swift */; };
-		52BE531125297C3F00ADE164 /* FormPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE531025297C3F00ADE164 /* FormPINView.swift */; };
+		52BE530C2529793800ADE164 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE530B2529793800ADE164 /* PasswordView.swift */; };
+		52BE531125297C3F00ADE164 /* PINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE531025297C3F00ADE164 /* PINView.swift */; };
 		52BE531625297E8600ADE164 /* SuccessRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE531525297E8600ADE164 /* SuccessRegisterView.swift */; };
 		52CB435C252B0DBD001120AA /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB435B252B0DBD001120AA /* UIImage+Utils.swift */; };
 		52CB4362252B1092001120AA /* UserRegisterPref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CB4361252B1092001120AA /* UserRegisterPref.swift */; };
@@ -50,22 +50,25 @@
 		52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274662525B56C00DD1443 /* ModalOverlay.swift */; };
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
+		C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */; };
+		C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnya.swift in Sources */ = {isa = PBXBuildFile; fileRef = C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */; };
 		C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
-		C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */; };
+		C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */; };
 		C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */; };
-		C09EA86F25259758007ABF8A /* FormTujuanPembukaanRekeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA86E25259758007ABF8A /* FormTujuanPembukaanRekeningView.swift */; };
-		C09EA87C25259C9B007ABF8A /* FormSumberDanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA87B25259C9B007ABF8A /* FormSumberDanaView.swift */; };
-		C09EA8882525A7CC007ABF8A /* FormPerkiraanPenarikanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8872525A7CC007ABF8A /* FormPerkiraanPenarikanView.swift */; };
-		C09EA8902525AAA9007ABF8A /* FormBesarPerkiraanPenarikanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA88F2525AAA9007ABF8A /* FormBesarPerkiraanPenarikanView.swift */; };
-		C09EA8982525ABEC007ABF8A /* FormPerkiraanSetoranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8972525ABEC007ABF8A /* FormPerkiraanSetoranView.swift */; };
-		C09EA8A02525AC94007ABF8A /* FormBesarPerkiraanSetoranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA89F2525AC94007ABF8A /* FormBesarPerkiraanSetoranView.swift */; };
-		C09EA8B12525AD73007ABF8A /* FormPerkerjaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8B02525AD73007ABF8A /* FormPerkerjaanView.swift */; };
+		C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA86E25259758007ABF8A /* TujuanPembukaanRekeningView.swift */; };
+		C09EA87C25259C9B007ABF8A /* SumberDanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA87B25259C9B007ABF8A /* SumberDanaView.swift */; };
+		C09EA8882525A7CC007ABF8A /* PerkiraanPenarikanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8872525A7CC007ABF8A /* PerkiraanPenarikanView.swift */; };
+		C09EA8902525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA88F2525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift */; };
+		C09EA8982525ABEC007ABF8A /* PerkiraanSetoranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8972525ABEC007ABF8A /* PerkiraanSetoranView.swift */; };
+		C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA89F2525AC94007ABF8A /* BesarPerkiraanSetoranView.swift */; };
+		C09EA8B12525AD73007ABF8A /* PerkerjaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8B02525AD73007ABF8A /* PerkerjaanView.swift */; };
 		C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8BB2525B454007ABF8A /* CornerRadiusStyle.swift */; };
 		C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */; };
 		C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DE72522F88F005B811C /* LabelTextField.swift */; };
 		C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */; };
-		C0E978392524685400FC5BDB /* FormPenghasilanKotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E978382524685400FC5BDB /* FormPenghasilanKotorView.swift */; };
+		C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */; };
+		C0EB9865252C30A400BEBA4F /* TestTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB9864252C30A400BEBA4F /* TestTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,8 +127,8 @@
 		52BE52EB25295D8200ADE164 /* tabungan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tabungan.json; sourceTree = "<group>"; };
 		52BE52FE252960C600ADE164 /* JenisTabungan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisTabungan.swift; sourceTree = "<group>"; };
 		52BE53032529620900ADE164 /* JenisTabunganData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisTabunganData.swift; sourceTree = "<group>"; };
-		52BE530B2529793800ADE164 /* FormPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPasswordView.swift; sourceTree = "<group>"; };
-		52BE531025297C3F00ADE164 /* FormPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPINView.swift; sourceTree = "<group>"; };
+		52BE530B2529793800ADE164 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		52BE531025297C3F00ADE164 /* PINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINView.swift; sourceTree = "<group>"; };
 		52BE531525297E8600ADE164 /* SuccessRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRegisterView.swift; sourceTree = "<group>"; };
 		52CB435B252B0DBD001120AA /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		52CB4361252B1092001120AA /* UserRegisterPref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterPref.swift; sourceTree = "<group>"; };
@@ -137,22 +140,25 @@
 		52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSavingsView.swift; sourceTree = "<group>"; };
 		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
+		C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPenyandangDanaView.swift; sourceTree = "<group>"; };
+		C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPendapatanLainnya.swift; sourceTree = "<group>"; };
 		C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxGroup.swift; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
-		C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInformasiPerusahaanView.swift; sourceTree = "<group>"; };
+		C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformasiPerusahaanView.swift; sourceTree = "<group>"; };
 		C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
-		C09EA86E25259758007ABF8A /* FormTujuanPembukaanRekeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTujuanPembukaanRekeningView.swift; sourceTree = "<group>"; };
-		C09EA87B25259C9B007ABF8A /* FormSumberDanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSumberDanaView.swift; sourceTree = "<group>"; };
-		C09EA8872525A7CC007ABF8A /* FormPerkiraanPenarikanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPerkiraanPenarikanView.swift; sourceTree = "<group>"; };
-		C09EA88F2525AAA9007ABF8A /* FormBesarPerkiraanPenarikanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormBesarPerkiraanPenarikanView.swift; sourceTree = "<group>"; };
-		C09EA8972525ABEC007ABF8A /* FormPerkiraanSetoranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPerkiraanSetoranView.swift; sourceTree = "<group>"; };
-		C09EA89F2525AC94007ABF8A /* FormBesarPerkiraanSetoranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormBesarPerkiraanSetoranView.swift; sourceTree = "<group>"; };
-		C09EA8B02525AD73007ABF8A /* FormPerkerjaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPerkerjaanView.swift; sourceTree = "<group>"; };
+		C09EA86E25259758007ABF8A /* TujuanPembukaanRekeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TujuanPembukaanRekeningView.swift; sourceTree = "<group>"; };
+		C09EA87B25259C9B007ABF8A /* SumberDanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberDanaView.swift; sourceTree = "<group>"; };
+		C09EA8872525A7CC007ABF8A /* PerkiraanPenarikanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkiraanPenarikanView.swift; sourceTree = "<group>"; };
+		C09EA88F2525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BesarPerkiraanPenarikanView.swift; sourceTree = "<group>"; };
+		C09EA8972525ABEC007ABF8A /* PerkiraanSetoranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkiraanSetoranView.swift; sourceTree = "<group>"; };
+		C09EA89F2525AC94007ABF8A /* BesarPerkiraanSetoranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BesarPerkiraanSetoranView.swift; sourceTree = "<group>"; };
+		C09EA8B02525AD73007ABF8A /* PerkerjaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkerjaanView.swift; sourceTree = "<group>"; };
 		C09EA8BB2525B454007ABF8A /* CornerRadiusStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusStyle.swift; sourceTree = "<group>"; };
 		C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; };
 		C0C94DE72522F88F005B811C /* LabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
-		C0E978382524685400FC5BDB /* FormPenghasilanKotorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPenghasilanKotorView.swift; sourceTree = "<group>"; };
+		C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenghasilanKotorView.swift; sourceTree = "<group>"; };
+		C0EB9864252C30A400BEBA4F /* TestTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,7 +268,7 @@
 			children = (
 				52794C0825245ED00031392E /* Validation Form */,
 				52794BF0252452D20031392E /* Personal Identity */,
-				C09EA88325259D4F007ABF8A /* Pembukaan Rekening */,
+				C09EA88325259D4F007ABF8A /* Data Pembukaan Rekening */,
 				5202BA5B251B207500FCE527 /* RegisterView.swift */,
 				527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */,
 				5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */,
@@ -351,6 +357,7 @@
 				C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */,
 				C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */,
 				C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */,
+				C0EB9864252C30A400BEBA4F /* TestTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -372,22 +379,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C09EA88325259D4F007ABF8A /* Pembukaan Rekening */ = {
+		C09EA88325259D4F007ABF8A /* Data Pembukaan Rekening */ = {
 			isa = PBXGroup;
 			children = (
-				C09EA86E25259758007ABF8A /* FormTujuanPembukaanRekeningView.swift */,
-				C09EA87B25259C9B007ABF8A /* FormSumberDanaView.swift */,
-				C09EA8872525A7CC007ABF8A /* FormPerkiraanPenarikanView.swift */,
-				C09EA88F2525AAA9007ABF8A /* FormBesarPerkiraanPenarikanView.swift */,
-				C09EA8972525ABEC007ABF8A /* FormPerkiraanSetoranView.swift */,
-				C09EA89F2525AC94007ABF8A /* FormBesarPerkiraanSetoranView.swift */,
-				C09EA8B02525AD73007ABF8A /* FormPerkerjaanView.swift */,
-				C09C57D92521A1CE008AD865 /* FormInformasiPerusahaanView.swift */,
-				C0E978382524685400FC5BDB /* FormPenghasilanKotorView.swift */,
-				52BE530B2529793800ADE164 /* FormPasswordView.swift */,
-				52BE531025297C3F00ADE164 /* FormPINView.swift */,
+				C09EA86E25259758007ABF8A /* TujuanPembukaanRekeningView.swift */,
+				C09EA87B25259C9B007ABF8A /* SumberDanaView.swift */,
+				C09EA8872525A7CC007ABF8A /* PerkiraanPenarikanView.swift */,
+				C09EA88F2525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift */,
+				C09EA8972525ABEC007ABF8A /* PerkiraanSetoranView.swift */,
+				C09EA89F2525AC94007ABF8A /* BesarPerkiraanSetoranView.swift */,
+				C09EA8B02525AD73007ABF8A /* PerkerjaanView.swift */,
+				C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */,
+				C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */,
+				52BE530B2529793800ADE164 /* PasswordView.swift */,
+				52BE531025297C3F00ADE164 /* PINView.swift */,
+				C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */,
+				C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */,
 			);
-			path = "Pembukaan Rekening";
+			path = "Data Pembukaan Rekening";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,32 +574,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnya.swift in Sources */,
 				C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */,
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
 				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,
 				52794C0425245C0C0031392E /* EmailConfirmationView.swift in Sources */,
 				52CB4362252B1092001120AA /* UserRegisterPref.swift in Sources */,
-				C09C57DA2521A1CE008AD865 /* FormInformasiPerusahaanView.swift in Sources */,
+				C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */,
+				C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */,
 				52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */,
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
 				52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */,
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
-				C09EA8882525A7CC007ABF8A /* FormPerkiraanPenarikanView.swift in Sources */,
+				C09EA8882525A7CC007ABF8A /* PerkiraanPenarikanView.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
-				C09EA87C25259C9B007ABF8A /* FormSumberDanaView.swift in Sources */,
+				C09EA87C25259C9B007ABF8A /* SumberDanaView.swift in Sources */,
 				52CB435C252B0DBD001120AA /* UIImage+Utils.swift in Sources */,
 				527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */,
 				5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */,
 				52BE531625297E8600ADE164 /* SuccessRegisterView.swift in Sources */,
 				5202BA26251B1FA000FCE527 /* SceneDelegate.swift in Sources */,
 				5202BA2B251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld in Sources */,
-				C09EA86F25259758007ABF8A /* FormTujuanPembukaanRekeningView.swift in Sources */,
-				52BE531125297C3F00ADE164 /* FormPINView.swift in Sources */,
+				C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */,
+				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
+				C0EB9865252C30A400BEBA4F /* TestTextField.swift in Sources */,
 				52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
 				52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */,
@@ -599,22 +611,22 @@
 				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
 				C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */,
-				C09EA8A02525AC94007ABF8A /* FormBesarPerkiraanSetoranView.swift in Sources */,
+				C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */,
 				C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */,
-				C09EA8982525ABEC007ABF8A /* FormPerkiraanSetoranView.swift in Sources */,
+				C09EA8982525ABEC007ABF8A /* PerkiraanSetoranView.swift in Sources */,
 				C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
 				5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */,
 				C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */,
 				52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */,
-				C0E978392524685400FC5BDB /* FormPenghasilanKotorView.swift in Sources */,
-				C09EA8902525AAA9007ABF8A /* FormBesarPerkiraanPenarikanView.swift in Sources */,
-				52BE530C2529793800ADE164 /* FormPasswordView.swift in Sources */,
+				C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */,
+				C09EA8902525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift in Sources */,
+				52BE530C2529793800ADE164 /* PasswordView.swift in Sources */,
 				5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */,
 				527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */,
 				52794C26252475290031392E /* InterviewRegistrationView.swift in Sources */,
 				52BE52FF252960C600ADE164 /* JenisTabungan.swift in Sources */,
-				C09EA8B12525AD73007ABF8A /* FormPerkerjaanView.swift in Sources */,
+				C09EA8B12525AD73007ABF8A /* PerkerjaanView.swift in Sources */,
 				C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */,
 				52794C17252468490031392E /* VerificationAddressView.swift in Sources */,
 			);

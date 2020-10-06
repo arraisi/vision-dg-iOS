@@ -1,5 +1,5 @@
 //
-//  FormSumberDanaView.swift
+//  FormPerkiraanPenarikanDana.swift
 //  Bank Mestika
 //
 //  Created by Abdul R. Arraisi on 01/10/20.
@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct FormSumberDanaView: View {
+struct PerkiraanPenarikanView: View {
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var sumberDanaId: String?
+    @State var perkiraanPenarikanId: String?
     
     var body: some View {
         
@@ -71,7 +72,7 @@ struct FormSumberDanaView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("02")
+                                    Text("03")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -88,20 +89,22 @@ struct FormSumberDanaView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Pilih Sumber Dana Kamu")
+                                Text("Berapa Kali Perkiraan Penarikan Dana dalam")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
-                                    .padding(.horizontal, 20)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 40)
                                     .padding(.vertical, 20)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 
                                 // Forms input
                                 ZStack {
 
                                     RadioButtonGroup(
-                                        items: ["1", "2", "3", "4", "5"],
-                                        labels: ["Gaji", "Hibah / Warisan / Orang Tua", "Jual Harta", "Hasil Usaha", "Pencarian Pinjaman"],
-                                        selectedId: $sumberDanaId) { selected in
+                                        items: ["1", "2", "3"],
+                                        labels: ["0 - 10 Kali", "> 10 - 25 Kali", "> 25 Kali"],
+                                        selectedId: $perkiraanPenarikanId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()
@@ -113,7 +116,7 @@ struct FormSumberDanaView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: FormPerkiraanPenarikanView()) {
+                                NavigationLink(destination: BesarPerkiraanPenarikanView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -153,8 +156,8 @@ struct FormSumberDanaView: View {
     }
 }
 
-struct FormSumberDanaView_Previews: PreviewProvider {
+struct FormPerkiraanPenarikanDana_Previews: PreviewProvider {
     static var previews: some View {
-        FormSumberDanaView()
+        PerkiraanPenarikanView()
     }
 }

@@ -1,26 +1,29 @@
 //
-//  FormPINView.swift
+//  FormTujuanPembukaanRekeningView.swift
 //  Bank Mestika
 //
-//  Created by Prima Jatnika on 04/10/20.
+//  Created by Abdul R. Arraisi on 01/10/20.
 //
 
 import SwiftUI
 
-struct FormPINView: View {
-    @State var password: String = ""
-    @State var confirmationPassword: String = ""
-    
-    @State private var secured: Bool = true
+struct TujuanPembukaanRekeningView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State var tujuanPembukaanRekeningId: String?
+    
+    @State var isChecked:Bool = false
+    
+    @State var selectedItems: [Int] = []
+    
     var body: some View {
         
         ZStack(alignment: .top) {
+            
             Color(hex: "#232175")
             
             VStack {
-                
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
@@ -31,8 +34,6 @@ struct FormPINView: View {
             
             VStack {
                 
-                Spacer()
-                
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
@@ -41,12 +42,12 @@ struct FormPINView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(.title)
-                        .bold()
+                        .font(Font.system(size: 24))
+                        .fontWeight(.black)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 40)
-                        .padding(.horizontal, 20)
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, 30)
                         .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
@@ -75,7 +76,7 @@ struct FormPINView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("11")
+                                    Text("01")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -92,25 +93,23 @@ struct FormPINView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Masukan PIN Transaksi Perbankan")
+                                Text("Tujuan Pembukaan Rekening")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
-                                    .multilineTextAlignment(.center)
                                     .padding(.horizontal, 20)
-                                    .padding(.top, 20)
-                                
-                                Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
-                                    .font(.caption2)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 3)
-                                    .padding(.bottom, 20)
+                                    .padding(.vertical, 20)
                                 
                                 // Forms input
                                 ZStack {
-                                    cardForm
-                                        .padding(.vertical, 20)
+                                    
+                                    CheckBoxGroup(items: [1, 2, 3, 4], markedId: $selectedItems, labels: [
+                                        "Pinjaman / Angsuran Kredit",
+                                        "Keperluan Usaha", "Keperluan Sehari - hari", "Simpanan"
+                                    ]) { id, marked in
+                                        print(selectedItems)
+                                    }
+                                    .padding()
                                     
                                 }
                                 .frame(width: UIScreen.main.bounds.width - 70)
@@ -118,8 +117,8 @@ struct FormPINView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                               
-                                NavigationLink(destination: Term_ConditionView(), label:{
+                                // Button
+                                NavigationLink(destination: SumberDanaView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -127,13 +126,12 @@ struct FormPINView: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
-                                })
+                                }
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 35)
                                 .padding(.vertical, 20)
-                                
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
@@ -145,10 +143,10 @@ struct FormPINView: View {
                         }
                         
                     }
+                    .padding(.bottom, 0.1)
                     .padding(.bottom, 25)
                     
                 }
-                .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
                 
             }
@@ -158,97 +156,10 @@ struct FormPINView: View {
         .navigationBarHidden(true)
         
     }
-    
-    var cardForm: some View {
-        VStack(alignment: .leading) {
-            if (secured) {
-                ZStack {
-                    HStack (spacing: 0) {
-                        SecureField("Masukan PIN", text: $password)
-                            .padding()
-                            .frame(width: 200, height: 50)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
-                        
-                        Button(action: {
-                            self.secured.toggle()
-                        }) {
-                            Text("show")
-                                .frame(width: 80, height: 50)
-                                .cornerRadius(10)
-                                .foregroundColor(Color(hex: "#3756DF"))
-                        }
-                    }.padding(.leading, 15)
-                }
-            } else {
-                ZStack {
-                    HStack (spacing: 0) {
-                        TextField("Masukan PIN", text: $password)
-                            .padding()
-                            .frame(width: 200, height: 50)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
-                        
-                        Button(action: {
-                            self.secured.toggle()
-                        }) {
-                            Text("show")
-                                .frame(width: 80, height: 50)
-                                .cornerRadius(10)
-                                .foregroundColor(Color(hex: "#3756DF"))
-                        }
-                    }
-                }.padding(.leading, 15)
-            }
-            
-            Divider()
-                .padding(.horizontal, 15)
-            
-            if (secured) {
-                ZStack {
-                    HStack (spacing: 0) {
-                        SecureField("Konfirmasi PIN", text: $confirmationPassword)
-                            .padding()
-                            .frame(width: 200, height: 50)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
-                        
-                        Button(action: {
-                            self.secured.toggle()
-                        }) {
-                            Text("show")
-                                .frame(width: 80, height: 50)
-                                .cornerRadius(10)
-                                .foregroundColor(Color(hex: "#3756DF"))
-                        }
-                    }
-                }.padding(.leading, 15)
-            } else {
-                ZStack {
-                    HStack (spacing: 0) {
-                        TextField("Konfirmasi PIN", text: $confirmationPassword)
-                            .padding()
-                            .frame(width: 200, height: 50)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
-                        
-                        Button(action: {
-                            self.secured.toggle()
-                        }) {
-                            Text("show")
-                                .frame(width: 80, height: 50)
-                                .cornerRadius(10)
-                                .foregroundColor(Color(hex: "#3756DF"))
-                        }
-                    }
-                }.padding(.leading, 15)
-            }
-        }
-    }
 }
 
-struct FormPINView_Previews: PreviewProvider {
+struct FormTujuanPembukaanRekeningView_Previews: PreviewProvider {
     static var previews: some View {
-        FormPINView()
+        TujuanPembukaanRekeningView()
     }
 }

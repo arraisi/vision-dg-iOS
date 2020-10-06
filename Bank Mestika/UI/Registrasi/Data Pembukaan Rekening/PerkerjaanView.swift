@@ -1,5 +1,5 @@
 //
-//  FormTujuanPembukaanRekeningView.swift
+//  FormPerkerjaan.swift
 //  Bank Mestika
 //
 //  Created by Abdul R. Arraisi on 01/10/20.
@@ -7,15 +7,10 @@
 
 import SwiftUI
 
-struct FormTujuanPembukaanRekeningView: View {
-    
+struct PerkerjaanView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var tujuanPembukaanRekeningId: String?
-    
-    @State var isChecked:Bool = false
-    
-    @State var selectedItems: [Int] = []
+    @State var pekerjaanId: String?
     
     var body: some View {
         
@@ -42,12 +37,12 @@ struct FormTujuanPembukaanRekeningView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(Font.system(size: 24))
-                        .fontWeight(.black)
+                        .font(.title)
+                        .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
-                        .padding(.horizontal, 30)
+                        .padding(.vertical, 40)
+                        .padding(.horizontal, 20)
                         .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
@@ -76,7 +71,7 @@ struct FormTujuanPembukaanRekeningView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("01")
+                                    Text("07")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -93,21 +88,32 @@ struct FormTujuanPembukaanRekeningView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Tujuan Pembukaan Rekening")
+                                Text("Apa Pekerjaan Anda")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
-                                    .padding(.horizontal, 20)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 40)
                                     .padding(.vertical, 20)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 
                                 // Forms input
                                 ZStack {
-                                    
-                                    CheckBoxGroup(items: [1, 2, 3, 4], markedId: $selectedItems, labels: [
-                                        "Pinjaman / Angsuran Kredit",
-                                        "Keperluan Usaha", "Keperluan Sehari - hari", "Simpanan"
-                                    ]) { id, marked in
-                                        print(selectedItems)
+
+                                    RadioButtonGroup(
+                                        items: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+                                        labels: [
+                                            "Pejabat Pemerintah",
+                                            "Parpol",
+                                            "Pegawai Swasta",
+                                            "Wirausaha",
+                                            "Pegawai Negeri",
+                                            "Pegawai BUMN / BUMD",
+                                            "Polisi",
+                                            "Militer",
+                                            "Pensiunan"],
+                                        selectedId: $pekerjaanId) { selected in
+                                        print("Selected is: \(selected)")
                                     }
                                     .padding()
                                     
@@ -118,7 +124,7 @@ struct FormTujuanPembukaanRekeningView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: FormSumberDanaView()) {
+                                NavigationLink(destination: InformasiPerusahaanView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -143,10 +149,10 @@ struct FormTujuanPembukaanRekeningView: View {
                         }
                         
                     }
-                    .padding(.bottom, 0.1)
                     .padding(.bottom, 25)
                     
                 }
+                .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
                 
             }
@@ -158,8 +164,8 @@ struct FormTujuanPembukaanRekeningView: View {
     }
 }
 
-struct FormTujuanPembukaanRekeningView_Previews: PreviewProvider {
+struct FormPerkerjaan_Previews: PreviewProvider {
     static var previews: some View {
-        FormTujuanPembukaanRekeningView()
+        PerkerjaanView()
     }
 }

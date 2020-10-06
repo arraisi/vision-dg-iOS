@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FormPasswordView: View {
+struct PasswordView: View {
     
     @State var password: String = ""
     @State var confirmationPassword: String = ""
@@ -120,7 +120,7 @@ struct FormPasswordView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                
-                                NavigationLink(destination: FormPINView(), label:{
+                                NavigationLink(destination: PINView(), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -250,6 +250,6 @@ struct FormPasswordView: View {
 
 struct FormPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        FormPasswordView()
+        PasswordView()
     }
 }

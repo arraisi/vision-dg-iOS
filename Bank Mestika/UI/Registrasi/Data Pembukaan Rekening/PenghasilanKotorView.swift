@@ -1,37 +1,25 @@
 //
-//  FormInformasiPerusahaanView.swift
+//  FormPenghasilanKotorView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 28/09/20.
+//  Created by Abdul R. Arraisi on 30/09/20.
 //
 
 import SwiftUI
 
-struct FormInformasiPerusahaanView: View {
-    
-    @State var namaPerusahaan: String = ""
-    @State var alamatPerusahaan: String = ""
-    @State var kelurahan: String = ""
-    @State var noTlpPerusahaan: String = ""
-    
-    
-    @State var kodePos : String? = nil
-    @State var arrkodePos = ["140256","140216","140216","140216","140216","140216"]
-    @State var selectionkodePosIndex = 0
-    
-    @State var kecamatan : String? = nil
-    @State var arrKecamatan = ["Rancasari","Antapani","Gede Bage","Cililin","Batujajar","Cimahi"]
-    @State var selectionKecamatanIndex = 0
+struct PenghasilanKotorView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State var penghasilanKotorId: String?
     
     var body: some View {
         
         ZStack(alignment: .top) {
+            
             Color(hex: "#232175")
             
             VStack {
-                
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
@@ -41,8 +29,6 @@ struct FormInformasiPerusahaanView: View {
             }
             
             VStack {
-                
-                Spacer()
                 
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
@@ -86,7 +72,7 @@ struct FormInformasiPerusahaanView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("08")
+                                    Text("09")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -103,7 +89,7 @@ struct FormInformasiPerusahaanView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Masukan Informasi Perusahaan")
+                                Text("Berapa Penghasilan Kotor Anda")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
@@ -112,8 +98,14 @@ struct FormInformasiPerusahaanView: View {
                                 
                                 // Forms input
                                 ZStack {
-                                    cardForm
-                                        .padding(.vertical, 20)
+
+                                    RadioButtonGroup(
+                                        items: ["1", "2", "3", "4", "5"],
+                                        labels: ["> Rp. 5 Juta", "Rp. 5 Juta - Rp. 10 Juta", "Rp. 10 Juta - Rp. 20 Juta", "Rp. 20 Juta - Rp. 100 Juta", "> Rp. 100 Juta"],
+                                        selectedId: $penghasilanKotorId) { selected in
+                                        print("Selected is: \(selected)")
+                                    }
+                                    .padding()
                                     
                                 }
                                 .frame(width: UIScreen.main.bounds.width - 70)
@@ -121,8 +113,8 @@ struct FormInformasiPerusahaanView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                               
-                                NavigationLink(destination: VerificationAddressView(), label:{
+                                // Button
+                                Button(action : {}) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -130,13 +122,12 @@ struct FormInformasiPerusahaanView: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
-                                })
+                                }
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 35)
                                 .padding(.vertical, 20)
-                                
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
@@ -161,89 +152,11 @@ struct FormInformasiPerusahaanView: View {
         .navigationBarHidden(true)
         
     }
-    
-    var cardForm: some View {
-        
-        VStack(alignment: .leading) {
-            
-            LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan")
-            
-            LabelTextField(value: $alamatPerusahaan, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan")
-            
-            Group {
-                
-                Text("Kode Pos")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                TextFieldWithPickerAsInputView(data: self.arrkodePos, placeholder: "Pilih Kode Pos", selectionIndex: self.$selectionkodePosIndex, text: self.$kodePos)
-                    .frame(height: 10)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .padding(.horizontal, 20)
-                
-            }
-            
-            Group {
-                
-                Text("Kecamatan")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                TextFieldWithPickerAsInputView(data: self.arrKecamatan, placeholder: "Pilih Kecamatan", selectionIndex: self.$selectionKecamatanIndex, text: self.$kecamatan)
-                    .frame(height: 10)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .padding(.horizontal, 20)
-                
-            }
-            
-            Group {
-                
-                Text("No. Telepon Perusahaan")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                HStack {
-                    
-                    Text("+62 ").foregroundColor(.gray)
-                    
-                    Divider()
-                        .frame(height: 30)
-                    
-                    TextField("No. Telepon", text: $noTlpPerusahaan)
-                        .keyboardType(.numberPad)
-                    
-                }
-                .frame(height: 10)
-                .font(.subheadline)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.horizontal, 20)
-                
-            }
-            
-        }
-    }
-    
 }
 
-struct FormInformasiPerusahaanView_Previews: PreviewProvider {
+
+struct FormPenghasilanKotorView_Previews: PreviewProvider {
     static var previews: some View {
-        FormInformasiPerusahaanView()
+        PenghasilanKotorView()
     }
 }

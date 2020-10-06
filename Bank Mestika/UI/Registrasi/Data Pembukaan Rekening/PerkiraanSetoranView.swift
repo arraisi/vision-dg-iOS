@@ -1,5 +1,5 @@
 //
-//  FormBesarPerkiraanSetoranView.swift
+//  FormPerkiraanSetoranDanaDalamSebulanView.swift
 //  Bank Mestika
 //
 //  Created by Abdul R. Arraisi on 01/10/20.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct FormBesarPerkiraanSetoranView: View {
+struct PerkiraanSetoranView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var besarPerkiraanSetoranId: String?
+    @State var perkiraanSetoranId: String?
     
     var body: some View {
         
@@ -71,7 +71,7 @@ struct FormBesarPerkiraanSetoranView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("06")
+                                    Text("05")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -88,7 +88,7 @@ struct FormBesarPerkiraanSetoranView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Berapa Besar Perkiraan Setoran Dana Anda Setiap Bulannya")
+                                Text("Berapa Kali Perkiraan Setoran Dana Dalam Sebulan")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
@@ -102,8 +102,8 @@ struct FormBesarPerkiraanSetoranView: View {
 
                                     RadioButtonGroup(
                                         items: ["1", "2", "3"],
-                                        labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
-                                        selectedId: $besarPerkiraanSetoranId) { selected in
+                                        labels: ["0 - 10 Kali", "> 10 - 25 Kali", "> 25 Kali"],
+                                        selectedId: $perkiraanSetoranId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()
@@ -115,7 +115,7 @@ struct FormBesarPerkiraanSetoranView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: FormPerkerjaanView()) {
+                                NavigationLink(destination: BesarPerkiraanSetoranView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -155,8 +155,8 @@ struct FormBesarPerkiraanSetoranView: View {
     }
 }
 
-struct FormBesarPerkiraanSetoranView_Previews: PreviewProvider {
+struct FormPerkiraanSetoranDanaDalamSebulanView_Previews: PreviewProvider {
     static var previews: some View {
-        FormBesarPerkiraanSetoranView()
+        PerkiraanSetoranView()
     }
 }

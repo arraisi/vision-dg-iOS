@@ -1,17 +1,16 @@
 //
-//  FormPenghasilanKotorView.swift
+//  FormSumberDanaView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 30/09/20.
+//  Created by Abdul R. Arraisi on 01/10/20.
 //
 
 import SwiftUI
 
-struct FormPenghasilanKotorView: View {
-    
+struct SumberDanaView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var penghasilanKotorId: String?
+    @State var sumberDanaId: String?
     
     var body: some View {
         
@@ -72,7 +71,7 @@ struct FormPenghasilanKotorView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("09")
+                                    Text("02")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -89,7 +88,7 @@ struct FormPenghasilanKotorView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Berapa Penghasilan Kotor Anda")
+                                Text("Pilih Sumber Dana Kamu")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
@@ -101,8 +100,8 @@ struct FormPenghasilanKotorView: View {
 
                                     RadioButtonGroup(
                                         items: ["1", "2", "3", "4", "5"],
-                                        labels: ["> Rp. 5 Juta", "Rp. 5 Juta - Rp. 10 Juta", "Rp. 10 Juta - Rp. 20 Juta", "Rp. 20 Juta - Rp. 100 Juta", "> Rp. 100 Juta"],
-                                        selectedId: $penghasilanKotorId) { selected in
+                                        labels: ["Gaji", "Hibah / Warisan / Orang Tua", "Jual Harta", "Hasil Usaha", "Pencarian Pinjaman"],
+                                        selectedId: $sumberDanaId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()
@@ -114,7 +113,7 @@ struct FormPenghasilanKotorView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                Button(action : {}) {
+                                NavigationLink(destination: PerkiraanPenarikanView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -154,9 +153,8 @@ struct FormPenghasilanKotorView: View {
     }
 }
 
-
-struct FormPenghasilanKotorView_Previews: PreviewProvider {
+struct FormSumberDanaView_Previews: PreviewProvider {
     static var previews: some View {
-        FormPenghasilanKotorView()
+        SumberDanaView()
     }
 }

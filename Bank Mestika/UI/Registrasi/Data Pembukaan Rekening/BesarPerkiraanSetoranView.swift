@@ -1,5 +1,5 @@
 //
-//  FormPerkerjaan.swift
+//  FormBesarPerkiraanSetoranView.swift
 //  Bank Mestika
 //
 //  Created by Abdul R. Arraisi on 01/10/20.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct FormPerkerjaanView: View {
+struct BesarPerkiraanSetoranView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var pekerjaanId: String?
+    @State var besarPerkiraanSetoranId: String?
     
     var body: some View {
         
@@ -71,7 +71,7 @@ struct FormPerkerjaanView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("07")
+                                    Text("06")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -88,7 +88,7 @@ struct FormPerkerjaanView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Apa Pekerjaan Anda")
+                                Text("Berapa Besar Perkiraan Setoran Dana Anda Setiap Bulannya")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
@@ -101,18 +101,9 @@ struct FormPerkerjaanView: View {
                                 ZStack {
 
                                     RadioButtonGroup(
-                                        items: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
-                                        labels: [
-                                            "Pejabat Pemerintah",
-                                            "Parpol",
-                                            "Pegawai Swasta",
-                                            "Wirausaha",
-                                            "Pegawai Negeri",
-                                            "Pegawai BUMN / BUMD",
-                                            "Polisi",
-                                            "Militer",
-                                            "Pensiunan"],
-                                        selectedId: $pekerjaanId) { selected in
+                                        items: ["1", "2", "3"],
+                                        labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
+                                        selectedId: $besarPerkiraanSetoranId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()
@@ -124,7 +115,7 @@ struct FormPerkerjaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: FormInformasiPerusahaanView()) {
+                                NavigationLink(destination: PerkerjaanView()) {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -164,8 +155,8 @@ struct FormPerkerjaanView: View {
     }
 }
 
-struct FormPerkerjaan_Previews: PreviewProvider {
+struct FormBesarPerkiraanSetoranView_Previews: PreviewProvider {
     static var previews: some View {
-        FormPerkerjaanView()
+        BesarPerkiraanSetoranView()
     }
 }

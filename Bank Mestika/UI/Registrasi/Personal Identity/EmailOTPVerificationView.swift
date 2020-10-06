@@ -123,7 +123,7 @@ struct EmailOTPVerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: FormTujuanPembukaanRekeningView()) {
+            NavigationLink(destination: TujuanPembukaanRekeningView()) {
                 Text("Verifikasi OTP")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

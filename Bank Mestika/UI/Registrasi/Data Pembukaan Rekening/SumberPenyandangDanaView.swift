@@ -1,25 +1,24 @@
 //
-//  FormPerkiraanPenarikanDana.swift
+//  FormSumberPenyandangDanaView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 01/10/20.
+//  Created by Abdul R. Arraisi on 06/10/20.
 //
 
 import SwiftUI
 
-struct FormPerkiraanPenarikanView: View {
+struct FormSumberPenyandangDanaView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var perkiraanPenarikanId: String?
+    @State var sumberPenyandangDanaId: String?
     
     var body: some View {
-        
-        ZStack(alignment: .top) {
-            
+        ZStack{
             Color(hex: "#232175")
             
             VStack {
+                
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
@@ -72,7 +71,7 @@ struct FormPerkiraanPenarikanView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("03")
+                                    Text("08")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -89,22 +88,20 @@ struct FormPerkiraanPenarikanView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Berapa Kali Perkiraan Penarikan Dana dalam")
+                                Text("Sumber Penyandang Dana")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 40)
+                                    .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
-                                    .fixedSize(horizontal: false, vertical: true)
                                 
                                 // Forms input
                                 ZStack {
 
                                     RadioButtonGroup(
                                         items: ["1", "2", "3"],
-                                        labels: ["0 - 10 Kali", "> 10 - 25 Kali", "> 25 Kali"],
-                                        selectedId: $perkiraanPenarikanId) { selected in
+                                        labels: ["Pilihan 1", "Pilihan 2", "Pilihan 3"],
+                                        selectedId: $sumberPenyandangDanaId) { selected in
                                         print("Selected is: \(selected)")
                                     }
                                     .padding()
@@ -116,7 +113,7 @@ struct FormPerkiraanPenarikanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: FormBesarPerkiraanPenarikanView()) {
+                                NavigationLink(destination: InformasiPerusahaanView(), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -124,7 +121,7 @@ struct FormPerkiraanPenarikanView: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
-                                }
+                                })
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
@@ -148,16 +145,14 @@ struct FormPerkiraanPenarikanView: View {
                 .KeyboardAwarePadding()
                 
             }
-            
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
-        
     }
 }
 
-struct FormPerkiraanPenarikanDana_Previews: PreviewProvider {
+struct FormSumberPenyandangDanaView_Previews: PreviewProvider {
     static var previews: some View {
-        FormPerkiraanPenarikanView()
+        FormSumberPenyandangDanaView()
     }
 }

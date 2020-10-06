@@ -1,24 +1,26 @@
 //
-//  FormBesarPenarikanDanaView.swift
+//  FormPINView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 01/10/20.
+//  Created by Prima Jatnika on 04/10/20.
 //
 
 import SwiftUI
 
-struct FormBesarPerkiraanPenarikanView: View {
+struct PINView: View {
+    @State var password: String = ""
+    @State var confirmationPassword: String = ""
+    
+    @State private var secured: Bool = true
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @State var besarPerkiraanPenarikanId: String?
-    
     var body: some View {
         
         ZStack(alignment: .top) {
-            
             Color(hex: "#232175")
             
             VStack {
+                
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
@@ -28,6 +30,8 @@ struct FormBesarPerkiraanPenarikanView: View {
             }
             
             VStack {
+                
+                Spacer()
                 
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
@@ -71,7 +75,7 @@ struct FormBesarPerkiraanPenarikanView: View {
                                 // Pages
                                 HStack {
                                     
-                                    Text("04")
+                                    Text("11")
                                         .font(Font.system(size: 15))
                                         .foregroundColor(Color(hex: "#232175"))
                                         .fontWeight(.semibold)
@@ -88,25 +92,25 @@ struct FormBesarPerkiraanPenarikanView: View {
                                 .padding(.top, 25)
                                 
                                 // Sub title
-                                Text("Berapa Besar Perkiraan Penarikan Dana Anda Setiap Bulannya")
+                                Text("Masukan PIN Transaksi Perbankan")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 40)
-                                    .padding(.vertical, 20)
-                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.horizontal, 20)
+                                    .padding(.top, 20)
+                                
+                                Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
+                                    .font(.caption2)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal, 20)
+                                    .padding(.top, 3)
+                                    .padding(.bottom, 20)
                                 
                                 // Forms input
                                 ZStack {
-
-                                    RadioButtonGroup(
-                                        items: ["1", "2", "3"],
-                                        labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
-                                        selectedId: $besarPerkiraanPenarikanId) { selected in
-                                        print("Selected is: \(selected)")
-                                    }
-                                    .padding()
+                                    cardForm
+                                        .padding(.vertical, 20)
                                     
                                 }
                                 .frame(width: UIScreen.main.bounds.width - 70)
@@ -114,8 +118,8 @@ struct FormBesarPerkiraanPenarikanView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                                // Button
-                                NavigationLink(destination: FormPerkiraanSetoranView()) {
+                               
+                                NavigationLink(destination: Term_ConditionView(), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -123,12 +127,13 @@ struct FormBesarPerkiraanPenarikanView: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
-                                }
+                                })
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 35)
                                 .padding(.vertical, 20)
+                                
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
@@ -153,10 +158,97 @@ struct FormBesarPerkiraanPenarikanView: View {
         .navigationBarHidden(true)
         
     }
+    
+    var cardForm: some View {
+        VStack(alignment: .leading) {
+            if (secured) {
+                ZStack {
+                    HStack (spacing: 0) {
+                        SecureField("Masukan PIN", text: $password)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }.padding(.leading, 15)
+                }
+            } else {
+                ZStack {
+                    HStack (spacing: 0) {
+                        TextField("Masukan PIN", text: $password)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }
+                }.padding(.leading, 15)
+            }
+            
+            Divider()
+                .padding(.horizontal, 15)
+            
+            if (secured) {
+                ZStack {
+                    HStack (spacing: 0) {
+                        SecureField("Konfirmasi PIN", text: $confirmationPassword)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }
+                }.padding(.leading, 15)
+            } else {
+                ZStack {
+                    HStack (spacing: 0) {
+                        TextField("Konfirmasi PIN", text: $confirmationPassword)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .foregroundColor(Color(hex: "#232175"))
+                            .keyboardType(.phonePad)
+                        
+                        Button(action: {
+                            self.secured.toggle()
+                        }) {
+                            Text("show")
+                                .frame(width: 80, height: 50)
+                                .cornerRadius(10)
+                                .foregroundColor(Color(hex: "#3756DF"))
+                        }
+                    }
+                }.padding(.leading, 15)
+            }
+        }
+    }
 }
 
-struct FormBesarPenarikanDanaView_Previews: PreviewProvider {
+struct FormPINView_Previews: PreviewProvider {
     static var previews: some View {
-        FormBesarPerkiraanPenarikanView()
+        PINView()
     }
 }
