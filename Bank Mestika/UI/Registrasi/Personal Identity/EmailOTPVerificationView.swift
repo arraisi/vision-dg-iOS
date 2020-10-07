@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmailOTPVerificationView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     
     @State private var numberOfCells: Int = 6
     @State private var currentlySelectedCell = 0
@@ -123,7 +124,7 @@ struct EmailOTPVerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: TujuanPembukaanRekeningView()) {
+            NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData)) {
                 Text("Verifikasi OTP")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

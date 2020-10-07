@@ -25,6 +25,8 @@ var data = [
 
 struct RegisterView: View {
     
+    var registerData = RegistrasiModel()
+    
     /*
      Boolean for Show Modal
      */
@@ -110,17 +112,8 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: PersonalIdentityView()) {
+            NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
                 Text("LOGIN")
-                    .foregroundColor(.white)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .font(.system(size: 12))
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-            }
-            .cornerRadius(12)
-            
-            NavigationLink(destination: TujuanPembukaanRekeningView()) {
-                Text("DEV : PASS TO REGISTER FORM")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 12))
@@ -150,7 +143,7 @@ struct RegisterView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 30)
             
-            NavigationLink(destination: RegisterProvisionView()) {
+            NavigationLink(destination: RegisterProvisionView().environmentObject(registerData)) {
                 Text("Tidak, Saya Tidak Memiliki")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -161,7 +154,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: RegisterRekeningCardView()) {
+            NavigationLink(destination: RegisterRekeningCardView().environmentObject(registerData)) {
                 Text("Ya, Saya Memiliki")
                     .foregroundColor(.black)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

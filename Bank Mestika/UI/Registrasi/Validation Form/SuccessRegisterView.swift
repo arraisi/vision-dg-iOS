@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SuccessRegisterView: View {
+    
+    @EnvironmentObject var registerData: RegistrasiModel
+    
     /*
      Boolean for Show Modal
      */
@@ -118,7 +121,7 @@ struct SuccessRegisterView: View {
                     .padding(.horizontal, 20)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                TextField("No KTP", text: $pilihJam)
+                TextField("No KTP", text: $registerData.nik)
                     .frame(height: 10)
                     .font(.subheadline)
                     .padding()
@@ -126,6 +129,7 @@ struct SuccessRegisterView: View {
                     .cornerRadius(15)
                     .padding(.bottom, 5)
                     .padding(.horizontal, 20)
+                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 Text("No. HP.")
                     .font(.subheadline)
@@ -135,7 +139,7 @@ struct SuccessRegisterView: View {
                     .padding(.horizontal, 20)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                TextField("Nomor Handphone", text: $pilihJam)
+                TextField("Nomor Handphone", text: $registerData.noTelepon)
                     .frame(height: 10)
                     .font(.subheadline)
                     .padding()
@@ -143,6 +147,7 @@ struct SuccessRegisterView: View {
                     .cornerRadius(15)
                     .padding(.bottom, 5)
                     .padding(.horizontal, 20)
+                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 Text("Email.")
                     .font(.subheadline)
@@ -152,7 +157,7 @@ struct SuccessRegisterView: View {
                     .padding(.horizontal, 20)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                TextField("Alamat Email", text: $pilihJam)
+                TextField("Alamat Email", text: $registerData.email)
                     .frame(height: 10)
                     .font(.subheadline)
                     .padding()
@@ -160,6 +165,7 @@ struct SuccessRegisterView: View {
                     .cornerRadius(15)
                     .padding(.bottom, 5)
                     .padding(.horizontal, 20)
+                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
             }
             
             Button(action : {

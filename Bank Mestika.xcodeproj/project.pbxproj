@@ -19,6 +19,7 @@
 		5202BA49251B1FA300FCE527 /* Bank_MestikaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202BA48251B1FA300FCE527 /* Bank_MestikaUITests.swift */; };
 		5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202BA5B251B207500FCE527 /* RegisterView.swift */; };
 		5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202BA64251B26C100FCE527 /* Color+Utils.swift */; };
+		52056D3A252DD366008D99D2 /* RegistrasiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52056D39252DD366008D99D2 /* RegistrasiModel.swift */; };
 		5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */; };
 		5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */; };
 		5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */; };
@@ -108,6 +109,7 @@
 		5202BA4A251B1FA300FCE527 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5202BA5B251B207500FCE527 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		5202BA64251B26C100FCE527 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
+		52056D39252DD366008D99D2 /* RegistrasiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrasiModel.swift; sourceTree = "<group>"; };
 		5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProvisionView.swift; sourceTree = "<group>"; };
 		5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationView.swift; sourceTree = "<group>"; };
@@ -292,6 +294,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		52056D38252DD34F008D99D2 /* Registrasi */ = {
+			isa = PBXGroup;
+			children = (
+				52056D39252DD366008D99D2 /* RegistrasiModel.swift */,
+			);
+			path = Registrasi;
+			sourceTree = "<group>";
+		};
 		52794BF0252452D20031392E /* Personal Identity */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +331,7 @@
 		52BE52E925295D3B00ADE164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				52056D38252DD34F008D99D2 /* Registrasi */,
 				52BE52EA25295D4C00ADE164 /* Jenis Tabungan */,
 			);
 			path = Model;
@@ -604,6 +615,7 @@
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
 				C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */,
 				52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */,
+				52056D3A252DD366008D99D2 /* RegistrasiModel.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
 				52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */,
 				52D2745D2525ADA100DD1443 /* EmailOTPVerificationView.swift in Sources */,

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmailVerificationView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     
     @State var email: String = ""
     @State private var isEmailValid : Bool   = false
@@ -95,6 +96,7 @@ struct EmailVerificationView: View {
                 if !isChanged {
                     if self.textFieldValidatorEmail(self.email) {
                         self.isEmailValid = true
+                        self.registerData.email = email
                     } else {
                         self.isEmailValid = false
                     }
@@ -109,7 +111,7 @@ struct EmailVerificationView: View {
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             
-            NavigationLink(destination: EmailOTPVerificationView()) {
+            NavigationLink(destination: EmailOTPVerificationView().environmentObject(registerData)) {
                 Text("Verifikasi Email")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

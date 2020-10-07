@@ -9,40 +9,43 @@ import SwiftUI
 import ExytePopupView
 
 struct ChooseSavingsView: View {
-    
-    @State var x : CGFloat = 0
-    @State var count : CGFloat = 0
-    @State var screen = UIScreen.main.bounds.width - 30
-    @State var op : CGFloat = 0
-    
+    @EnvironmentObject var UIState: UIStateModel
+    @EnvironmentObject var registerData: RegistrasiModel
     /*
      Boolean for Show Modal
      */
-    @State var showingModal = false
     
-    @State var data = [
-        JenisTabungan(
-            id: 1,
-            namaTabungan: "Nama Tabungan 1",
-            kartu: "Saving Image",
-            show: false
-        ),
-        JenisTabungan(
-            id: 2,
-            namaTabungan: "Nama Tabungan 2",
-            kartu: "Saving Image",
-            show: false
-        )
-    ]
+    @State var showingModal = false
+    /*
+     Fuction for Create Bottom Floater (Modal)
+     */
+    func createBottomFloater() -> some View {
+        SavingSelectionModalView()
+            .environmentObject(registerData)
+            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height - 100)
+            .background(Color(.white))
+            .cornerRadius(50)
+            .shadow(radius: 60)
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-        ZStack(alignment: .top) {
+        let spacing: CGFloat = 16
+        let widthOfHiddenCards: CGFloat = 32 /// UIScreen.main.bounds.width - 10
+        let cardHeight: CGFloat = 200
+        
+        let items = [
+            CardTabungan(id: 0, namaTabungan: "Tabungan A", image: "Saving Image"),
+            CardTabungan(id: 1, namaTabungan: "Tabungan B", image: "Saving Image"),
+        ]
+        
+        return ZStack {
             VStack {
                 Color(hex: "#F6F8FB")
                     .frame(height: 400)
                 Color(hex: "#232175")
             }
+            
             VStack {
                 appbar
                     .padding(.top, 45)
@@ -55,56 +58,33 @@ struct ChooseSavingsView: View {
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .foregroundColor(Color(hex: "#232175"))
                             .padding(.horizontal, 15)
-                        
-                        HStack(spacing: 15){
-                            ForEach(data) { i in
-                                JenisTabunganItem(data: i)
-                                    .offset(x: self.x)
-                                    .highPriorityGesture(
-                                        DragGesture()
-                                            .onChanged({ (value) in
-                                                if value.translation.width > 0 { self.x = value.location.x
-                                                } else {
-                                                    self.x = value.location.x - self.screen
-                                                }
-                                            })
-                                            .onEnded({ (value) in if
-                                                value.translation.width > 0 {
-                                                if value.translation.width > ((self.screen - 80) / 2) && Int(self.count) != 0{
-                                                    
-                                                    
-                                                    self.count -= 1
-                                                    self.updateHeight(value: Int(self.count))
-                                                    self.x = -((self.screen + 15) * self.count)
-                                                }
-                                                else {
-                                                    
-                                                    self.x = -((self.screen + 15) * self.count)
-                                                }
-                                            }
-                                            else {
-                                                if -value.translation.width > ((self.screen - 80) / 2) && Int(self.count) !=  (self.data.count - 1){
-                                                    
-                                                    self.count += 1
-                                                    self.updateHeight(value: Int(self.count))
-                                                    self.x = -((self.screen + 15) * self.count)
-                                                }
-                                                else {
-                                                    
-                                                    self.x = -((self.screen + 15) * self.count)
-                                                }
-                                            }
-                                            })
-                                    )
+                            .padding(.top, 20)
+                            .padding(.bottom, 25)
+                    }
+                    
+                    VStack {
+                        Canvas {
+                            CarouselTabungan(
+                                numberOfItems: CGFloat(items.count),
+                                spacing: spacing,
+                                widthOfHiddenCards: widthOfHiddenCards
+                            ) {
+                                ForEach(items, id: \.self.id) { item in
+                                    Item(
+                                        _id: Int(item.id),
+                                        spacing: spacing,
+                                        widthOfHiddenCards: widthOfHiddenCards,
+                                        cardHeight: cardHeight
+                                    ) {
+                                        Image("\(item.image)")
+                                            .resizable()
+                                    }
+                                    .cornerRadius(8)
+                                    .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+                                    .transition(AnyTransition.slide)
+                                    .animation(.spring())
+                                }
                             }
-                        }
-                        .offset(x: self.op)
-                        .animation(.spring())
-                        .onAppear {
-                            
-                            self.op = ((self.screen + 15) * CGFloat(self.data.count / 2)) - (self.data.count % 2 == 0 ? ((self.screen + 15) / 2) : 0)
-                            
-                            self.data[0].show = true
                         }
                         
                         VStack(alignment: .leading) {
@@ -203,12 +183,11 @@ struct ChooseSavingsView: View {
                         .cornerRadius(15)
                         .shadow(radius: 30)
                     }
-                    .padding(.top, 35)
                 }
-            }
-            
-            if self.showingModal {
-                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+                
+                if self.showingModal {
+                    ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+                }
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -243,34 +222,129 @@ struct ChooseSavingsView: View {
                 .bold()
         }
     }
+}
+
+struct CardTabungan: Decodable, Hashable, Identifiable {
+    var id: Int
+    var namaTabungan: String = ""
+    var image: String = ""
+}
+
+public class UIStateModel: ObservableObject {
+    @Published var activeCard: Int = 0
+    @Published var screenDrag: Float = 0.0
+}
+
+struct CarouselTabungan<Items : View> : View {
+    let items: Items
+    let numberOfItems: CGFloat //= 8
+    let spacing: CGFloat //= 16
+    let widthOfHiddenCards: CGFloat //= 32
+    let totalSpacing: CGFloat
+    let cardWidth: CGFloat
     
-    /*
-     Fuction for Create Bottom Floater (Modal)
-     */
-    func createBottomFloater() -> some View {
-        SavingSelectionModalView()
-            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height - 100)
-            .background(Color(.white))
-            .cornerRadius(50)
-            .shadow(radius: 60)
+    @GestureState var isDetectingLongPress = false
+    
+    @ObservedObject var UIState =  UIStateModel()
+    
+    @inlinable public init(
+        numberOfItems: CGFloat,
+        spacing: CGFloat,
+        widthOfHiddenCards: CGFloat,
+        @ViewBuilder _ items: () -> Items) {
+        
+        self.items = items()
+        self.numberOfItems = numberOfItems
+        self.spacing = spacing
+        self.widthOfHiddenCards = widthOfHiddenCards
+        self.totalSpacing = (numberOfItems - 1) * spacing
+        self.cardWidth = UIScreen.main.bounds.width - (widthOfHiddenCards*2) - (spacing*2) //279
+        
     }
     
-    func updateHeight(value : Int) {
-        for i in 0..<data.count {
-            data[i].show = false
+    var body: some View {
+        let totalCanvasWidth: CGFloat = (cardWidth * numberOfItems) + totalSpacing
+        let xOffsetToShift = (totalCanvasWidth - UIScreen.main.bounds.width) / 2
+        let leftPadding = widthOfHiddenCards + spacing
+        let totalMovement = cardWidth + spacing
+        
+        let activeOffset = xOffsetToShift + (leftPadding) - (totalMovement * CGFloat(UIState.activeCard))
+        let nextOffset = xOffsetToShift + (leftPadding) - (totalMovement * CGFloat(UIState.activeCard) + 1)
+        
+        var calcOffset = Float(activeOffset)
+        
+        if (calcOffset != Float(nextOffset)) {
+            calcOffset = Float(activeOffset) + UIState.screenDrag
         }
         
-        data[value].show = true
+        return VStack(alignment: .center) {
+            HStack {
+                items
+            }
+        }
+        .offset(x: CGFloat(calcOffset), y: 0)
+        .gesture(DragGesture().updating($isDetectingLongPress) { currentState, gestureState, transaction in
+            self.UIState.screenDrag = Float(currentState.translation.width)
+            
+        }.onEnded { value in
+            self.UIState.screenDrag = 0
+            
+            if (value.translation.width < -50) {
+                self.UIState.activeCard = self.UIState.activeCard + 1
+                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                impactMed.impactOccurred()
+            }
+            
+            if (value.translation.width > 50) {
+                self.UIState.activeCard = self.UIState.activeCard - 1
+                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                impactMed.impactOccurred()
+            }
+        })
     }
 }
 
-struct JenisTabunganItem: View {
-    var data: JenisTabungan
+struct Canvas<Content : View> : View {
+    let content: Content
+    @EnvironmentObject var UIState: UIStateModel
+    
+    @inlinable init(@ViewBuilder _ content: () -> Content) {
+        self.content = content()
+    }
     
     var body: some View {
-        Image(data.kartu)
+        content
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, alignment: .center)
+            .background(Color(hex: "#F6F8FB").edgesIgnoringSafeArea(.all))
             .padding(.bottom, 20)
-            .frame(width: UIScreen.main.bounds.width - 30)
+    }
+}
+
+struct Item<Content: View>: View {
+    @ObservedObject var UIState = UIStateModel()
+    let cardWidth: CGFloat
+    let cardHeight: CGFloat
+    
+    var _id: Int
+    var content: Content
+    
+    @inlinable public init(
+        _id: Int,
+        spacing: CGFloat,
+        widthOfHiddenCards: CGFloat,
+        cardHeight: CGFloat,
+        @ViewBuilder _ content: () -> Content
+    ) {
+        print("\(_id)")
+        self.content = content()
+        self.cardWidth = UIScreen.main.bounds.width - (widthOfHiddenCards * 2) - (spacing * 2) //279
+        self.cardHeight = cardHeight
+        self._id = _id
+    }
+    
+    var body: some View {
+        content
+            .frame(width: cardWidth, height: cardHeight, alignment: .center)
     }
 }
 

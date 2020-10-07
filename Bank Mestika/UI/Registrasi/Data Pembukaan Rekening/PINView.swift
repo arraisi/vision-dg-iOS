@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct PINView: View {
-    @State var password: String = ""
-    @State var confirmationPassword: String = ""
+    @EnvironmentObject var registerData: RegistrasiModel
+    @State var pin: String = ""
+    @State var confirmationPin: String = ""
     
-    @State private var secured: Bool = true
+    @State private var securedPin: Bool = true
+    @State private var securedConfirmationPin: Bool = true
+    
+    var disableForm: Bool {
+        pin != confirmationPin || pin.count < 5
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -24,7 +30,7 @@ struct PINView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: UIScreen.main.bounds.height / 2)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -41,12 +47,13 @@ struct PINView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(Font.system(size: 24))
-                        .fontWeight(.bold)
+                        .font(.title)
+                        .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
-                        .padding(.horizontal, 30)
+                        .padding(.vertical, 40)
+                        .padding(.horizontal, 20)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
                     ZStack {
@@ -58,19 +65,37 @@ struct PINView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
+                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
+                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 40)
-                            .padding(.top, 10)
+                            .padding(.top, 15)
                             
                             VStack {
                                 
-                                Spacer()
+                                // Pages
+                                HStack {
+                                    
+                                    Text("11")
+                                        .font(Font.system(size: 15))
+                                        .foregroundColor(Color(hex: "#232175"))
+                                        .fontWeight(.semibold)
+                                    
+                                    Text(" / of 13 Forms")
+                                        .font(Font.system(size: 15))
+                                        .foregroundColor(Color(hex: "#232175"))
+                                        .fontWeight(.regular)
+                                    
+                                    Spacer()
+                                    
+                                }
+                                .padding(.leading, 20)
+                                .padding(.top, 25)
                                 
                                 // Sub title
                                 Text("Masukan PIN Transaksi Perbankan")
@@ -79,7 +104,7 @@ struct PINView: View {
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.center)
                                     .padding(.horizontal, 20)
-                                    .padding(.top, 30)
+                                    .padding(.top, 20)
                                 
                                 Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
                                     .font(.caption2)
@@ -99,8 +124,8 @@ struct PINView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                                
-                                NavigationLink(destination: Term_ConditionView(), label:{
+                               
+                                NavigationLink(destination: Term_ConditionView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -110,18 +135,18 @@ struct PINView: View {
                                     
                                 })
                                 .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
+                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 35)
                                 .padding(.vertical, 20)
-                                
+                                .disabled(disableForm)
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
+                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 20)
-                            .padding(.top, 25)
+                            .padding(.top, 40)
                             
                         }
                         
@@ -142,17 +167,17 @@ struct PINView: View {
     
     var cardForm: some View {
         VStack(alignment: .leading) {
-            if (secured) {
+            if (securedPin) {
                 ZStack {
                     HStack (spacing: 0) {
-                        SecureField("Masukan PIN", text: $password)
+                        SecureField("Masukan PIN", text: $pin)
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedPin.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -164,14 +189,18 @@ struct PINView: View {
             } else {
                 ZStack {
                     HStack (spacing: 0) {
-                        TextField("Masukan PIN", text: $password)
+                        TextField("Masukan PIN", text: $pin, onEditingChanged: { changed in
+                            print("\($pin)")
+                            
+                            self.registerData.pin = pin
+                        })
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedPin.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -185,17 +214,17 @@ struct PINView: View {
             Divider()
                 .padding(.horizontal, 15)
             
-            if (secured) {
+            if (securedConfirmationPin) {
                 ZStack {
                     HStack (spacing: 0) {
-                        SecureField("Konfirmasi PIN", text: $confirmationPassword)
+                        SecureField("Konfirmasi PIN", text: $confirmationPin)
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedConfirmationPin.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -207,14 +236,14 @@ struct PINView: View {
             } else {
                 ZStack {
                     HStack (spacing: 0) {
-                        TextField("Konfirmasi PIN", text: $confirmationPassword)
+                        TextField("Konfirmasi PIN", text: $confirmationPin)
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedConfirmationPin.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -228,7 +257,7 @@ struct PINView: View {
     }
 }
 
-struct FormPINView_Previews: PreviewProvider {
+struct PINView_Previews: PreviewProvider {
     static var previews: some View {
         PINView()
     }

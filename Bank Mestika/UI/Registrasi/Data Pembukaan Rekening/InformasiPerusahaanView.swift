@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InformasiPerusahaanView: View {
     
+    @EnvironmentObject var registerData: RegistrasiModel
+    
     @State var namaPerusahaan: String = ""
     @State var alamatPerusahaan: String = ""
     @State var kelurahan: String = ""
@@ -100,7 +102,7 @@ struct InformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 
-                                NavigationLink(destination: VerificationAddressView(), label:{
+                                NavigationLink(destination: VerificationAddressView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PhoneVerificationView: View {
     
+    @EnvironmentObject var registerData: RegistrasiModel
     @State var phoneNumber: String = ""
     
     var disableForm: Bool {
@@ -85,15 +86,19 @@ struct PhoneVerificationView: View {
                 .padding(.horizontal, 20)
             
             HStack {
-                
                 Text("🇮🇩 +62 ").foregroundColor(.gray)
                 
                 Divider()
                     .frame(height: 30)
                 
-                TextField("No. Telepon", text: $phoneNumber)
-                    .keyboardType(.numberPad)
-                
+                TextField("No. Telepon", text: $phoneNumber, onEditingChanged: { changed in
+                    print("\($phoneNumber)")
+                    
+                    self.registerData.noTelepon = phoneNumber
+                }, onCommit: {
+                    print("Commited")
+                })
+                .keyboardType(.numberPad)
             }
             .frame(height: 20)
             .font(.subheadline)
@@ -102,7 +107,7 @@ struct PhoneVerificationView: View {
             .cornerRadius(15)
             .padding(.horizontal, 20)
             
-            NavigationLink(destination: OTPVerificationView()) {
+            NavigationLink(destination: OTPVerificationView().environmentObject(registerData)) {
                 Text("Verifikasi No. Telepon")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

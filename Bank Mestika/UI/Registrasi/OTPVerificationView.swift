@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OTPVerificationView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     
     @State private var numberOfCells: Int = 6
     @State private var currentlySelectedCell = 0
@@ -124,7 +125,7 @@ struct OTPVerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: ChooseSavingsView()) {
+            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData)) {
                 Text("Verifikasi OTP")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

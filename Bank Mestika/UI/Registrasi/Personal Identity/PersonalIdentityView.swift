@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 
 struct PersonalIdentityView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     
     @State var nik: String = ""
     @State var imageKTP: Image? = nil
@@ -28,31 +29,18 @@ struct PersonalIdentityView: View {
     
     @State var isChecked:Bool = false
     
+    @EnvironmentObject var registerDataSave: RegistrasiModel
+    
     func toggle() { isChecked = !isChecked }
     
     /*
-     Fungsi untuk Simpan Gambar ke Local Storage
+        Fungsi untuk Simpan Gambar ke Local Storage
      */
-    func storeImage(imgStore: Image, key: String) {
-        // Load Image
+    private func store(imgStore: Image, forKey key: String) {
         let image: UIImage = imgStore.asUIImage()
-
-        // Convert to Data
-        if let data = image.pngData() {
-            // Create URL
-            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let url = documents.appendingPathComponent("\(key).png")
-
-            do {
-                // Write to Disk
-                try data.write(to: url)
-
-                // Store URL in User Defaults
-                UserDefaults.standard.set(url, forKey: "\(key)")
-
-            } catch {
-                print("Unable to Write Data to Disk (\(error))")
-            }
+        
+        if let pngRepresentation = image.pngData() {
+            UserDefaults.standard.set(pngRepresentation, forKey: key)
         }
     }
     
@@ -93,7 +81,7 @@ struct PersonalIdentityView: View {
                             .padding(.bottom, 20)
                         photoNPWPForm
                         
-                        NavigationLink(destination: EmailVerificationView()) {
+                        NavigationLink(destination: EmailVerificationView().environmentObject(registerData)) {
                             Text("Lanjut Pembukaan Rekening Baru")
                                 .foregroundColor(.white)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -262,7 +250,9 @@ struct PersonalIdentityView: View {
                             self.collapsedFormKTP.toggle()
                             self.collapsedFormPersonal.toggle()
                             
-                            storeImage(imgStore: self.imageKTP!, key: "imageKTP")
+//                            store(imgStore: self.imageKTP!, forKey: "imageKTP")
+                            self.registerData.fotoKTP = self.imageKTP!
+
                         }) {
                             Text("Simpan")
                                 .foregroundColor(.white)
@@ -362,6 +352,8 @@ struct PersonalIdentityView: View {
                     Button(action: {
                         self.collapsedFormPersonal.toggle()
                         self.collapsedFormSignature.toggle()
+                        
+                        self.registerData.fotoSelfie = self.imageSelfie!
                     }) {
                         Text("Simpan")
                             .foregroundColor(.white)
@@ -460,6 +452,8 @@ struct PersonalIdentityView: View {
                     Button(action: {
                         self.collapsedFormSignature.toggle()
                         self.collapsedFormNPWP.toggle()
+                        
+                        self.registerData.fotoTandaTangan = self.imageSignature!
                     }) {
                         Text("Simpan")
                             .foregroundColor(.white)
@@ -557,6 +551,8 @@ struct PersonalIdentityView: View {
                 if (imageNPWP != nil) {
                     Button(action: {
                         self.collapsedFormNPWP.toggle()
+                        
+                        self.registerData.fotoNPWP = self.imageNPWP!
                     }) {
                         Text("Simpan")
                             .foregroundColor(.white)

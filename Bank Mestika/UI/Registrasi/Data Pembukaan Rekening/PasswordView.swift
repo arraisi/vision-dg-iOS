@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct PasswordView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     
     @State var password: String = ""
     @State var confirmationPassword: String = ""
     
-    @State private var secured: Bool = true
+    @State private var securedPassword: Bool = true
+    @State private var securedConfirmation: Bool = true
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var disableForm: Bool {
+        password != confirmationPassword || password.count < 5
+    }
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -25,7 +32,7 @@ struct PasswordView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: UIScreen.main.bounds.height / 2)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -42,12 +49,13 @@ struct PasswordView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(Font.system(size: 24))
-                        .fontWeight(.bold)
+                        .font(.title)
+                        .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
-                        .padding(.horizontal, 30)
+                        .padding(.vertical, 40)
+                        .padding(.horizontal, 20)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
                     ZStack {
@@ -59,19 +67,37 @@ struct PasswordView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
+                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
+                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 40)
-                            .padding(.top, 10)
+                            .padding(.top, 15)
                             
                             VStack {
                                 
-                                Spacer()
+                                // Pages
+                                HStack {
+                                    
+                                    Text("10")
+                                        .font(Font.system(size: 15))
+                                        .foregroundColor(Color(hex: "#232175"))
+                                        .fontWeight(.semibold)
+                                    
+                                    Text(" / of 13 Forms")
+                                        .font(Font.system(size: 15))
+                                        .foregroundColor(Color(hex: "#232175"))
+                                        .fontWeight(.regular)
+                                    
+                                    Spacer()
+                                    
+                                }
+                                .padding(.leading, 20)
+                                .padding(.top, 25)
                                 
                                 // Sub title
                                 Text("Masukan Password Aplikasi Digital Banking")
@@ -80,7 +106,7 @@ struct PasswordView: View {
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.center)
                                     .padding(.horizontal, 20)
-                                    .padding(.top, 30)
+                                    .padding(.top, 20)
                                 
                                 Text("Password ini digunakan saat anda masuk kedalam Aplikasi Mobile Banking Mestika Bank")
                                     .font(.caption2)
@@ -101,7 +127,7 @@ struct PasswordView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 
-                                NavigationLink(destination: PINView(), label:{
+                                NavigationLink(destination: PINView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -111,18 +137,19 @@ struct PasswordView: View {
                                     
                                 })
                                 .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
+                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 35)
                                 .padding(.vertical, 20)
-                                
+                                .disabled(disableForm)
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
+                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 20)
-                            .padding(.top, 25)
+                            .padding(.top, 40)
+                            
                         }
                         
                     }
@@ -142,7 +169,7 @@ struct PasswordView: View {
     
     var cardForm: some View {
         VStack(alignment: .leading) {
-            if (secured) {
+            if (securedPassword) {
                 ZStack {
                     HStack (spacing: 0) {
                         SecureField("Masukan Password", text: $password)
@@ -152,7 +179,7 @@ struct PasswordView: View {
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedPassword.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -164,14 +191,18 @@ struct PasswordView: View {
             } else {
                 ZStack {
                     HStack (spacing: 0) {
-                        TextField("Masukan Password", text: $password)
-                            .padding()
-                            .frame(width: 200, height: 50)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
+                        TextField("Masukan Password", text: $password, onEditingChanged: { changed in
+                            print("\($password)")
+                            
+                            self.registerData.password = password
+                        })
+                        .padding()
+                        .frame(width: 200, height: 50)
+                        .foregroundColor(Color(hex: "#232175"))
+                        .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedPassword.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -185,7 +216,7 @@ struct PasswordView: View {
             Divider()
                 .padding(.horizontal, 15)
             
-            if (secured) {
+            if (securedConfirmation) {
                 ZStack {
                     HStack (spacing: 0) {
                         SecureField("Konfirmasi Password", text: $confirmationPassword)
@@ -195,7 +226,7 @@ struct PasswordView: View {
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedConfirmation.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -214,7 +245,7 @@ struct PasswordView: View {
                             .keyboardType(.phonePad)
                         
                         Button(action: {
-                            self.secured.toggle()
+                            self.securedConfirmation.toggle()
                         }) {
                             Text("show")
                                 .frame(width: 80, height: 50)
@@ -228,7 +259,7 @@ struct PasswordView: View {
     }
 }
 
-struct FormPasswordView_Previews: PreviewProvider {
+struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
         PasswordView()
     }

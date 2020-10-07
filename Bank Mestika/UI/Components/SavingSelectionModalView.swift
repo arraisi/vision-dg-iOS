@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SavingSelectionModalView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             Group {
@@ -103,7 +105,7 @@ struct SavingSelectionModalView: View {
             
             Spacer()
             
-            NavigationLink(destination: PersonalIdentityView()) {
+            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData)) {
                 Text("Pilih Tabungan ini")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

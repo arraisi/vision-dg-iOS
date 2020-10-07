@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Term_ConditionView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     
     @State var isChecked:Bool = false
     
@@ -123,7 +124,7 @@ struct Term_ConditionView: View {
                 .padding(.bottom, 20)
             }
             
-            NavigationLink(destination: VerificationRegisterDataView()) {
+            NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
                 Text("Berikutnya")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

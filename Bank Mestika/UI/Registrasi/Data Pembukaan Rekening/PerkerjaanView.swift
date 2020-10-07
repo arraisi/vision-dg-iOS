@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct PerkerjaanView: View {
+    @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var pekerjaanId: String?
+    @State var editMode: EditMode = .inactive
     
     var body: some View {
         
@@ -104,20 +106,37 @@ struct PerkerjaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: InformasiPerusahaanView()) {
-                                    
-                                    Text("Berikutnya")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
+                                if (editMode == .inactive) {
+                                    NavigationLink(destination: InformasiPerusahaanView().environmentObject(registerData)) {
+                                        
+                                        Text("Berikutnya")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    }
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 35)
+                                    .padding(.vertical, 20)
+                                } else {
+                                    NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
+                                        
+                                        Text("Simpan")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    }
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 35)
+                                    .padding(.vertical, 20)
                                 }
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 35)
-                                .padding(.vertical, 20)
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))

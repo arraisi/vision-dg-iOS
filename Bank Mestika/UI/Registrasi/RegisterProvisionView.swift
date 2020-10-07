@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegisterProvisionView: View {
     
+    @EnvironmentObject var registerData: RegistrasiModel
+    
     @State var data = [
         ProvisionModel(
             id: 1,
@@ -117,7 +119,7 @@ struct RegisterProvisionView: View {
                 .fixedSize(horizontal: false, vertical: true)
             }
             
-            NavigationLink(destination: PhoneVerificationView()) {
+            NavigationLink(destination: PhoneVerificationView().environmentObject(registerData)) {
                 Text("Lanjut Membuat Rekening")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
