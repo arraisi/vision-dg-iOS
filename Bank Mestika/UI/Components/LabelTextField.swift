@@ -18,19 +18,17 @@ struct LabelTextField: View {
         VStack (alignment: .leading) {
             
             Text(label)
-                .font(.caption)
+                .font(Font.system(size: 10))
                 .fontWeight(.semibold)
-                .foregroundColor(.gray)
+                .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 20)
             
             TextField(placeHolder, text: $value)
-                .frame(height: 10)
-                .font(.subheadline)
-                .padding()
+                .frame(height: 36)
+                .font(Font.system(size: 14))
+                .padding(.horizontal)
                 .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.horizontal, 20)
+                .cornerRadius(10)
         }
        
     }

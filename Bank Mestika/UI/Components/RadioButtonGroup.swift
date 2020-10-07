@@ -22,9 +22,9 @@ struct RadioButton: View {
         label: String,
         callback: @escaping (String)->(),
         selectedID: String,
-        size: CGFloat = 20,
-        color: Color = Color.secondary,
-        textSize: CGFloat = 14
+        size: CGFloat = 19,
+        color: Color = Color(hex: "#707070"),
+        textSize: CGFloat = 10
         ) {
         self.id = id
         self.label = label
@@ -56,10 +56,9 @@ struct RadioButton: View {
                 
                 Spacer()
                 
-            }.foregroundColor(self.color)
-            .padding(.bottom, 10)
+            }
+            .foregroundColor(self.color)
         }
-        .foregroundColor(self.color)
     }
 }
 

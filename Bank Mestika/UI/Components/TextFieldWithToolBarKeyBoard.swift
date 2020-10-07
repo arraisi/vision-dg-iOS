@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestTextfield: UIViewRepresentable {
+struct TextFieldWithToolBarKeyBoard: UIViewRepresentable {
     @Binding var text: String
     
     var keyType: UIKeyboardType
@@ -39,9 +39,9 @@ struct TestTextfield: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UITextFieldDelegate {
-        var parent: TestTextfield
+        var parent: TextFieldWithToolBarKeyBoard
         
-        init(_ textField: TestTextfield) {
+        init(_ textField: TextFieldWithToolBarKeyBoard) {
             self.parent = textField
         }
         

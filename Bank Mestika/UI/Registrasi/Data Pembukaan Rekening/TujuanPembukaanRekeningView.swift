@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TujuanPembukaanRekeningView: View {
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var tujuanPembukaanRekeningId: String?
@@ -27,7 +26,7 @@ struct TujuanPembukaanRekeningView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: UIScreen.main.bounds.height / 2)
+                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -43,12 +42,11 @@ struct TujuanPembukaanRekeningView: View {
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
                         .font(Font.system(size: 24))
-                        .fontWeight(.black)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 30)
                         .padding(.horizontal, 30)
-                        .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
                     ZStack {
@@ -60,37 +58,19 @@ struct TujuanPembukaanRekeningView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
                             .padding(.horizontal, 40)
-                            .padding(.top, 15)
+                            .padding(.top, 10)
                             
                             VStack {
                                 
-                                // Pages
-                                HStack {
-                                    
-                                    Text("01")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.semibold)
-                                    
-                                    Text(" / of 13 Forms")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.regular)
-                                    
-                                    Spacer()
-                                    
-                                }
-                                .padding(.leading, 20)
-                                .padding(.top, 25)
+                                Spacer()
                                 
                                 // Sub title
                                 Text("Tujuan Pembukaan Rekening")
@@ -98,7 +78,7 @@ struct TujuanPembukaanRekeningView: View {
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
                                     .padding(.horizontal, 20)
-                                    .padding(.vertical, 20)
+                                    .padding(.vertical, 30)
                                 
                                 // Forms input
                                 ZStack {
@@ -122,9 +102,9 @@ struct TujuanPembukaanRekeningView: View {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
-                                        .fontWeight(.bold)
+                                        .fontWeight(.semibold)
                                         .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
+                                        .frame(maxWidth: .infinity, maxHeight: 50)
                                     
                                 }
                                 .frame(height: 50)
@@ -136,9 +116,9 @@ struct TujuanPembukaanRekeningView: View {
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
                             .padding(.horizontal, 20)
-                            .padding(.top, 40)
+                            .padding(.top, 25)
                             
                         }
                         
@@ -156,6 +136,7 @@ struct TujuanPembukaanRekeningView: View {
         .navigationBarHidden(true)
         
     }
+    
 }
 
 struct FormTujuanPembukaanRekeningView_Previews: PreviewProvider {

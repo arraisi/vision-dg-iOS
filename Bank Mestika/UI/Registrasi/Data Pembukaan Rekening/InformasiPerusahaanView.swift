@@ -13,14 +13,12 @@ struct InformasiPerusahaanView: View {
     @State var alamatPerusahaan: String = ""
     @State var kelurahan: String = ""
     @State var noTlpPerusahaan: String = ""
-    
-    @State var kodePos : String? = nil
-    @State var arrkodePos = ["140256","140216","140216","140216","140216","140216"]
-    @State var selectionkodePosIndex = 0
-    
-    @State var kecamatan : String? = nil
-    @State var arrKecamatan = ["Rancasari","Antapani","Gede Bage","Cililin","Batujajar","Cimahi"]
-    @State var selectionKecamatanIndex = 0
+    @State var kodePos : String = ""
+    @State var kecamatan : String = ""
+    /*
+     Boolean for Show Modal
+     */
+    @State var showingModal = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -34,7 +32,7 @@ struct InformasiPerusahaanView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: UIScreen.main.bounds.height / 2)
+                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -51,13 +49,12 @@ struct InformasiPerusahaanView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(.title)
-                        .bold()
+                        .font(Font.system(size: 24))
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 40)
-                        .padding(.horizontal, 20)
-                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, 30)
                     
                     // Content
                     ZStack {
@@ -69,37 +66,19 @@ struct InformasiPerusahaanView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
                             .padding(.horizontal, 40)
-                            .padding(.top, 15)
+                            .padding(.top, 10)
                             
                             VStack {
                                 
-                                // Pages
-                                HStack {
-                                    
-                                    Text("08")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.semibold)
-                                    
-                                    Text(" / of 13 Forms")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.regular)
-                                    
-                                    Spacer()
-                                    
-                                }
-                                .padding(.leading, 20)
-                                .padding(.top, 25)
+                                Spacer()
                                 
                                 // Sub title
                                 Text("Masukan Informasi Perusahaan")
@@ -107,7 +86,7 @@ struct InformasiPerusahaanView: View {
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
                                     .padding(.horizontal, 20)
-                                    .padding(.vertical, 20)
+                                    .padding(.vertical, 30)
                                 
                                 // Forms input
                                 ZStack {
@@ -120,7 +99,7 @@ struct InformasiPerusahaanView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                               
+                                
                                 NavigationLink(destination: VerificationAddressView(), label:{
                                     
                                     Text("Berikutnya")
@@ -140,9 +119,9 @@ struct InformasiPerusahaanView: View {
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
                             .padding(.horizontal, 20)
-                            .padding(.top, 40)
+                            .padding(.top, 25)
                             
                         }
                         
@@ -153,100 +132,119 @@ struct InformasiPerusahaanView: View {
                 .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
                 
+                
             }
             
+            // Background Color When Modal Showing
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+            }
+        }
+        .popup(isPresented: $showingModal, type: .default, position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
+            createBottomFloater()
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
         
     }
     
+    // MARK: - Form Group
+    
     var cardForm: some View {
         
         VStack(alignment: .leading) {
             
             LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan")
-            
-            LabelTextField(value: $alamatPerusahaan, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan")
-            
-//            TestTextfield(text: Binding.constant(""), keyType: .namePhonePad)
-//                .frame(height: 10)
-//                .font(.subheadline)
-//                .padding()
-//                .background(Color.gray.opacity(0.1))
-//                .cornerRadius(15)
-//                .padding(.horizontal, 20)
+                .padding(.horizontal, 20)
             
             Group {
                 
-                Text("Kode Pos")
-                    .font(.caption)
+                Text("Alamat Perusahaan")
+                    .font(Font.system(size: 10))
                     .fontWeight(.semibold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(hex: "#707070"))
                     .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
                 
-                TextFieldWithPickerAsInputView(data: self.arrkodePos, placeholder: "Pilih Kode Pos", selectionIndex: self.$selectionkodePosIndex, text: self.$kodePos)
-                    .frame(height: 10)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .padding(.horizontal, 20)
+                HStack {
+                    
+                    TextField("Alamat Perusahaan", text: $alamatPerusahaan)
+                        .font(Font.system(size: 14))
+                        .frame(height: 36)
+                    
+                    Button(action:{
+                        showingModal.toggle()
+                    }, label: {
+                        Image(systemName: "location.viewfinder")
+                            .font(Font.system(size: 20))
+                            .foregroundColor(Color(hex: "#707070"))
+                    })
+                    
+                }
+                .padding(.horizontal)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(10)
                 
             }
+            .padding(.horizontal, 20)
             
-            Group {
-                
-                Text("Kecamatan")
-                    .font(.caption)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
-                
-                TextFieldWithPickerAsInputView(data: self.arrKecamatan, placeholder: "Pilih Kecamatan", selectionIndex: self.$selectionKecamatanIndex, text: self.$kecamatan)
-                    .frame(height: 10)
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .padding(.horizontal, 20)
-                
-            }
+            LabelTextField(value: $kodePos, label: "Kode Pos", placeHolder: "Kode Pos")
+                .padding(.horizontal, 20)
+            
+            LabelTextField(value: $kecamatan, label: "Kecamatan", placeHolder: "Kecamatan")
+                .padding(.horizontal, 20)
             
             Group {
                 
                 Text("No. Telepon Perusahaan")
-                    .font(.caption)
+                    .font(Font.system(size: 10))
                     .fontWeight(.semibold)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(hex: "#707070"))
                     .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 20)
                 
                 HStack {
                     
-                    Text("+62 ").foregroundColor(.gray)
+                    Text("+62 ")
+                        .font(Font.system(size: 14))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(hex: "#707070"))
                     
                     Divider()
                         .frame(height: 30)
                     
                     TextField("No. Telepon", text: $noTlpPerusahaan)
                         .keyboardType(.numberPad)
-                    
+                        .font(Font.system(size: 14))
+                        .frame(height: 36)
                 }
-                .frame(height: 10)
-                .font(.subheadline)
-                .padding()
+                .padding(.horizontal)
                 .background(Color.gray.opacity(0.1))
-                .cornerRadius(15)
-                .padding(.horizontal, 20)
+                .cornerRadius(10)
                 
             }
+            .padding(.horizontal, 20)
             
         }
     }
     
+    // MARK: -Fuction for Create Bottom Floater (Modal)
+    
+    func createBottomFloater() -> some View {
+        VStack(alignment: .leading) {
+            Image("ic_bell")
+                .resizable()
+                .frame(width: 95, height: 95)
+                .padding(.top, 20)
+            Text("Searching Location...")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size: 16))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding(.bottom, 20)
+        }
+        .frame(width: UIScreen.main.bounds.width - 60)
+        .padding(.horizontal, 15)
+        .background(Color.white)
+        .cornerRadius(20)
+    }
 }
 
 struct FormInformasiPerusahaanView_Previews: PreviewProvider {

@@ -21,9 +21,9 @@ struct CheckBoxField: View {
         id: Int,
         markedId: [Int],
         label:String,
-        size: CGFloat = 20,
-        color: Color = Color.secondary,
-        textSize: CGFloat = 14,
+        size: CGFloat = 19,
+        color: Color = Color(hex: "#707070"),
+        textSize: CGFloat = 10,
         callback: @escaping (Int, [Int])->()
     ) {
         self.id = id
@@ -54,9 +54,9 @@ struct CheckBoxField: View {
                 
                 Spacer()
                 
-            }.foregroundColor(self.color)
+            }
+            .foregroundColor(self.color)
         }
-        .foregroundColor(Color.white)
     }
     
 }

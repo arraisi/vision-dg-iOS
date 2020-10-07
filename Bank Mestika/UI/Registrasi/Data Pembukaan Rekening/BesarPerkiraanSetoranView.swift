@@ -22,7 +22,7 @@ struct BesarPerkiraanSetoranView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: UIScreen.main.bounds.height / 2)
+                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -37,13 +37,12 @@ struct BesarPerkiraanSetoranView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(.title)
-                        .bold()
+                        .font(Font.system(size: 24))
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 40)
-                        .padding(.horizontal, 20)
-                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, 30)
                     
                     // Content
                     ZStack {
@@ -55,37 +54,19 @@ struct BesarPerkiraanSetoranView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
                             .padding(.horizontal, 40)
-                            .padding(.top, 15)
+                            .padding(.top, 10)
                             
                             VStack {
                                 
-                                // Pages
-                                HStack {
-                                    
-                                    Text("06")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.semibold)
-                                    
-                                    Text(" / of 13 Forms")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.regular)
-                                    
-                                    Spacer()
-                                    
-                                }
-                                .padding(.leading, 20)
-                                .padding(.top, 25)
+                                Spacer()
                                 
                                 // Sub title
                                 Text("Berapa Besar Perkiraan Setoran Dana Anda Setiap Bulannya")
@@ -94,12 +75,11 @@ struct BesarPerkiraanSetoranView: View {
                                     .fontWeight(.semibold)
                                     .multilineTextAlignment(.center)
                                     .padding(.horizontal, 40)
-                                    .padding(.vertical, 20)
-                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.vertical, 30)
                                 
                                 // Forms input
                                 ZStack {
-
+                                    
                                     RadioButtonGroup(
                                         items: ["1", "2", "3"],
                                         labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
@@ -133,9 +113,9 @@ struct BesarPerkiraanSetoranView: View {
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
                             .padding(.horizontal, 20)
-                            .padding(.top, 40)
+                            .padding(.top, 24)
                             
                         }
                         
