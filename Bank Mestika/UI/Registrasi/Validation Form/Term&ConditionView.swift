@@ -10,9 +10,26 @@ import SwiftUI
 struct Term_ConditionView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     
-    @State var isChecked:Bool = false
+    @State var scrollPosition: CGFloat = 0.0
     
-    func toggle() { isChecked = !isChecked }
+    @State var isChecked:Bool = false
+    @State var isChecked1:Bool = false
+    @State var isChecked2:Bool = false
+    
+    func toggle() {
+        isChecked = !isChecked
+        scrollPosition = 4
+    }
+    
+    func toggle1() {
+        isChecked1 = !isChecked1
+        scrollPosition = 4
+    }
+    func toggle2() { isChecked2 = !isChecked2 }
+    
+    var disableForm: Bool {
+        isChecked && isChecked2
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -78,12 +95,18 @@ struct Term_ConditionView: View {
     var cardForm: some View {
         VStack(alignment: .leading) {
             ScrollView {
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium sollicitudin ex. Nulla faucibus tellus sed est auctor volutpat. Integer sollicitudin, nisi quis luctus malesuada, quam tortor elementum ligula, ut interdum leo turpis id mi. Vivamus nec consequat nibh. Cras augue ligula, vulputate id est in, suscipit convallis ligula. Duis porta, lorem id pharetra rutrum, neque metus eleifend tellus, et interdum odio dui ut lorem. Nunc elementum erat magna, eget lobortis mi venenatis sit amet. Ut vitae dictum odio. Quisque convallis enim eros, non sagittis nunc pulvinar ac. In vel malesuada dui, vel posuere lacus. Donec tempus libero ac augue lacinia convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium sollicitudin ex. Nulla faucibus tellus sed est auctor volutpat. Integer sollicitudin, nisi quis luctus malesuada, quam tortor elementum ligula, ut interdum leo turpis id mi. Vivamus nec consequat nibh. Cras augue ligula, vulputate id est in, suscipit convallis ligula. Duis porta, lorem id pharetra rutrum, neque metus eleifend tellus, et interdum odio dui ut lorem. Nunc elementum erat magna, eget lobortis mi venenatis sit amet. Ut vitae dictum odio. Quisque convallis enim eros, non sagittis nunc pulvinar ac. In vel malesuada dui, vel posuere lacus. Donec tempus libero ac augue lacinia convallis.")
-                    .font(.subheadline)
-                    .foregroundColor(Color(hex: "#707070"))
-                    .multilineTextAlignment(.leading)
-                    .padding(.top, 20)
-                    .padding(.horizontal, 20)
+                ScrollViewReader { scrollProxy in
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium sollicitudin ex. Nulla faucibus tellus sed est auctor volutpat. Integer sollicitudin, nisi quis luctus malesuada, quam tortor elementum ligula, ut interdum leo turpis id mi. Vivamus nec consequat nibh. Cras augue ligula, vulputate id est in, suscipit convallis ligula. Duis porta, lorem id pharetra rutrum, neque metus eleifend tellus, et interdum odio dui ut lorem. Nunc elementum erat magna, eget lobortis mi venenatis sit amet. Ut vitae dictum odio. Quisque convallis enim eros, non sagittis nunc pulvinar ac. In vel malesuada dui, vel posuere lacus. Donec tempus libero ac augue lacinia convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pretium sollicitudin ex. Nulla faucibus tellus sed est auctor volutpat. Integer sollicitudin, nisi quis luctus malesuada, quam tortor elementum ligula, ut interdum leo turpis id mi. Vivamus nec consequat nibh. Cras augue ligula, vulputate id est in, suscipit convallis ligula. Duis porta, lorem id pharetra rutrum, neque metus eleifend tellus, et interdum odio dui ut lorem. Nunc elementum erat magna, eget lobortis mi venenatis sit amet. Ut vitae dictum odio. Quisque convallis enim eros, non sagittis nunc pulvinar ac. In vel malesuada dui, vel posuere lacus. Donec tempus libero ac augue lacinia convallis.")
+                        .id("text")
+                        .font(.subheadline)
+                        .foregroundColor(Color(hex: "#707070"))
+                        .multilineTextAlignment(.leading)
+                        .padding(.top, 20)
+                        .padding(.horizontal, 20)
+                        .onChange(of: scrollPosition) { newScrollPosition in
+                            scrollProxy.scrollTo("text")
+                        }
+                }
             }
             
             Divider()
@@ -102,9 +125,9 @@ struct Term_ConditionView: View {
                 .padding(.bottom, 5)
             }
             
-            Button(action: toggle) {
+            Button(action: toggle1) {
                 HStack(alignment: .top) {
-                    Image(systemName: isChecked ? "checkmark.square": "square")
+                    Image(systemName: isChecked1 ? "checkmark.square": "square")
                     Text("* Saya Adalah Warga Negara Indonesia dan tidak memiliki kewajiban pajak di Negara lain")
                         .font(.caption)
                         .foregroundColor(Color(hex: "#707070"))
@@ -113,9 +136,9 @@ struct Term_ConditionView: View {
                 .padding(.bottom, 5)
             }
             
-            Button(action: toggle) {
+            Button(action: toggle2) {
                 HStack(alignment: .top) {
-                    Image(systemName: isChecked ? "checkmark.square": "square")
+                    Image(systemName: isChecked2 ? "checkmark.square": "square")
                     Text("* Saya Adalah Warga Negara Indonesia dan tidak memiliki kewajiban pajak di Negara lain")
                         .font(.caption)
                         .foregroundColor(Color(hex: "#707070"))
@@ -131,12 +154,13 @@ struct Term_ConditionView: View {
                     .font(.system(size: 13))
                     .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }
-            .background(Color(hex: "#2334D0"))
+            .background(Color(hex: !isChecked ? "#CBD1D9" : "#2334D0"))
             .cornerRadius(12)
             .padding(.horizontal, 20)
             .padding(.top, 10)
             .padding(.bottom, 20)
-
+            .disabled(!isChecked)
+            
         }
         .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, maxHeight: .infinity)
         .background(Color.white)

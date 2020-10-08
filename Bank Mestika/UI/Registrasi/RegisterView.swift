@@ -112,7 +112,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
+            NavigationLink(destination: Term_ConditionView().environmentObject(registerData)) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
