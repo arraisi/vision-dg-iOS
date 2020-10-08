@@ -9,9 +9,12 @@ import SwiftUI
 
 struct FormSumberPenyandangDanaView: View {
     
+    @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var sumberPenyandangDanaId: String?
+    @State var sumberPenyandangDanaId: Int?
+    
+    var sumberPenyandangDana = [1:"Pilihan 1", 2:"Pilihan 2", 3:"Pilihan 3"]
     
     var body: some View {
         ZStack{
@@ -80,10 +83,12 @@ struct FormSumberPenyandangDanaView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: ["1", "2", "3"],
-                                        labels: ["Pilihan 1", "Pilihan 2", "Pilihan 3"],
+                                        items: Array(sumberPenyandangDana.keys),
+                                        labels: Array(sumberPenyandangDana.values),
                                         selectedId: $sumberPenyandangDanaId) { selected in
                                         print("Selected is: \(selected)")
+                                        
+                                        registerData.sumberPenyandangDana = sumberPenyandangDana[sumberPenyandangDanaId ?? 0] ?? ""
                                     }
                                     .padding()
                                     

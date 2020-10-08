@@ -19,6 +19,8 @@ class RegistrasiModel: ObservableObject {
     @Published var perkiraanSetoran = ""
     @Published var pekerjaan = ""
     @Published var besarPerkiraanSetoran = ""
+    @Published var sumberPenyandangDana = ""
+    @Published var sumberPendapatanLainnya = ""
     @Published var namaPerusahaan = ""
     @Published var alamatPerusahaan = ""
     @Published var kodePos = ""

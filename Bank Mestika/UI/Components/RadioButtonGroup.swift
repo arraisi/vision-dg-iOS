@@ -9,19 +9,19 @@ import SwiftUI
 
 struct RadioButton: View {
 
-    let id: String
+    let id: Int
     let label: String
-    let callback: (String)->()
-    let selectedID : String
+    let callback: (Int)->()
+    let selectedID : Int
     let size: CGFloat
     let color: Color
     let textSize: CGFloat
 
     init(
-        _ id: String,
+        _ id: Int,
         label: String,
-        callback: @escaping (String)->(),
-        selectedID: String,
+        callback: @escaping (Int)->(),
+        selectedID: Int,
         size: CGFloat = 19,
         color: Color = Color(hex: "#707070"),
         textSize: CGFloat = 10
@@ -66,23 +66,23 @@ struct RadioButton: View {
 // MARK: - Radio Button Group
 struct RadioButtonGroup: View {
 
-    let items : [String]
+    let items : [Int]
     
     let labels : [String]
 
-    @Binding var selectedId: String?
+    @Binding var selectedId: Int?
 
-    let callback: (String) -> ()
+    let callback: (Int) -> ()
 
     var body: some View {
         VStack {
             ForEach(0..<items.count) { index in
-                RadioButton(self.items[index], label: self.labels[index], callback: self.radioGroupCallback, selectedID: self.selectedId ?? "0")
+                RadioButton(self.items[index], label: self.labels[index], callback: self.radioGroupCallback, selectedID: self.selectedId ?? 0)
             }
         }
     }
 
-    func radioGroupCallback(id: String) {
+    func radioGroupCallback(id: Int) {
         selectedId = id
         callback(id)
     }
@@ -90,7 +90,7 @@ struct RadioButtonGroup: View {
 
 struct RadioButtonGroup_Previews: PreviewProvider {
     static var previews: some View {
-        RadioButtonGroup(items: ["1", "2", "3", "4", "5"], labels: ["Rome", "London", "Paris", "Berlin", "New York"], selectedId: Binding.constant("1")) { selected in
+        RadioButtonGroup(items: [1, 2, 3, 4, 5], labels: ["Rome", "London", "Paris", "Berlin", "New York"], selectedId: Binding.constant(1)) { selected in
             print("Selected is: \(selected)")
         }
     }

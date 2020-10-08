@@ -11,8 +11,19 @@ struct PerkerjaanView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var pekerjaanId: String?
+    @State var pekerjaanId: Int?
     @State var editMode: EditMode = .inactive
+    
+    var pekerjaan = [
+        1: "Pejabat Pemerintah",
+        2: "Parpol",
+        3: "Pegawai Swasta",
+        4: "Wirausaha",
+        5: "Pegawai Negeri",
+        6: "Pegawai BUMN / BUMD",
+        7: "Polisi",
+        8: "Militer",
+        9: "Pensiunan"]
     
     var body: some View {
         
@@ -83,19 +94,12 @@ struct PerkerjaanView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
-                                        labels: [
-                                            "Pejabat Pemerintah",
-                                            "Parpol",
-                                            "Pegawai Swasta",
-                                            "Wirausaha",
-                                            "Pegawai Negeri",
-                                            "Pegawai BUMN / BUMD",
-                                            "Polisi",
-                                            "Militer",
-                                            "Pensiunan"],
+                                        items: Array(pekerjaan.keys),
+                                        labels:Array(pekerjaan.values),
                                         selectedId: $pekerjaanId) { selected in
                                         print("Selected is: \(selected)")
+                                        
+                                        registerData.pekerjaan = pekerjaan[pekerjaanId ?? 0] ?? ""
                                     }
                                     .padding()
                                     

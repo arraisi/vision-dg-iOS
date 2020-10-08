@@ -9,9 +9,16 @@ import SwiftUI
 
 struct PenghasilanKotorView: View {
     
+    @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var penghasilanKotorId: String?
+    @State var penghasilanKotorId: Int?
+    
+    var penghasilanKotor = [1: "> Rp. 5 Juta",
+                            2:"Rp. 5 Juta - Rp. 10 Juta",
+                            3:"Rp. 10 Juta - Rp. 20 Juta",
+                            4:"Rp. 20 Juta - Rp. 100 Juta",
+                            5:"> Rp. 100 Juta"]
     
     var body: some View {
         
@@ -81,10 +88,13 @@ struct PenghasilanKotorView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: ["1", "2", "3", "4", "5"],
-                                        labels: ["> Rp. 5 Juta", "Rp. 5 Juta - Rp. 10 Juta", "Rp. 10 Juta - Rp. 20 Juta", "Rp. 20 Juta - Rp. 100 Juta", "> Rp. 100 Juta"],
+                                        items: Array(penghasilanKotor.keys),
+                                        labels: Array(penghasilanKotor.values),
                                         selectedId: $penghasilanKotorId) { selected in
                                         print("Selected is: \(selected)")
+                                        
+                                        registerData.penghasilanKotor = penghasilanKotor[penghasilanKotorId ?? 0] ?? ""
+                                        
                                     }
                                     .padding()
                                     

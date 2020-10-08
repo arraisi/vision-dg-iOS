@@ -22,6 +22,8 @@ struct TujuanPembukaanRekeningView: View {
     
     @State var selectedItems: [Int] = []
     
+    var tujuanPembukaanRekening: [Int: String] = [1:"Pinjaman / Angsuran Kredit", 2:"Keperluan Usaha", 3:"Keperluan Sehari - hari", 4:"Simpanan"]
+    
     var body: some View {
         
         ZStack(alignment: .top) {
@@ -89,11 +91,18 @@ struct TujuanPembukaanRekeningView: View {
                                 // Forms input
                                 ZStack {
                                     
-                                    CheckBoxGroup(items: [1, 2, 3, 4], markedId: $selectedItems, labels: [
-                                        "Pinjaman / Angsuran Kredit",
-                                        "Keperluan Usaha", "Keperluan Sehari - hari", "Simpanan"
-                                    ]) { id, marked in
-                                        print(selectedItems)
+                                    CheckBoxGroup(items: Array(tujuanPembukaanRekening.keys), markedId: $selectedItems, labels: Array(tujuanPembukaanRekening.values)) { id, marked in
+                                        
+                                        for (index, item) in selectedItems.enumerated() {
+                                            
+                                            registerData.tujuanPembukaan += tujuanPembukaanRekening[item]!
+                                            
+                                            if index != selectedItems.endIndex-1 {
+                                                registerData.tujuanPembukaan += ", "
+                                            }
+                                        }
+                                        
+                                        print(registerData.tujuanPembukaan)
                                     }
                                     .padding()
                                     
