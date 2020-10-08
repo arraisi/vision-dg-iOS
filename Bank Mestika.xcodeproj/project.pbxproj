@@ -30,6 +30,7 @@
 		524F95A3252EEECF003D7FFF /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */; };
 		524F95B2252EF06F003D7FFF /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */; };
 		524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95BC252EF08E003D7FFF /* LoadingView.swift */; };
+		524F95D7252F0A00003D7FFF /* VerifikasiPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */; };
 		52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF1252452F80031392E /* PersonalIdentityView.swift */; };
 		52794BFA2524530F0031392E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF92524530F0031392E /* Coordinator.swift */; };
 		52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BFE2524532D0031392E /* EmailVerificationView.swift */; };
@@ -126,6 +127,7 @@
 		524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
 		524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		524F95BC252EF08E003D7FFF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifikasiPINView.swift; sourceTree = "<group>"; };
 		52794BF1252452F80031392E /* PersonalIdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalIdentityView.swift; sourceTree = "<group>"; };
 		52794BF92524530F0031392E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		52794BFE2524532D0031392E /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				52BE531025297C3F00ADE164 /* PINView.swift */,
 				C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */,
 				C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */,
+				524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */,
 			);
 			path = "Data Pembukaan Rekening";
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */,
 				C09EA8902525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift in Sources */,
 				52BE530C2529793800ADE164 /* PasswordView.swift in Sources */,
+				524F95D7252F0A00003D7FFF /* VerifikasiPINView.swift in Sources */,
 				5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */,
 				524F95B2252EF06F003D7FFF /* LoadingIndicator.swift in Sources */,
 				527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */,

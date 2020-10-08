@@ -51,6 +51,7 @@ struct OTPTextField: UIViewRepresentable {
         textField.delegate = context.coordinator
         textField.textAlignment = .center
         textField.keyboardType = .decimalPad
+        textField.font = .systemFont(ofSize: 24, weight: .bold)
         return textField
     }
 

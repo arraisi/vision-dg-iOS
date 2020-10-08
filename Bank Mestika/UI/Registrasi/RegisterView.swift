@@ -130,7 +130,7 @@ struct RegisterView: View {
 //            .cornerRadius(12)
             
             
-            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData)) {
+            NavigationLink(destination: PINView().environmentObject(registerData)) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
