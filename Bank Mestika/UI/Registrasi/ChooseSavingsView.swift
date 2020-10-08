@@ -83,8 +83,8 @@ struct ChooseSavingsView: View {
                                                 cardHeight: cardHeight
                                             ) {
                                                 Image("\(item.image)")
-                                                    .resizable()
                                                     .padding(.bottom, 20)
+                                                    .cornerRadius(8)
                                             }
                                             .cornerRadius(8)
                                             .shadow(color: Color.gray, radius: 4, x: 0, y: 4)

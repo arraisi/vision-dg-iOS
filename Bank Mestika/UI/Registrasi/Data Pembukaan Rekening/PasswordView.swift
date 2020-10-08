@@ -89,6 +89,7 @@ struct PasswordView: View {
                                     .multilineTextAlignment(.center)
                                     .padding(.horizontal, 20)
                                     .padding(.top, 20)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 
                                 Text("Password ini digunakan saat anda masuk kedalam Aplikasi Mobile Banking Mestika Bank")
                                     .font(.caption2)
@@ -146,6 +147,9 @@ struct PasswordView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
         
     }
     
