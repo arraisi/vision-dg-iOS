@@ -94,7 +94,7 @@ struct PhoneVerificationView: View {
                 TextField("No. Telepon", text: $phoneNumber, onEditingChanged: { changed in
                     print("\($phoneNumber)")
                     
-                    self.registerData.noTelepon = phoneNumber
+                    self.registerData.noTelepon = "0" + phoneNumber
                 }, onCommit: {
                     print("Commited")
                 })

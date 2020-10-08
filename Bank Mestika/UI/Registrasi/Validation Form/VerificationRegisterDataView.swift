@@ -105,14 +105,17 @@ struct VerificationRegisterDataView: View {
             Group {
                 LabelTextField(value: $registerData.nik, label: "KTP", placeHolder: "KTP")
                     .padding(.top, 20)
+                    .padding(.horizontal, 20)
                     .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 LabelTextField(value: $registerData.noTelepon, label: "No. Telepon", placeHolder: "No. Telepon")
                     .padding(.top, 10)
+                    .padding(.horizontal, 20)
                     .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 LabelTextField(value: $registerData.email, label: "Email", placeHolder: "Email")
                     .padding(.top, 10)
+                    .padding(.horizontal, 20)
                     .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 VStack {

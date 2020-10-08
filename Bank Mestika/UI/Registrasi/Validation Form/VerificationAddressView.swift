@@ -122,14 +122,19 @@ struct VerificationAddressView: View {
                         .padding(.horizontal, 20)
                     
                     LabelTextField(value: $registerData.alamatPerusahaan, label: "Alamat", placeHolder: "Alamat")
+                        .padding(.horizontal, 20)
                     
                     LabelTextField(value: $registerData.rtrw, label: "RT/RW", placeHolder: "RT/RW")
+                        .padding(.horizontal, 20)
                     
                     LabelTextField(value: $registerData.kelurahan, label: "Kelurahan", placeHolder: "Kelurahan")
+                        .padding(.horizontal, 20)
                     
                     LabelTextField(value: $registerData.kecamatan, label: "Kecamatan", placeHolder: "Kecamatan")
+                        .padding(.horizontal, 20)
                     
                     LabelTextField(value: $registerData.kodePos, label: "Kode Pos", placeHolder: "Kode Pos")
+                        .padding(.horizontal, 20)
                         .padding(.bottom, 20)
                 }
             } else {

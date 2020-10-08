@@ -9,7 +9,6 @@ import SwiftUI
 import UIKit
 
 struct PersonalIdentityView: View {
-    @EnvironmentObject var registerData: RegistrasiModel
     
     @State var nik: String = ""
     @State var imageKTP: Image? = nil
@@ -29,8 +28,6 @@ struct PersonalIdentityView: View {
     
     @State var isChecked:Bool = false
     
-    @EnvironmentObject var registerDataSave: RegistrasiModel
-    
     func toggle() { isChecked = !isChecked }
     
     /*
@@ -44,6 +41,7 @@ struct PersonalIdentityView: View {
         }
     }
     
+    @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {

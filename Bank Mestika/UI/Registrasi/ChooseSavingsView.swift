@@ -67,121 +67,136 @@ struct ChooseSavingsView: View {
                             CarouselTabungan(
                                 numberOfItems: CGFloat(items.count),
                                 spacing: spacing,
-                                widthOfHiddenCards: widthOfHiddenCards
+                                widthOfHiddenCards: 15
                             ) {
                                 ForEach(items, id: \.self.id) { item in
                                     Item(
                                         _id: Int(item.id),
                                         spacing: spacing,
-                                        widthOfHiddenCards: widthOfHiddenCards,
-                                        cardHeight: cardHeight
+                                        widthOfHiddenCards: 0,
+                                        cardHeight: .infinity
                                     ) {
-                                        Image("\(item.image)")
-                                            .resizable()
+                                        VStack {
+                                            Item(
+                                                _id: Int(item.id),
+                                                spacing: spacing,
+                                                widthOfHiddenCards: 15,
+                                                cardHeight: cardHeight
+                                            ) {
+                                                Image("\(item.image)")
+                                                    .resizable()
+                                                    .padding(.bottom, 20)
+                                            }
+                                            .cornerRadius(8)
+                                            .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+                                            .transition(AnyTransition.slide)
+                                            .animation(.spring())
+                                            
+                                            VStack(alignment: .leading) {
+                                                Text("Deposit Tabungan")
+                                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    .foregroundColor(Color(hex: "#3756DF"))
+                                                    .padding(.top, 10)
+                                                    .padding(.horizontal, 15)
+                                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                                
+                                                Text("Keunggulan Tabungan :")
+                                                    .font(.footnote)
+                                                    .padding(.top, 10)
+                                                    .padding(.horizontal, 15)
+                                                    .foregroundColor(Color(hex: "#5A6876"))
+                                                
+                                                HStack(alignment: .top) {
+                                                    Text("01")
+                                                        .font(.subheadline)
+                                                        .foregroundColor(Color(hex: "#232175"))
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                                                        .font(.caption)
+                                                        .foregroundColor(Color(hex: "#5A6876"))
+                                                }
+                                                .padding(.top, 5)
+                                                .padding(.horizontal, 15)
+                                                
+                                                HStack(alignment: .top) {
+                                                    Text("02")
+                                                        .font(.subheadline)
+                                                        .foregroundColor(Color(hex: "#232175"))
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                                                        .font(.caption)
+                                                        .foregroundColor(Color(hex: "#5A6876"))
+                                                }
+                                                .padding(.top, 5)
+                                                .padding(.horizontal, 15)
+                                                
+                                                HStack(alignment: .top) {
+                                                    Text("03")
+                                                        .font(.subheadline)
+                                                        .foregroundColor(Color(hex: "#232175"))
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                                                        .font(.caption)
+                                                        .foregroundColor(Color(hex: "#5A6876"))
+                                                }
+                                                .padding(.top, 5)
+                                                .padding(.horizontal, 15)
+                                                
+                                                HStack(alignment: .top) {
+                                                    Text("04")
+                                                        .font(.subheadline)
+                                                        .foregroundColor(Color(hex: "#232175"))
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                                                        .font(.caption)
+                                                        .foregroundColor(Color(hex: "#5A6876"))
+                                                }
+                                                .padding(.top, 5)
+                                                .padding(.horizontal, 15)
+                                                
+                                                HStack(alignment: .top) {
+                                                    Text("05")
+                                                        .font(.subheadline)
+                                                        .foregroundColor(Color(hex: "#232175"))
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
+                                                        .font(.caption)
+                                                        .foregroundColor(Color(hex: "#5A6876"))
+                                                }
+                                                .padding(.top, 5)
+                                                .padding(.horizontal, 15)
+                                                
+                                                Button(action: {
+                                                    showingModal.toggle()
+                                                }) {
+                                                    Text("Pilih Tabungan ini")
+                                                        .foregroundColor(.white)
+                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                        .font(.system(size: 13))
+                                                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                                                }
+                                                .background(Color(hex: "#2334D0"))
+                                                .cornerRadius(12)
+                                                .padding(.horizontal, 20)
+                                                .padding(.bottom, 10)
+                                                .padding(.top, 10)
+                                                
+                                            }
+                                            .frame(width: UIScreen.main.bounds.width - 40)
+                                            .background(Color.white)
+                                            .cornerRadius(15)
+                                            .shadow(radius: 30)
+                                        }
+                                        .cornerRadius(8)
+                                        .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+                                        .transition(AnyTransition.slide)
+                                        .animation(.spring())
                                     }
-                                    .cornerRadius(8)
-                                    .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
-                                    .transition(AnyTransition.slide)
-                                    .animation(.spring())
                                 }
                             }
                         }
                         
-                        VStack(alignment: .leading) {
-                            Text("Deposit Tabungan")
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .foregroundColor(Color(hex: "#3756DF"))
-                                .padding(.top, 10)
-                                .padding(.horizontal, 15)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Text("Keunggulan Tabungan :")
-                                .font(.footnote)
-                                .padding(.top, 10)
-                                .padding(.horizontal, 15)
-                                .foregroundColor(Color(hex: "#5A6876"))
-                            
-                            HStack(alignment: .top) {
-                                Text("01")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                                    .font(.caption)
-                                    .foregroundColor(Color(hex: "#5A6876"))
-                            }
-                            .padding(.top, 5)
-                            .padding(.horizontal, 15)
-                            
-                            HStack(alignment: .top) {
-                                Text("02")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                                    .font(.caption)
-                                    .foregroundColor(Color(hex: "#5A6876"))
-                            }
-                            .padding(.top, 5)
-                            .padding(.horizontal, 15)
-                            
-                            HStack(alignment: .top) {
-                                Text("03")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                                    .font(.caption)
-                                    .foregroundColor(Color(hex: "#5A6876"))
-                            }
-                            .padding(.top, 5)
-                            .padding(.horizontal, 15)
-                            
-                            HStack(alignment: .top) {
-                                Text("04")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                                    .font(.caption)
-                                    .foregroundColor(Color(hex: "#5A6876"))
-                            }
-                            .padding(.top, 5)
-                            .padding(.horizontal, 15)
-                            
-                            HStack(alignment: .top) {
-                                Text("05")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod")
-                                    .font(.caption)
-                                    .foregroundColor(Color(hex: "#5A6876"))
-                            }
-                            .padding(.top, 5)
-                            .padding(.horizontal, 15)
-                            
-                            Button(action: {
-                                showingModal.toggle()
-                            }) {
-                                Text("Pilih Tabungan ini")
-                                    .foregroundColor(.white)
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                    .font(.system(size: 13))
-                                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                            }
-                            .background(Color(hex: "#2334D0"))
-                            .cornerRadius(12)
-                            .padding(.horizontal, 20)
-                            .padding(.bottom, 10)
-                            .padding(.top, 10)
-                            
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 40)
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .shadow(radius: 30)
                     }
                 }
                 
@@ -315,7 +330,6 @@ struct Canvas<Content : View> : View {
     var body: some View {
         content
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, alignment: .center)
-            .background(Color(hex: "#F6F8FB").edgesIgnoringSafeArea(.all))
             .padding(.bottom, 20)
     }
 }
