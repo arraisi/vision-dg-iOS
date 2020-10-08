@@ -18,12 +18,12 @@ struct Term_ConditionView: View {
     
     func toggle() {
         isChecked = !isChecked
-        scrollPosition = 4
+        scrollPosition = 0.3
     }
     
     func toggle1() {
         isChecked1 = !isChecked1
-        scrollPosition = 4
+        scrollPosition = 1
     }
     func toggle2() { isChecked2 = !isChecked2 }
     

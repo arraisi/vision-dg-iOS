@@ -1,16 +1,20 @@
 PODS:
+  - Alamofire (5.2.2)
   - ExytePopupView (0.0.7)
 
 DEPENDENCIES:
+  - Alamofire
   - ExytePopupView
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - ExytePopupView
 
 SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   ExytePopupView: 1ec76e06509bafd4aeb8672ea3298bb46a7c2c51
 
-PODFILE CHECKSUM: 9cb7c869db4e912b3c4b96a2b55dcc9ea51d739f
+PODFILE CHECKSUM: 39b82fedb1ae118a8bea4850316fbea7635e87ef
 
 COCOAPODS: 1.9.1

@@ -30,7 +30,7 @@ struct PINView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: UIScreen.main.bounds.height / 2)
+                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -47,7 +47,7 @@ struct PINView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(.title)
+                        .font(Font.system(size: 24))
                         .bold()
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
@@ -77,25 +77,7 @@ struct PINView: View {
                             .padding(.top, 15)
                             
                             VStack {
-                                
-                                // Pages
-                                HStack {
-                                    
-                                    Text("11")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.semibold)
-                                    
-                                    Text(" / of 13 Forms")
-                                        .font(Font.system(size: 15))
-                                        .foregroundColor(Color(hex: "#232175"))
-                                        .fontWeight(.regular)
-                                    
-                                    Spacer()
-                                    
-                                }
-                                .padding(.leading, 20)
-                                .padding(.top, 25)
+                                Spacer()
                                 
                                 // Sub title
                                 Text("Masukan PIN Transaksi Perbankan")
@@ -257,8 +239,10 @@ struct PINView: View {
     }
 }
 
+#if DEBUG
 struct PINView_Previews: PreviewProvider {
     static var previews: some View {
         PINView()
     }
 }
+#endif

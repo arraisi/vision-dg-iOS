@@ -7,5 +7,6 @@ target 'Bank Mestika' do
 
   # Pods for Bank Mestika
   pod 'ExytePopupView'
+  pod 'Alamofire'
 
 end

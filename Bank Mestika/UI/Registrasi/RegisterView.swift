@@ -13,17 +13,19 @@ var data = [
         id: 0,
         title: "Nikmati Kemudahan Disetiap Transaksi",
         desc: "Start an entirely new payment era with smart wallet",
-        image: "Slider"
+        image: "Slider Full"
     ),
     ImageCarousel(
         id: 0,
         title: "Nikmati Kemudahan Disetiap Transaksi",
         desc: "Start an entirely new payment era with smart wallet",
-        image: "Slider"
+        image: "Slider Full"
     )
 ]
 
 struct RegisterView: View {
+    
+    @ObservedObject var viewModel = AssetsViewModel()
     
     var registerData = RegistrasiModel()
     
@@ -38,6 +40,10 @@ struct RegisterView: View {
     @State var menu = 0
     @State var page = 0
     
+    init() {
+        viewModel.getPhoneUUID()
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -47,7 +53,9 @@ struct RegisterView: View {
                     header
                         .padding(.top, 20)
                         .padding(.horizontal, 30)
-                    imageSlider
+                    LoadingView(isShowing: .constant(viewModel.isLoading)) {
+                        imageSlider
+                    }
                     footerBtn
                         .padding(.top, 20)
                         .padding(.bottom, 35)
@@ -197,72 +205,21 @@ private struct Card : View {
     var height: CGFloat
     
     var body: some View{
-        if (height < 800) {
+        VStack{
             VStack{
-                VStack{
-                    Image(self.data.image)
-                        .resizable()
-                        .frame(height: 200)
-                    
-                    Text(self.data.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .font(.system(size: 14))
-                        .padding(.top, 20)
-                        .padding(.horizontal, 20)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Text(self.data.desc)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .font(.system(size: 11))
-                        .padding(.top, 5)
-                        .padding(.horizontal, 20)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    PageControl(page: self.$page)
-                        .padding([.top], 10)
-                }
-                .background(Color(hex: "#2334D0"))
-                .cornerRadius(50)
-                .padding(.top, 25)
+                Image(self.data.image)
+                    .resizable()
+                
+                PageControl(page: self.$page)
+                    .padding([.top], 10)
             }
-            .padding(.horizontal, 30)
-            .frame(width: self.width)
-            .animation(.default)
-        } else {
-            VStack{
-                VStack{
-                    Image(self.data.image)
-                        .resizable()
-                    
-                    Text(self.data.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .font(.title3)
-                        .padding(.top, 20)
-                        .padding(.horizontal, 20)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Text(self.data.desc)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .font(.subheadline)
-                        .padding(.top, 5)
-                        .padding(.horizontal, 20)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    PageControl(page: self.$page)
-                        .padding([.top], 10)
-                }
-                .background(Color(hex: "#2334D0"))
-                .cornerRadius(50)
-                .padding(.top, 25)
-            }
-            .padding(.horizontal, 30)
-            .frame(width: self.width)
-            .animation(.default)
+            .background(Color(hex: "#2334D0"))
+            .cornerRadius(50)
+            .padding(.top, 25)
         }
+        .padding(.horizontal, 30)
+        .frame(width: self.width)
+        .animation(.default)
     }
 }
 
