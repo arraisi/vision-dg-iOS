@@ -11,8 +11,10 @@ struct BesarPerkiraanPenarikanView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var besarPerkiraanPenarikanId: String?
+    @State var besarPerkiraanPenarikanId: Int?
     @State var editMode: EditMode = .inactive
+    
+    var besarPerkiraanPenarikan: [Int:String] = [1:"<== 30 Juta", 2:"> 30 - 60 Juta", 3:"> 60 Juta"]
     
     var body: some View {
         
@@ -83,10 +85,12 @@ struct BesarPerkiraanPenarikanView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: ["1", "2", "3"],
-                                        labels: ["<== 30 Juta", "> 30 - 60 Juta", "> 60 Juta"],
+                                        items: Array(besarPerkiraanPenarikan.keys),
+                                        labels: Array(besarPerkiraanPenarikan.values),
                                         selectedId: $besarPerkiraanPenarikanId) { selected in
                                         print("Selected is: \(selected)")
+                                        
+                                        registerData.besarPerkiraanPenarikan = besarPerkiraanPenarikan[besarPerkiraanPenarikanId ?? 0] ?? ""
                                     }
                                     .padding()
                                     

@@ -11,9 +11,12 @@ struct VerificationAddressView: View {
     
     @EnvironmentObject var registerData: RegistrasiModel
     
-    @State var selected: String = "1"
+    @State var selected: Int = 1
     @State var alamat: String = ""
-    @State var verificationAddress: String?
+    @State var verificationAddressId: Int?
+    
+    var verificationAddress = [1:"Ya, alamat sesuai",
+                               2:"Tidak, alamat tidak sesuai"]
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -103,10 +106,9 @@ struct VerificationAddressView: View {
             ZStack {
 
                 RadioButtonGroup(
-                    items: ["1", "2"],
-                    labels: ["Ya, alamat sesuai",
-                             "Tidak, alamat tidak sesuai"],
-                    selectedId: $verificationAddress) { selected in
+                    items: Array(verificationAddress.keys),
+                    labels: Array(verificationAddress.values),
+                    selectedId: $verificationAddressId) { selected in
                     print("Selected is: \(selected)")
                     self.selected = selected
                 }
@@ -116,7 +118,7 @@ struct VerificationAddressView: View {
                 
             }
             
-            if (selected == "2") {
+            if (selected == 1) {
                 Group {
                     Divider()
                         .padding(.horizontal, 20)
