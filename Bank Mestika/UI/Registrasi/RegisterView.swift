@@ -54,7 +54,9 @@ struct RegisterView: View {
                         .padding(.top, 20)
                         .padding(.horizontal, 30)
                     LoadingView(isShowing: .constant(viewModel.isLoading)) {
-                        imageSlider
+                        NavigationLink(destination: IncomingVideoCallView()) {
+                            imageSlider
+                        }
                     }
                     footerBtn
                         .padding(.top, 20)
