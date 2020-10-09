@@ -73,7 +73,7 @@ struct PerkiraanPenarikanView: View {
                                 Spacer()
                                 
                                 // Sub title
-                                Text("Berapa Kali Perkiraan Penarikan Dana dalam")
+                                Text("Berapa Kali Perkiraan Penarikan Dana dalam Sebulan")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
@@ -89,8 +89,8 @@ struct PerkiraanPenarikanView: View {
                                         labels: Array(perkiraanPenarikan.values),
                                         selectedId: $perkiraanPenarikanId) { selected in
                                         
-                                        print("Selected is: \(selected)")
                                         registerData.perkiraanPenarikan = perkiraanPenarikan[perkiraanPenarikanId ?? 0] ?? ""
+                                        print("Selected is: \(registerData.perkiraanPenarikan)")
                                         
                                     }
                                     .padding()

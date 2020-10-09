@@ -88,9 +88,11 @@ struct BesarPerkiraanSetoranView: View {
                                         items: Array(besarPerkiraanSetoran.keys),
                                         labels: Array(besarPerkiraanSetoran.values),
                                         selectedId: $besarPerkiraanSetoranId) { selected in
-                                        print("Selected is: \(selected)")
                                         
                                         registerData.besarPerkiraanSetoran = besarPerkiraanSetoran[besarPerkiraanSetoranId ?? 0] ?? ""
+                                        
+                                        print("Selected is: \(registerData.besarPerkiraanSetoran)")
+                                        
                                     }
                                     .padding()
                                     

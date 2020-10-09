@@ -102,7 +102,7 @@ struct InformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 
-                                NavigationLink(destination: VerificationAddressView().environmentObject(registerData), label:{
+                                NavigationLink(destination: PenghasilanKotorView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)

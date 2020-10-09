@@ -63,7 +63,7 @@
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
 		C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */; };
-		C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnya.swift in Sources */ = {isa = PBXBuildFile; fileRef = C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */; };
+		C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */; };
 		C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
 		C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */; };
@@ -163,7 +163,7 @@
 		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
 		C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPenyandangDanaView.swift; sourceTree = "<group>"; };
-		C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPendapatanLainnya.swift; sourceTree = "<group>"; };
+		C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPendapatanLainnyaView.swift; sourceTree = "<group>"; };
 		C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxGroup.swift; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
 		C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformasiPerusahaanView.swift; sourceTree = "<group>"; };
@@ -470,12 +470,12 @@
 				C09EA8972525ABEC007ABF8A /* PerkiraanSetoranView.swift */,
 				C09EA89F2525AC94007ABF8A /* BesarPerkiraanSetoranView.swift */,
 				C09EA8B02525AD73007ABF8A /* PerkerjaanView.swift */,
+				C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */,
 				C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */,
 				C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */,
+				C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */,
 				52BE530B2529793800ADE164 /* PasswordView.swift */,
 				52BE531025297C3F00ADE164 /* PINView.swift */,
-				C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */,
-				C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */,
 				524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */,
 			);
 			path = "Data Pembukaan Rekening";
@@ -664,7 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnya.swift in Sources */,
+				C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift in Sources */,
 				C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */,
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
 				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,

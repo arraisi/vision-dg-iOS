@@ -90,7 +90,7 @@ struct SumberDanaView: View {
                                         
                                         // when selected
                                         registerData.sumberDana = sumberDana[sumberDanaId ?? 0] ?? ""
-                                        print("Selected is: \(selected)")
+                                        print("Selected is: \(registerData.sumberDana)")
                                         
                                     }
                                     .padding()
