@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FormSumberPenyandangDanaView: View {
+struct SumberPenyandangDanaView: View {
     
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -86,9 +86,11 @@ struct FormSumberPenyandangDanaView: View {
                                         items: Array(sumberPenyandangDana.keys),
                                         labels: Array(sumberPenyandangDana.values),
                                         selectedId: $sumberPenyandangDanaId) { selected in
-                                        print("Selected is: \(selected)")
                                         
                                         registerData.sumberPenyandangDana = sumberPenyandangDana[sumberPenyandangDanaId ?? 0] ?? ""
+                                        
+                                        print("Selected is: \(registerData.sumberPenyandangDana)")
+                                        
                                     }
                                     .padding()
                                     
@@ -99,7 +101,7 @@ struct FormSumberPenyandangDanaView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: InformasiPerusahaanView(), label:{
+                                NavigationLink(destination: PenghasilanKotorView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -138,6 +140,6 @@ struct FormSumberPenyandangDanaView: View {
 
 struct FormSumberPenyandangDanaView_Previews: PreviewProvider {
     static var previews: some View {
-        FormSumberPenyandangDanaView()
+        SumberPenyandangDanaView()
     }
 }

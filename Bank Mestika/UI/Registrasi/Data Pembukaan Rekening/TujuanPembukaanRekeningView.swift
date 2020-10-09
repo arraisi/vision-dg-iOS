@@ -93,6 +93,8 @@ struct TujuanPembukaanRekeningView: View {
                                     
                                     CheckBoxGroup(items: Array(tujuanPembukaanRekening.keys), markedId: $selectedItems, labels: Array(tujuanPembukaanRekening.values)) { id, marked in
                                         
+                                        registerData.tujuanPembukaan = ""
+                                        
                                         for (index, item) in selectedItems.enumerated() {
                                             
                                             registerData.tujuanPembukaan += tujuanPembukaanRekening[item]!

@@ -97,9 +97,10 @@ struct PerkerjaanView: View {
                                         items: Array(pekerjaan.keys),
                                         labels:Array(pekerjaan.values),
                                         selectedId: $pekerjaanId) { selected in
-                                        print("Selected is: \(selected)")
                                         
                                         registerData.pekerjaan = pekerjaan[pekerjaanId ?? 0] ?? ""
+                                        print("Selected is: \(pekerjaanId) : \(registerData.pekerjaan)")
+                                        
                                     }
                                     .padding()
                                     
@@ -111,20 +112,38 @@ struct PerkerjaanView: View {
                                 
                                 // Button
                                 if (editMode == .inactive) {
-                                    NavigationLink(destination: InformasiPerusahaanView().environmentObject(registerData)) {
-                                        
-                                        Text("Berikutnya")
-                                            .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                            .font(.system(size: 14))
-                                            .frame(maxWidth: .infinity, maxHeight: 40)
-                                        
+                                    if pekerjaanId == 9 {
+                                        NavigationLink(destination: SumberPenyandangDanaView().environmentObject(registerData)) {
+                                            
+                                            Text("Berikutnya")
+                                                .foregroundColor(.white)
+                                                .fontWeight(.bold)
+                                                .font(.system(size: 14))
+                                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                            
+                                        }
+                                        .frame(height: 50)
+                                        .background(Color(hex: "#2334D0"))
+                                        .cornerRadius(12)
+                                        .padding(.horizontal, 35)
+                                        .padding(.vertical, 20)
+                                    } else {
+                                        NavigationLink(destination: InformasiPerusahaanView().environmentObject(registerData)) {
+                                            
+                                            Text("Berikutnya")
+                                                .foregroundColor(.white)
+                                                .fontWeight(.bold)
+                                                .font(.system(size: 14))
+                                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                            
+                                        }
+                                        .frame(height: 50)
+                                        .background(Color(hex: "#2334D0"))
+                                        .cornerRadius(12)
+                                        .padding(.horizontal, 35)
+                                        .padding(.vertical, 20)
                                     }
-                                    .frame(height: 50)
-                                    .background(Color(hex: "#2334D0"))
-                                    .cornerRadius(12)
-                                    .padding(.horizontal, 35)
-                                    .padding(.vertical, 20)
+                                    
                                 } else {
                                     NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
                                         

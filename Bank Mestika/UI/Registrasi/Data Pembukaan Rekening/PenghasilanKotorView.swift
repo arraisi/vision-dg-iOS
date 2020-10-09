@@ -91,10 +91,10 @@ struct PenghasilanKotorView: View {
                                         items: Array(penghasilanKotor.keys),
                                         labels: Array(penghasilanKotor.values),
                                         selectedId: $penghasilanKotorId) { selected in
-                                        print("Selected is: \(selected)")
                                         
                                         registerData.penghasilanKotor = penghasilanKotor[penghasilanKotorId ?? 0] ?? ""
                                         
+                                        print("Selected is: \(registerData.penghasilanKotor)")
                                     }
                                     .padding()
                                     
@@ -105,7 +105,7 @@ struct PenghasilanKotorView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                Button(action : {}) {
+                                NavigationLink(destination: SumberPendapatanLainnyaView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -113,7 +113,7 @@ struct PenghasilanKotorView: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
-                                }
+                                })
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
