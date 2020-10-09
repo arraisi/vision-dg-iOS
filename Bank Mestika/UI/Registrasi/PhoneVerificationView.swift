@@ -40,6 +40,10 @@ struct PhoneVerificationView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
+        
     }
     
     var appbar: some View {
@@ -131,5 +135,11 @@ struct PhoneVerificationView: View {
 struct PhoneVerificationView_Previews: PreviewProvider {
     static var previews: some View {
         PhoneVerificationView()
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

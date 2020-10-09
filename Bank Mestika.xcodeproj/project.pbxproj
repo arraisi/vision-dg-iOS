@@ -24,6 +24,14 @@
 		5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */; };
 		5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */; };
 		5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBB0251C95450064C59D /* OTPVerificationView.swift */; };
+		524F9585252EE9F6003D7FFF /* AssetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F9584252EE9F6003D7FFF /* AssetsResponse.swift */; };
+		524F9596252EECE3003D7FFF /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F9595252EECE3003D7FFF /* APIHandler.swift */; };
+		524F959E252EED26003D7FFF /* AssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F959D252EED26003D7FFF /* AssetsService.swift */; };
+		524F95A3252EEECF003D7FFF /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */; };
+		524F95B2252EF06F003D7FFF /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */; };
+		524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95BC252EF08E003D7FFF /* LoadingView.swift */; };
+		524F95D7252F0A00003D7FFF /* VerifikasiPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */; };
+		524F95DC252F0F3E003D7FFF /* IncomingVideoCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95DB252F0F3E003D7FFF /* IncomingVideoCallView.swift */; };
 		52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF1252452F80031392E /* PersonalIdentityView.swift */; };
 		52794BFA2524530F0031392E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF92524530F0031392E /* Coordinator.swift */; };
 		52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BFE2524532D0031392E /* EmailVerificationView.swift */; };
@@ -114,6 +122,14 @@
 		5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProvisionView.swift; sourceTree = "<group>"; };
 		5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationView.swift; sourceTree = "<group>"; };
 		5233DBB0251C95450064C59D /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
+		524F9584252EE9F6003D7FFF /* AssetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsResponse.swift; sourceTree = "<group>"; };
+		524F9595252EECE3003D7FFF /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		524F959D252EED26003D7FFF /* AssetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsService.swift; sourceTree = "<group>"; };
+		524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
+		524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		524F95BC252EF08E003D7FFF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifikasiPINView.swift; sourceTree = "<group>"; };
+		524F95DB252F0F3E003D7FFF /* IncomingVideoCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingVideoCallView.swift; sourceTree = "<group>"; };
 		52794BF1252452F80031392E /* PersonalIdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalIdentityView.swift; sourceTree = "<group>"; };
 		52794BF92524530F0031392E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		52794BFE2524532D0031392E /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
@@ -214,16 +230,15 @@
 		5202BA22251B1F9F00FCE527 /* Bank Mestika */ = {
 			isa = PBXGroup;
 			children = (
+				5202BA34251B1FA300FCE527 /* Info.plist */,
+				524F95A7252EEED6003D7FFF /* ViewModel */,
+				524F9594252EECC8003D7FFF /* Services */,
+				524F958D252EEB0F003D7FFF /* Resources */,
+				524F958C252EEAF4003D7FFF /* Main */,
 				52CB4360252B1053001120AA /* Local Storage */,
 				52BE52E925295D3B00ADE164 /* Model */,
 				5202BA63251B269100FCE527 /* Utils */,
 				5202BA59251B1FDB00FCE527 /* UI */,
-				5202BA23251B1F9F00FCE527 /* AppDelegate.swift */,
-				5202BA25251B1FA000FCE527 /* SceneDelegate.swift */,
-				5202BA27251B1FA000FCE527 /* ContentView.swift */,
-				5202BA2C251B1FA300FCE527 /* Assets.xcassets */,
-				5202BA31251B1FA300FCE527 /* LaunchScreen.storyboard */,
-				5202BA34251B1FA300FCE527 /* Info.plist */,
 				5202BA29251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld */,
 				5202BA2E251B1FA300FCE527 /* Preview Content */,
 			);
@@ -277,6 +292,7 @@
 				5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */,
 				5233DBB0251C95450064C59D /* OTPVerificationView.swift */,
 				52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */,
+				524F95DB252F0F3E003D7FFF /* IncomingVideoCallView.swift */,
 			);
 			path = Registrasi;
 			sourceTree = "<group>";
@@ -300,6 +316,50 @@
 				52056D39252DD366008D99D2 /* RegistrasiModel.swift */,
 			);
 			path = Registrasi;
+			sourceTree = "<group>";
+		};
+		524F9583252EE9D2003D7FFF /* Assets Model */ = {
+			isa = PBXGroup;
+			children = (
+				524F9584252EE9F6003D7FFF /* AssetsResponse.swift */,
+			);
+			path = "Assets Model";
+			sourceTree = "<group>";
+		};
+		524F958C252EEAF4003D7FFF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5202BA23251B1F9F00FCE527 /* AppDelegate.swift */,
+				5202BA25251B1FA000FCE527 /* SceneDelegate.swift */,
+				5202BA27251B1FA000FCE527 /* ContentView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		524F958D252EEB0F003D7FFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5202BA2C251B1FA300FCE527 /* Assets.xcassets */,
+				5202BA31251B1FA300FCE527 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		524F9594252EECC8003D7FFF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				524F9595252EECE3003D7FFF /* APIHandler.swift */,
+				524F959D252EED26003D7FFF /* AssetsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		524F95A7252EEED6003D7FFF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		52794BF0252452D20031392E /* Personal Identity */ = {
@@ -331,6 +391,7 @@
 		52BE52E925295D3B00ADE164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				524F9583252EE9D2003D7FFF /* Assets Model */,
 				52056D38252DD34F008D99D2 /* Registrasi */,
 				52BE52EA25295D4C00ADE164 /* Jenis Tabungan */,
 			);
@@ -369,6 +430,8 @@
 				C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */,
 				C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */,
 				C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */,
+				524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */,
+				524F95BC252EF08E003D7FFF /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -406,6 +469,7 @@
 				52BE531025297C3F00ADE164 /* PINView.swift */,
 				C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */,
 				C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnya.swift */,
+				524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */,
 			);
 			path = "Data Pembukaan Rekening";
 			sourceTree = "<group>";
@@ -594,10 +658,13 @@
 				C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */,
 				C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */,
 				52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */,
+				524F9596252EECE3003D7FFF /* APIHandler.swift in Sources */,
+				524F959E252EED26003D7FFF /* AssetsService.swift in Sources */,
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
 				52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */,
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
+				524F95A3252EEECF003D7FFF /* AssetsViewModel.swift in Sources */,
 				C09EA8882525A7CC007ABF8A /* PerkiraanPenarikanView.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				C09EA87C25259C9B007ABF8A /* SumberDanaView.swift in Sources */,
@@ -608,8 +675,10 @@
 				5202BA26251B1FA000FCE527 /* SceneDelegate.swift in Sources */,
 				5202BA2B251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld in Sources */,
 				C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */,
+				524F9585252EE9F6003D7FFF /* AssetsResponse.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
+				524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
@@ -634,7 +703,10 @@
 				C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */,
 				C09EA8902525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift in Sources */,
 				52BE530C2529793800ADE164 /* PasswordView.swift in Sources */,
+				524F95D7252F0A00003D7FFF /* VerifikasiPINView.swift in Sources */,
 				5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */,
+				524F95DC252F0F3E003D7FFF /* IncomingVideoCallView.swift in Sources */,
+				524F95B2252EF06F003D7FFF /* LoadingIndicator.swift in Sources */,
 				527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */,
 				52794C26252475290031392E /* InterviewRegistrationView.swift in Sources */,
 				52BE52FF252960C600ADE164 /* JenisTabungan.swift in Sources */,

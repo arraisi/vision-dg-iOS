@@ -30,8 +30,7 @@ struct ChooseSavingsView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-        let spacing: CGFloat = 16
-        let widthOfHiddenCards: CGFloat = 32 /// UIScreen.main.bounds.width - 10
+        let spacing: CGFloat = 16 /// UIScreen.main.bounds.width - 10
         let cardHeight: CGFloat = 200
         
         let items = [
@@ -84,8 +83,8 @@ struct ChooseSavingsView: View {
                                                 cardHeight: cardHeight
                                             ) {
                                                 Image("\(item.image)")
-                                                    .resizable()
                                                     .padding(.bottom, 20)
+                                                    .cornerRadius(8)
                                             }
                                             .cornerRadius(8)
                                             .shadow(color: Color.gray, radius: 4, x: 0, y: 4)

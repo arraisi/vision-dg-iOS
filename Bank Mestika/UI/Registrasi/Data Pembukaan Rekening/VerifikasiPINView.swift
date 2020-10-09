@@ -1,13 +1,13 @@
 //
-//  FormPINView.swift
+//  VerifikasiPINView.swift
 //  Bank Mestika
 //
-//  Created by Prima Jatnika on 04/10/20.
+//  Created by Prima Jatnika on 08/10/20.
 //
 
 import SwiftUI
 
-struct PINView: View {
+struct VerifikasiPINView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @State private var numberOfCells: Int = 6
     @State private var currentlySelectedCell = 0
@@ -73,7 +73,7 @@ struct PINView: View {
                                 Spacer()
                                 
                                 // Sub title
-                                Text("Masukan PIN Transaksi Baru Anda")
+                                Text("Masukan Kembali PIN Transaksi Baru Anda")
                                     .font(Font.system(size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
                                     .fontWeight(.semibold)
@@ -98,9 +98,9 @@ struct PINView: View {
                                 .padding(.vertical, 20)
                                 
                                
-                                NavigationLink(destination: VerifikasiPINView().environmentObject(registerData), label:{
+                                NavigationLink(destination: Term_ConditionView().environmentObject(registerData), label:{
                                     
-                                    Text("Konfirmasi PIN Transaksi")
+                                    Text("Simpan PIN Transaksi")
                                         .foregroundColor(.white)
                                         .fontWeight(.bold)
                                         .font(.system(size: 14))
@@ -141,10 +141,8 @@ struct PINView: View {
     }
 }
 
-#if DEBUG
-struct PINView_Previews: PreviewProvider {
+struct VerifikasiPINView_Previews: PreviewProvider {
     static var previews: some View {
-        PINView()
+        VerifikasiPINView()
     }
 }
-#endif
