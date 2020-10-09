@@ -17,6 +17,10 @@ struct InformasiPerusahaanView: View {
     @State var noTlpPerusahaan: String = ""
     @State var kodePos : String = ""
     @State var kecamatan : String = ""
+    @State var location : String = ""
+    
+    var cities = ["Bandung", "Jakarta", "Medan", "Surabaya"]
+    
     /*
      Boolean for Show Modal
      */
@@ -102,7 +106,7 @@ struct InformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 
-                                NavigationLink(destination: PenghasilanKotorView().environmentObject(registerData), label:{
+                                NavigationLink(destination: PenghasilanKotorView(), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -142,7 +146,7 @@ struct InformasiPerusahaanView: View {
                 ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
             }
         }
-        .popup(isPresented: $showingModal, type: .default, position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
+        .popup(isPresented: $showingModal, type: .default, position: .bottom, animation: Animation.spring(), closeOnTap: false, closeOnTapOutside: true) {
             createBottomFloater()
         }
         .edgesIgnoringSafeArea(.all)
@@ -229,21 +233,48 @@ struct InformasiPerusahaanView: View {
     }
     
     // MARK: -Fuction for Create Bottom Floater (Modal)
-    
+
     func createBottomFloater() -> some View {
-        VStack(alignment: .leading) {
-            Image("ic_bell")
-                .resizable()
-                .frame(width: 95, height: 95)
-                .padding(.top, 20)
-            Text("Searching Location...")
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .font(.system(size: 16))
-                .foregroundColor(Color(hex: "#232175"))
-                .padding(.bottom, 20)
+        VStack {
+            HStack {
+                Text("Alamat")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .font(.system(size: 19))
+                    .foregroundColor(Color(hex: "#232175"))
+                Spacer()
+            }
+            
+            HStack {
+
+                TextField("Alamat Perusahaan", text: $location)
+                    .font(Font.system(size: 14))
+                    .frame(height: 36)
+
+                Button(action:{
+                    print("find location")
+                }, label: {
+                    Image(systemName: "location.viewfinder")
+                        .font(Font.system(size: 20))
+                        .foregroundColor(Color(hex: "#707070"))
+                })
+
+            }
+            .padding(.horizontal)
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(10)
+
+            Form {
+                Text("Jakarta")
+                Text("Bandung")
+                Text("Bogor")
+                Text("Surabaya")
+            }
+            .background(Color.white)
+            .padding(.vertical)
+            .frame(height: 150)
         }
         .frame(width: UIScreen.main.bounds.width - 60)
-        .padding(.horizontal, 15)
+        .padding()
         .background(Color.white)
         .cornerRadius(20)
     }
