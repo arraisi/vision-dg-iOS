@@ -19,7 +19,7 @@ struct InformasiPerusahaanView: View {
     @State var kecamatan : String = ""
     @State var location : String = ""
     
-    var cities = ["Bandung", "Jakarta", "Medan", "Surabaya"]
+    let cities:[String] = ["Jakarta", "Bogor", "Depok", "Bandung"]
     
     /*
      Boolean for Show Modal
@@ -233,7 +233,7 @@ struct InformasiPerusahaanView: View {
     }
     
     // MARK: -Fuction for Create Bottom Floater (Modal)
-
+    
     func createBottomFloater() -> some View {
         VStack {
             HStack {
@@ -245,11 +245,11 @@ struct InformasiPerusahaanView: View {
             }
             
             HStack {
-
+                
                 TextField("Alamat Perusahaan", text: $location)
                     .font(Font.system(size: 14))
                     .frame(height: 36)
-
+                
                 Button(action:{
                     print("find location")
                 }, label: {
@@ -257,21 +257,33 @@ struct InformasiPerusahaanView: View {
                         .font(Font.system(size: 20))
                         .foregroundColor(Color(hex: "#707070"))
                 })
-
+                
             }
             .padding(.horizontal)
             .background(Color.gray.opacity(0.1))
             .cornerRadius(10)
             
-            List {
-                Text("Jakarta")
-                Text("Bandung")
-                Text("Bogor")
-                Text("Surabaya")
+            List(0...cities.count-1, id: \.self) {index in
+                
+                HStack {
+                    Text(cities[index])
+                        .font(Font.system(size: 14))
+                    
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+                .onTapGesture(perform: {
+                    print(cities[index])
+                    alamatPerusahaan = cities[index]
+                    registerData.alamatPerusahaan = alamatPerusahaan
+                    self.showingModal.toggle()
+                })
+                
             }
             .background(Color.white)
             .padding(.vertical)
             .frame(height: 150)
+            
         }
         .frame(width: UIScreen.main.bounds.width - 60)
         .padding()
