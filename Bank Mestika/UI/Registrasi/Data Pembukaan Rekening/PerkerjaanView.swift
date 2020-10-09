@@ -99,7 +99,6 @@ struct PerkerjaanView: View {
                                         selectedId: $pekerjaanId) { selected in
                                         
                                         registerData.pekerjaan = pekerjaan[pekerjaanId ?? 0] ?? ""
-                                        print("Selected is: \(pekerjaanId) : \(registerData.pekerjaan)")
                                         
                                     }
                                     .padding()
