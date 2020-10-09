@@ -187,7 +187,7 @@ struct RegisterView_Previews: PreviewProvider {
     }
 }
 
-struct List : View {
+struct ListCard : View {
     
     @Binding var page : Int
     var data: [AssetsResponse]
@@ -250,7 +250,7 @@ struct Carousel : UIViewRepresentable {
         view.showsHorizontalScrollIndicator = false
         view.delegate = context.coordinator
         
-        let view1 = UIHostingController(rootView: List(page: self.$page, data: self.data))
+        let view1 = UIHostingController(rootView: ListCard(page: self.$page, data: self.data))
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
         view1.view.backgroundColor = .clear
         

@@ -106,7 +106,7 @@ struct InformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 
-                                NavigationLink(destination: PenghasilanKotorView().environmentObject(registerData), label:{
+                                NavigationLink(destination: PenghasilanKotorView(), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -262,8 +262,8 @@ struct InformasiPerusahaanView: View {
             .padding(.horizontal)
             .background(Color.gray.opacity(0.1))
             .cornerRadius(10)
-
-            Form {
+            
+            List {
                 Text("Jakarta")
                 Text("Bandung")
                 Text("Bogor")
