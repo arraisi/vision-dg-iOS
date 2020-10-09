@@ -9,11 +9,18 @@ import SwiftUI
 import ExytePopupView
 import SDWebImageSwiftUI
 
+class AppState: ObservableObject {
+    @Published var moveToRegister: Bool = false
+}
+
 struct RegisterView: View {
     
     @ObservedObject var viewModel: AssetsViewModel
     
     var registerData = RegistrasiModel()
+    
+    @EnvironmentObject var appState: AppState
+    @State var isViewActivity: Bool = false
     
     /*
      Boolean for Show Modal
@@ -64,6 +71,7 @@ struct RegisterView: View {
         }
         .navigationBarHidden(true)
         .onAppear(perform: {
+            print("ON APPEAR")
             viewModel.getAssets()
         })
     }
@@ -107,7 +115,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData)) {
+            NavigationLink(destination: SuccessRegisterView().environmentObject(registerData), isActive: $isViewActivity) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -115,6 +123,13 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
+            .onReceive(self.appState.$moveToRegister) { moveToRegister in
+                if moveToRegister {
+                    print("Move to Register: \(moveToRegister)")
+                    self.isViewActivity = false
+                    self.appState.moveToRegister = false
+                }
+            }
         }
     }
     

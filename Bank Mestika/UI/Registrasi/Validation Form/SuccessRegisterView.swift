@@ -10,6 +10,7 @@ import SwiftUI
 struct SuccessRegisterView: View {
     
     @EnvironmentObject var registerData: RegistrasiModel
+    @EnvironmentObject var appState: AppState
     
     /*
      Boolean for Show Modal
@@ -226,7 +227,9 @@ struct SuccessRegisterView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 30)
             
-            NavigationLink(destination: RegisterView(viewModel: AssetsViewModel())) {
+            Button(action: {
+                self.appState.moveToRegister = true
+            }) {
                 Text("Kembali ke Halaman Utama")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
