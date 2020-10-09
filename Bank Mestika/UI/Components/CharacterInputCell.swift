@@ -19,7 +19,7 @@ struct CharacterInputCell: View {
 
     var body: some View {
         OTPTextField(text: $textValue, currentlySelectedCell: $currentlySelectedCell, isFirstResponder: responder)
-            .frame(width: 50, height: 50)
+            .frame(width: 40, height: 40)
             .font(Font.title2.bold())
             .foregroundColor(Color(hex: "#232175"))
             .multilineTextAlignment(.center)

@@ -48,6 +48,9 @@ struct EmailVerificationView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
     }
     
     var appbar: some View {
@@ -79,7 +82,7 @@ struct EmailVerificationView: View {
     var cardForm: some View {
         VStack(alignment: .center) {
             Text("Email Verification")
-                .font(.title2)
+                .font(.title3)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .padding(.top, 20)

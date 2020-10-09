@@ -35,6 +35,9 @@ struct EmailConfirmationView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
     }
     
     var appbar: some View {
@@ -72,7 +75,7 @@ struct EmailConfirmationView: View {
                 .padding(.horizontal, 20)
             
             Text("Email Verifikasi telah Kami kirim")
-                .font(.title)
+                .font(.title3)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .padding([.top, .bottom], 20)

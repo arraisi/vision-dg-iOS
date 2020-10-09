@@ -7,25 +7,11 @@
 
 import SwiftUI
 import ExytePopupView
-
-var data = [
-    ImageCarousel(
-        id: 0,
-        title: "Nikmati Kemudahan Disetiap Transaksi",
-        desc: "Start an entirely new payment era with smart wallet",
-        image: "Slider Full"
-    ),
-    ImageCarousel(
-        id: 0,
-        title: "Nikmati Kemudahan Disetiap Transaksi",
-        desc: "Start an entirely new payment era with smart wallet",
-        image: "Slider Full"
-    )
-]
+import SDWebImageSwiftUI
 
 struct RegisterView: View {
     
-    @ObservedObject var viewModel = AssetsViewModel()
+    @ObservedObject var viewModel: AssetsViewModel
     
     var registerData = RegistrasiModel()
     
@@ -39,10 +25,6 @@ struct RegisterView: View {
      */
     @State var menu = 0
     @State var page = 0
-    
-    init() {
-        viewModel.getPhoneUUID()
-    }
     
     var body: some View {
         NavigationView {
@@ -81,6 +63,9 @@ struct RegisterView: View {
             }
         }
         .navigationBarHidden(true)
+        .onAppear(perform: {
+            viewModel.getAssets()
+        })
     }
     
     var header: some View {
@@ -103,7 +88,7 @@ struct RegisterView: View {
     
     var imageSlider: some View {
         GeometryReader{g in
-            Carousel(width: UIScreen.main.bounds.width, page: self.$page, height: UIScreen.main.bounds.height - 300)
+            Carousel(width: UIScreen.main.bounds.width, page: self.$page, height: UIScreen.main.bounds.height - 300, data: viewModel.assetsList)
         }
     }
     
@@ -122,17 +107,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-//            NavigationLink(destination: Term_ConditionView().environmentObject(registerData)) {
-//                Text("LOGIN")
-//                    .foregroundColor(.white)
-//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                    .font(.system(size: 12))
-//                    .frame(maxWidth: .infinity, maxHeight: 40)
-//            }
-//            .cornerRadius(12)
-            
-            
-            NavigationLink(destination: PINView().environmentObject(registerData)) {
+            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData)) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -193,17 +168,19 @@ struct RegisterView: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(viewModel: AssetsViewModel())
     }
 }
 
 struct List : View {
     
     @Binding var page : Int
+    var data: [AssetsResponse]
+    
     var body: some View{
         HStack(spacing: 0){
             ForEach(data){ i in
-                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i, height: UIScreen.main.bounds.height)
+                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i, responseData: data, height: UIScreen.main.bounds.height)
             }
         }
     }
@@ -213,16 +190,17 @@ private struct Card : View {
     
     @Binding var page : Int
     var width : CGFloat
-    var data : ImageCarousel
-    var height: CGFloat
+    var data : AssetsResponse
+    var responseData : [AssetsResponse]
+    var height : CGFloat
     
     var body: some View{
         VStack{
             VStack{
-                Image(self.data.image)
+                AnimatedImage(url: URL(string: self.data.imageUrl)!)
                     .resizable()
                 
-                PageControl(page: self.$page)
+                PageControl(page: self.$page, data: responseData)
                     .padding([.top], 10)
             }
             .background(Color(hex: "#2334D0"))
@@ -244,6 +222,7 @@ struct Carousel : UIViewRepresentable {
     var width : CGFloat
     @Binding var page : Int
     var height : CGFloat
+    var data: [AssetsResponse]
     
     func makeUIView(context: Context) -> UIScrollView{
         let total = width * CGFloat(data.count)
@@ -256,7 +235,7 @@ struct Carousel : UIViewRepresentable {
         view.showsHorizontalScrollIndicator = false
         view.delegate = context.coordinator
         
-        let view1 = UIHostingController(rootView: List(page: self.$page))
+        let view1 = UIHostingController(rootView: List(page: self.$page, data: self.data))
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
         view1.view.backgroundColor = .clear
         
@@ -284,6 +263,7 @@ struct Carousel : UIViewRepresentable {
 struct PageControl : UIViewRepresentable {
     
     @Binding var page : Int
+    var data: [AssetsResponse]
     func makeUIView(context: Context) -> UIPageControl {
         
         let view = UIPageControl()
@@ -298,11 +278,4 @@ struct PageControl : UIViewRepresentable {
             uiView.currentPage = self.page
         }
     }
-}
-
-struct ImageCarousel : Identifiable {
-    var id : Int
-    var title : String
-    var desc : String
-    var image : String
 }

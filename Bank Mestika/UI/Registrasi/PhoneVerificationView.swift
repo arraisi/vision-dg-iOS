@@ -75,7 +75,7 @@ struct PhoneVerificationView: View {
     var cardForm: some View {
         VStack(alignment: .center) {
             Text("Phone Verification")
-                .font(.title2)
+                .font(.title3)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .padding(.top, 20)

@@ -44,6 +44,9 @@ struct OTPVerificationView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
         .onReceive(timer) { time in
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
@@ -80,14 +83,14 @@ struct OTPVerificationView: View {
     var cardForm: some View {
         VStack(alignment: .center) {
             Text("Kami telah mengirimkan OTP ke No. Telepon Anda")
-                .font(.title2)
+                .font(.title3)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
             
-            Text("Silahkan masukan kode OTP")
+            Text("Silahkan masukan kode OTP dengan REF #1234")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.center)

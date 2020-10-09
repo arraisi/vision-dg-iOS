@@ -44,6 +44,9 @@ struct EmailOTPVerificationView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
         .onReceive(timer) { time in
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
@@ -80,7 +83,7 @@ struct EmailOTPVerificationView: View {
     var cardForm: some View {
         VStack(alignment: .center) {
             Text("Kami telah mengirimkan Kode Verifikasi ke Email Anda")
-                .font(.title2)
+                .font(.title3)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)

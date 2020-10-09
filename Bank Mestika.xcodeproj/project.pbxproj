@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,7 +27,6 @@
 		524F9585252EE9F6003D7FFF /* AssetsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F9584252EE9F6003D7FFF /* AssetsResponse.swift */; };
 		524F9596252EECE3003D7FFF /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F9595252EECE3003D7FFF /* APIHandler.swift */; };
 		524F959E252EED26003D7FFF /* AssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F959D252EED26003D7FFF /* AssetsService.swift */; };
-		524F95A3252EEECF003D7FFF /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */; };
 		524F95B2252EF06F003D7FFF /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */; };
 		524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95BC252EF08E003D7FFF /* LoadingView.swift */; };
 		524F95D7252F0A00003D7FFF /* VerifikasiPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */; };
@@ -44,6 +43,10 @@
 		527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */; };
 		527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */; };
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
+		52B81DDB25300D56002703E3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 52B81DDA25300D56002703E3 /* SDWebImageSwiftUI */; };
+		52B81DE125300DA7002703E3 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 52B81DE025300DA7002703E3 /* SwiftyJSON */; };
+		52B81DF525302C17002703E3 /* APICallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81DF425302C17002703E3 /* APICallManager.swift */; };
+		52B81DFE2530329B002703E3 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81DFD2530329B002703E3 /* AssetsViewModel.swift */; };
 		52BE52EC25295D8200ADE164 /* tabungan.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BE52EB25295D8200ADE164 /* tabungan.json */; };
 		52BE52FF252960C600ADE164 /* JenisTabungan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE52FE252960C600ADE164 /* JenisTabungan.swift */; };
 		52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE53032529620900ADE164 /* JenisTabunganData.swift */; };
@@ -125,7 +128,6 @@
 		524F9584252EE9F6003D7FFF /* AssetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsResponse.swift; sourceTree = "<group>"; };
 		524F9595252EECE3003D7FFF /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		524F959D252EED26003D7FFF /* AssetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsService.swift; sourceTree = "<group>"; };
-		524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
 		524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		524F95BC252EF08E003D7FFF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifikasiPINView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,8 @@
 		527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HostingController+Utils.swift"; sourceTree = "<group>"; };
 		527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRekeningCardView.swift; sourceTree = "<group>"; };
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		52B81DF425302C17002703E3 /* APICallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallManager.swift; sourceTree = "<group>"; };
+		52B81DFD2530329B002703E3 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
 		52BE52EB25295D8200ADE164 /* tabungan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tabungan.json; sourceTree = "<group>"; };
 		52BE52FE252960C600ADE164 /* JenisTabungan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisTabungan.swift; sourceTree = "<group>"; };
 		52BE53032529620900ADE164 /* JenisTabunganData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisTabunganData.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B81DE125300DA7002703E3 /* SwiftyJSON in Frameworks */,
+				52B81DDB25300D56002703E3 /* SDWebImageSwiftUI in Frameworks */,
 				50B9618076F03E118512FA4D /* Pods_Bank_Mestika.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,8 +236,8 @@
 		5202BA22251B1F9F00FCE527 /* Bank Mestika */ = {
 			isa = PBXGroup;
 			children = (
+				52B81DFC2530328B002703E3 /* ViewModel */,
 				5202BA34251B1FA300FCE527 /* Info.plist */,
-				524F95A7252EEED6003D7FFF /* ViewModel */,
 				524F9594252EECC8003D7FFF /* Services */,
 				524F958D252EEB0F003D7FFF /* Resources */,
 				524F958C252EEAF4003D7FFF /* Main */,
@@ -350,16 +356,9 @@
 			children = (
 				524F9595252EECE3003D7FFF /* APIHandler.swift */,
 				524F959D252EED26003D7FFF /* AssetsService.swift */,
+				52B81DF425302C17002703E3 /* APICallManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		524F95A7252EEED6003D7FFF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				524F95A2252EEECF003D7FFF /* AssetsViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		52794BF0252452D20031392E /* Personal Identity */ = {
@@ -386,6 +385,14 @@
 				52BE531525297E8600ADE164 /* SuccessRegisterView.swift */,
 			);
 			path = "Validation Form";
+			sourceTree = "<group>";
+		};
+		52B81DFC2530328B002703E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				52B81DFD2530329B002703E3 /* AssetsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		52BE52E925295D3B00ADE164 /* Model */ = {
@@ -492,6 +499,10 @@
 			dependencies = (
 			);
 			name = "Bank Mestika";
+			packageProductDependencies = (
+				52B81DDA25300D56002703E3 /* SDWebImageSwiftUI */,
+				52B81DE025300DA7002703E3 /* SwiftyJSON */,
+			);
 			productName = "Bank Mestika";
 			productReference = 5202BA20251B1F9F00FCE527 /* Bank Mestika.app */;
 			productType = "com.apple.product-type.application";
@@ -563,6 +574,10 @@
 				Base,
 			);
 			mainGroup = 5202BA17251B1F9F00FCE527;
+			packageReferences = (
+				52B81DD925300D56002703E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				52B81DDF25300DA7002703E3 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 5202BA21251B1F9F00FCE527 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -664,7 +679,6 @@
 				52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */,
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
-				524F95A3252EEECF003D7FFF /* AssetsViewModel.swift in Sources */,
 				C09EA8882525A7CC007ABF8A /* PerkiraanPenarikanView.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				C09EA87C25259C9B007ABF8A /* SumberDanaView.swift in Sources */,
@@ -675,8 +689,10 @@
 				5202BA26251B1FA000FCE527 /* SceneDelegate.swift in Sources */,
 				5202BA2B251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld in Sources */,
 				C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */,
+				52B81DFE2530329B002703E3 /* AssetsViewModel.swift in Sources */,
 				524F9585252EE9F6003D7FFF /* AssetsResponse.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
+				52B81DF525302C17002703E3 /* APICallManager.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
 				524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
@@ -1043,6 +1059,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52B81DD925300D56002703E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+		52B81DDF25300DA7002703E3 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52B81DDA25300D56002703E3 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52B81DD925300D56002703E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		52B81DE025300DA7002703E3 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52B81DDF25300DA7002703E3 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5202BA29251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld */ = {

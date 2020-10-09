@@ -2,56 +2,33 @@
 //  AssetsViewModel.swift
 //  Bank Mestika
 //
-//  Created by Prima Jatnika on 08/10/20.
+//  Created by Prima Jatnika on 09/10/20.
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
-class AssetsViewModel: ObservableObject, Identifiable {
-    @Published var isLoading = false
-        
-    @Published var shouldNavigate = false
-        
-    private var disposables: Set<AnyCancellable> = []
+class AssetsViewModel: ObservableObject {
+    let willChange = PassthroughSubject<Void, Never>()
     
-    var assetsService = AssetsService()
+    private var assetsService: AssetsService = AssetsService()
     
-    @Published var imageUrl = ""
+    @Published var isLoading: Bool = true
     
-    private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        assetsService.$isLoading
-            .receive(on: RunLoop.main)
-            .map { $0 }
-            .eraseToAnyPublisher()
-    }
-    
-    private var isAuthenticatedPublisher: AnyPublisher<String, Never> {
-        assetsService.$assetsResponse
-            .receive(on: RunLoop.main)
-            .map { response in
-                guard let response = response else {
-                    return ""
-                }
-                
-                return response.imageUrl ?? ""
+    var assetsList: [AssetsResponse] = [AssetsResponse]() {
+        willSet {
+            willChange.send()
         }
-        .eraseToAnyPublisher()
     }
     
-    init() {
-        isLoadingPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.isLoading, on: self)
-            .store(in: &disposables)
-        
-        isAuthenticatedPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.imageUrl, on: self)
-            .store(in: &disposables)
-    }
-    
-    func getPhoneUUID() {
-        assetsService.getPhoneUUID()
+    func getAssets() {
+        assetsService.getAssetsAPI { (response) in
+            self.assetsList = response
+            print("Response \(response)")
+            self.isLoading = false
+        } onFailure: { (message) in
+            print("message \(message)")
+        }
+
     }
 }

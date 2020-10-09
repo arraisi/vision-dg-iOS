@@ -24,13 +24,12 @@ struct LoadingView<Content>: View where Content: View {
                         .blur(radius: self.isShowing ? 3 : 0)
 
                     VStack {
-                        Text("Loading ...")
                         LoadingIndicator(style: .large)
                     }
                     .frame(width: geometry.size.width / 3.0, height: geometry.size.height / 6.0)
                     .background(Color.secondary.colorInvert())
                     .foregroundColor(Color.primary)
-                    .cornerRadius(20)
+                    .cornerRadius(8)
                     .opacity(self.isShowing ? 1 : 0)
                 }
             }

@@ -5,22 +5,19 @@
 //  Created by Prima Jatnika on 08/10/20.
 //
 
-class AssetsResponse: Decodable {
+import Foundation
 
-    var id: Int?
-    var imageUrl: String?
+struct AssetsResponse: Hashable, Identifiable {
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case imageUrl
+    var id: String = ""
+    var imageUrl: String = ""
+    
+    init (json: [String: Any]) {
+        if let id = json["id"] as? Int { self.id = "\(id)" }
+        if let imageUrl = json["imageUrl"] { self.imageUrl = "\(imageUrl)" }
     }
     
-    init() {}
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        id = try? container.decode(Int.self, forKey: .id)
-        imageUrl = try? container.decode(String.self, forKey: .imageUrl)
+    static func getModels(_ json: [[String: Any]]) -> [AssetsResponse] {
+        return json.map { AssetsResponse(json: $0) }
     }
 }

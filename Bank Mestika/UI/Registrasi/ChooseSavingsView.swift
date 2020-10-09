@@ -51,15 +51,15 @@ struct ChooseSavingsView: View {
                     .padding(.horizontal, 30)
                 
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
-                    VStack(alignment: .center) {
-                        Text("Pilih Jenis Tabungan Anda")
-                            .font(.subheadline)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .padding(.horizontal, 15)
-                            .padding(.top, 20)
-                            .padding(.bottom, 25)
-                    }
+//                    VStack(alignment: .center) {
+//                        Text("Pilih Jenis Tabungan Anda")
+//                            .font(.subheadline)
+//                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                            .foregroundColor(Color(hex: "#232175"))
+//                            .padding(.horizontal, 15)
+//                            .padding(.top, 20)
+//                            .padding(.bottom, 25)
+//                    }
                     
                     VStack {
                         Canvas {
@@ -83,8 +83,8 @@ struct ChooseSavingsView: View {
                                                 cardHeight: cardHeight
                                             ) {
                                                 Image("\(item.image)")
-                                                    .padding(.bottom, 20)
-                                                    .cornerRadius(8)
+                                                    .resizable()
+                                                    .frame(width: 200, height: 160)
                                             }
                                             .cornerRadius(8)
                                             .shadow(color: Color.gray, radius: 4, x: 0, y: 4)

@@ -5,29 +5,27 @@
 //  Created by Prima Jatnika on 08/10/20.
 //
 
-import Combine
-import Alamofire
+import Foundation
+import SwiftyJSON
 
-class AssetsService: APIHandler {
+class AssetsService {
     
-    @Published var assetsResponse: AssetsResponse?
-    @Published var isLoading = false
-    
-    func getPhoneUUID() {
-        isLoading = true
+    public func getAssetsAPI(onSuccess successCallback: ((_ response: [AssetsResponse]) -> Void)?,
+                             onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         
-        let url = "https://raw.githubusercontent.com/primajatnika271995/dummy-json/main/db.json"
+        let url = "https://my-json-server.typicode.com/primajatnika271995/dummy-json/assets-landing"
         
-        AF.request(url, method: .get).responseDecodable { [weak self] (response: DataResponse<AssetsResponse, AFError>) in
-            guard let weakSelf = self else {  return  }
+        APICallManager.shared.createRequest(url, method: .get, headers: nil, parameters: nil) { (responseObject: JSON) in
+            var data = [AssetsResponse]()
             
-            guard let response = weakSelf.handleResponse(response) as? AssetsResponse else {
-                weakSelf.isLoading = false
-                return
+            if let assetsList = responseObject.arrayObject as? [[String: Any]] {
+                data = AssetsResponse.getModels(assetsList)
             }
+            successCallback?(data)
             
-            weakSelf.isLoading = false
-            weakSelf.assetsResponse = response
+        } onFailure: { (errorMessage: String) in
+            failureCallback?(errorMessage)
         }
+
     }
 }
