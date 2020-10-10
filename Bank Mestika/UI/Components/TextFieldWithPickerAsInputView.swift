@@ -18,24 +18,27 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
     private let textField = UITextField()
     private let picker = UIPickerView()
     
-    func makeCoordinator() -> TextFieldWithPickerAsInputView.Coordinator {
-        Coordinator(textfield: self)
-    }
-    
     func makeUIView(context: Context) -> UITextField {
+        
         picker.delegate = context.coordinator
         picker.dataSource = context.coordinator
+        
         picker.backgroundColor = #colorLiteral(red: 0.9567790627, green: 0.9569163918, blue: 0.9567491412, alpha: 1)
         picker.tintColor = .black
         
+        textField.delegate = context.coordinator
+        
         textField.placeholder = placeholder
         textField.inputView = picker
-        textField.delegate = context.coordinator
         return textField
     }
     
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
+    }
+    
+    func makeCoordinator() -> TextFieldWithPickerAsInputView.Coordinator {
+        Coordinator(textfield: self)
     }
     
     class Coordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegate , UITextFieldDelegate {
