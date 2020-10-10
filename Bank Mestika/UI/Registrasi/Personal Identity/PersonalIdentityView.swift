@@ -10,6 +10,8 @@ import UIKit
 
 struct PersonalIdentityView: View {
     
+    @ObservedObject var recognizedText: RecognizedText = RecognizedText()
+    
     @State var nik: String = ""
     @State var imageKTP: Image? = nil
     @State var imageSelfie: Image? = nil
@@ -41,60 +43,84 @@ struct PersonalIdentityView: View {
         }
     }
     
+    private func retrieveImage(forKey key: String) -> UIImage? {
+        if let imageData = UserDefaults.standard.object(forKey: key) as? Data,
+            let image = UIImage(data: imageData) {
+            print(image)
+            
+            imageKTP = Image(uiImage: image)
+            return image
+        }
+        
+        return nil
+    }
+    
+    func matches(for regex: String, in text: String) -> [String] {
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
-                Color(hex: "#232175")
-                    .frame(height: 300)
-                Color(hex: "#F6F8FB")
-            }
-            
-            VStack {
-                appbar
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView(showsIndicators: false) {
-                    VStack {
-                        Text("Identitas Diri")
-                            .font(.title2)
-                            .foregroundColor(Color(hex: "#F6F8FB"))
-                            .fontWeight(.bold)
-                            .padding(.horizontal, 20)
-                        Text("Silihkan isi dan lengkapi data identitas Anda")
-                            .font(.caption)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(hex: "#F6F8FB"))
-                            .padding(.top, 5)
-                            .padding(.bottom, 70)
-                            .padding(.horizontal, 20)
-                        
-                        photoKTPForm
-                            .padding(.bottom, 20)
-                        photoPersonalForm
-                            .padding(.bottom, 20)
-                        photoSignatureForm
-                            .padding(.bottom, 20)
-                        photoNPWPForm
-                        
-                        NavigationLink(destination: EmailVerificationView().environmentObject(registerData)) {
-                            Text("Lanjut Pembukaan Rekening Baru")
-                                .foregroundColor(.white)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .font(.system(size: 13))
-                                .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                    ZStack {
+                        VStack {
+                            Color(hex: "#232175")
+                                .frame(height: 300)
+                            Color(hex: "#F6F8FB")
                         }
-                        .background(Color(hex: "#232175"))
-                        .cornerRadius(12)
-                        .padding(.horizontal, 10)
-                        .padding(.top, 60)
-                        .padding(.bottom, 20)
+                        
+                        VStack {
+                            Text("Identitas Diri")
+                                .font(.title2)
+                                .foregroundColor(Color(hex: "#F6F8FB"))
+                                .fontWeight(.bold)
+                                .padding(.horizontal, 20)
+                            Text("Silihkan isi dan lengkapi data identitas Anda")
+                                .font(.caption)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(hex: "#F6F8FB"))
+                                .padding(.top, 5)
+                                .padding(.bottom, 70)
+                                .padding(.horizontal, 20)
+                            
+                            photoKTPForm
+                                .padding(.bottom, 20)
+                            photoPersonalForm
+                                .padding(.bottom, 20)
+                            photoSignatureForm
+                                .padding(.bottom, 20)
+                            photoNPWPForm
+                            
+                            NavigationLink(destination: EmailVerificationView().environmentObject(registerData)) {
+                                Text("Lanjut Pembukaan Rekening Baru")
+                                    .foregroundColor(.white)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                    .font(.system(size: 13))
+                                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                            }
+                            .background(Color(hex: "#232175"))
+                            .cornerRadius(12)
+                            .padding(.horizontal, 10)
+                            .padding(.top, 60)
+                            .padding(.bottom, 20)
+                        }
+                        .padding(.horizontal, 30)
+                        .padding(.top, 85)
+                        .padding(.bottom, 35)
                     }
-                    .padding(.horizontal, 30)
-                    .padding(.top, 65)
-                    .padding(.bottom, 35)
                 }
             }
             .KeyboardAwarePadding()
@@ -116,32 +142,17 @@ struct PersonalIdentityView: View {
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarHidden(true)
-    }
-    
-    var appbar: some View {
-        HStack {
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "arrow.left")
-                    .foregroundColor(.white)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
+        .onAppear {
+            print(recognizedText.value)
+            
+            if (recognizedText.value != "-") {
+                let matched = matches(for: "(\\d{13,16})", in: recognizedText.value)
+                print(matched)
+                
+                self.nik = matched[0]
+                retrieveImage(forKey: "ktp")
             }
-            Spacer()
-            logo
-            Spacer()
-        }
-    }
-    
-    var logo: some View {
-        HStack(alignment: .center, spacing: .none) {
-            Image("Logo M")
-                .resizable()
-                .frame(width: 25, height: 25)
-            Text("BANK MESTIKA")
-                .foregroundColor(.white)
-                .font(.system(size: 20))
-                .bold()
         }
     }
     
@@ -199,9 +210,7 @@ struct PersonalIdentityView: View {
                 )
                 .padding(.horizontal, 15)
                 
-                Button(action: {
-                    self.showCaptureKTP.toggle()
-                }) {
+                NavigationLink(destination: ScanningView(recognizedText: $recognizedText.value)) {
                     Text(imageKTP == nil ? "Ambil Foto KTP" : "Ganti Foto Lain")
                         .foregroundColor(imageKTP == nil ? .white : Color(hex: "#2334D0"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -577,7 +586,7 @@ struct PersonalIdentityView: View {
 
 struct PersonalIdentityView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonalIdentityView()
+        PersonalIdentityView().environmentObject(RegistrasiModel())
     }
 }
 

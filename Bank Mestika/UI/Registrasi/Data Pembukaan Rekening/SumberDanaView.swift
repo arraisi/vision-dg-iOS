@@ -32,11 +32,6 @@ struct SumberDanaView: View {
             }
             
             VStack {
-                
-                CustomNavigationBarView(presentationMode: _presentationMode)
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView {
                     
                     // Title
@@ -45,7 +40,8 @@ struct SumberDanaView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
+                        .padding(.top, 85)
+                        .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                     
                     // Content
@@ -154,7 +150,7 @@ struct SumberDanaView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         
     }
     

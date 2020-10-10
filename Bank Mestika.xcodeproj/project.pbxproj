@@ -47,6 +47,9 @@
 		52B81DE125300DA7002703E3 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 52B81DE025300DA7002703E3 /* SwiftyJSON */; };
 		52B81DF525302C17002703E3 /* APICallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81DF425302C17002703E3 /* APICallManager.swift */; };
 		52B81DFE2530329B002703E3 /* AssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81DFD2530329B002703E3 /* AssetsViewModel.swift */; };
+		52B81E06253064A5002703E3 /* RecognizedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81E05253064A4002703E3 /* RecognizedText.swift */; };
+		52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81E0A2530655E002703E3 /* ScanningView.swift */; };
+		52B81E10253065B1002703E3 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81E0F253065B1002703E3 /* TextRecognizer.swift */; };
 		52BE52EC25295D8200ADE164 /* tabungan.json in Resources */ = {isa = PBXBuildFile; fileRef = 52BE52EB25295D8200ADE164 /* tabungan.json */; };
 		52BE52FF252960C600ADE164 /* JenisTabungan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE52FE252960C600ADE164 /* JenisTabungan.swift */; };
 		52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE53032529620900ADE164 /* JenisTabunganData.swift */; };
@@ -146,6 +149,9 @@
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		52B81DF425302C17002703E3 /* APICallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallManager.swift; sourceTree = "<group>"; };
 		52B81DFD2530329B002703E3 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
+		52B81E05253064A4002703E3 /* RecognizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedText.swift; sourceTree = "<group>"; };
+		52B81E0A2530655E002703E3 /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
+		52B81E0F253065B1002703E3 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
 		52BE52EB25295D8200ADE164 /* tabungan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tabungan.json; sourceTree = "<group>"; };
 		52BE52FE252960C600ADE164 /* JenisTabungan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisTabungan.swift; sourceTree = "<group>"; };
 		52BE53032529620900ADE164 /* JenisTabunganData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisTabunganData.swift; sourceTree = "<group>"; };
@@ -312,6 +318,7 @@
 				5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */,
 				52D274662525B56C00DD1443 /* ModalOverlay.swift */,
 				52CB435B252B0DBD001120AA /* UIImage+Utils.swift */,
+				52B81E05253064A4002703E3 /* RecognizedText.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -439,6 +446,8 @@
 				C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */,
 				524F95B1252EF06F003D7FFF /* LoadingIndicator.swift */,
 				524F95BC252EF08E003D7FFF /* LoadingView.swift */,
+				52B81E0A2530655E002703E3 /* ScanningView.swift */,
+				52B81E0F253065B1002703E3 /* TextRecognizer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -666,6 +675,7 @@
 			files = (
 				C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift in Sources */,
 				C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */,
+				52B81E06253064A5002703E3 /* RecognizedText.swift in Sources */,
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
 				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,
 				52794C0425245C0C0031392E /* EmailConfirmationView.swift in Sources */,
@@ -693,6 +703,7 @@
 				524F9585252EE9F6003D7FFF /* AssetsResponse.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				52B81DF525302C17002703E3 /* APICallManager.swift in Sources */,
+				52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
 				524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
@@ -726,6 +737,7 @@
 				527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */,
 				52794C26252475290031392E /* InterviewRegistrationView.swift in Sources */,
 				52BE52FF252960C600ADE164 /* JenisTabungan.swift in Sources */,
+				52B81E10253065B1002703E3 /* TextRecognizer.swift in Sources */,
 				C09EA8B12525AD73007ABF8A /* PerkerjaanView.swift in Sources */,
 				C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */,
 				52794C17252468490031392E /* VerificationAddressView.swift in Sources */,

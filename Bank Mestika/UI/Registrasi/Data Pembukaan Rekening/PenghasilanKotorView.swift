@@ -36,11 +36,6 @@ struct PenghasilanKotorView: View {
             }
             
             VStack {
-                
-                CustomNavigationBarView(presentationMode: _presentationMode)
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView {
                     
                     // Title
@@ -49,7 +44,8 @@ struct PenghasilanKotorView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
+                        .padding(.top, 85)
+                        .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                     
                     // Content
@@ -140,7 +136,7 @@ struct PenghasilanKotorView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         
     }
 }

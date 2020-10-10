@@ -39,31 +39,26 @@ struct Term_ConditionView: View {
                     .frame(height: 300)
                 Color(hex: "#F6F8FB")
             }
+            
             VStack {
-                appbar
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
+                Text("SYARAT DAN KETENTUAN")
+                    .font(.title2)
+                    .bold()
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical, 20)
+                    .padding(.horizontal, 20)
+                    .fixedSize(horizontal: false, vertical: true)
                 
-                VStack {
-                    Text("SYARAT DAN KETENTUAN")
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical, 20)
-                        .padding(.horizontal, 20)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    cardForm
-                    Spacer()
-                }
-                .padding(.horizontal, 30)
-                .padding(.top, 35)
-                .padding(.bottom, 35)
+                cardForm
+                Spacer()
             }
+            .padding(.horizontal, 30)
+            .padding(.top, 85)
+            .padding(.bottom, 35)
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
     }
     
     var appbar: some View {

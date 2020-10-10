@@ -40,16 +40,12 @@ struct ChooseSavingsView: View {
         
         return ZStack {
             VStack {
-                Color(hex: "#F6F8FB")
-                    .frame(height: 400)
                 Color(hex: "#232175")
+                    .frame(height: 400)
+                Color(hex: "#F6F8FB")
             }
             
             VStack {
-                appbar
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
 //                    VStack(alignment: .center) {
 //                        Text("Pilih Jenis Tabungan Anda")
@@ -86,8 +82,8 @@ struct ChooseSavingsView: View {
                                                     .resizable()
                                                     .frame(width: 200, height: 160)
                                             }
+                                            .padding(.top, 60)
                                             .cornerRadius(8)
-                                            .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
                                             .transition(AnyTransition.slide)
                                             .animation(.spring())
                                             
@@ -195,7 +191,6 @@ struct ChooseSavingsView: View {
                                 }
                             }
                         }
-                        
                     }
                 }
                 
@@ -205,7 +200,7 @@ struct ChooseSavingsView: View {
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
             createBottomFloater()
         }

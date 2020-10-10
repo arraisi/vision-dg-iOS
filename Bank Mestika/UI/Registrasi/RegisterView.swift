@@ -73,6 +73,10 @@ struct RegisterView: View {
         .onAppear(perform: {
             print("ON APPEAR")
             viewModel.getAssets()
+            
+            UINavigationBar.appearance().barTintColor = UIColor(Color(hex: "#232175"))
+            UINavigationBar.appearance().tintColor = .white
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         })
     }
     
@@ -115,7 +119,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: SuccessRegisterView().environmentObject(registerData), isActive: $isViewActivity) {
+            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData), isActive: $isViewActivity) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -181,13 +185,13 @@ struct RegisterView: View {
     }
 }
 
-struct RegisterView_Previews: PreviewProvider {
+private struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView(viewModel: AssetsViewModel())
+        RegisterView(viewModel: AssetsViewModel()).environmentObject(RegistrasiModel())
     }
 }
 
-struct ListCard : View {
+private struct ListCard : View {
     
     @Binding var page : Int
     var data: [AssetsResponse]
@@ -228,7 +232,7 @@ private struct Card : View {
     }
 }
 
-struct Carousel : UIViewRepresentable {
+private struct Carousel : UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         return Carousel.Coordinator(parent1: self)
@@ -275,7 +279,7 @@ struct Carousel : UIViewRepresentable {
     }
 }
 
-struct PageControl : UIViewRepresentable {
+private struct PageControl : UIViewRepresentable {
     
     @Binding var page : Int
     var data: [AssetsResponse]

@@ -36,10 +36,6 @@ struct VerificationRegisterDataView: View {
             }
             
             VStack {
-                appbar
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView {
                     VStack {
                         Text("PASTIKAN INFORMASI ANDA BENAR")
@@ -55,7 +51,7 @@ struct VerificationRegisterDataView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 30)
-                    .padding(.top, 35)
+                    .padding(.top, 85)
                     .padding(.bottom, 35)
                 }
                 
@@ -77,27 +73,7 @@ struct VerificationRegisterDataView: View {
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarHidden(true)
-    }
-    
-    var appbar: some View {
-        HStack {
-            Spacer()
-            logo
-            Spacer()
-        }
-    }
-    
-    var logo: some View {
-        HStack(alignment: .center, spacing: .none) {
-            Image("Logo M")
-                .resizable()
-                .frame(width: 25, height: 25)
-            Text("BANK MESTIKA")
-                .foregroundColor(.white)
-                .font(.system(size: 20))
-                .bold()
-        }
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
     }
     
     var cardForm: some View {

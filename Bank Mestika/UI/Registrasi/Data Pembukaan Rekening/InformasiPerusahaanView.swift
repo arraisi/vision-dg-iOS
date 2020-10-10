@@ -44,13 +44,6 @@ struct InformasiPerusahaanView: View {
             }
             
             VStack {
-                
-                Spacer()
-                
-                CustomNavigationBarView(presentationMode: _presentationMode)
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView {
                     
                     // Title
@@ -59,7 +52,8 @@ struct InformasiPerusahaanView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
+                        .padding(.top, 85)
+                        .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                     
                     // Content
@@ -106,7 +100,7 @@ struct InformasiPerusahaanView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 
-                                NavigationLink(destination: PenghasilanKotorView(), label:{
+                                NavigationLink(destination: PenghasilanKotorView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -150,7 +144,7 @@ struct InformasiPerusahaanView: View {
             createBottomFloater()
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         
     }
     
@@ -282,6 +276,6 @@ struct InformasiPerusahaanView: View {
 
 struct FormInformasiPerusahaanView_Previews: PreviewProvider {
     static var previews: some View {
-        InformasiPerusahaanView()
+        InformasiPerusahaanView().environmentObject(RegistrasiModel())
     }
 }

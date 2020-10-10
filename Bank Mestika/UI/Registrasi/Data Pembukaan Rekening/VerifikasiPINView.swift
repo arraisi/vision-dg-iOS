@@ -29,23 +29,17 @@ struct VerifikasiPINView: View {
             }
             
             VStack {
-                
-                Spacer()
-                
-                CustomNavigationBarView(presentationMode: _presentationMode)
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
                         .font(Font.system(size: 24))
-                        .bold()
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 40)
-                        .padding(.horizontal, 20)
+                        .padding(.top, 85)
+                        .padding(.bottom, 30)
+                        .padding(.horizontal, 30)
                         .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
@@ -133,7 +127,7 @@ struct VerifikasiPINView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }

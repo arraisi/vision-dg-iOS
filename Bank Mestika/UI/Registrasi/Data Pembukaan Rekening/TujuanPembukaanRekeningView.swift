@@ -40,11 +40,6 @@ struct TujuanPembukaanRekeningView: View {
             }
             
             VStack {
-                
-                CustomNavigationBarView(presentationMode: _presentationMode)
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
                 ScrollView {
                     
                     // Title
@@ -53,7 +48,8 @@ struct TujuanPembukaanRekeningView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 30)
+                        .padding(.top, 85)
+                        .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                     
                     // Content
@@ -167,7 +163,7 @@ struct TujuanPembukaanRekeningView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         
     }
     
@@ -175,6 +171,6 @@ struct TujuanPembukaanRekeningView: View {
 
 struct FormTujuanPembukaanRekeningView_Previews: PreviewProvider {
     static var previews: some View {
-        TujuanPembukaanRekeningView()
+        TujuanPembukaanRekeningView().environmentObject(RegistrasiModel())
     }
 }

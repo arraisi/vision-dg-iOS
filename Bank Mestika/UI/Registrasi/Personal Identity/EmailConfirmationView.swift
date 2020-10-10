@@ -19,50 +19,19 @@ struct EmailConfirmationView: View {
                     .frame(height: 300)
                 Color(hex: "#F6F8FB")
             }
+            
             VStack {
-                appbar
-                    .padding(.top, 45)
-                    .padding(.horizontal, 30)
-                
-                VStack {
-                    cardForm
-                    Spacer()
-                }
-                .padding(.horizontal, 30)
-                .padding(.top, 35)
-                .padding(.bottom, 35)
+                cardForm
+                Spacer()
             }
+            .padding(.horizontal, 30)
+            .padding(.top, 85)
+            .padding(.bottom, 35)
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarHidden(true)
+        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         .onTapGesture() {
             UIApplication.shared.endEditing()
-        }
-    }
-    
-    var appbar: some View {
-        HStack {
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "arrow.left")
-                    .foregroundColor(.white)
-            }
-            Spacer()
-            logo
-            Spacer()
-        }
-    }
-    
-    var logo: some View {
-        HStack(alignment: .center, spacing: .none) {
-            Image("Logo M")
-                .resizable()
-                .frame(width: 25, height: 25)
-            Text("BANK MESTIKA")
-                .foregroundColor(.white)
-                .font(.system(size: 20))
-                .bold()
         }
     }
     
