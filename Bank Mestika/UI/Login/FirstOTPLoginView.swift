@@ -1,14 +1,13 @@
 //
-//  OTPVerificationView.swift
+//  FirstOTPLoginView.swift
 //  Bank Mestika
 //
-//  Created by Prima Jatnika on 24/09/20.
+//  Created by Prima Jatnika on 12/10/20.
 //
 
 import SwiftUI
 
-struct OTPVerificationView: View {
-    @EnvironmentObject var registerData: RegistrasiModel
+struct FirstOTPLoginView: View {
     
     @State private var numberOfCells: Int = 6
     @State private var currentlySelectedCell = 0
@@ -16,18 +15,11 @@ struct OTPVerificationView: View {
     @State private var timeRemaining = 40
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    var disableForm: Bool {
-        currentlySelectedCell < 6
-    }
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
-            VStack {
-                Color(hex: "#232175")
-                    .frame(height: 300)
-                Color(hex: "#F6F8FB")
-            }
+            Image("bg_splash")
+                .resizable()
             
             VStack {
                 appbar
@@ -35,12 +27,20 @@ struct OTPVerificationView: View {
                     .padding(.horizontal, 30)
                 
                 VStack {
+                    Text("MASUKKAN KODE OTP")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical, 20)
+                        .padding(.horizontal, 20)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
                     cardForm
                     Spacer()
                 }
                 .padding(.horizontal, 30)
                 .padding(.top, 35)
-                .padding(.bottom, 35)
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -53,13 +53,12 @@ struct OTPVerificationView: View {
                 self.timeRemaining -= 1
             }
         }
-
     }
     
     var appbar: some View {
         HStack {
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "arrow.left")
                     .foregroundColor(.white)
@@ -67,6 +66,10 @@ struct OTPVerificationView: View {
             Spacer()
             logo
             Spacer()
+            NavigationLink(destination: RegisterView(viewModel: AssetsViewModel())) {
+                Text("Cancel")
+                    .foregroundColor(.white)
+            }
         }
     }
     
@@ -84,22 +87,14 @@ struct OTPVerificationView: View {
     
     var cardForm: some View {
         VStack(alignment: .center) {
-            Text("Kami telah mengirimkan OTP ke No. Telepon Anda")
-                .font(.title3)
-                .foregroundColor(Color(hex: "#232175"))
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding(.top, 20)
-                .padding(.horizontal, 20)
-            
-            Text("Silahkan masukan kode OTP dengan REF #1234")
+            Text("Kode OTP telah dikirimkan ke nomor")
                 .font(.subheadline)
-                .foregroundColor(Color(hex: "#707070"))
+                .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
-        
+            
             HStack {
                 ForEach(0 ..< self.numberOfCells) { index in
                     CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
@@ -109,52 +104,48 @@ struct OTPVerificationView: View {
             HStack {
                 Text("Tidak Menerima Kode?")
                     .font(.caption2)
+                    .foregroundColor(.white)
                 Button(action: {
                     print("-> Resend OTP")
                 }) {
                     Text("Resend OTP")
                         .font(.caption2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(Color(hex: "#232175"))
+                        .foregroundColor(.white)
                 }
                 Text("(00:\(timeRemaining))")
                     .font(.caption2)
+                    .foregroundColor(.white)
             }
             .padding(.top, 5)
             
             Text("Pastikan Anda terkoneksi ke Internet dan pulsa mencukupi untuk menerima OTP")
                 .font(.caption)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .padding(.top, 15)
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData)) {
-                Text("Verifikasi OTP")
-                    .foregroundColor(.white)
+            NavigationLink(destination: FirstATMLoginView()) {
+                Text("Masukkan Kode OTP")
+                    .foregroundColor(Color(hex: "#232175"))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
                     .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }
-            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+            .background(Color.white)
             .cornerRadius(12)
             .padding(.horizontal, 20)
-            .padding(.top, 10)
+            .padding(.top, 30)
             .padding(.bottom, 20)
-            .disabled(disableForm)
         }
         .frame(width: UIScreen.main.bounds.width - 30)
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(radius: 30)
     }
 }
 
-#if DEBUG
-struct OTPVerificationView_Previews: PreviewProvider {
+struct FirstOTPLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        OTPVerificationView().environmentObject(RegistrasiModel())
+        FirstOTPLoginView()
     }
 }
-#endif

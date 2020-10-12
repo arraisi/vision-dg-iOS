@@ -9,10 +9,6 @@ import SwiftUI
 import ExytePopupView
 import SDWebImageSwiftUI
 
-class AppState: ObservableObject {
-    @Published var moveToRegister: Bool = false
-}
-
 struct RegisterView: View {
     
     @ObservedObject var viewModel: AssetsViewModel
@@ -20,7 +16,6 @@ struct RegisterView: View {
     var registerData = RegistrasiModel()
     
     @FetchRequest(entity: User.entity(), sortDescriptors: []) var user: FetchedResults<User>
-    @EnvironmentObject var appState: AppState
     @State var isViewActivity: Bool = false
     
     /*
@@ -121,7 +116,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData), isActive: $isViewActivity) {
+            NavigationLink(destination: FirstLoginView()) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -129,13 +124,6 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
-            .onReceive(self.appState.$moveToRegister) { moveToRegister in
-                if moveToRegister {
-                    print("Move to Register: \(moveToRegister)")
-                    self.isViewActivity = false
-                    self.appState.moveToRegister = false
-                }
-            }
         }
     }
     

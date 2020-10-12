@@ -26,12 +26,17 @@ struct VerificationPINView: View {
         pin.count < 6
     } 
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
             Image("bg_splash")
                 .resizable()
             
             VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     VStack {
                         Text("VERIFIKASI PIN KARTU ATM ANDA")
@@ -46,8 +51,6 @@ struct VerificationPINView: View {
                         cardForm
                         Spacer()
                     }
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.horizontal, 30)
                     .padding(.top, 30)
                 }
@@ -57,10 +60,39 @@ struct VerificationPINView: View {
                 ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
             }
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .navigationBarHidden(true)
         .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
             createBottomFloater()
         }
     }
+    
+    var appbar: some View {
+        HStack {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "arrow.left")
+                    .foregroundColor(.white)
+            }
+            Spacer()
+            logo
+            Spacer()
+        }
+    }
+    
+    var logo: some View {
+        HStack(alignment: .center, spacing: .none) {
+            Image("Logo M")
+                .resizable()
+                .frame(width: 25, height: 25)
+            Text("BANK MESTIKA")
+                .foregroundColor(.white)
+                .font(.system(size: 20))
+                .bold()
+        }
+    }
+    
     
     var cardForm: some View {
         VStack(alignment: .center) {
@@ -200,6 +232,6 @@ struct VerificationPINView: View {
 
 struct VerificationPINView_Previews: PreviewProvider {
     static var previews: some View {
-        VerificationPINView()
+        VerificationPINView().environmentObject(RegistrasiModel())
     }
 }
