@@ -63,9 +63,8 @@ struct CheckBoxField: View {
 
 struct CheckBoxGroup: View {
     
-    let items : [Int]
+    let items : [MasterModel]
     @Binding var markedId: [Int]
-    let labels : [String]
     let callback: (Int, [Int])->()
     
     var body: some View {
@@ -74,12 +73,11 @@ struct CheckBoxGroup: View {
             VStack {
                 
                 ForEach(0..<items.count) { index in
-                    CheckBoxField(id: items[index], markedId: self.markedId, label: labels[index], callback: self.checkboxSelected)
+                    CheckBoxField(id: items[index].id, markedId: self.markedId, label: items[index].name, callback: self.checkboxSelected)
                 }
                 
             }
         }
-        .padding()
     }
     
     func checkboxSelected(id: Int, marked: [Int]) {
@@ -99,9 +97,8 @@ struct CheckBoxGroup: View {
 
 struct CheckBoxGroup_Previews: PreviewProvider {
     static var previews: some View {
-        CheckBoxGroup(items: [0, 1], markedId: Binding.constant([1]), labels: ["A", "B"]) {(id, marked) in
-            print(id)
-            print(marked)
+        CheckBoxGroup(items: masterData, markedId: Binding.constant([])) { (id, marked) in
+            
         }
     }
 }

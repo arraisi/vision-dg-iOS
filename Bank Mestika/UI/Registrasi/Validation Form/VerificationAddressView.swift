@@ -15,8 +15,7 @@ struct VerificationAddressView: View {
     @State var alamat: String = ""
     @State var verificationAddressId: Int?
     
-    var verificationAddress = [1:"Ya, alamat sesuai",
-                               2:"Tidak, alamat tidak sesuai"]
+    let verificationAddress: [MasterModel] = load("verificationAddress.json")
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -106,8 +105,7 @@ struct VerificationAddressView: View {
             ZStack {
 
                 RadioButtonGroup(
-                    items: Array(verificationAddress.keys),
-                    labels: Array(verificationAddress.values),
+                    items: verificationAddress,
                     selectedId: $verificationAddressId) { selected in
                     print("Selected is: \(selected)")
                     self.selected = selected
@@ -123,19 +121,39 @@ struct VerificationAddressView: View {
                     Divider()
                         .padding(.horizontal, 20)
                     
-                    LabelTextField(value: $registerData.alamatPerusahaan, label: "Alamat", placeHolder: "Alamat")
+                    LabelTextField(value: $registerData.alamatPerusahaan, label: "Alamat", placeHolder: "Alamat", onEditingChanged: { (Bool) in
+                        print("on edit")
+                    }, onCommit: {
+                        print("on commit")
+                    })
                         .padding(.horizontal, 20)
                     
-                    LabelTextField(value: $registerData.rtrw, label: "RT/RW", placeHolder: "RT/RW")
+                    LabelTextField(value: $registerData.rtrw, label: "RT/RW", placeHolder: "RT/RW", onEditingChanged: { (Bool) in
+                        print("on edit")
+                    }, onCommit: {
+                        print("on commit")
+                    })
                         .padding(.horizontal, 20)
                     
-                    LabelTextField(value: $registerData.kelurahan, label: "Kelurahan", placeHolder: "Kelurahan")
+                    LabelTextField(value: $registerData.kelurahan, label: "Kelurahan", placeHolder: "Kelurahan", onEditingChanged: { (Bool) in
+                        print("on edit")
+                    }, onCommit: {
+                        print("on commit")
+                    })
                         .padding(.horizontal, 20)
                     
-                    LabelTextField(value: $registerData.kecamatan, label: "Kecamatan", placeHolder: "Kecamatan")
+                    LabelTextField(value: $registerData.kecamatan, label: "Kecamatan", placeHolder: "Kecamatan", onEditingChanged: { (Bool) in
+                        print("on edit")
+                    }, onCommit: {
+                        print("on commit")
+                    })
                         .padding(.horizontal, 20)
                     
-                    LabelTextField(value: $registerData.kodePos, label: "Kode Pos", placeHolder: "Kode Pos")
+                    LabelTextField(value: $registerData.kodePos, label: "Kode Pos", placeHolder: "Kode Pos", onEditingChanged: { (Bool) in
+                        print("on edit")
+                    }, onCommit: {
+                        print("on commit")
+                    })
                         .padding(.horizontal, 20)
                         .padding(.bottom, 20)
                 }
@@ -153,6 +171,6 @@ struct VerificationAddressView: View {
 
 struct VerificationAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        VerificationAddressView()
+        VerificationAddressView().environmentObject(RegistrasiModel())
     }
 }

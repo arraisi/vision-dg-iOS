@@ -14,11 +14,7 @@ struct PenghasilanKotorView: View {
     
     @State var penghasilanKotorId: Int?
     
-    var penghasilanKotor = [1: "> Rp. 5 Juta",
-                            2:"Rp. 5 Juta - Rp. 10 Juta",
-                            3:"Rp. 10 Juta - Rp. 20 Juta",
-                            4:"Rp. 20 Juta - Rp. 100 Juta",
-                            5:"> Rp. 100 Juta"]
+    let penghasilanKotor: [MasterModel] = load("penghasilanKotor.json")
     
     var body: some View {
         
@@ -84,11 +80,13 @@ struct PenghasilanKotorView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: Array(penghasilanKotor.keys),
-                                        labels: Array(penghasilanKotor.values),
+                                        items: penghasilanKotor,
                                         selectedId: $penghasilanKotorId) { selected in
                                         
-                                        registerData.penghasilanKotor = penghasilanKotor[penghasilanKotorId ?? 0] ?? ""
+                                        if let i = penghasilanKotor.firstIndex(where: { $0.id == selected }) {
+                                            print(penghasilanKotor[i])
+                                            registerData.penghasilanKotor = penghasilanKotor[i].name
+                                        }
                                         
                                         print("Selected is: \(registerData.penghasilanKotor)")
                                     }

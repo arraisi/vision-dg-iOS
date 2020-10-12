@@ -22,7 +22,7 @@ struct TujuanPembukaanRekeningView: View {
     
     @State var selectedItems: [Int] = []
     
-    var tujuanPembukaanRekening: [Int: String] = [1:"Pinjaman / Angsuran Kredit", 2:"Keperluan Usaha", 3:"Keperluan Sehari - hari", 4:"Simpanan"]
+    let tujuanPembukaanRekening: [MasterModel] = load("tujuanPembukaanRekening.json")
     
     var body: some View {
         
@@ -87,20 +87,21 @@ struct TujuanPembukaanRekeningView: View {
                                 // Forms input
                                 ZStack {
                                     
-                                    CheckBoxGroup(items: Array(tujuanPembukaanRekening.keys), markedId: $selectedItems, labels: Array(tujuanPembukaanRekening.values)) { id, marked in
-                                        
+                                    CheckBoxGroup(items: tujuanPembukaanRekening, markedId: $selectedItems) { id, marked in
+
                                         registerData.tujuanPembukaan = ""
                                         
-                                        for (index, item) in selectedItems.enumerated() {
-                                            
-                                            registerData.tujuanPembukaan += tujuanPembukaanRekening[item]!
-                                            
-                                            if index != selectedItems.endIndex-1 {
-                                                registerData.tujuanPembukaan += ", "
+                                        tujuanPembukaanRekening.forEach { (item) in
+                                            if marked.contains(item.id) {
+                                                registerData.tujuanPembukaan += item.name
+                                                if marked.last != item.id {
+                                                    registerData.tujuanPembukaan += ", "
+                                                }
                                             }
                                         }
                                         
                                         print(registerData.tujuanPembukaan)
+                                        
                                     }
                                     .padding()
                                     

@@ -72,9 +72,14 @@
 		52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D274662525B56C00DD1443 /* ModalOverlay.swift */; };
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
+		C00B536825340E6600141070 /* tujuanPembukaanRekening.json in Resources */ = {isa = PBXBuildFile; fileRef = C00B536725340E6600141070 /* tujuanPembukaanRekening.json */; };
 		C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */; };
 		C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */; };
 		C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */; };
+		C0755903253421760067AF7E /* MasterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0755902253421760067AF7E /* MasterData.swift */; };
+		C075590D253421FD0067AF7E /* MasterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07558FE2534213B0067AF7E /* MasterModel.swift */; };
+		C075591F2534232F0067AF7E /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C075591E2534232F0067AF7E /* LoadJson.swift */; };
+		C0755935253424D20067AF7E /* sumberDana.json in Resources */ = {isa = PBXBuildFile; fileRef = C0755934253424D20067AF7E /* sumberDana.json */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
 		C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */; };
 		C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */; };
@@ -86,6 +91,15 @@
 		C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA89F2525AC94007ABF8A /* BesarPerkiraanSetoranView.swift */; };
 		C09EA8B12525AD73007ABF8A /* PerkerjaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8B02525AD73007ABF8A /* PerkerjaanView.swift */; };
 		C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA8BB2525B454007ABF8A /* CornerRadiusStyle.swift */; };
+		C0AA672725342D0900DF3F02 /* sumberPendapatanLainnya.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA671E25342D0900DF3F02 /* sumberPendapatanLainnya.json */; };
+		C0AA672825342D0900DF3F02 /* sumberPenyandangDana.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA671F25342D0900DF3F02 /* sumberPenyandangDana.json */; };
+		C0AA672925342D0900DF3F02 /* pekerjaan.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672025342D0900DF3F02 /* pekerjaan.json */; };
+		C0AA672A25342D0900DF3F02 /* besarPerkiraanSetoran.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672125342D0900DF3F02 /* besarPerkiraanSetoran.json */; };
+		C0AA672B25342D0900DF3F02 /* perkiraanPenarikan.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672225342D0900DF3F02 /* perkiraanPenarikan.json */; };
+		C0AA672C25342D0900DF3F02 /* penghasilanKotor.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672325342D0900DF3F02 /* penghasilanKotor.json */; };
+		C0AA672D25342D0900DF3F02 /* besarPerkiraanPenarikan.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672425342D0900DF3F02 /* besarPerkiraanPenarikan.json */; };
+		C0AA672E25342D0900DF3F02 /* verificationAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672525342D0900DF3F02 /* verificationAddress.json */; };
+		C0AA672F25342D0900DF3F02 /* perkiraanSetoran.json in Resources */ = {isa = PBXBuildFile; fileRef = C0AA672625342D0900DF3F02 /* perkiraanSetoran.json */; };
 		C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */; };
 		C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DE72522F88F005B811C /* LabelTextField.swift */; };
 		C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */; };
@@ -181,9 +195,15 @@
 		52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSavingsView.swift; sourceTree = "<group>"; };
 		52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingSelectionModalView.swift; sourceTree = "<group>"; };
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
+		C00B536325340A7A00141070 /* masterData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = masterData.json; sourceTree = "<group>"; };
+		C00B536725340E6600141070 /* tujuanPembukaanRekening.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tujuanPembukaanRekening.json; sourceTree = "<group>"; };
 		C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPenyandangDanaView.swift; sourceTree = "<group>"; };
 		C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPendapatanLainnyaView.swift; sourceTree = "<group>"; };
 		C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxGroup.swift; sourceTree = "<group>"; };
+		C07558FE2534213B0067AF7E /* MasterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterModel.swift; sourceTree = "<group>"; };
+		C0755902253421760067AF7E /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
+		C075591E2534232F0067AF7E /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
+		C0755934253424D20067AF7E /* sumberDana.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sumberDana.json; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
 		C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformasiPerusahaanView.swift; sourceTree = "<group>"; };
 		C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
@@ -195,6 +215,15 @@
 		C09EA89F2525AC94007ABF8A /* BesarPerkiraanSetoranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BesarPerkiraanSetoranView.swift; sourceTree = "<group>"; };
 		C09EA8B02525AD73007ABF8A /* PerkerjaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerkerjaanView.swift; sourceTree = "<group>"; };
 		C09EA8BB2525B454007ABF8A /* CornerRadiusStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusStyle.swift; sourceTree = "<group>"; };
+		C0AA671E25342D0900DF3F02 /* sumberPendapatanLainnya.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sumberPendapatanLainnya.json; sourceTree = "<group>"; };
+		C0AA671F25342D0900DF3F02 /* sumberPenyandangDana.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sumberPenyandangDana.json; sourceTree = "<group>"; };
+		C0AA672025342D0900DF3F02 /* pekerjaan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pekerjaan.json; sourceTree = "<group>"; };
+		C0AA672125342D0900DF3F02 /* besarPerkiraanSetoran.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = besarPerkiraanSetoran.json; sourceTree = "<group>"; };
+		C0AA672225342D0900DF3F02 /* perkiraanPenarikan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = perkiraanPenarikan.json; sourceTree = "<group>"; };
+		C0AA672325342D0900DF3F02 /* penghasilanKotor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = penghasilanKotor.json; sourceTree = "<group>"; };
+		C0AA672425342D0900DF3F02 /* besarPerkiraanPenarikan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = besarPerkiraanPenarikan.json; sourceTree = "<group>"; };
+		C0AA672525342D0900DF3F02 /* verificationAddress.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verificationAddress.json; sourceTree = "<group>"; };
+		C0AA672625342D0900DF3F02 /* perkiraanSetoran.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = perkiraanSetoran.json; sourceTree = "<group>"; };
 		C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; };
 		C0C94DE72522F88F005B811C /* LabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
@@ -258,7 +287,6 @@
 			children = (
 				526F63D22532E8B80091D6E3 /* CoreData */,
 				52B81DFC2530328B002703E3 /* ViewModel */,
-				5202BA34251B1FA300FCE527 /* Info.plist */,
 				524F9594252EECC8003D7FFF /* Services */,
 				524F958D252EEB0F003D7FFF /* Resources */,
 				524F958C252EEAF4003D7FFF /* Main */,
@@ -267,6 +295,7 @@
 				5202BA63251B269100FCE527 /* Utils */,
 				5202BA59251B1FDB00FCE527 /* UI */,
 				5202BA29251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld */,
+				5202BA34251B1FA300FCE527 /* Info.plist */,
 				5202BA2E251B1FA300FCE527 /* Preview Content */,
 			);
 			path = "Bank Mestika";
@@ -441,9 +470,12 @@
 		52BE52E925295D3B00ADE164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C07558FC2534213B0067AF7E /* Master */,
 				524F9583252EE9D2003D7FFF /* Assets Model */,
 				52056D38252DD34F008D99D2 /* Registrasi */,
 				52BE52EA25295D4C00ADE164 /* Jenis Tabungan */,
+				C07558E725341ADF0067AF7E /* Pembukaan Rekening */,
+				C075591E2534232F0067AF7E /* LoadJson.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -503,6 +535,34 @@
 				664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C07558E725341ADF0067AF7E /* Pembukaan Rekening */ = {
+			isa = PBXGroup;
+			children = (
+				C0AA672425342D0900DF3F02 /* besarPerkiraanPenarikan.json */,
+				C0AA672125342D0900DF3F02 /* besarPerkiraanSetoran.json */,
+				C0AA672025342D0900DF3F02 /* pekerjaan.json */,
+				C0AA672325342D0900DF3F02 /* penghasilanKotor.json */,
+				C0AA672225342D0900DF3F02 /* perkiraanPenarikan.json */,
+				C0AA672625342D0900DF3F02 /* perkiraanSetoran.json */,
+				C0AA671E25342D0900DF3F02 /* sumberPendapatanLainnya.json */,
+				C0AA671F25342D0900DF3F02 /* sumberPenyandangDana.json */,
+				C0AA672525342D0900DF3F02 /* verificationAddress.json */,
+				C0755934253424D20067AF7E /* sumberDana.json */,
+				C00B536725340E6600141070 /* tujuanPembukaanRekening.json */,
+			);
+			path = "Pembukaan Rekening";
+			sourceTree = "<group>";
+		};
+		C07558FC2534213B0067AF7E /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				C00B536325340A7A00141070 /* masterData.json */,
+				C0755902253421760067AF7E /* MasterData.swift */,
+				C07558FE2534213B0067AF7E /* MasterModel.swift */,
+			);
+			path = Master;
 			sourceTree = "<group>";
 		};
 		C09EA88325259D4F007ABF8A /* Data Pembukaan Rekening */ = {
@@ -641,10 +701,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0AA672A25342D0900DF3F02 /* besarPerkiraanSetoran.json in Resources */,
+				C0AA672E25342D0900DF3F02 /* verificationAddress.json in Resources */,
+				C0AA672825342D0900DF3F02 /* sumberPenyandangDana.json in Resources */,
+				C0AA672C25342D0900DF3F02 /* penghasilanKotor.json in Resources */,
 				52BE52EC25295D8200ADE164 /* tabungan.json in Resources */,
 				5202BA33251B1FA300FCE527 /* LaunchScreen.storyboard in Resources */,
+				C0AA672F25342D0900DF3F02 /* perkiraanSetoran.json in Resources */,
 				5202BA30251B1FA300FCE527 /* Preview Assets.xcassets in Resources */,
+				C0AA672B25342D0900DF3F02 /* perkiraanPenarikan.json in Resources */,
+				C0AA672925342D0900DF3F02 /* pekerjaan.json in Resources */,
+				C0755935253424D20067AF7E /* sumberDana.json in Resources */,
+				C0AA672725342D0900DF3F02 /* sumberPendapatanLainnya.json in Resources */,
 				5202BA2D251B1FA300FCE527 /* Assets.xcassets in Resources */,
+				C00B536825340E6600141070 /* tujuanPembukaanRekening.json in Resources */,
+				C0AA672D25342D0900DF3F02 /* besarPerkiraanPenarikan.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +801,7 @@
 				C09EA8882525A7CC007ABF8A /* PerkiraanPenarikanView.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				C09EA87C25259C9B007ABF8A /* SumberDanaView.swift in Sources */,
+				C075591F2534232F0067AF7E /* LoadJson.swift in Sources */,
 				52CB435C252B0DBD001120AA /* UIImage+Utils.swift in Sources */,
 				527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */,
 				5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */,
@@ -745,8 +817,10 @@
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				52B81DF525302C17002703E3 /* APICallManager.swift in Sources */,
 				52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */,
+				C075590D253421FD0067AF7E /* MasterModel.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
 				524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */,
+				C0755903253421760067AF7E /* MasterData.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,

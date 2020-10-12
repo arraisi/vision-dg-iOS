@@ -14,16 +14,7 @@ struct PerkerjaanView: View {
     @State var pekerjaanId: Int?
     @State var editMode: EditMode = .inactive
     
-    var pekerjaan = [
-        1: "Pejabat Pemerintah",
-        2: "Parpol",
-        3: "Pegawai Swasta",
-        4: "Wirausaha",
-        5: "Pegawai Negeri",
-        6: "Pegawai BUMN / BUMD",
-        7: "Polisi",
-        8: "Militer",
-        9: "Pensiunan"]
+    let pekerjaan: [MasterModel] = load("pekerjaan.json")
     
     var body: some View {
         
@@ -90,12 +81,15 @@ struct PerkerjaanView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: Array(pekerjaan.keys),
-                                        labels:Array(pekerjaan.values),
+                                        items: pekerjaan,
                                         selectedId: $pekerjaanId) { selected in
                                         
-                                        registerData.pekerjaan = pekerjaan[pekerjaanId ?? 0] ?? ""
+                                        if let i = pekerjaan.firstIndex(where: { $0.id == selected }) {
+                                            print(pekerjaan[i])
+                                            registerData.pekerjaan = pekerjaan[i].name
+                                        }
                                         
+                                        print(registerData.pekerjaan)
                                     }
                                     .padding()
                                     

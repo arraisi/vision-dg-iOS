@@ -129,7 +129,7 @@ struct PhoneVerificationView: View {
 
 struct PhoneVerificationView_Previews: PreviewProvider {
     static var previews: some View {
-        PhoneVerificationView()
+        PhoneVerificationView().environmentObject(RegistrasiModel())
     }
 }
 
