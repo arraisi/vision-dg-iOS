@@ -118,9 +118,9 @@ struct SumberPendapatanLainnyaView: View {
                             .padding(.top, 25)
                         }
                     }
+                    .edgesIgnoringSafeArea(.all)
+                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                 }
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
             }
         }
     }

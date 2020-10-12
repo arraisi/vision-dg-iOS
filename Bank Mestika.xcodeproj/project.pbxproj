@@ -44,6 +44,12 @@
 		527A6B10251B65370030A3E2 /* HostingController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */; };
 		527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */; };
 		527A6B1F251B6EF40030A3E2 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */; };
+		5294ADDA2534180C0075D285 /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 5294ADD92534180C0075D285 /* NavigationStack */; };
+		5294ADE0253431B10075D285 /* FirstLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294ADDF253431B10075D285 /* FirstLoginView.swift */; };
+		5294ADE5253435B40075D285 /* FirstOTPLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294ADE4253435B40075D285 /* FirstOTPLoginView.swift */; };
+		5294ADEA253437AE0075D285 /* FirstATMLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294ADE9253437AE0075D285 /* FirstATMLoginView.swift */; };
+		5294ADEF253439F20075D285 /* FirstPasswordLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294ADEE253439F20075D285 /* FirstPasswordLoginView.swift */; };
+		5294ADF425343B700075D285 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294ADF325343B700075D285 /* LoginView.swift */; };
 		52B81DDB25300D56002703E3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 52B81DDA25300D56002703E3 /* SDWebImageSwiftUI */; };
 		52B81DE125300DA7002703E3 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 52B81DE025300DA7002703E3 /* SwiftyJSON */; };
 		52B81DF525302C17002703E3 /* APICallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B81DF425302C17002703E3 /* APICallManager.swift */; };
@@ -149,6 +155,11 @@
 		527A6B0F251B65370030A3E2 /* HostingController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HostingController+Utils.swift"; sourceTree = "<group>"; };
 		527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRekeningCardView.swift; sourceTree = "<group>"; };
 		527A6B1E251B6EF40030A3E2 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		5294ADDF253431B10075D285 /* FirstLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginView.swift; sourceTree = "<group>"; };
+		5294ADE4253435B40075D285 /* FirstOTPLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOTPLoginView.swift; sourceTree = "<group>"; };
+		5294ADE9253437AE0075D285 /* FirstATMLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstATMLoginView.swift; sourceTree = "<group>"; };
+		5294ADEE253439F20075D285 /* FirstPasswordLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPasswordLoginView.swift; sourceTree = "<group>"; };
+		5294ADF325343B700075D285 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		52B81DF425302C17002703E3 /* APICallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallManager.swift; sourceTree = "<group>"; };
 		52B81DFD2530329B002703E3 /* AssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsViewModel.swift; sourceTree = "<group>"; };
 		52B81E05253064A4002703E3 /* RecognizedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedText.swift; sourceTree = "<group>"; };
@@ -197,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52B81DE125300DA7002703E3 /* SwiftyJSON in Frameworks */,
+				5294ADDA2534180C0075D285 /* NavigationStack in Frameworks */,
 				52B81DDB25300D56002703E3 /* SDWebImageSwiftUI in Frameworks */,
 				50B9618076F03E118512FA4D /* Pods_Bank_Mestika.framework in Frameworks */,
 			);
@@ -289,6 +301,7 @@
 		5202BA59251B1FDB00FCE527 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5294ADDE2534314B0075D285 /* Login */,
 				52F01FC7251DD6DA00B0ABA5 /* Components */,
 				5202BA5A251B200300FCE527 /* Registrasi */,
 			);
@@ -403,6 +416,18 @@
 				52BE531525297E8600ADE164 /* SuccessRegisterView.swift */,
 			);
 			path = "Validation Form";
+			sourceTree = "<group>";
+		};
+		5294ADDE2534314B0075D285 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5294ADDF253431B10075D285 /* FirstLoginView.swift */,
+				5294ADE4253435B40075D285 /* FirstOTPLoginView.swift */,
+				5294ADE9253437AE0075D285 /* FirstATMLoginView.swift */,
+				5294ADEE253439F20075D285 /* FirstPasswordLoginView.swift */,
+				5294ADF325343B700075D285 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		52B81DFC2530328B002703E3 /* ViewModel */ = {
@@ -522,6 +547,7 @@
 			packageProductDependencies = (
 				52B81DDA25300D56002703E3 /* SDWebImageSwiftUI */,
 				52B81DE025300DA7002703E3 /* SwiftyJSON */,
+				5294ADD92534180C0075D285 /* NavigationStack */,
 			);
 			productName = "Bank Mestika";
 			productReference = 5202BA20251B1F9F00FCE527 /* Bank Mestika.app */;
@@ -597,6 +623,7 @@
 			packageReferences = (
 				52B81DD925300D56002703E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				52B81DDF25300DA7002703E3 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				5294ADD82534180C0075D285 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
 			);
 			productRefGroup = 5202BA21251B1F9F00FCE527 /* Products */;
 			projectDirPath = "";
@@ -708,8 +735,11 @@
 				5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */,
 				52BE531625297E8600ADE164 /* SuccessRegisterView.swift in Sources */,
 				5202BA26251B1FA000FCE527 /* SceneDelegate.swift in Sources */,
+				5294ADE5253435B40075D285 /* FirstOTPLoginView.swift in Sources */,
 				5202BA2B251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld in Sources */,
+				5294ADE0253431B10075D285 /* FirstLoginView.swift in Sources */,
 				C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */,
+				5294ADEF253439F20075D285 /* FirstPasswordLoginView.swift in Sources */,
 				52B81DFE2530329B002703E3 /* AssetsViewModel.swift in Sources */,
 				524F9585252EE9F6003D7FFF /* AssetsResponse.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
@@ -722,6 +752,7 @@
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
 				C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */,
 				52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */,
+				5294ADEA253437AE0075D285 /* FirstATMLoginView.swift in Sources */,
 				52056D3A252DD366008D99D2 /* RegistrasiModel.swift in Sources */,
 				52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */,
 				52D274582525924100DD1443 /* CharacterInputCell.swift in Sources */,
@@ -730,6 +761,7 @@
 				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
 				526F63D42532E8D20091D6E3 /* UserItem.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
+				5294ADF425343B700075D285 /* LoginView.swift in Sources */,
 				C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */,
 				C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */,
 				C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */,
@@ -1085,6 +1117,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5294ADD82534180C0075D285 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matteopuc/swiftui-navigation-stack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		52B81DD925300D56002703E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -1104,6 +1144,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5294ADD92534180C0075D285 /* NavigationStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5294ADD82534180C0075D285 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */;
+			productName = NavigationStack;
+		};
 		52B81DDA25300D56002703E3 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 52B81DD925300D56002703E3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

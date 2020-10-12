@@ -10,7 +10,7 @@ import SwiftUI
 class RegistrasiModel: ObservableObject {
     @Published var noTelepon = ""
     @Published var jenisTabungan = ""
-    @Published var nik = "123456789"
+    @Published var nik = ""
     @Published var email = ""
     @Published var tujuanPembukaan = ""
     @Published var sumberDana = ""
@@ -35,4 +35,5 @@ class RegistrasiModel: ObservableObject {
     @Published var fotoSelfie: Image = Image("")
     @Published var fotoTandaTangan: Image = Image("")
     @Published var fotoNPWP: Image = Image("")
+    @Published var hasNoNpwp: Bool = false
 }

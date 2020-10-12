@@ -30,8 +30,9 @@ struct SuccessRegisterView: View {
                     cardForm
                     Spacer()
                 }
+
                 .padding(.horizontal, 30)
-                .padding(.top, 85)
+                .padding(.top, 120)
                 .padding(.bottom, 35)
             }
             

@@ -28,12 +28,29 @@ struct PersonalIdentityView: View {
     @State private var collapsedFormSignature: Bool = true
     @State private var collapsedFormNPWP: Bool = true
     
-    @State var isChecked:Bool = false
-    
-    func toggle() { isChecked = !isChecked }
+    @State var isEditNik: Bool = false
+    @State var hasNoNpwp: Bool = false
     
     /*
-        Fungsi untuk Simpan Gambar ke Local Storage
+     Fungsi untuk Toggle CheckBox NIK
+     */
+    func toggleEditNik() {
+        isEditNik = !isEditNik
+    }
+    
+    /*
+     Fungsi untuk Toggle Mempunyai NPWP
+     */
+    func toggleHasNpwp() {
+        hasNoNpwp = !hasNoNpwp
+        
+        if (!hasNoNpwp) {
+            self.registerData.hasNoNpwp = hasNoNpwp
+        }
+    }
+    
+    /*
+     Fungsi untuk Simpan Gambar ke Local Storage
      */
     private func store(imgStore: Image, forKey key: String) {
         let image: UIImage = imgStore.asUIImage()
@@ -43,9 +60,12 @@ struct PersonalIdentityView: View {
         }
     }
     
+    /*
+     Fungsi untuk ambil Gambar dari Local Storage
+     */
     private func retrieveImage(forKey key: String) -> UIImage? {
         if let imageData = UserDefaults.standard.object(forKey: key) as? Data,
-            let image = UIImage(data: imageData) {
+           let image = UIImage(data: imageData) {
             print(image)
             
             imageKTP = Image(uiImage: image)
@@ -55,6 +75,9 @@ struct PersonalIdentityView: View {
         return nil
     }
     
+    /*
+     Fungsi Regex NIK
+     */
     func matches(for regex: String, in text: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: regex)
@@ -152,6 +175,7 @@ struct PersonalIdentityView: View {
                 
                 self.nik = matched[0]
                 retrieveImage(forKey: "ktp")
+                
             }
         }
     }
@@ -238,11 +262,11 @@ struct PersonalIdentityView: View {
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                         .padding(.horizontal, 20)
-                        .disabled(!isChecked)
+                        .disabled(!isEditNik)
                     
-                    Button(action: toggle) {
+                    Button(action: toggleEditNik) {
                         HStack(alignment: .top) {
-                            Image(systemName: isChecked ? "checkmark.square": "square")
+                            Image(systemName: isEditNik ? "checkmark.square": "square")
                             Text("* Periksa kembali dan pastikan Nomor Kartu Tanda Penduduk (KTP) Anda telah sesuai")
                                 .font(.caption)
                                 .foregroundColor(Color(hex: "#707070"))
@@ -256,10 +280,8 @@ struct PersonalIdentityView: View {
                         Button(action: {
                             self.collapsedFormKTP.toggle()
                             self.collapsedFormPersonal.toggle()
-                            
-//                            store(imgStore: self.imageKTP!, forKey: "imageKTP")
                             self.registerData.fotoKTP = self.imageKTP!
-
+                            self.registerData.nik = self.nik
                         }) {
                             Text("Simpan")
                                 .foregroundColor(.white)
@@ -554,6 +576,33 @@ struct PersonalIdentityView: View {
                 .cornerRadius(12)
                 .padding(.horizontal, 20)
                 .padding([.top, .bottom], 15)
+                
+                VStack(alignment: .leading) {
+                    Text("Nomor NPWP")
+                        .multilineTextAlignment(.leading)
+                        .font(.caption)
+                        .padding(.horizontal, 20)
+                    
+                    TextField("No. NPWP", text: $nik)
+                        .frame(height: 10)
+                        .font(.subheadline)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(15)
+                        .padding(.horizontal, 20)
+                    
+                    Button(action: toggleHasNpwp) {
+                        HStack(alignment: .top) {
+                            Image(systemName: hasNoNpwp ? "checkmark.square": "square")
+                            Text("* Saya Menyatakan belum memiliki kartu NPWP.\n Lewati tahapan ini")
+                                .font(.caption)
+                                .foregroundColor(Color(hex: "#707070"))
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
                 
                 if (imageNPWP != nil) {
                     Button(action: {

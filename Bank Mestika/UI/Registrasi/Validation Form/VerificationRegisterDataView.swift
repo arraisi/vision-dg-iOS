@@ -22,6 +22,20 @@ struct VerificationRegisterDataView: View {
         return nil
     }
     
+    func saveUserToCoreData()  {
+        let data = User(context: managedObjectContext)
+        data.deviceId = "123456789"
+        data.nik = self.registerData.nik
+        data.email = self.registerData.email
+        data.phone = self.registerData.noTelepon
+        
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            print("Error saving managed object context: \(error)")
+        }
+    }
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -71,20 +85,15 @@ struct VerificationRegisterDataView: View {
 //                    .padding(.bottom, 20)
                     
                     Button(action: {
-                        let data = User(context: managedObjectContext)
-                        data.deviceId = "1234567"
-                        
-                        do {
-                            try self.managedObjectContext.save()
-                        } catch {
-                            print("Error saving managed object context: \(error)")
-                        }
+                        saveUserToCoreData()
                     }) {
-                        Text("Submit Data")
-                            .foregroundColor(.white)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .font(.system(size: 13))
-                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        NavigationLink(destination: SuccessRegisterView().environmentObject(registerData)) {
+                            Text("Submit Data")
+                                .foregroundColor(.white)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .font(.system(size: 13))
+                                .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                        }
                     }
                     .background(Color(hex: "#2334D0"))
                     .cornerRadius(12)
