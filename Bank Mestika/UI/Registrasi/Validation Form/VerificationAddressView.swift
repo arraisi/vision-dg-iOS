@@ -23,8 +23,11 @@ struct VerificationAddressView: View {
         ZStack(alignment: .top) {
             Image("bg_splash")
                 .resizable()
-            
             VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     VStack {
                         Text("PASTIKAN INFORMASI ANDA BENAR")
@@ -40,7 +43,7 @@ struct VerificationAddressView: View {
                         Spacer()
                     }
                     .padding(.horizontal, 30)
-                    .padding(.top, 85)
+                    .padding(.top, 35)
                 }
                 
                 VStack {
@@ -61,7 +64,7 @@ struct VerificationAddressView: View {
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
+        .navigationBarHidden(true)
     }
     
     var appbar: some View {

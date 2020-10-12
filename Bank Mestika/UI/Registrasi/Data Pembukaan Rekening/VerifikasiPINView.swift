@@ -37,7 +37,7 @@ struct VerifikasiPINView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 85)
+                        .padding(.top, 30)
                         .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                         .fixedSize(horizontal: false, vertical: true)
@@ -117,6 +117,8 @@ struct VerifikasiPINView: View {
                         }
                         
                     }
+                    .edgesIgnoringSafeArea(.all)
+                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -126,8 +128,6 @@ struct VerifikasiPINView: View {
             }
             
         }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }

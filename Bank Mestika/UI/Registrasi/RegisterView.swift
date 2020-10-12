@@ -121,7 +121,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData), isActive: $isViewActivity) {
+            NavigationLink(destination: ChooseSavingsView().environmentObject(registerData), isActive: $isViewActivity) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

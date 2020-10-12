@@ -26,13 +26,13 @@ struct VerificationDataPersonalView: View {
                     cardForm
                     Spacer()
                 }
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                 .padding(.horizontal, 30)
-                .padding(.top, 85)
+                .padding(.top, 30)
                 .padding(.bottom, 35)
             }
         }
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
     }
     
     var cardForm: some View {

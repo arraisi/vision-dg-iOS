@@ -52,7 +52,7 @@ struct InformasiPerusahaanView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 85)
+                        .padding(.top, 30)
                         .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                     
@@ -126,6 +126,8 @@ struct InformasiPerusahaanView: View {
                         }
                         
                     }
+                    .edgesIgnoringSafeArea(.all)
+                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -143,8 +145,6 @@ struct InformasiPerusahaanView: View {
         .popup(isPresented: $showingModal, type: .default, position: .bottom, animation: Animation.spring(), closeOnTap: false, closeOnTapOutside: true) {
             createBottomFloater()
         }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         
     }
     
