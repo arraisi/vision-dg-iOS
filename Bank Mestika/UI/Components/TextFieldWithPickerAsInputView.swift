@@ -30,6 +30,9 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
         
         textField.placeholder = placeholder
         textField.inputView = picker
+        
+        let customFont:UIFont = UIFont.systemFont(ofSize: 14.0)
+        textField.font = customFont
         return textField
     }
     

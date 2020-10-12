@@ -11,6 +11,7 @@ struct Address {
     var city: String
     var kodePos: String
     var kecamatan: String
+    var kelurahan: String
 }
 
 struct InformasiPerusahaanView: View {
@@ -26,10 +27,10 @@ struct InformasiPerusahaanView: View {
     @State var location : String = ""
     
     let cities:[Address] = [
-        .init(city: "Jakarta Selatan", kodePos: "14012", kecamatan: "Jakarta Selatan"),
-        .init(city: "Jakarta Barat", kodePos: "14012", kecamatan: "Jakarta Barat"),
-        .init(city: "Jakarta Timur", kodePos: "14012", kecamatan: "Jakarta Timur"),
-        .init(city: "Jakarta Utara", kodePos: "14012", kecamatan: "Jakarta Utara")
+        .init(city: "Jakarta Selatan", kodePos: "14012", kecamatan: "Jakarta Selatan", kelurahan: ""),
+        .init(city: "Jakarta Barat", kodePos: "14012", kecamatan: "Jakarta Barat", kelurahan: ""),
+        .init(city: "Jakarta Timur", kodePos: "14012", kecamatan: "Jakarta Timur", kelurahan: ""),
+        .init(city: "Jakarta Utara", kodePos: "14012", kecamatan: "Jakarta Utara", kelurahan: "")
     ]
     
     /*
@@ -147,7 +148,6 @@ struct InformasiPerusahaanView: View {
                 }
                 .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
-                
                 
             }
             
