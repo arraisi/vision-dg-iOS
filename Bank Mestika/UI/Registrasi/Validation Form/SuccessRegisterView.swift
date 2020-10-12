@@ -10,7 +10,6 @@ import SwiftUI
 struct SuccessRegisterView: View {
     
     @EnvironmentObject var registerData: RegistrasiModel
-    @EnvironmentObject var appState: AppState
     
     /*
      Boolean for Show Modal
@@ -25,15 +24,20 @@ struct SuccessRegisterView: View {
             Image("bg_splash")
                 .resizable()
             
-            ScrollView {
-                VStack {
-                    cardForm
-                    Spacer()
+            VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
+                ScrollView {
+                    VStack {
+                        cardForm
+                        Spacer()
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 35)
+                    .padding(.bottom, 35)
                 }
-
-                .padding(.horizontal, 30)
-                .padding(.top, 120)
-                .padding(.bottom, 35)
             }
             
             if self.showingModal {
@@ -41,11 +45,34 @@ struct SuccessRegisterView: View {
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
+        .navigationBarHidden(true)
         .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
             createBottomFloater()
         }
+        
     }
+    
+    var appbar: some View {
+        HStack {
+            Spacer()
+            logo
+            Spacer()
+        }
+    }
+    
+    var logo: some View {
+        HStack(alignment: .center, spacing: .none) {
+            Image("Logo M")
+                .resizable()
+                .frame(width: 25, height: 25)
+            Text("BANK MESTIKA")
+                .foregroundColor(.white)
+                .font(.system(size: 20))
+                .bold()
+            
+        }
+    }
+    
     
     var cardForm: some View {
         VStack(alignment: .leading) {
@@ -60,7 +87,7 @@ struct SuccessRegisterView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .padding([.top], 20)
-                .padding(.leading, 20)
+                .padding(.horizontal, 20)
                 .fixedSize(horizontal: false, vertical: true)
             
             Text("Silahkan pilih waktu untuk dihubungi.")
@@ -203,7 +230,6 @@ struct SuccessRegisterView: View {
                 .padding(.bottom, 30)
             
             Button(action: {
-                self.appState.moveToRegister = true
             }) {
                 Text("Kembali ke Halaman Utama")
                     .foregroundColor(.white)

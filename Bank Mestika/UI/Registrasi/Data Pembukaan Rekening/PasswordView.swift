@@ -38,6 +38,11 @@ struct PasswordView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                            .padding(.top, 45)
+                            .padding(.horizontal, 30)
+
                 ScrollView {
                     
                     // Title
@@ -129,8 +134,6 @@ struct PasswordView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -140,9 +143,12 @@ struct PasswordView: View {
             }
             
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
+
         
     }
     
@@ -240,6 +246,6 @@ struct PasswordView: View {
 
 struct PasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordView()
+        PasswordView().environmentObject(RegistrasiModel())
     }
 }

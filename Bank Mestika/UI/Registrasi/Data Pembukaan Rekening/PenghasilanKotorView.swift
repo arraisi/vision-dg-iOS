@@ -32,6 +32,11 @@ struct PenghasilanKotorView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+
                 ScrollView {
                     
                     // Title
@@ -124,8 +129,6 @@ struct PenghasilanKotorView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -135,13 +138,14 @@ struct PenghasilanKotorView: View {
             }
             
         }
-        
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
 }
 
 
 struct FormPenghasilanKotorView_Previews: PreviewProvider {
     static var previews: some View {
-        PenghasilanKotorView()
+        PenghasilanKotorView().environmentObject(RegistrasiModel())
     }
 }

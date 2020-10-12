@@ -21,19 +21,52 @@ struct VerificationDataPersonalView: View {
                 Color(hex: "#F6F8FB")
             }
             
-            ScrollView {
-                VStack {
-                    cardForm
-                    Spacer()
-                }
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
-                .padding(.horizontal, 30)
-                .padding(.top, 30)
-                .padding(.bottom, 35)
-            }
-        }
+            VStack {
+                   appbar
+                       .padding(.top, 45)
+                       .padding(.horizontal, 30)
+                   
+                   ScrollView {
+                       VStack {
+                           cardForm
+                           Spacer()
+                       }
+                       .padding(.horizontal, 30)
+                       .padding(.top, 35)
+                       .padding(.bottom, 35)
+                   }
+               }
+           }
+           .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+           .navigationBarHidden(true)
     }
+    
+    var appbar: some View {
+          HStack {
+              Button(action: {
+                  presentationMode.wrappedValue.dismiss()
+              }) {
+                  Image(systemName: "arrow.left")
+                      .foregroundColor(.white)
+              }
+              Spacer()
+              logo
+              Spacer()
+          }
+      }
+      
+      var logo: some View {
+          HStack(alignment: .center, spacing: .none) {
+              Image("Logo M")
+                  .resizable()
+                  .frame(width: 25, height: 25)
+              Text("BANK MESTIKA")
+                  .foregroundColor(.white)
+                  .font(.system(size: 20))
+                  .bold()
+          }
+      }
+
     
     var cardForm: some View {
         VStack(alignment: .leading) {
@@ -215,6 +248,6 @@ struct VerificationDataPersonalView: View {
 
 struct VerificationDataPersonalView_Previews: PreviewProvider {
     static var previews: some View {
-        VerificationDataPersonalView()
+        VerificationDataPersonalView().environmentObject(RegistrasiModel())
     }
 }

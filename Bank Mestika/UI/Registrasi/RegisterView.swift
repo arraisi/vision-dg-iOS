@@ -9,10 +9,6 @@ import SwiftUI
 import ExytePopupView
 import SDWebImageSwiftUI
 
-class AppState: ObservableObject {
-    @Published var moveToRegister: Bool = false
-}
-
 struct RegisterView: View {
     
     @ObservedObject var viewModel: AssetsViewModel
@@ -20,7 +16,6 @@ struct RegisterView: View {
     var registerData = RegistrasiModel()
     
     @FetchRequest(entity: User.entity(), sortDescriptors: []) var user: FetchedResults<User>
-    @EnvironmentObject var appState: AppState
     @State var isViewActivity: Bool = false
     
     /*
@@ -129,13 +124,6 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
-            .onReceive(self.appState.$moveToRegister) { moveToRegister in
-                if moveToRegister {
-                    print("Move to Register: \(moveToRegister)")
-                    self.isViewActivity = false
-                    self.appState.moveToRegister = false
-                }
-            }
         }
     }
     

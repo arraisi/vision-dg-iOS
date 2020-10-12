@@ -32,6 +32,11 @@ struct BesarPerkiraanSetoranView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+
                 ScrollView {
                     
                     // Title
@@ -143,8 +148,6 @@ struct BesarPerkiraanSetoranView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -154,12 +157,13 @@ struct BesarPerkiraanSetoranView: View {
             }
             
         }
-        
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
 }
 
 struct FormBesarPerkiraanSetoranView_Previews: PreviewProvider {
     static var previews: some View {
-        BesarPerkiraanSetoranView()
+        BesarPerkiraanSetoranView().environmentObject(RegistrasiModel())
     }
 }

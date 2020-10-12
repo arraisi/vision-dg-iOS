@@ -29,6 +29,12 @@ struct PINView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                      .padding(.top, 45)
+                      .padding(.horizontal, 30)
+
+                
                 ScrollView {
                     
                     // Title
@@ -116,8 +122,6 @@ struct PINView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -127,6 +131,8 @@ struct PINView: View {
             }
             
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
@@ -137,7 +143,7 @@ struct PINView: View {
 #if DEBUG
 struct PINView_Previews: PreviewProvider {
     static var previews: some View {
-        PINView()
+        PINView().environmentObject(RegistrasiModel())
     }
 }
 #endif

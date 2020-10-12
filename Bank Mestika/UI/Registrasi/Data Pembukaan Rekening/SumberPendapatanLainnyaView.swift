@@ -31,6 +31,11 @@ struct SumberPendapatanLainnyaView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                     .padding(.top, 45)
+                     .padding(.horizontal, 30)
+
                 ScrollView {
                     
                     // Title
@@ -122,16 +127,17 @@ struct SumberPendapatanLainnyaView: View {
                             .padding(.top, 25)
                         }
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                 }
             }
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
+
     }
 }
 
 struct SumberPendapatanLainnya_Previews: PreviewProvider {
     static var previews: some View {
-        SumberPendapatanLainnyaView()
+        SumberPendapatanLainnyaView().environmentObject(RegistrasiModel())
     }
 }

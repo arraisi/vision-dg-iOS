@@ -30,15 +30,21 @@ struct OTPVerificationView: View {
             }
             
             VStack {
-                cardForm
-                Spacer()
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
+                VStack {
+                    cardForm
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .padding(.top, 35)
+                .padding(.bottom, 35)
             }
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
-            .padding(.horizontal, 30)
-            .padding(.top, 30)
-            .padding(.bottom, 35)
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .navigationBarHidden(true)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
@@ -47,6 +53,7 @@ struct OTPVerificationView: View {
                 self.timeRemaining -= 1
             }
         }
+
     }
     
     var appbar: some View {
@@ -147,7 +154,7 @@ struct OTPVerificationView: View {
 #if DEBUG
 struct OTPVerificationView_Previews: PreviewProvider {
     static var previews: some View {
-        OTPVerificationView()
+        OTPVerificationView().environmentObject(RegistrasiModel())
     }
 }
 #endif

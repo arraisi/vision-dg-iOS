@@ -40,6 +40,11 @@ struct TujuanPembukaanRekeningView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     
                     // Title
@@ -49,8 +54,9 @@ struct TujuanPembukaanRekeningView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 30)
                         .padding(.horizontal, 30)
+                    
                     
                     // Content
                     ZStack {
@@ -88,7 +94,7 @@ struct TujuanPembukaanRekeningView: View {
                                 ZStack {
                                     
                                     CheckBoxGroup(items: tujuanPembukaanRekening, markedId: $selectedItems) { id, marked in
-
+                                        
                                         registerData.tujuanPembukaan = ""
                                         
                                         tujuanPembukaanRekening.forEach { (item) in
@@ -154,19 +160,16 @@ struct TujuanPembukaanRekeningView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 0.1)
                     .padding(.bottom, 25)
                     
                 }
                 .KeyboardAwarePadding()
-                
             }
-            
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
-    
 }
 
 struct FormTujuanPembukaanRekeningView_Previews: PreviewProvider {

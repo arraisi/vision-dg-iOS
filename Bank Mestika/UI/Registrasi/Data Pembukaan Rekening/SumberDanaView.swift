@@ -32,6 +32,10 @@ struct SumberDanaView: View {
             }
             
             VStack {
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     
                     // Title
@@ -142,24 +146,21 @@ struct SumberDanaView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
                 .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
-                
             }
-            
         }
-        
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
     
 }
 
 struct FormSumberDanaView_Previews: PreviewProvider {
     static var previews: some View {
-        SumberDanaView()
+        SumberDanaView().environmentObject(RegistrasiModel())
     }
 }

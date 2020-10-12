@@ -26,19 +26,24 @@ struct PhoneVerificationView: View {
             }
             
             VStack {
-                cardForm
-                Spacer()
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
+                VStack {
+                    cardForm
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .padding(.top, 35)
+                .padding(.bottom, 35)
             }
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
-            .padding(.horizontal, 30)
-            .padding(.top, 30)
-            .padding(.bottom, 35)
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .navigationBarHidden(true)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
-        
     }
     
     var appbar: some View {

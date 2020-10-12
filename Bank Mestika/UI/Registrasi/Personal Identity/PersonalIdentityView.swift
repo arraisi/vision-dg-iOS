@@ -97,6 +97,16 @@ struct PersonalIdentityView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
+                Color(hex: "#232175")
+                    .frame(height: 300)
+                Color(hex: "#F6F8FB")
+            }
+            
+            VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+
                 ScrollView(showsIndicators: false) {
                     ZStack {
                         VStack {
@@ -140,10 +150,8 @@ struct PersonalIdentityView: View {
                             .padding(.top, 60)
                             .padding(.bottom, 20)
                         }
-                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                         .padding(.horizontal, 30)
-                        .padding(.top, 30)
+                        .padding(.top, 65)
                         .padding(.bottom, 35)
                     }
                 }
@@ -166,6 +174,8 @@ struct PersonalIdentityView: View {
                 CaptureImageView(isShown: $showCaptureNPWP, image: $imageNPWP)
             }
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .navigationBarHidden(true)
         .onAppear {
             print(recognizedText.value)
             
@@ -179,6 +189,33 @@ struct PersonalIdentityView: View {
             }
         }
     }
+    
+    var appbar: some View {
+        HStack {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "arrow.left")
+                    .foregroundColor(.white)
+            }
+            Spacer()
+            logo
+            Spacer()
+        }
+    }
+    
+    var logo: some View {
+        HStack(alignment: .center, spacing: .none) {
+            Image("Logo M")
+                .resizable()
+                .frame(width: 25, height: 25)
+            Text("BANK MESTIKA")
+                .foregroundColor(.white)
+                .font(.system(size: 20))
+                .bold()
+        }
+    }
+
     
     var photoKTPForm: some View {
         VStack {

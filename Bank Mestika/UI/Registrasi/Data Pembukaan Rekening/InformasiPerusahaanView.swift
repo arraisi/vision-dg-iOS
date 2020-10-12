@@ -44,6 +44,11 @@ struct InformasiPerusahaanView: View {
             }
             
             VStack {
+                
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+
                 ScrollView {
                     
                     // Title
@@ -126,8 +131,6 @@ struct InformasiPerusahaanView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
                     
                 }
@@ -142,6 +145,8 @@ struct InformasiPerusahaanView: View {
                 ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
             }
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
         .popup(isPresented: $showingModal, type: .default, position: .bottom, animation: Animation.spring(), closeOnTap: false, closeOnTapOutside: true) {
             createBottomFloater()
         }

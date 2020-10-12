@@ -33,6 +33,10 @@ struct PerkiraanPenarikanView: View {
             
             VStack {
                 
+                CustomNavigationBarView(presentationMode: _presentationMode)
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     
                     // Title
@@ -144,23 +148,19 @@ struct PerkiraanPenarikanView: View {
                         }
                         
                     }
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 25)
-                    
                 }
                 .padding(.bottom, 0.1)
                 .KeyboardAwarePadding()
-                
             }
-            
         }
-        
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
 }
 
 struct FormPerkiraanPenarikanDana_Previews: PreviewProvider {
     static var previews: some View {
-        PerkiraanPenarikanView()
+        PerkiraanPenarikanView().environmentObject(RegistrasiModel())
     }
 }

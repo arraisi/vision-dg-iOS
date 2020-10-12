@@ -41,24 +41,31 @@ struct Term_ConditionView: View {
             }
             
             VStack {
-                Text("SYARAT DAN KETENTUAN")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical, 20)
-                    .padding(.horizontal, 20)
-                    .fixedSize(horizontal: false, vertical: true)
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
                 
-                cardForm
-                Spacer()
+                VStack {
+                    Text("SYARAT DAN KETENTUAN")
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical, 20)
+                        .padding(.horizontal, 20)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    cardForm
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .padding(.top, 35)
+                .padding(.bottom, 35)
             }
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
-            .padding(.horizontal, 30)
-            .padding(.top, 30)
-            .padding(.bottom, 35)
         }
+        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .navigationBarHidden(true)
+        
     }
     
     var appbar: some View {
@@ -166,6 +173,6 @@ struct Term_ConditionView: View {
 
 struct Term_ConditionView_Previews: PreviewProvider {
     static var previews: some View {
-        Term_ConditionView()
+        Term_ConditionView().environmentObject(RegistrasiModel())
     }
 }
