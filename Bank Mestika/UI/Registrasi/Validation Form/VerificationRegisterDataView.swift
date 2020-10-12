@@ -22,6 +22,7 @@ struct VerificationRegisterDataView: View {
         return nil
     }
     
+    @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
@@ -56,7 +57,29 @@ struct VerificationRegisterDataView: View {
                 }
                 
                 VStack {
-                    NavigationLink(destination: SuccessRegisterView().environmentObject(registerData)) {
+//                    NavigationLink(destination: SuccessRegisterView().environmentObject(registerData)) {
+//                        Text("Submit Data")
+//                            .foregroundColor(.white)
+//                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                            .font(.system(size: 13))
+//                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+//                    }
+//                    .background(Color(hex: "#2334D0"))
+//                    .cornerRadius(12)
+//                    .padding(.horizontal, 100)
+//                    .padding(.top, 10)
+//                    .padding(.bottom, 20)
+                    
+                    Button(action: {
+                        let data = User(context: managedObjectContext)
+                        data.deviceId = "1234567"
+                        
+                        do {
+                            try self.managedObjectContext.save()
+                        } catch {
+                            print("Error saving managed object context: \(error)")
+                        }
+                    }) {
                         Text("Submit Data")
                             .foregroundColor(.white)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

@@ -48,7 +48,7 @@ struct TujuanPembukaanRekeningView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 85)
+                        .padding(.top, 30)
                         .padding(.bottom, 30)
                         .padding(.horizontal, 30)
                     
@@ -154,6 +154,8 @@ struct TujuanPembukaanRekeningView: View {
                         }
                         
                     }
+                    .edgesIgnoringSafeArea(.all)
+                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.bottom, 0.1)
                     .padding(.bottom, 25)
                     
@@ -163,9 +165,6 @@ struct TujuanPembukaanRekeningView: View {
             }
             
         }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
-        
     }
     
 }

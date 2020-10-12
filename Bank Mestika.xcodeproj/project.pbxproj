@@ -31,6 +31,7 @@
 		524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95BC252EF08E003D7FFF /* LoadingView.swift */; };
 		524F95D7252F0A00003D7FFF /* VerifikasiPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */; };
 		524F95DC252F0F3E003D7FFF /* IncomingVideoCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F95DB252F0F3E003D7FFF /* IncomingVideoCallView.swift */; };
+		526F63D42532E8D20091D6E3 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526F63D32532E8D20091D6E3 /* UserItem.swift */; };
 		52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF1252452F80031392E /* PersonalIdentityView.swift */; };
 		52794BFA2524530F0031392E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BF92524530F0031392E /* Coordinator.swift */; };
 		52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52794BFE2524532D0031392E /* EmailVerificationView.swift */; };
@@ -149,6 +150,7 @@
 		524F95BC252EF08E003D7FFF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifikasiPINView.swift; sourceTree = "<group>"; };
 		524F95DB252F0F3E003D7FFF /* IncomingVideoCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingVideoCallView.swift; sourceTree = "<group>"; };
+		526F63D32532E8D20091D6E3 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		52794BF1252452F80031392E /* PersonalIdentityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalIdentityView.swift; sourceTree = "<group>"; };
 		52794BF92524530F0031392E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		52794BFE2524532D0031392E /* EmailVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationView.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		5202BA22251B1F9F00FCE527 /* Bank Mestika */ = {
 			isa = PBXGroup;
 			children = (
+				526F63D22532E8B80091D6E3 /* CoreData */,
 				52B81DFC2530328B002703E3 /* ViewModel */,
 				5202BA34251B1FA300FCE527 /* Info.plist */,
 				524F9594252EECC8003D7FFF /* Services */,
@@ -395,6 +398,14 @@
 				52B81DF425302C17002703E3 /* APICallManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		526F63D22532E8B80091D6E3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				526F63D32532E8D20091D6E3 /* UserItem.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		52794BF0252452D20031392E /* Personal Identity */ = {
@@ -791,6 +802,7 @@
 				52D2745D2525ADA100DD1443 /* EmailOTPVerificationView.swift in Sources */,
 				52794BFA2524530F0031392E /* Coordinator.swift in Sources */,
 				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
+				526F63D42532E8D20091D6E3 /* UserItem.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
 				C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */,
 				C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */,

@@ -24,9 +24,8 @@ struct VerificationPINView: View {
     
     var disableForm: Bool {
         pin.count < 6
-    }
+    } 
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
             Image("bg_splash")
@@ -47,8 +46,10 @@ struct VerificationPINView: View {
                         cardForm
                         Spacer()
                     }
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                     .padding(.horizontal, 30)
-                    .padding(.top, 85)
+                    .padding(.top, 30)
                 }
             }
             
@@ -56,8 +57,6 @@ struct VerificationPINView: View {
                 ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
             }
         }
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
         .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
             createBottomFloater()
         }

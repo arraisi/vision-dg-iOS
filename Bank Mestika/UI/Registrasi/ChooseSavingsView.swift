@@ -1,10 +1,3 @@
-//
-//  ChooseSavingsView.swift
-//  Bank Mestika
-//
-//  Created by Prima Jatnika on 25/09/20.
-//
-
 import SwiftUI
 import ExytePopupView
 
@@ -40,12 +33,16 @@ struct ChooseSavingsView: View {
         
         return ZStack {
             VStack {
-                Color(hex: "#232175")
-                    .frame(height: 400)
                 Color(hex: "#F6F8FB")
+                    .frame(height: 400)
+                Color(hex: "#232175")
             }
             
             VStack {
+                appbar
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
 //                    VStack(alignment: .center) {
 //                        Text("Pilih Jenis Tabungan Anda")
@@ -82,8 +79,8 @@ struct ChooseSavingsView: View {
                                                     .resizable()
                                                     .frame(width: 200, height: 160)
                                             }
-                                            .padding(.top, 60)
                                             .cornerRadius(8)
+                                            .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
                                             .transition(AnyTransition.slide)
                                             .animation(.spring())
                                             
@@ -191,6 +188,7 @@ struct ChooseSavingsView: View {
                                 }
                             }
                         }
+                        
                     }
                 }
                 
@@ -200,7 +198,7 @@ struct ChooseSavingsView: View {
             }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
+        .navigationBarHidden(true)
         .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
             createBottomFloater()
         }
