@@ -14,7 +14,7 @@ struct PerkiraanSetoranView: View {
     @State var perkiraanSetoranId: Int?
     @State var editMode: EditMode = .inactive
     
-    var perkiraanSetoran = [1:"0 - 10 Kali", 2:"> 10 - 25 Kali", 3:"> 25 Kali"]
+    let perkiraanSetoran: [MasterModel] = load("perkiraanSetoran.json")
     
     var body: some View {
         
@@ -81,11 +81,13 @@ struct PerkiraanSetoranView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: Array(perkiraanSetoran.keys),
-                                        labels: Array(perkiraanSetoran.values),
+                                        items: perkiraanSetoran,
                                         selectedId: $perkiraanSetoranId) { selected in
                                         
-                                        registerData.perkiraanSetoran = perkiraanSetoran[perkiraanSetoranId ?? 0] ?? ""
+                                        if let i = perkiraanSetoran.firstIndex(where: { $0.id == selected }) {
+                                            print(perkiraanSetoran[i])
+                                            registerData.perkiraanSetoran = perkiraanSetoran[i].name
+                                        }
                                         
                                         print("Selected is: \(registerData.perkiraanSetoran)")
                                         

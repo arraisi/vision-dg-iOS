@@ -14,7 +14,7 @@ struct SumberPendapatanLainnyaView: View {
     
     @State var sumberPendapatanLainnyaId: Int?
     
-    var sumberPendapatanLainnya = [1:"Ya, Saya memiliki", 2:"Tidak, Saya tidak memiliki"]
+    let sumberPendapatanLainnya: [MasterModel] = load("sumberPendapatanLainnya.json")
     
     var body: some View {
         ZStack {
@@ -79,12 +79,16 @@ struct SumberPendapatanLainnyaView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: Array(sumberPendapatanLainnya.keys),
-                                        labels: Array(sumberPendapatanLainnya.values),
+                                        items: sumberPendapatanLainnya,
                                         selectedId: $sumberPendapatanLainnyaId) { selected in
                                         print("Selected is: \(selected)")
                                         
-                                        registerData.sumberPendapatanLainnya = sumberPendapatanLainnya[sumberPendapatanLainnyaId ?? 0] ?? ""
+                                        if let i = sumberPendapatanLainnya.firstIndex(where: { $0.id == selected }) {
+                                            print(sumberPendapatanLainnya[i])
+                                            registerData.sumberPendapatanLainnya = sumberPendapatanLainnya[i].name
+                                        }
+                                        
+                                        print(registerData.sumberPendapatanLainnya)
                                     }
                                     .padding()
                                     

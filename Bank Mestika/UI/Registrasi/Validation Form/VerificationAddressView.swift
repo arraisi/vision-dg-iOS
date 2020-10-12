@@ -15,8 +15,7 @@ struct VerificationAddressView: View {
     @State var alamat: String = ""
     @State var verificationAddressId: Int?
     
-    var verificationAddress = [1:"Ya, alamat sesuai",
-                               2:"Tidak, alamat tidak sesuai"]
+    let verificationAddress: [MasterModel] = load("verificationAddress.json")
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -103,8 +102,7 @@ struct VerificationAddressView: View {
             ZStack {
 
                 RadioButtonGroup(
-                    items: Array(verificationAddress.keys),
-                    labels: Array(verificationAddress.values),
+                    items: verificationAddress,
                     selectedId: $verificationAddressId) { selected in
                     print("Selected is: \(selected)")
                     self.selected = selected

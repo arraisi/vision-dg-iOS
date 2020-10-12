@@ -14,7 +14,7 @@ struct BesarPerkiraanPenarikanView: View {
     @State var besarPerkiraanPenarikanId: Int?
     @State var editMode: EditMode = .inactive
     
-    var besarPerkiraanPenarikan: [Int:String] = [1:"<== 30 Juta", 2:"> 30 - 60 Juta", 3:"> 60 Juta"]
+    let besarPerkiraanPenarikan: [MasterModel] = load("besarPerkiraanPenarikan.json")
     
     var body: some View {
         
@@ -81,11 +81,14 @@ struct BesarPerkiraanPenarikanView: View {
                                 ZStack {
                                     
                                     RadioButtonGroup(
-                                        items: Array(besarPerkiraanPenarikan.keys),
-                                        labels: Array(besarPerkiraanPenarikan.values),
+                                        items: besarPerkiraanPenarikan,
                                         selectedId: $besarPerkiraanPenarikanId) { selected in
                                         
-                                        registerData.besarPerkiraanPenarikan = besarPerkiraanPenarikan[besarPerkiraanPenarikanId ?? 0] ?? ""
+                                        if let i = besarPerkiraanPenarikan.firstIndex(where: { $0.id == selected }) {
+                                            print(besarPerkiraanPenarikan[i])
+                                            registerData.besarPerkiraanPenarikan = besarPerkiraanPenarikan[i].name
+                                        }
+                                        
                                         print("Selected is: \(registerData.besarPerkiraanPenarikan)")
                                     }
                                     .padding()
