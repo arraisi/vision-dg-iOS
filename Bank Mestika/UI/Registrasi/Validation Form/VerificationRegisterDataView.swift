@@ -24,6 +24,7 @@ struct VerificationRegisterDataView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         ZStack(alignment: .top) {
             Color(hex: "#232175")

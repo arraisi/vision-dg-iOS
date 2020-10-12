@@ -99,7 +99,7 @@ struct SumberPendapatanLainnyaView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: VerificationAddressView().environmentObject(registerData), label:{
+                                NavigationLink(destination: KeluargaTerdekat().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)

@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct Address {
+    var city: String
+    var kodePos: String
+    var kecamatan: String
+}
+
 struct InformasiPerusahaanView: View {
     
     @EnvironmentObject var registerData: RegistrasiModel
@@ -19,7 +25,12 @@ struct InformasiPerusahaanView: View {
     @State var kecamatan : String = ""
     @State var location : String = ""
     
-    let cities:[String] = ["Jakarta", "Bogor", "Depok", "Bandung"]
+    let cities:[Address] = [
+        .init(city: "Jakarta Selatan", kodePos: "14012", kecamatan: "Jakarta Selatan"),
+        .init(city: "Jakarta Barat", kodePos: "14012", kecamatan: "Jakarta Barat"),
+        .init(city: "Jakarta Timur", kodePos: "14012", kecamatan: "Jakarta Timur"),
+        .init(city: "Jakarta Utara", kodePos: "14012", kecamatan: "Jakarta Utara")
+    ]
     
     /*
      Boolean for Show Modal
@@ -286,7 +297,7 @@ struct InformasiPerusahaanView: View {
             List(0...cities.count-1, id: \.self) {index in
                 
                 HStack {
-                    Text(cities[index])
+                    Text(cities[index].city)
                         .font(Font.system(size: 14))
                     
                     Spacer()
@@ -294,7 +305,9 @@ struct InformasiPerusahaanView: View {
                 .contentShape(Rectangle())
                 .onTapGesture(perform: {
                     print(cities[index])
-                    alamatPerusahaan = cities[index]
+                    alamatPerusahaan = cities[index].city
+                    kodePos = cities[index].kodePos
+                    kecamatan = cities[index].kecamatan
                     registerData.alamatPerusahaan = alamatPerusahaan
                     self.showingModal.toggle()
                 })
