@@ -154,8 +154,14 @@ struct InformasiPerusahaanView: View {
         
         VStack(alignment: .leading) {
             
-            LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan")
-                .padding(.horizontal, 20)
+            LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan"){ (Bool) in
+                print("on edit")
+                registerData.namaPerusahaan = namaPerusahaan
+            } onCommit: {
+                print("on commit")
+                registerData.namaPerusahaan = namaPerusahaan
+            }
+            .padding(.horizontal, 20)
             
             Group {
                 
@@ -167,9 +173,13 @@ struct InformasiPerusahaanView: View {
                 
                 HStack {
                     
-                    TextField("Alamat Perusahaan", text: $alamatPerusahaan)
-                        .font(Font.system(size: 14))
-                        .frame(height: 36)
+                    TextField("Alamat Perusahaan", text: $alamatPerusahaan) { changed in
+                        registerData.alamatPerusahaan = alamatPerusahaan
+                    } onCommit: {
+                        registerData.alamatPerusahaan = alamatPerusahaan
+                    }
+                    .font(Font.system(size: 14))
+                    .frame(height: 36)
                     
                     Button(action:{
                         showingModal.toggle()
@@ -187,11 +197,23 @@ struct InformasiPerusahaanView: View {
             }
             .padding(.horizontal, 20)
             
-            LabelTextField(value: $kodePos, label: "Kode Pos", placeHolder: "Kode Pos")
-                .padding(.horizontal, 20)
+            LabelTextField(value: $kodePos, label: "Kode Pos", placeHolder: "Kode Pos") { (Bool) in
+                print("on edit")
+                registerData.kodePos = kodePos
+            } onCommit: {
+                print("on commit")
+                registerData.kodePos = kodePos
+            }
+            .padding(.horizontal, 20)
             
-            LabelTextField(value: $kecamatan, label: "Kecamatan", placeHolder: "Kecamatan")
-                .padding(.horizontal, 20)
+            LabelTextField(value: $kecamatan, label: "Kecamatan", placeHolder: "Kecamatan") { (Bool) in
+                print("on edit")
+                registerData.kecamatan = kecamatan
+            } onCommit: {
+                print("on commit")
+                registerData.kecamatan = kecamatan
+            }
+            .padding(.horizontal, 20)
             
             Group {
                 
@@ -211,10 +233,14 @@ struct InformasiPerusahaanView: View {
                     Divider()
                         .frame(height: 30)
                     
-                    TextField("No. Telepon", text: $noTlpPerusahaan)
-                        .keyboardType(.numberPad)
-                        .font(Font.system(size: 14))
-                        .frame(height: 36)
+                    TextField("No. Telepon", text: $noTlpPerusahaan) {change in
+                        registerData.noTeleponPerusahaan = noTlpPerusahaan
+                    } onCommit: {
+                        registerData.noTeleponPerusahaan = noTlpPerusahaan
+                    }
+                    .keyboardType(.numberPad)
+                    .font(Font.system(size: 14))
+                    .frame(height: 36)
                 }
                 .padding(.horizontal)
                 .background(Color.gray.opacity(0.1))

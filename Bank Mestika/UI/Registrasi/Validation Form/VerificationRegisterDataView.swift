@@ -15,7 +15,7 @@ struct VerificationRegisterDataView: View {
     
     private func retrieveImage(forKey key: String) -> UIImage? {
         if let imageData = UserDefaults.standard.object(forKey: key) as? Data,
-            let image = UIImage(data: imageData) {
+           let image = UIImage(data: imageData) {
             return image
         }
         
@@ -57,18 +57,18 @@ struct VerificationRegisterDataView: View {
                 }
                 
                 VStack {
-//                    NavigationLink(destination: SuccessRegisterView().environmentObject(registerData)) {
-//                        Text("Submit Data")
-//                            .foregroundColor(.white)
-//                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                            .font(.system(size: 13))
-//                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-//                    }
-//                    .background(Color(hex: "#2334D0"))
-//                    .cornerRadius(12)
-//                    .padding(.horizontal, 100)
-//                    .padding(.top, 10)
-//                    .padding(.bottom, 20)
+                    //                    NavigationLink(destination: SuccessRegisterView().environmentObject(registerData)) {
+                    //                        Text("Submit Data")
+                    //                            .foregroundColor(.white)
+                    //                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    //                            .font(.system(size: 13))
+                    //                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                    //                    }
+                    //                    .background(Color(hex: "#2334D0"))
+                    //                    .cornerRadius(12)
+                    //                    .padding(.horizontal, 100)
+                    //                    .padding(.top, 10)
+                    //                    .padding(.bottom, 20)
                     
                     Button(action: {
                         let data = User(context: managedObjectContext)
@@ -102,20 +102,32 @@ struct VerificationRegisterDataView: View {
     var cardForm: some View {
         VStack(alignment: .leading) {
             Group {
-                LabelTextField(value: $registerData.nik, label: "KTP", placeHolder: "KTP")
-                    .padding(.top, 20)
-                    .padding(.horizontal, 20)
-                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                LabelTextField(value: $registerData.nik, label: "KTP", placeHolder: "KTP") { (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
+                .padding(.top, 20)
+                .padding(.horizontal, 20)
+                .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
-                LabelTextField(value: $registerData.noTelepon, label: "No. Telepon", placeHolder: "No. Telepon")
-                    .padding(.top, 10)
-                    .padding(.horizontal, 20)
-                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                LabelTextField(value: $registerData.noTelepon, label: "No. Telepon", placeHolder: "No. Telepon") { (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
+                .padding(.top, 10)
+                .padding(.horizontal, 20)
+                .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
-                LabelTextField(value: $registerData.email, label: "Email", placeHolder: "Email")
-                    .padding(.top, 10)
-                    .padding(.horizontal, 20)
-                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                LabelTextField(value: $registerData.email, label: "Email", placeHolder: "Email") { (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
+                .padding(.top, 10)
+                .padding(.horizontal, 20)
+                .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 
                 VStack {
                     HStack {
@@ -395,6 +407,6 @@ struct VerificationRegisterDataView: View {
 
 struct VerificationRegisterDataView_Previews: PreviewProvider {
     static var previews: some View {
-        VerificationRegisterDataView()
+        VerificationRegisterDataView().environmentObject(RegistrasiModel())
     }
 }

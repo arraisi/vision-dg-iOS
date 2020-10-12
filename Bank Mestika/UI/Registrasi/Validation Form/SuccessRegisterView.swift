@@ -224,6 +224,6 @@ struct SuccessRegisterView: View {
 
 struct SuccessRegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        SuccessRegisterView()
+        SuccessRegisterView().environmentObject(RegistrasiModel())
     }
 }

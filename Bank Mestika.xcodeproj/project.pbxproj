@@ -275,7 +275,6 @@
 			children = (
 				526F63D22532E8B80091D6E3 /* CoreData */,
 				52B81DFC2530328B002703E3 /* ViewModel */,
-				5202BA34251B1FA300FCE527 /* Info.plist */,
 				524F9594252EECC8003D7FFF /* Services */,
 				524F958D252EEB0F003D7FFF /* Resources */,
 				524F958C252EEAF4003D7FFF /* Main */,
@@ -284,6 +283,7 @@
 				5202BA63251B269100FCE527 /* Utils */,
 				5202BA59251B1FDB00FCE527 /* UI */,
 				5202BA29251B1FA000FCE527 /* Bank_Mestika.xcdatamodeld */,
+				5202BA34251B1FA300FCE527 /* Info.plist */,
 				5202BA2E251B1FA300FCE527 /* Preview Content */,
 			);
 			path = "Bank Mestika";

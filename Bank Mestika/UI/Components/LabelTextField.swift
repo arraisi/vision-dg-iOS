@@ -12,6 +12,8 @@ struct LabelTextField: View {
     @Binding var value: String
     var label: String
     var placeHolder: String
+    let onEditingChanged: (Bool)->Void
+    let onCommit: ()->Void
     
     var body: some View {
         
@@ -23,7 +25,7 @@ struct LabelTextField: View {
                 .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.leading)
             
-            TextField(placeHolder, text: $value)
+            TextField(placeHolder, text: $value, onEditingChanged: onEditingChanged, onCommit: onCommit)
                 .frame(height: 36)
                 .font(Font.system(size: 14))
                 .padding(.horizontal)
@@ -36,6 +38,10 @@ struct LabelTextField: View {
 
 struct LabelTextField_Previews: PreviewProvider {
     static var previews: some View {
-        LabelTextField(value: Binding.constant(""), label: "Demo", placeHolder: "Demo")
+        LabelTextField(value: Binding.constant(""), label: "Demo", placeHolder: "Demo") { (Bool) in
+            print("on edit")
+        } onCommit: {
+            print("on commit")
+        }
     }
 }

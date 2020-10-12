@@ -42,7 +42,7 @@ struct VerificationDataPersonalView: View {
                 .frame(width: 95, height: 95)
                 .padding(.top, 40)
                 .padding(.horizontal, 20)
-        
+            
             HStack {
                 Text("Hi, ")
                     .font(.title)
@@ -89,34 +89,88 @@ struct VerificationDataPersonalView: View {
                 .padding(.bottom, 10)
             
             Group {
-                LabelTextField(value: $jenisTabungan, label: "Jenis Tabungan", placeHolder: "Jenis Tabungan")
+                LabelTextField(value: $jenisTabungan, label: "Jenis Tabungan", placeHolder: "Jenis Tabungan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Tujuan Pembukaan Rekening", placeHolder: "Tujuan Pembukaan Rekening")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Tujuan Pembukaan Rekening", placeHolder: "Tujuan Pembukaan Rekening"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Sumber Dana", placeHolder: "Sumber Dana")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Sumber Dana", placeHolder: "Sumber Dana"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Pekerjaan", placeHolder: "Pekerjaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Pekerjaan", placeHolder: "Pekerjaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Jabatan", placeHolder: "Jabatan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Jabatan", placeHolder: "Jabatan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Alamat Perusahaan", placeHolder: "Alamat Perusahaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Kecamatan Perusahaan", placeHolder: "Kecamatan Perusahaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Kecamatan Perusahaan", placeHolder: "Kecamatan Perusahaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Kelurahan Perusahaan", placeHolder: "Kelurahan Perusahaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Kelurahan Perusahaan", placeHolder: "Kelurahan Perusahaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Kode Pos Perusahaan", placeHolder: "Kode Pos Perusahaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Kode Pos Perusahaan", placeHolder: "Kode Pos Perusahaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
             }
+            .padding(.horizontal)
             
             Group {
-                LabelTextField(value: $tujuanPembukaanRekening, label: "No. Perusahaan", placeHolder: "No. Perusahaan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "No. Perusahaan", placeHolder: "No. Perusahaan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Bidang Usaha", placeHolder: "Bidang Usaha")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Bidang Usaha", placeHolder: "Bidang Usaha"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
                 
-                LabelTextField(value: $tujuanPembukaanRekening, label: "Penghasilan", placeHolder: "Penghasilan")
+                LabelTextField(value: $tujuanPembukaanRekening, label: "Penghasilan", placeHolder: "Penghasilan"){ (Bool) in
+                    print("on edit")
+                } onCommit: {
+                    print("on commit")
+                }
             }
+            .padding(.horizontal)
             
             HStack {
                 NavigationLink(destination : VerificationAddressView()) {
