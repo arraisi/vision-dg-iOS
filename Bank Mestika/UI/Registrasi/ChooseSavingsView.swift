@@ -40,9 +40,9 @@ struct ChooseSavingsView: View {
         
         return ZStack {
             VStack {
-                Color(hex: "#232175")
-                    .frame(height: 400)
                 Color(hex: "#F6F8FB")
+                    .frame(height: 400)
+                Color(hex: "#232175")
             }
             
             VStack {
@@ -82,7 +82,7 @@ struct ChooseSavingsView: View {
                                                     .resizable()
                                                     .frame(width: 200, height: 160)
                                             }
-                                            .padding(.top, 60)
+                                            .padding(.top, 30)
                                             .cornerRadius(8)
                                             .transition(AnyTransition.slide)
                                             .animation(.spring())
@@ -192,17 +192,17 @@ struct ChooseSavingsView: View {
                             }
                         }
                     }
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
                 }
                 
                 if self.showingModal {
                     ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
                 }
             }
-        }
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle("BANK MESTIKA", displayMode: .inline)
-        .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
-            createBottomFloater()
+            .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
+                createBottomFloater()
+            }
         }
     }
     
@@ -352,7 +352,7 @@ struct Item<Content: View>: View {
     
     var body: some View {
         content
-            .frame(width: cardWidth, height: cardHeight, alignment: .center)
+            .frame(width: cardWidth, height: cardHeight)
     }
 }
 

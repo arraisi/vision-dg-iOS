@@ -19,6 +19,7 @@ struct RegisterView: View {
     
     var registerData = RegistrasiModel()
     
+    @FetchRequest(entity: User.entity(), sortDescriptors: []) var user: FetchedResults<User>
     @EnvironmentObject var appState: AppState
     @State var isViewActivity: Bool = false
     
@@ -72,6 +73,7 @@ struct RegisterView: View {
         .navigationBarHidden(true)
         .onAppear(perform: {
             print("ON APPEAR")
+            
             viewModel.getAssets()
             
             UINavigationBar.appearance().barTintColor = UIColor(Color(hex: "#232175"))
@@ -119,7 +121,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData), isActive: $isViewActivity) {
+            NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData), isActive: $isViewActivity) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -151,14 +153,14 @@ struct RegisterView: View {
                 .font(.system(size: 16))
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 20)
-            Text("Apakah Anda telah memiliki rekening di Bank Mestika")
+            Text("Apakah Anda Merupakan Nasabah Bank Mestika?")
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .font(.system(size: 22))
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 30)
             
             NavigationLink(destination: RegisterProvisionView().environmentObject(registerData)) {
-                Text("Tidak, Saya Tidak Memiliki")
+                Text("Tidak, Saya Bukan")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
@@ -169,7 +171,7 @@ struct RegisterView: View {
             .cornerRadius(12)
             
             NavigationLink(destination: RegisterRekeningCardView().environmentObject(registerData)) {
-                Text("Ya, Saya Memiliki")
+                Text("Ya, saya Nasabah Bank Mestika")
                     .foregroundColor(.black)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 12))
