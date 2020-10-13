@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FirstLoginView: View {
-    
+    @Binding var rootIsActive : Bool
     @State var phoneNumber: String = ""
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -101,7 +101,7 @@ struct FirstLoginView: View {
                 .padding(.bottom, 10)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: FirstOTPLoginView()) {
+            NavigationLink(destination: FirstOTPLoginView(rootIsActive: self.$rootIsActive)) {
                 Text("Masukkan No. HP Anda")
                     .foregroundColor(Color(hex: "#232175"))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -118,8 +118,10 @@ struct FirstLoginView: View {
     }
 }
 
+#if DEBUG
 struct FirstLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstLoginView()
+        FirstLoginView(rootIsActive: .constant(false))
     }
 }
+#endif

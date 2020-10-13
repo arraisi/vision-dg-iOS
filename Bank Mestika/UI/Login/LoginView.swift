@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+    @Binding var rootIsActive : Bool
     @State var password: String = ""
     
     @State private var securedPassword: Bool = true
@@ -171,7 +171,9 @@ struct LoginView: View {
                     .padding(.bottom, 10)
                     .padding(.leading, 20)
                 
-                NavigationLink(destination: RegisterView(viewModel: AssetsViewModel()), label: {
+                Button(action: {
+                    self.rootIsActive = false
+                }, label: {
                     Text("Register Here")
                         .font(.subheadline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -187,8 +189,10 @@ struct LoginView: View {
     }
 }
 
+#if DEBUG
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(rootIsActive: .constant(false))
     }
 }
+#endif

@@ -10,7 +10,7 @@ import ExytePopupView
 import SDWebImageSwiftUI
 
 struct RegisterView: View {
-    
+    @State var isActive : Bool = false
     @ObservedObject var viewModel: AssetsViewModel
     
     var registerData = RegistrasiModel()
@@ -116,7 +116,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: FirstLoginView()) {
+            NavigationLink(destination: FirstLoginView(rootIsActive: self.$isActive), isActive: self.$isActive) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
