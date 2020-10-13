@@ -25,6 +25,6 @@ struct CharacterInputCell: View {
             .multilineTextAlignment(.center)
             .background(Color.white)
             .cornerRadius(8)
-            .shadow(radius: 25)
+            .shadow(color: Color(hex: "#3756DF").opacity(0.2), radius: 15, x: 0, y: 4)
     }
 }

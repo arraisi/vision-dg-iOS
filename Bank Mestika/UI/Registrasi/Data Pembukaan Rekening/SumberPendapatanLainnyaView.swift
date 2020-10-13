@@ -104,7 +104,7 @@ struct SumberPendapatanLainnyaView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: VerificationAddressView().environmentObject(registerData), label:{
+                                NavigationLink(destination: KeluargaTerdekat().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
@@ -116,7 +116,7 @@ struct SumberPendapatanLainnyaView: View {
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
-                                .padding(.horizontal, 35)
+                                .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
                                 
                             }

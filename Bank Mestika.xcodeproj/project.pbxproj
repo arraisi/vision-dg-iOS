@@ -103,6 +103,7 @@
 		C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */; };
 		C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DE72522F88F005B811C /* LabelTextField.swift */; };
 		C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */; };
+		C0CA1615253441D400A93EF5 /* KeluargaTerdekat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */; };
 		C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */; };
 		C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */; };
 /* End PBXBuildFile section */
@@ -227,6 +228,7 @@
 		C0C44EE02524602E002F592B /* KeyboardAwareModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAwareModifier.swift; sourceTree = "<group>"; };
 		C0C94DE72522F88F005B811C /* LabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
+		C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeluargaTerdekat.swift; sourceTree = "<group>"; };
 		C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenghasilanKotorView.swift; sourceTree = "<group>"; };
 		C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBarKeyBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -579,6 +581,7 @@
 				C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */,
 				C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */,
 				C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */,
+				C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */,
 				52BE530B2529793800ADE164 /* PasswordView.swift */,
 				52BE531025297C3F00ADE164 /* PINView.swift */,
 				524F95D6252F0A00003D7FFF /* VerifikasiPINView.swift */,
@@ -837,6 +840,7 @@
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
 				5294ADF425343B700075D285 /* LoginView.swift in Sources */,
 				C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */,
+				C0CA1615253441D400A93EF5 /* KeluargaTerdekat.swift in Sources */,
 				C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */,
 				C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */,
 				C09EA8982525ABEC007ABF8A /* PerkiraanSetoranView.swift in Sources */,

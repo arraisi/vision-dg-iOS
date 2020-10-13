@@ -16,7 +16,7 @@ struct TujuanPembukaanRekeningView: View {
     
     @State var tujuanPembukaanRekeningId: String?
     
-    @State var isChecked:Bool = false
+    @State var isChecked: Bool = false
     
     @State var editMode: EditMode = .inactive
     
@@ -131,7 +131,7 @@ struct TujuanPembukaanRekeningView: View {
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)
-                                    .padding(.horizontal, 35)
+                                    .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
                                 } else {
                                     NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
@@ -146,7 +146,7 @@ struct TujuanPembukaanRekeningView: View {
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)
-                                    .padding(.horizontal, 35)
+                                    .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
                                 }
                                 
