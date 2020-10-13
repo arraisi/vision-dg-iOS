@@ -118,7 +118,7 @@ struct KeluargaTerdekat: View {
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
-                                .padding(.horizontal, 35)
+                                .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
                                 
                                 

@@ -120,7 +120,7 @@ struct PasswordView: View {
                                 .frame(height: 50)
                                 .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
                                 .cornerRadius(12)
-                                .padding(.horizontal, 35)
+                                .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
                                 .disabled(disableForm)
                                 

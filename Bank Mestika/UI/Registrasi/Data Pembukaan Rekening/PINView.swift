@@ -109,11 +109,11 @@ struct PINView: View {
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
-                                .padding(.horizontal, 35)
+                                .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
                                 
                             }
-                            .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
+                            .background(Color(.white))
                             .cornerRadius(25.0)
                             .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 20)
