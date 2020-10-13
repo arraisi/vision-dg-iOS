@@ -210,27 +210,6 @@ struct VerificationRegisterDataView: View {
                 
                 VStack {
                     HStack {
-                        Text("Tanda Tangan")
-                            .font(.subheadline)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .fontWeight(.bold)
-                        Spacer()
-                        
-                        VStack {
-                            self.registerData.fotoTandaTangan
-                                .resizable()
-                                .frame(maxWidth: 80, maxHeight: 50)
-                                .cornerRadius(8)
-                        }
-                        .frame(maxWidth: 80, minHeight: 50, maxHeight: 50)
-                    }
-                    Divider()
-                }
-                .padding(.top, 20)
-                .padding(.horizontal, 20)
-                
-                VStack {
-                    HStack {
                         Text("NPWP")
                             .font(.subheadline)
                             .foregroundColor(Color(hex: "#232175"))

@@ -20,6 +20,7 @@
 		5202BA5C251B207500FCE527 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202BA5B251B207500FCE527 /* RegisterView.swift */; };
 		5202BA65251B26C100FCE527 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5202BA64251B26C100FCE527 /* Color+Utils.swift */; };
 		52056D3A252DD366008D99D2 /* RegistrasiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52056D39252DD366008D99D2 /* RegistrasiModel.swift */; };
+		521861C8253583AE00C3E824 /* SUImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521861C7253583AE00C3E824 /* SUImagePickerView.swift */; };
 		5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */; };
 		5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */; };
 		5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */; };
@@ -146,6 +147,7 @@
 		5202BA5B251B207500FCE527 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		5202BA64251B26C100FCE527 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
 		52056D39252DD366008D99D2 /* RegistrasiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrasiModel.swift; sourceTree = "<group>"; };
+		521861C7253583AE00C3E824 /* SUImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUImagePickerView.swift; sourceTree = "<group>"; };
 		5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProvisionView.swift; sourceTree = "<group>"; };
 		5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationView.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 		5202BA5A251B200300FCE527 /* Registrasi */ = {
 			isa = PBXGroup;
 			children = (
+				521861C32535787700C3E824 /* Registrasi Baru Berhasil */,
 				52794C0825245ED00031392E /* Validation Form */,
 				52794BF0252452D20031392E /* Personal Identity */,
 				C09EA88325259D4F007ABF8A /* Data Pembukaan Rekening */,
@@ -376,6 +379,13 @@
 				52056D39252DD366008D99D2 /* RegistrasiModel.swift */,
 			);
 			path = Registrasi;
+			sourceTree = "<group>";
+		};
+		521861C32535787700C3E824 /* Registrasi Baru Berhasil */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Registrasi Baru Berhasil";
 			sourceTree = "<group>";
 		};
 		524F9583252EE9D2003D7FFF /* Assets Model */ = {
@@ -518,6 +528,7 @@
 				524F95BC252EF08E003D7FFF /* LoadingView.swift */,
 				52B81E0A2530655E002703E3 /* ScanningView.swift */,
 				52B81E0F253065B1002703E3 /* TextRecognizer.swift */,
+				521861C7253583AE00C3E824 /* SUImagePickerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -797,6 +808,7 @@
 				52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */,
 				524F9596252EECE3003D7FFF /* APIHandler.swift in Sources */,
 				524F959E252EED26003D7FFF /* AssetsService.swift in Sources */,
+				521861C8253583AE00C3E824 /* SUImagePickerView.swift in Sources */,
 				5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */,
 				52BE53042529620900ADE164 /* JenisTabunganData.swift in Sources */,
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
