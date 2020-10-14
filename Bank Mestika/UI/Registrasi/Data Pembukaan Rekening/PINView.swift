@@ -9,8 +9,18 @@ import SwiftUI
 
 struct PINView: View {
     @EnvironmentObject var registerData: RegistrasiModel
-    @State private var numberOfCells: Int = 6
-    @State private var currentlySelectedCell = 0
+    
+    /*
+        Variable PIN OTP
+     */
+    var maxDigits: Int = 6
+    @State var pin: String = ""
+    @State var showPin = true
+    @State var isDisabled = false
+    
+    var disableForm: Bool {
+        pin.count < 6
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -87,16 +97,11 @@ struct PINView: View {
                                     .padding(.top, 3)
                                     .padding(.bottom, 20)
                                 
-                                // Forms input
-                                HStack {
-                                    ForEach(0 ..< self.numberOfCells) { index in
-                                        CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
-                                    }
+                                ZStack {
+                                    pinDots
+                                    backgroundField
                                 }
-                                .lineSpacing(10)
-                                .padding(.vertical, 20)
                                 
-                               
                                 NavigationLink(destination: VerifikasiPINView().environmentObject(registerData), label:{
                                     
                                     Text("Konfirmasi PIN Transaksi")
@@ -107,10 +112,14 @@ struct PINView: View {
                                     
                                 })
                                 .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
+                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
+                                .disabled(disableForm)
+                                .onAppear {
+                                    self.registerData.pin = pin
+                                }
                                 
                             }
                             .background(Color(.white))
@@ -137,6 +146,64 @@ struct PINView: View {
             UIApplication.shared.endEditing()
         }
         
+    }
+    
+    private var pinDots: some View {
+        HStack {
+            Spacer()
+            ForEach(0..<maxDigits) { index in
+                Image(systemName: self.getImageName(at: index))
+                    .font(.system(size: 45, weight: .thin, design: .default))
+                    .foregroundColor(Color(hex: "#232175"))
+                    .background(Color.white)
+            }
+            Spacer()
+        }
+    }
+    
+    private var backgroundField: some View {
+        let boundPin = Binding<String>(get: { self.pin }, set: { newValue in
+            self.pin = newValue
+        })
+        
+        return TextField("", text: boundPin)
+           .accentColor(.clear)
+           .foregroundColor(.clear)
+           .keyboardType(.numberPad)
+           .disabled(isDisabled)
+    }
+    
+    private var showPinStack: some View {
+        HStack {
+            Spacer()
+            if !pin.isEmpty {
+                showPinButton
+            }
+        }
+        .frame(height: 300)
+        .padding([.trailing])
+    }
+    
+    private var showPinButton: some View {
+        Button(action: {
+            self.showPin.toggle()
+        }, label: {
+            self.showPin ?
+                Image(systemName: "eye.slash.fill").foregroundColor(.primary) :
+                Image(systemName: "eye.fill").foregroundColor(.primary)
+        })
+    }
+    
+    private func getImageName(at index: Int) -> String {
+        if index >= self.pin.count {
+            return "square"
+        }
+        
+        if self.showPin {
+            return self.pin.digits[index].numberString + ".square"
+        }
+        
+        return "square"
     }
 }
 

@@ -10,14 +10,30 @@ import SwiftUI
 struct EmailOTPVerificationView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     
-    @State private var numberOfCells: Int = 6
-    @State private var currentlySelectedCell = 0
+    /*
+        Variable PIN OTP
+     */
+    var maxDigits: Int = 6
+    @State var pin: String = ""
+    @State var showPin = true
+    @State var isDisabled = false
     
-    @State private var timeRemaining = 40
+    /*
+        Variable Validation
+     */
+    @State var isOtpValid = false
+    @State var isResendOtpDisabled = true
+    
+    @State private var timeRemaining = 30
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    /*
+     Boolean for Show Modal
+     */
+    @State var showingModal = false
+    
     var disableForm: Bool {
-        currentlySelectedCell < 6
+        pin.count < 6
     }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -42,6 +58,10 @@ struct EmailOTPVerificationView: View {
                 .padding(.top, 35)
                 .padding(.bottom, 35)
             }
+            
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+            }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -52,8 +72,14 @@ struct EmailOTPVerificationView: View {
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
             }
+            
+            if self.timeRemaining < 1 {
+                isResendOtpDisabled = false
+            }
         }
-        
+        .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
+            createBottomFloater()
+        }
     }
     
     var appbar: some View {
@@ -82,47 +108,50 @@ struct EmailOTPVerificationView: View {
         }
     }
     
-    
     var cardForm: some View {
         VStack(alignment: .center) {
-            Text("Kami telah mengirimkan Kode Verifikasi ke Email Anda")
+            Text("Kami telah mengirimkan OTP ke \(registerData.email)")
                 .font(.title3)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
-            Text("Silahkan masukan kode OTP")
+            
+            Text("Silahkan masukan kode OTP dengan REF #1234")
                 .font(.subheadline)
                 .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
-            
-            HStack {
-                ForEach(0 ..< self.numberOfCells) { index in
-                    CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
-                }
-            }.lineSpacing(10)
+        
+            ZStack {
+                pinDots
+                backgroundField
+            }
             
             HStack {
                 Text("Tidak Menerima Kode?")
                     .font(.caption2)
+                
                 Button(action: {
                     print("-> Resend OTP")
+                    self.timeRemaining = 60
                 }) {
                     Text("Resend OTP")
                         .font(.caption2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(Color(hex: "#232175"))
+                        .foregroundColor(isResendOtpDisabled ? Color.black : Color(hex: "#232175"))
                 }
+                .disabled(isResendOtpDisabled)
+                
                 Text("(00:\(timeRemaining))")
                     .font(.caption2)
             }
             .padding(.top, 5)
             
-            Text("Silahkan cek email Anda untuk melihat kode OTP")
+            Text("Pastikan Anda terkoneksi ke Internet dan pulsa mencukupi untuk menerima OTP")
                 .font(.caption)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
@@ -130,24 +159,137 @@ struct EmailOTPVerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData)) {
-                Text("Verifikasi OTP")
-                    .foregroundColor(.white)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .font(.system(size: 13))
-                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+            VStack {
+                NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData), isActive: self.$isOtpValid) {
+                    Text("")
+                }
+                
+                Button(action: {
+                    print(pin)
+                    if (pin == "111111") {
+                        self.isOtpValid = true
+                    } else {
+                        print("Not Valid")
+                        showingModal.toggle()
+                    }
+                }) {
+                    Text("Verifikasi OTP")
+                        .foregroundColor(.white)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .font(.system(size: 13))
+                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                }
+                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+                .cornerRadius(12)
+                .padding(.horizontal, 20)
+                .padding(.top, 10)
+                .padding(.bottom, 20)
+                .disabled(disableForm)
             }
-            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
-            .cornerRadius(12)
-            .padding(.horizontal, 20)
-            .padding(.top, 10)
-            .padding(.bottom, 20)
-            .disabled(disableForm)
         }
         .frame(width: UIScreen.main.bounds.width - 30)
         .background(Color.white)
         .cornerRadius(15)
         .shadow(radius: 30)
+    }
+    
+    private var pinDots: some View {
+        HStack {
+            Spacer()
+            ForEach(0..<maxDigits) { index in
+                Image(systemName: self.getImageName(at: index))
+                    .font(.system(size: 45, weight: .thin, design: .default))
+                    .foregroundColor(Color(hex: "#232175"))
+                    .background(Color.white)
+            }
+            Spacer()
+        }
+    }
+    
+    private var backgroundField: some View {
+        let boundPin = Binding<String>(get: { self.pin }, set: { newValue in
+            self.pin = newValue
+        })
+        
+        return TextField("", text: boundPin)
+           .accentColor(.clear)
+           .foregroundColor(.clear)
+           .keyboardType(.numberPad)
+           .disabled(isDisabled)
+    }
+    
+    private var showPinStack: some View {
+        HStack {
+            Spacer()
+            if !pin.isEmpty {
+                showPinButton
+            }
+        }
+        .frame(height: 300)
+        .padding([.trailing])
+    }
+    
+    private var showPinButton: some View {
+        Button(action: {
+            self.showPin.toggle()
+        }, label: {
+            self.showPin ?
+                Image(systemName: "eye.slash.fill").foregroundColor(.primary) :
+                Image(systemName: "eye.fill").foregroundColor(.primary)
+        })
+    }
+    
+    private func getImageName(at index: Int) -> String {
+        if index >= self.pin.count {
+            return "square"
+        }
+        
+        if self.showPin {
+            return self.pin.digits[index].numberString + ".square"
+        }
+        
+        return "square"
+    }
+    
+    /*
+     Fuction for Create Bottom Floater (Modal)
+     */
+    func createBottomFloater() -> some View {
+        VStack(alignment: .leading) {
+            Image(systemName: "xmark.octagon.fill")
+                .resizable()
+                .frame(width: 65, height: 65)
+                .foregroundColor(.red)
+                .padding(.top, 20)
+            
+            Text("Kode OTP Salah")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size: 22))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding([.bottom, .top], 20)
+            
+            Text("Kode OTP yang anda masukan salah silahkan ulangi lagi")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size: 16))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding(.bottom, 30)
+            
+            Button(action: {}) {
+                Text("Kembali")
+                    .foregroundColor(.white)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .font(.system(size: 12))
+                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+            }
+            .background(Color(hex: "#2334D0"))
+            .cornerRadius(12)
+            
+            Text("")
+        }
+        .frame(width: UIScreen.main.bounds.width - 60)
+        .padding(.horizontal, 15)
+        .background(Color.white)
+        .cornerRadius(20)
     }
 }
 

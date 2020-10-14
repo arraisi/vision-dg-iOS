@@ -9,8 +9,28 @@ import SwiftUI
 
 struct VerifikasiPINView: View {
     @EnvironmentObject var registerData: RegistrasiModel
-    @State private var numberOfCells: Int = 6
-    @State private var currentlySelectedCell = 0
+    
+    /*
+     Variable PIN OTP
+     */
+    var maxDigits: Int = 6
+    @State var pin: String = ""
+    @State var showPin = true
+    @State var isDisabled = false
+    
+    /*
+     Variable Validation
+     */
+    @State var isPinValid = false
+    
+    /*
+     Boolean for Show Modal
+     */
+    @State var showingModal = false
+    
+    var disableForm: Bool {
+        pin.count < 6
+    }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -33,7 +53,7 @@ struct VerifikasiPINView: View {
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 ScrollView {
                     
                     // Title
@@ -87,30 +107,38 @@ struct VerifikasiPINView: View {
                                     .padding(.top, 3)
                                     .padding(.bottom, 20)
                                 
-                                // Forms input
-                                HStack {
-                                    ForEach(0 ..< self.numberOfCells) { index in
-                                        CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
+                                ZStack {
+                                    pinDots
+                                    backgroundField
+                                }
+                                
+                                VStack {
+                                    NavigationLink(destination: Term_ConditionView().environmentObject(registerData), isActive: self.$isPinValid) {
+                                        Text("")
                                     }
                                 }
-                                .lineSpacing(10)
-                                .padding(.vertical, 20)
                                 
-                               
-                                NavigationLink(destination: Term_ConditionView().environmentObject(registerData), label:{
-                                    
+                                Button(action: {
+                                    print(pin)
+                                    if (pin == self.registerData.pin) {
+                                        self.isPinValid = true
+                                    } else {
+                                        print("Not Valid")
+                                        showingModal.toggle()
+                                    }
+                                }) {
                                     Text("Simpan PIN Transaksi")
                                         .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                })
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
+                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                        .font(.system(size: 13))
+                                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                                }
+                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
                                 .cornerRadius(12)
-                                .padding(.horizontal, 35)
-                                .padding(.vertical, 20)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 10)
+                                .padding(.bottom, 20)
+                                .disabled(disableForm)
                                 
                             }
                             .background(Color(.white))
@@ -130,13 +158,119 @@ struct VerifikasiPINView: View {
                 
             }
             
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+            }
+            
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
+        .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
+            createBottomFloater()
+        }
         
+    }
+    
+    private var pinDots: some View {
+        HStack {
+            Spacer()
+            ForEach(0..<maxDigits) { index in
+                Image(systemName: self.getImageName(at: index))
+                    .font(.system(size: 45, weight: .thin, design: .default))
+                    .foregroundColor(Color(hex: "#232175"))
+                    .background(Color.white)
+            }
+            Spacer()
+        }
+    }
+    
+    private var backgroundField: some View {
+        let boundPin = Binding<String>(get: { self.pin }, set: { newValue in
+            self.pin = newValue
+        })
+        
+        return TextField("", text: boundPin)
+            .accentColor(.clear)
+            .foregroundColor(.clear)
+            .keyboardType(.numberPad)
+            .disabled(isDisabled)
+    }
+    
+    private var showPinStack: some View {
+        HStack {
+            Spacer()
+            if !pin.isEmpty {
+                showPinButton
+            }
+        }
+        .frame(height: 300)
+        .padding([.trailing])
+    }
+    
+    private var showPinButton: some View {
+        Button(action: {
+            self.showPin.toggle()
+        }, label: {
+            self.showPin ?
+                Image(systemName: "eye.slash.fill").foregroundColor(.primary) :
+                Image(systemName: "eye.fill").foregroundColor(.primary)
+        })
+    }
+    
+    private func getImageName(at index: Int) -> String {
+        if index >= self.pin.count {
+            return "square"
+        }
+        
+        if self.showPin {
+            return self.pin.digits[index].numberString + ".square"
+        }
+        
+        return "square"
+    }
+    
+    /*
+     Fuction for Create Bottom Floater (Modal)
+     */
+    func createBottomFloater() -> some View {
+        VStack(alignment: .leading) {
+            Image(systemName: "xmark.octagon.fill")
+                .resizable()
+                .frame(width: 65, height: 65)
+                .foregroundColor(.red)
+                .padding(.top, 20)
+            
+            Text("PIN tidak sama")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size: 22))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding([.bottom, .top], 20)
+            
+            Text("PIN Transaksi yang anda masukan tidak sama dengan awal, silahkan masukan kembali")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size: 16))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding(.bottom, 30)
+            
+            Button(action: {}) {
+                Text("Kembali")
+                    .foregroundColor(.white)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .font(.system(size: 12))
+                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+            }
+            .background(Color(hex: "#2334D0"))
+            .cornerRadius(12)
+            
+            Text("")
+        }
+        .frame(width: UIScreen.main.bounds.width - 60)
+        .padding(.horizontal, 15)
+        .background(Color.white)
+        .cornerRadius(20)
     }
 }
 

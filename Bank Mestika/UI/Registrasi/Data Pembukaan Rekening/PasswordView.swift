@@ -19,7 +19,7 @@ struct PasswordView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var disableForm: Bool {
-        password != confirmationPassword || password.count < 5
+        password != confirmationPassword || password.count < 6
     }
     
     var body: some View {
@@ -161,7 +161,6 @@ struct PasswordView: View {
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
                         
                         Button(action: {
                             self.securedPassword.toggle()
@@ -184,7 +183,6 @@ struct PasswordView: View {
                         .padding()
                         .frame(width: 200, height: 50)
                         .foregroundColor(Color(hex: "#232175"))
-                        .keyboardType(.phonePad)
                         
                         Button(action: {
                             self.securedPassword.toggle()
@@ -208,7 +206,6 @@ struct PasswordView: View {
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
                         
                         Button(action: {
                             self.securedConfirmation.toggle()
@@ -227,7 +224,6 @@ struct PasswordView: View {
                             .padding()
                             .frame(width: 200, height: 50)
                             .foregroundColor(Color(hex: "#232175"))
-                            .keyboardType(.phonePad)
                         
                         Button(action: {
                             self.securedConfirmation.toggle()

@@ -36,6 +36,7 @@ class RegistrasiModel: ObservableObject {
     @Published var penghasilanKotor = ""
     @Published var password = ""
     @Published var pin = ""
+    @Published var confirmationPin = ""
     @Published var fotoKTP: Image = Image("")
     @Published var fotoSelfie: Image = Image("")
     @Published var fotoTandaTangan: Image = Image("")

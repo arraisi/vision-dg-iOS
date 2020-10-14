@@ -8,8 +8,15 @@
 import SwiftUI
 import ExytePopupView
 import SDWebImageSwiftUI
+import SystemConfiguration
 
 struct RegisterView: View {
+    
+    /*
+        For Check Internet Connection
+     */
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.aple.com")
+    
     @State var isActive : Bool = false
     @ObservedObject var viewModel: AssetsViewModel
     
@@ -22,6 +29,7 @@ struct RegisterView: View {
      Boolean for Show Modal
      */
     @State var showingModal = false
+    @State var showAlert = false
     
     /*
      Variable for Image Carousel
@@ -64,10 +72,22 @@ struct RegisterView: View {
             .popup(isPresented: $showingModal, type: .floater(), position: .bottom, animation: Animation.spring(), closeOnTapOutside: true) {
                 createBottomFloater()
             }
+            .alert(isPresented: self.$showAlert) {
+                Alert(title: Text("No Internet Connection"), message: Text("please enable WiFi or Cellular Data"), dismissButton: .default(Text("Ok")))
+            }
         }
         .navigationBarHidden(true)
         .onAppear(perform: {
             print("ON APPEAR")
+            
+            var flags = SCNetworkReachabilityFlags()
+            SCNetworkReachabilityGetFlags(self.reachability!, &flags)
+            
+            if self.isNetworkReachable(with: flags) {
+                self.showAlert = false
+            } else {
+                self.showAlert = true
+            }
             
             viewModel.getAssets()
             
@@ -124,16 +144,17 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
-            
-//            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData), isActive: self.$isActive) {
-//                Text("LOGIN")
-//                    .foregroundColor(.white)
-//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                    .font(.system(size: 12))
-//                    .frame(maxWidth: .infinity, maxHeight: 40)
-//            }
-//            .cornerRadius(12)
         }
+    }
+    
+    private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        
+        
+        return isReachable && (!needsConnection || canConnectWithoutInteraction)
     }
     
     /*
