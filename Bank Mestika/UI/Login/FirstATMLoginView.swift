@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FirstATMLoginView: View {
-    
+    @Binding var rootIsActive : Bool
     @State var atmNumber: String = ""
     @State var pin: String = ""
     
@@ -55,7 +55,9 @@ struct FirstATMLoginView: View {
             Spacer()
             logo
             Spacer()
-            NavigationLink(destination: RegisterView(viewModel: AssetsViewModel())) {
+            Button(action: {
+                self.rootIsActive = false
+            }) {
                 Text("Cancel")
                     .foregroundColor(.white)
             }
@@ -104,7 +106,7 @@ struct FirstATMLoginView: View {
             .cornerRadius(20)
             .padding(.horizontal, 20)
 
-            NavigationLink(destination: FirstPasswordLoginView()) {
+            NavigationLink(destination: FirstPasswordLoginView(rootIsActive: self.$rootIsActive)) {
                 Text("Masukkan Data Kartu ATM Anda")
                     .foregroundColor(Color(hex: "#232175"))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -121,8 +123,10 @@ struct FirstATMLoginView: View {
     }
 }
 
+#if DEBUG
 struct FirstATMLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstATMLoginView()
+        FirstATMLoginView(rootIsActive: .constant(false))
     }
 }
+#endif

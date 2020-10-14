@@ -10,22 +10,23 @@ import UIKit
 
 struct PersonalIdentityView: View {
     
+    /*
+     Recognized Nomor Induk Ktp
+     */
     @ObservedObject var recognizedText: RecognizedText = RecognizedText()
     
     @State var nik: String = ""
+    @State var npwp: String = ""
     @State var imageKTP: Image? = nil
     @State var imageSelfie: Image? = nil
-    @State var imageSignature: Image? = nil
     @State var imageNPWP: Image? = nil
     
-    @State var showCaptureKTP: Bool = false
-    @State var showCaptureSelfie: Bool = false
-    @State var showCaptureSignature: Bool = false
-    @State var showCaptureNPWP: Bool = false
+    @State private var shouldPresentImagePicker = false
+    @State private var shouldPresentActionScheet = false
+    @State private var shouldPresentCamera = false
     
     @State private var collapsedFormKTP: Bool = false
     @State private var collapsedFormPersonal: Bool = true
-    @State private var collapsedFormSignature: Bool = true
     @State private var collapsedFormNPWP: Bool = true
     
     @State var isEditNik: Bool = false
@@ -106,7 +107,7 @@ struct PersonalIdentityView: View {
                 appbar
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 ScrollView(showsIndicators: false) {
                     ZStack {
                         VStack {
@@ -133,8 +134,6 @@ struct PersonalIdentityView: View {
                                 .padding(.bottom, 20)
                             photoPersonalForm
                                 .padding(.bottom, 20)
-                            photoSignatureForm
-                                .padding(.bottom, 20)
                             photoNPWPForm
                             
                             NavigationLink(destination: EmailVerificationView().environmentObject(registerData)) {
@@ -157,22 +156,6 @@ struct PersonalIdentityView: View {
                 }
             }
             .KeyboardAwarePadding()
-            
-            if (showCaptureKTP) {
-                CaptureImageView(isShown: $showCaptureKTP, image: $imageKTP)
-            }
-            
-            if (showCaptureSelfie) {
-                CaptureImageView(isShown: $showCaptureSelfie, image: $imageSelfie)
-            }
-            
-            if (showCaptureSignature) {
-                CaptureImageView(isShown: $showCaptureSignature, image: $imageSignature)
-            }
-            
-            if (showCaptureNPWP) {
-                CaptureImageView(isShown: $showCaptureNPWP, image: $imageNPWP)
-            }
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -187,6 +170,18 @@ struct PersonalIdentityView: View {
                 retrieveImage(forKey: "ktp")
                 
             }
+        }
+        .sheet(isPresented: $shouldPresentImagePicker) {
+            SUImagePickerView(sourceType: self.shouldPresentCamera ? .camera : .photoLibrary, image: collapsedFormPersonal ? self.$imageNPWP : self.$imageSelfie, isPresented: self.$shouldPresentImagePicker)
+        }
+        .actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
+            ActionSheet(title: Text("Choose mode"), message: Text("Please choose your preferred mode to set your profile image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
+                self.shouldPresentImagePicker = true
+                self.shouldPresentCamera = true
+            }), ActionSheet.Button.default(Text("Photo Library"), action: {
+                self.shouldPresentImagePicker = true
+                self.shouldPresentCamera = false
+            }), ActionSheet.Button.cancel()])
         }
     }
     
@@ -215,7 +210,7 @@ struct PersonalIdentityView: View {
                 .bold()
         }
     }
-
+    
     
     var photoKTPForm: some View {
         VStack {
@@ -384,7 +379,8 @@ struct PersonalIdentityView: View {
                     VStack {
                         imageSelfie?
                             .resizable()
-                            .frame(maxWidth: 350, maxHeight: 200)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 350, height: 200)
                             .cornerRadius(10)
                     }
                     .frame(maxWidth: 350, minHeight: 200, maxHeight: 200)
@@ -398,7 +394,8 @@ struct PersonalIdentityView: View {
                 .padding(.horizontal, 15)
                 
                 Button(action: {
-                    self.showCaptureSelfie.toggle()
+                    print("ON TAP SELFIE")
+                    self.shouldPresentActionScheet = true
                 }) {
                     Text(imageSelfie == nil ? "Ambil Gambar Selfie" : "Ganti Foto Lain")
                         .foregroundColor(imageSelfie == nil ? .white : Color(hex: "#2334D0"))
@@ -417,7 +414,7 @@ struct PersonalIdentityView: View {
                 if (imageSelfie != nil) {
                     Button(action: {
                         self.collapsedFormPersonal.toggle()
-                        self.collapsedFormSignature.toggle()
+                        self.collapsedFormNPWP.toggle()
                         
                         self.registerData.fotoSelfie = self.imageSelfie!
                     }) {
@@ -434,106 +431,6 @@ struct PersonalIdentityView: View {
                 } else { EmptyView() }
             }
             .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormPersonal ? 0 : .none)
-            .clipped()
-            .animation(.easeOut)
-            .transition(.slide)
-        }
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(radius: 4)
-    }
-    
-    var photoSignatureForm: some View {
-        VStack {
-            Button(
-                action: { self.collapsedFormSignature.toggle() },
-                label: {
-                    HStack {
-                        Text("Silahkan Foto Tanda Tangan Anda")
-                            .font(.body)
-                            .foregroundColor(collapsedFormSignature ? Color(hex: "#2334D0") : .white)
-                            .fontWeight(.semibold)
-                        
-                        Spacer()
-                        
-                        if (imageSignature != nil) {
-                            Image(systemName: "checkmark.circle")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(collapsedFormSignature ? Color(hex: "#2334D0") : .white)
-                        } else { EmptyView() }
-                    }
-                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
-                    .padding(.horizontal, 10)
-                    .background(collapsedFormSignature ? Color(hex: "#F6F8FB") : Color(hex: "#2334D0"))
-                }
-            )
-            .buttonStyle(PlainButtonStyle())
-            
-            VStack(alignment: .center) {
-                Text("")
-                Text("Ambil foto atau gambar tanda tangan Anda")
-                    .multilineTextAlignment(.center)
-                    .font(.caption)
-                    .frame(maxWidth: .infinity)
-                    .padding([.bottom], 15)
-                    .padding(.horizontal, 20)
-                
-                ZStack {
-                    Image("ic_camera")
-                    VStack {
-                        imageSignature?
-                            .resizable()
-                            .frame(maxWidth: 350, maxHeight: 200)
-                            .cornerRadius(10)
-                    }
-                    .frame(maxWidth: 350, minHeight: 200, maxHeight: 200)
-                }
-                .frame(minWidth: 0, maxWidth: 350, minHeight: 200, maxHeight: 200)
-                .background(Color(hex: "#F5F5F5"))
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.2))
-                )
-                .padding(.horizontal, 15)
-                
-                Button(action: {
-                    self.showCaptureSignature.toggle()
-                }) {
-                    Text(imageSignature == nil ? "Ambil Gambar Tanda Tangan" : "Ganti Foto Lain")
-                        .foregroundColor(imageSignature == nil ? .white : Color(hex: "#2334D0"))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .font(.system(size: 13))
-                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10).stroke(Color(.gray).opacity(0.4))
-                        )
-                }
-                .background(Color(hex: imageSignature == nil ? "#2334D0" : "#FFFFFF"))
-                .cornerRadius(12)
-                .padding(.horizontal, 20)
-                .padding([.top, .bottom], 15)
-                
-                if (imageSignature != nil) {
-                    Button(action: {
-                        self.collapsedFormSignature.toggle()
-                        self.collapsedFormNPWP.toggle()
-                        
-                        self.registerData.fotoTandaTangan = self.imageSignature!
-                    }) {
-                        Text("Simpan")
-                            .foregroundColor(.white)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .font(.system(size: 13))
-                            .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                    }
-                    .background(Color(hex: "#2334D0"))
-                    .cornerRadius(12)
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 15)
-                } else { EmptyView() }
-            }
-            .frame(minWidth: UIScreen.main.bounds.width - 30, maxWidth: UIScreen.main.bounds.width - 30, minHeight: 0, maxHeight: collapsedFormSignature ? 0 : .none)
             .clipped()
             .animation(.easeOut)
             .transition(.slide)
@@ -598,9 +495,9 @@ struct PersonalIdentityView: View {
                 .padding(.horizontal, 15)
                 
                 Button(action: {
-                    self.showCaptureNPWP.toggle()
+                    self.shouldPresentActionScheet = true
                 }) {
-                    Text(imageKTP == nil ? "Ambil Foto NPWP" : "Ganti Foto Lain")
+                    Text(imageNPWP == nil ? "Ambil Foto NPWP" : "Ganti Foto Lain")
                         .foregroundColor(imageNPWP == nil ? .white : Color(hex: "#2334D0"))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 13))
@@ -620,13 +517,14 @@ struct PersonalIdentityView: View {
                         .font(.caption)
                         .padding(.horizontal, 20)
                     
-                    TextField("No. NPWP", text: $nik)
+                    TextField("No. NPWP", text: $npwp)
                         .frame(height: 10)
                         .font(.subheadline)
                         .padding()
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                         .padding(.horizontal, 20)
+                        .disabled(!hasNoNpwp)
                     
                     Button(action: toggleHasNpwp) {
                         HStack(alignment: .top) {
@@ -673,33 +571,5 @@ struct PersonalIdentityView: View {
 struct PersonalIdentityView_Previews: PreviewProvider {
     static var previews: some View {
         PersonalIdentityView().environmentObject(RegistrasiModel())
-    }
-}
-
-struct CaptureImageView {
-    /// MARK: - Properties
-    @Binding var isShown: Bool
-    @Binding var image: Image?
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(isShown: $isShown, image: $image)
-    }
-}
-
-extension CaptureImageView: UIViewControllerRepresentable {
-    func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            picker.sourceType = .camera
-        }
-        
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController,
-                                context: UIViewControllerRepresentableContext<CaptureImageView>) {
-        
     }
 }

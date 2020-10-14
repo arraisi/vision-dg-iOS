@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FirstPasswordLoginView: View {
-    
+    @Binding var rootIsActive : Bool
     @State var password: String = ""
     @State var confirmationPassword: String = ""
     
@@ -58,7 +58,9 @@ struct FirstPasswordLoginView: View {
             Spacer()
             logo
             Spacer()
-            NavigationLink(destination: RegisterView(viewModel: AssetsViewModel())) {
+            Button(action: {
+                self.rootIsActive = false
+            }) {
                 Text("Cancel")
                     .foregroundColor(.white)
             }
@@ -186,7 +188,7 @@ struct FirstPasswordLoginView: View {
             .cornerRadius(15)
             .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
 
-            NavigationLink(destination: LoginView()) {
+            NavigationLink(destination: LoginView(rootIsActive: self.$rootIsActive)) {
                 Text("SIMPAN DATA LOGIN")
                     .foregroundColor(Color(hex: "#232175"))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -203,8 +205,10 @@ struct FirstPasswordLoginView: View {
     }
 }
 
+#if DEBUG
 struct FirstPasswordLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstPasswordLoginView()
+        FirstPasswordLoginView(rootIsActive: .constant(false))
     }
 }
+#endif
