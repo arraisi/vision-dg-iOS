@@ -81,7 +81,7 @@ struct TujuanPembukaanRekeningView: View {
                             VStack {
                                 
                                 Spacer()
-                                
+                                 
                                 // Sub title
                                 Text("Tujuan Pembukaan Rekening")
                                     .font(Font.system(size: 18))
