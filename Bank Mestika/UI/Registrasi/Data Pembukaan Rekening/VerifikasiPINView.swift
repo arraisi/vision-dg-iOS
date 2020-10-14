@@ -64,7 +64,7 @@ struct VerifikasiPINView: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
                         .padding(.bottom, 30)
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 40)
                         .fixedSize(horizontal: false, vertical: true)
                     
                     // Content

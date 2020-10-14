@@ -45,7 +45,7 @@ struct TujuanPembukaanRekeningView: View {
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
                 
-                ScrollView {
+                ScrollView(.vertical) {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
@@ -55,7 +55,7 @@ struct TujuanPembukaanRekeningView: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
                         .padding(.vertical, 30)
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 40)
                     
                     
                     // Content
@@ -78,86 +78,86 @@ struct TujuanPembukaanRekeningView: View {
                             .padding(.horizontal, 40)
                             .padding(.top, 10)
                             
-                            VStack {
+                        }
+                        
+                        VStack {
+                            
+                            Spacer()
+                            
+                            // Sub title
+                            Text("Tujuan Pembukaan Rekening")
+                                .font(Font.system(size: 18))
+                                .foregroundColor(Color(hex: "#232175"))
+                                .fontWeight(.semibold)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 30)
+                            
+                            // Forms input
+                            ZStack {
                                 
-                                Spacer()
-                                
-                                // Sub title
-                                Text("Tujuan Pembukaan Rekening")
-                                    .font(Font.system(size: 18))
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(.semibold)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 30)
-                                
-                                // Forms input
-                                ZStack {
+                                CheckBoxGroup(items: tujuanPembukaanRekening, markedId: $selectedItems) { id, marked in
                                     
-                                    CheckBoxGroup(items: tujuanPembukaanRekening, markedId: $selectedItems) { id, marked in
-                                        
-                                        registerData.tujuanPembukaan = ""
-                                        
-                                        tujuanPembukaanRekening.forEach { (item) in
-                                            if marked.contains(item.id) {
-                                                registerData.tujuanPembukaan += item.name
-                                                if marked.last != item.id {
-                                                    registerData.tujuanPembukaan += ", "
-                                                }
+                                    registerData.tujuanPembukaan = ""
+                                    
+                                    tujuanPembukaanRekening.forEach { (item) in
+                                        if marked.contains(item.id) {
+                                            registerData.tujuanPembukaan += item.name
+                                            if marked.last != item.id {
+                                                registerData.tujuanPembukaan += ", "
                                             }
                                         }
-                                        
-                                        print(registerData.tujuanPembukaan)
-                                        
                                     }
-                                    .padding()
+                                    
+                                    print(registerData.tujuanPembukaan)
                                     
                                 }
-                                .frame(width: UIScreen.main.bounds.width - 70)
-                                .background(Color.white)
-                                .cornerRadius(15)
-                                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                
-                                // Button
-                                if (editMode == .inactive) {
-                                    NavigationLink(destination: SumberDanaView().environmentObject(registerData)) {
-                                        
-                                        Text("Berikutnya")
-                                            .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                            .font(.system(size: 14))
-                                            .frame(maxWidth: .infinity, maxHeight: 40)
-                                        
-                                    }
-                                    .frame(height: 50)
-                                    .background(Color(hex: "#2334D0"))
-                                    .cornerRadius(12)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 20)
-                                } else {
-                                    NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
-                                        
-                                        Text("Simpan")
-                                            .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                            .font(.system(size: 14))
-                                            .frame(maxWidth: .infinity, maxHeight: 40)
-                                        
-                                    }
-                                    .frame(height: 50)
-                                    .background(Color(hex: "#2334D0"))
-                                    .cornerRadius(12)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 20)
-                                }
+                                .padding()
                                 
                             }
-                            .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
-                            .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
-                            .padding(.horizontal, 20)
-                            .padding(.top, 25)
+                            .frame(width: UIScreen.main.bounds.width - 70)
+                            .background(Color.white)
+                            .cornerRadius(15)
+                            .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+                            
+                            // Button
+                            if (editMode == .inactive) {
+                                NavigationLink(destination: SumberDanaView().environmentObject(registerData)) {
+                                    
+                                    Text("Berikutnya")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 14))
+                                        .frame(maxWidth: .infinity, maxHeight: 40)
+                                    
+                                }
+                                .frame(height: 50)
+                                .background(Color(hex: "#2334D0"))
+                                .cornerRadius(12)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 20)
+                            } else {
+                                NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
+                                    
+                                    Text("Simpan")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 14))
+                                        .frame(maxWidth: .infinity, maxHeight: 40)
+                                    
+                                }
+                                .frame(height: 50)
+                                .background(Color(hex: "#2334D0"))
+                                .cornerRadius(12)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 20)
+                            }
                             
                         }
+                        .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
+                        .cornerRadius(25.0)
+                        .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 25)
                         
                     }
                     .padding(.bottom, 0.1)

@@ -141,15 +141,15 @@ struct PersonalIdentityView: View {
                                     .foregroundColor(.white)
                                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                                     .font(.system(size: 13))
-                                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                             }
                             .background(Color(hex: "#232175"))
                             .cornerRadius(12)
-                            .padding(.horizontal, 10)
+//                            .padding(.horizontal, 5)
                             .padding(.top, 60)
                             .padding(.bottom, 20)
                         }
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 20)
                         .padding(.top, 65)
                         .padding(.bottom, 35)
                     }
