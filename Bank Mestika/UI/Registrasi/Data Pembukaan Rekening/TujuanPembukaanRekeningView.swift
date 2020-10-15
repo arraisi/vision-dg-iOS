@@ -14,13 +14,9 @@ struct TujuanPembukaanRekeningView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var tujuanPembukaanRekeningId: String?
-    
     @State var isChecked: Bool = false
     
     @State var editMode: EditMode = .inactive
-    
-    @State var selectedItems: [Int] = []
     
     let tujuanPembukaanRekening: [MasterModel] = load("tujuanPembukaanRekening.json")
     
@@ -34,7 +30,7 @@ struct TujuanPembukaanRekeningView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -54,9 +50,8 @@ struct TujuanPembukaanRekeningView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.vertical, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
-                    
                     
                     // Content
                     ZStack {
@@ -95,7 +90,7 @@ struct TujuanPembukaanRekeningView: View {
                             // Forms input
                             ZStack {
                                 
-                                CheckBoxGroup(items: tujuanPembukaanRekening, markedId: $selectedItems) { id, marked in
+                                CheckBoxGroup(items: tujuanPembukaanRekening, markedId: $registerData.tujuanPembukaanId) { id, marked in
                                     
                                     registerData.tujuanPembukaan = ""
                                     
@@ -108,6 +103,8 @@ struct TujuanPembukaanRekeningView: View {
                                         }
                                     }
                                     
+                                    
+                                    print(registerData.tujuanPembukaanId)
                                     print(registerData.tujuanPembukaan)
                                     
                                 }
@@ -120,38 +117,38 @@ struct TujuanPembukaanRekeningView: View {
                             .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                             
                             // Button
-                            if (editMode == .inactive) {
-                                NavigationLink(destination: SumberDanaView().environmentObject(registerData)) {
-                                    
-                                    Text("Berikutnya")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
+                                if (editMode == .inactive) {
+                                    NavigationLink(destination: SumberDanaView().environmentObject(registerData)) {
+                                        
+                                        Text("Berikutnya")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    }
+                                    .disabled(registerData.tujuanPembukaanId.count == 0)
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 20)
+                                } else {
+                                    NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
+                                        
+                                        Text("Simpan")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    }
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 20)
                                 }
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
-                            } else {
-                                NavigationLink(destination: VerificationRegisterDataView().environmentObject(registerData)) {
-                                    
-                                    Text("Simpan")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                }
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
-                            }
-                            
                         }
                         .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                         .cornerRadius(25.0)

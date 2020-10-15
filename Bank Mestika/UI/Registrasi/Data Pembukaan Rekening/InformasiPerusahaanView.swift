@@ -50,7 +50,7 @@ struct InformasiPerusahaanView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -60,7 +60,7 @@ struct InformasiPerusahaanView: View {
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 ScrollView {
                     
                     // Title
@@ -70,7 +70,7 @@ struct InformasiPerusahaanView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -116,7 +116,6 @@ struct InformasiPerusahaanView: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                                
                                 NavigationLink(destination: PenghasilanKotorView().environmentObject(registerData), label:{
                                     
                                     Text("Berikutnya")
@@ -131,7 +130,6 @@ struct InformasiPerusahaanView: View {
                                 .cornerRadius(12)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
-                                
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))

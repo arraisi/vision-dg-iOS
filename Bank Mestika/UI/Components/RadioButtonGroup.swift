@@ -67,14 +67,14 @@ struct RadioButton: View {
 struct RadioButtonGroup: View {
 
     let items : [MasterModel]
-    @Binding var selectedId: Int?
+    @Binding var selectedId: Int
 
     let callback: (Int) -> ()
 
     var body: some View {
         VStack {
             ForEach(0..<items.count) { index in
-                RadioButton(self.items[index].id, label: self.items[index].name, callback: self.radioGroupCallback, selectedID: self.selectedId ?? 0)
+                RadioButton(self.items[index].id, label: self.items[index].name, callback: self.radioGroupCallback, selectedID: self.selectedId)
             }
         }
     }

@@ -11,7 +11,6 @@ struct BesarPerkiraanPenarikanView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var besarPerkiraanPenarikanId: Int?
     @State var editMode: EditMode = .inactive
     
     let besarPerkiraanPenarikan: [MasterModel] = load("besarPerkiraanPenarikan.json")
@@ -26,7 +25,7 @@ struct BesarPerkiraanPenarikanView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -46,7 +45,7 @@ struct BesarPerkiraanPenarikanView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -87,7 +86,7 @@ struct BesarPerkiraanPenarikanView: View {
                                     
                                     RadioButtonGroup(
                                         items: besarPerkiraanPenarikan,
-                                        selectedId: $besarPerkiraanPenarikanId) { selected in
+                                        selectedId: $registerData.besarPerkiraanPenarikanId) { selected in
                                         
                                         if let i = besarPerkiraanPenarikan.firstIndex(where: { $0.id == selected }) {
                                             print(besarPerkiraanPenarikan[i])
@@ -115,6 +114,7 @@ struct BesarPerkiraanPenarikanView: View {
                                             .frame(maxWidth: .infinity, maxHeight: 40)
                                         
                                     }
+                                    .disabled(registerData.besarPerkiraanPenarikanId == 0)
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)
@@ -158,7 +158,7 @@ struct BesarPerkiraanPenarikanView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
-
+        
         
     }
 }

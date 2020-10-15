@@ -11,7 +11,7 @@ struct PINView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     
     /*
-        Variable PIN OTP
+     Variable PIN OTP
      */
     var maxDigits: Int = 6
     @State var pin: String = ""
@@ -33,7 +33,7 @@ struct PINView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -41,9 +41,9 @@ struct PINView: View {
             VStack {
                 
                 CustomNavigationBarView(presentationMode: _presentationMode)
-                      .padding(.top, 45)
-                      .padding(.horizontal, 30)
-
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 
                 ScrollView {
                     
@@ -54,7 +54,7 @@ struct PINView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -67,68 +67,67 @@ struct PINView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
                             .padding(.horizontal, 40)
-                            .padding(.top, 15)
-                            
-                            VStack {
-                                Spacer()
-                                
-                                // Sub title
-                                Text("Masukan PIN Transaksi Baru Anda")
-                                    .font(Font.system(size: 18))
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(.semibold)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 20)
-                                
-                                Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
-                                    .font(.caption2)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 3)
-                                    .padding(.bottom, 20)
-                                
-                                ZStack {
-                                    pinDots
-                                    backgroundField
-                                }
-                                
-                                NavigationLink(destination: VerifikasiPINView().environmentObject(registerData), label:{
-                                    
-                                    Text("Konfirmasi PIN Transaksi")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                })
-                                .frame(height: 50)
-                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
-                                .disabled(disableForm)
-                                .onAppear {
-                                    self.registerData.pin = pin
-                                }
-                                
-                            }
-                            .background(Color(.white))
-                            .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
-                            .padding(.horizontal, 20)
-                            .padding(.top, 40)
+                            .padding(.top, 10)
                             
                         }
+                        
+                        VStack {
+                            Spacer()
+                            
+                            // Sub title
+                            Text("Masukan PIN Transaksi Baru Anda")
+                                .font(Font.system(size: 18))
+                                .foregroundColor(Color(hex: "#232175"))
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 20)
+                            
+                            Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
+                                .font(.caption2)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 3)
+                                .padding(.bottom, 20)
+                            
+                            ZStack {
+                                pinDots
+                                backgroundField
+                            }
+                            
+                            NavigationLink(destination: VerifikasiPINView().environmentObject(registerData), label:{
+                                
+                                Text("Konfirmasi PIN Transaksi")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 14))
+                                    .frame(maxWidth: .infinity, maxHeight: 40)
+                                
+                            })
+                            .frame(height: 50)
+                            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+                            .cornerRadius(12)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 20)
+                            .disabled(disableForm)
+                            .onAppear {
+                                self.registerData.pin = pin
+                            }
+                            
+                        }
+                        .background(Color(.white))
+                        .cornerRadius(25.0)
+                        .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 25)
                         
                     }
                     .padding(.bottom, 25)
@@ -167,10 +166,10 @@ struct PINView: View {
         })
         
         return TextField("", text: boundPin)
-           .accentColor(.clear)
-           .foregroundColor(.clear)
-           .keyboardType(.numberPad)
-           .disabled(isDisabled)
+            .accentColor(.clear)
+            .foregroundColor(.clear)
+            .keyboardType(.numberPad)
+            .disabled(isDisabled)
     }
     
     private var showPinStack: some View {

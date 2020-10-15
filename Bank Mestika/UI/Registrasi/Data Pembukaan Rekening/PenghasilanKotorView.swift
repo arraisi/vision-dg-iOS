@@ -12,8 +12,6 @@ struct PenghasilanKotorView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var penghasilanKotorId: Int?
-    
     let penghasilanKotor: [MasterModel] = load("penghasilanKotor.json")
     
     var body: some View {
@@ -26,7 +24,7 @@ struct PenghasilanKotorView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -36,7 +34,7 @@ struct PenghasilanKotorView: View {
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 ScrollView {
                     
                     // Title
@@ -46,7 +44,7 @@ struct PenghasilanKotorView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -86,7 +84,7 @@ struct PenghasilanKotorView: View {
                                     
                                     RadioButtonGroup(
                                         items: penghasilanKotor,
-                                        selectedId: $penghasilanKotorId) { selected in
+                                        selectedId: $registerData.penghasilanKotorId) { selected in
                                         
                                         if let i = penghasilanKotor.firstIndex(where: { $0.id == selected }) {
                                             print(penghasilanKotor[i])
@@ -104,21 +102,21 @@ struct PenghasilanKotorView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: SumberPendapatanLainnyaView().environmentObject(registerData), label:{
-                                    
-                                    Text("Berikutnya")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                })
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
-                                
+                                    NavigationLink(destination: SumberPendapatanLainnyaView().environmentObject(registerData), label:{
+                                        
+                                        Text("Berikutnya")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    })
+                                    .disabled(registerData.penghasilanKotorId == 0)
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 20)
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)

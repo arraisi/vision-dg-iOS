@@ -40,7 +40,7 @@ struct KeluargaTerdekat: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -60,7 +60,7 @@ struct KeluargaTerdekat: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     ZStack {
@@ -105,22 +105,20 @@ struct KeluargaTerdekat: View {
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
-                                
-                                NavigationLink(destination: PasswordView().environmentObject(registerData), label:{
-                                    
-                                    Text("Berikutnya")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                })
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
-                                
+                                    NavigationLink(destination: PasswordView().environmentObject(registerData), label:{
+                                        
+                                        Text("Berikutnya")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    })
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 20)
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
@@ -229,7 +227,7 @@ struct KeluargaTerdekat: View {
             } onCommit: {
                 
             }
-
+            
             Group {
                 
                 Text("No. Telepon")
@@ -262,7 +260,7 @@ struct KeluargaTerdekat: View {
                 .cornerRadius(10)
                 
             }
-
+            
         }
         .padding(.horizontal, 20)
     }
@@ -314,7 +312,7 @@ struct KeluargaTerdekat: View {
                     kecamatanKeluarga = cities[index].kecamatan
                     kelurahanKeluarga = cities[index].kelurahan
                     
-//                    registerData.alamatKeluarga = alamatKeluarga
+                    //                    registerData.alamatKeluarga = alamatKeluarga
                     self.showingModal.toggle()
                 })
                 

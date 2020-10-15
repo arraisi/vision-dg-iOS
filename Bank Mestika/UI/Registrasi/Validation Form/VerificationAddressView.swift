@@ -10,10 +10,7 @@ import SwiftUI
 struct VerificationAddressView: View {
     
     @EnvironmentObject var registerData: RegistrasiModel
-    
-    @State var selected: Int = 1
     @State var alamat: String = ""
-    @State var verificationAddressId: Int?
     
     let verificationAddress: [MasterModel] = load("verificationAddress.json")
     
@@ -99,6 +96,7 @@ struct VerificationAddressView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
             
@@ -106,9 +104,9 @@ struct VerificationAddressView: View {
 
                 RadioButtonGroup(
                     items: verificationAddress,
-                    selectedId: $verificationAddressId) { selected in
+                    selectedId: $registerData.verificationAddressId) { selected in
                     print("Selected is: \(selected)")
-                    self.selected = selected
+//                    self.selected = selected
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 15)
@@ -116,7 +114,7 @@ struct VerificationAddressView: View {
                 
             }
             
-            if (selected == 1) {
+            if (registerData.verificationAddressId == 1) {
                 Group {
                     Divider()
                         .padding(.horizontal, 20)

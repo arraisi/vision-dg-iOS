@@ -12,8 +12,6 @@ struct SumberPendapatanLainnyaView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var sumberPendapatanLainnyaId: Int?
-    
     let sumberPendapatanLainnya: [MasterModel] = load("sumberPendapatanLainnya.json")
     
     var body: some View {
@@ -25,7 +23,7 @@ struct SumberPendapatanLainnyaView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -33,9 +31,9 @@ struct SumberPendapatanLainnyaView: View {
             VStack {
                 
                 CustomNavigationBarView(presentationMode: _presentationMode)
-                     .padding(.top, 45)
-                     .padding(.horizontal, 30)
-
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     
                     // Title
@@ -45,7 +43,7 @@ struct SumberPendapatanLainnyaView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -85,7 +83,7 @@ struct SumberPendapatanLainnyaView: View {
                                     
                                     RadioButtonGroup(
                                         items: sumberPendapatanLainnya,
-                                        selectedId: $sumberPendapatanLainnyaId) { selected in
+                                        selectedId: $registerData.sumberPendapatanLainnyaId) { selected in
                                         print("Selected is: \(selected)")
                                         
                                         if let i = sumberPendapatanLainnya.firstIndex(where: { $0.id == selected }) {
@@ -104,20 +102,21 @@ struct SumberPendapatanLainnyaView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                NavigationLink(destination: KeluargaTerdekat().environmentObject(registerData), label:{
-                                    
-                                    Text("Berikutnya")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                })
-                                .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
+                                    NavigationLink(destination: KeluargaTerdekat().environmentObject(registerData), label:{
+                                        
+                                        Text("Berikutnya")
+                                            .foregroundColor(.white)
+                                            .fontWeight(.bold)
+                                            .font(.system(size: 14))
+                                            .frame(maxWidth: .infinity, maxHeight: 40)
+                                        
+                                    })
+                                    .disabled(registerData.sumberPendapatanLainnyaId == 0)
+                                    .frame(height: 50)
+                                    .background(Color(hex: "#2334D0"))
+                                    .cornerRadius(12)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 20)
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
@@ -132,7 +131,7 @@ struct SumberPendapatanLainnyaView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
-
+        
     }
 }
 

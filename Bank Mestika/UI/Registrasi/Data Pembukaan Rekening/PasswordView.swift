@@ -32,7 +32,7 @@ struct PasswordView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -40,9 +40,9 @@ struct PasswordView: View {
             VStack {
                 
                 CustomNavigationBarView(presentationMode: _presentationMode)
-                            .padding(.top, 45)
-                            .padding(.horizontal, 30)
-
+                    .padding(.top, 45)
+                    .padding(.horizontal, 30)
+                
                 ScrollView {
                     
                     // Title
@@ -52,7 +52,7 @@ struct PasswordView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -65,73 +65,72 @@ struct PasswordView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
                             .padding(.horizontal, 40)
-                            .padding(.top, 15)
-                            
-                            VStack {
-                                Spacer()
-                                
-                                // Sub title
-                                Text("Masukan Password Aplikasi Digital Banking")
-                                    .font(Font.system(size: 18))
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(.semibold)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 20)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                
-                                Text("Password ini digunakan saat anda masuk kedalam Aplikasi Mobile Banking Mestika Bank")
-                                    .font(.caption2)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 3)
-                                    .padding(.bottom, 20)
-                                
-                                // Forms input
-                                ZStack {
-                                    cardForm
-                                        .padding(.vertical, 20)
-                                    
-                                }
-                                .frame(width: UIScreen.main.bounds.width - 70)
-                                .background(Color.white)
-                                .cornerRadius(15)
-                                .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
-                                
-                                
-                                NavigationLink(destination: PINView().environmentObject(registerData), label:{
-                                    
-                                    Text("Berikutnya")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
-                                        .frame(maxWidth: .infinity, maxHeight: 40)
-                                    
-                                })
-                                .frame(height: 50)
-                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
-                                .disabled(disableForm)
-                                
-                            }
-                            .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
-                            .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
-                            .padding(.horizontal, 20)
-                            .padding(.top, 40)
+                            .padding(.top, 10)
                             
                         }
+                        
+                        VStack {
+                            Spacer()
+                            
+                            // Sub title
+                            Text("Masukan Password Aplikasi Digital Banking")
+                                .font(Font.system(size: 18))
+                                .foregroundColor(Color(hex: "#232175"))
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 20)
+                                .fixedSize(horizontal: false, vertical: true)
+                            
+                            Text("Password ini digunakan saat anda masuk kedalam Aplikasi Mobile Banking Mestika Bank")
+                                .font(.caption2)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 3)
+                                .padding(.bottom, 20)
+                            
+                            // Forms input
+                            ZStack {
+                                cardForm
+                                    .padding(.vertical, 10)
+                                
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 70)
+                            .background(Color.white)
+                            .cornerRadius(15)
+                            .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
+                            
+                            
+                            NavigationLink(destination: PINView().environmentObject(registerData), label:{
+                                
+                                Text("Berikutnya")
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 14))
+                                    .frame(maxWidth: .infinity, maxHeight: 40)
+                                
+                            })
+                            .frame(height: 50)
+                            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+                            .cornerRadius(12)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 20)
+                            .disabled(disableForm)
+                            
+                        }
+                        .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
+                        .cornerRadius(25.0)
+                        .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 25)
                         
                     }
                     .padding(.bottom, 25)
@@ -148,7 +147,7 @@ struct PasswordView: View {
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
-
+        
         
     }
     

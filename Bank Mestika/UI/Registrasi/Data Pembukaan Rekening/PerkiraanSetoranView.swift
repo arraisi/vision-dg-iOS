@@ -11,7 +11,6 @@ struct PerkiraanSetoranView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var perkiraanSetoranId: Int?
     @State var editMode: EditMode = .inactive
     
     let perkiraanSetoran: [MasterModel] = load("perkiraanSetoran.json")
@@ -26,7 +25,7 @@ struct PerkiraanSetoranView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -36,7 +35,7 @@ struct PerkiraanSetoranView: View {
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 
                 ScrollView {
                     
@@ -47,7 +46,7 @@ struct PerkiraanSetoranView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -88,7 +87,7 @@ struct PerkiraanSetoranView: View {
                                     
                                     RadioButtonGroup(
                                         items: perkiraanSetoran,
-                                        selectedId: $perkiraanSetoranId) { selected in
+                                        selectedId: $registerData.perkiraanSetoranId) { selected in
                                         
                                         if let i = perkiraanSetoran.firstIndex(where: { $0.id == selected }) {
                                             print(perkiraanSetoran[i])
@@ -117,6 +116,7 @@ struct PerkiraanSetoranView: View {
                                             .frame(maxWidth: .infinity, maxHeight: 40)
                                         
                                     }
+                                    .disabled(registerData.perkiraanSetoranId == 0)
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)

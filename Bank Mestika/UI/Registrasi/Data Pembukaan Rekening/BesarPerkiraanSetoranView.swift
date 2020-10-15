@@ -11,7 +11,6 @@ struct BesarPerkiraanSetoranView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var besarPerkiraanSetoranId: Int?
     @State var editMode: EditMode = .inactive
     
     let besarPerkiraanSetoran: [MasterModel] = load("besarPerkiraanSetoran.json")
@@ -26,7 +25,7 @@ struct BesarPerkiraanSetoranView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -36,7 +35,7 @@ struct BesarPerkiraanSetoranView: View {
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 ScrollView {
                     
                     // Title
@@ -46,7 +45,7 @@ struct BesarPerkiraanSetoranView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -87,7 +86,7 @@ struct BesarPerkiraanSetoranView: View {
                                     
                                     RadioButtonGroup(
                                         items: besarPerkiraanSetoran,
-                                        selectedId: $besarPerkiraanSetoranId) { selected in
+                                        selectedId: $registerData.besarPerkiraanSetoranId) { selected in
                                         
                                         if let i = besarPerkiraanSetoran.firstIndex(where: { $0.id == selected }) {
                                             print(besarPerkiraanSetoran[i])
@@ -116,6 +115,7 @@ struct BesarPerkiraanSetoranView: View {
                                             .frame(maxWidth: .infinity, maxHeight: 40)
                                         
                                     }
+                                    .disabled(registerData.besarPerkiraanSetoranId == 0)
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)
@@ -137,7 +137,6 @@ struct BesarPerkiraanSetoranView: View {
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
                                 }
-                                
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)

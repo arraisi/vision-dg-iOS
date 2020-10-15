@@ -11,7 +11,6 @@ struct SumberDanaView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var sumberDanaId: Int?
     @State var editMode: EditMode = .inactive
     
     let sumberDana: [MasterModel] = load("sumberDana.json")
@@ -26,7 +25,7 @@ struct SumberDanaView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -45,7 +44,7 @@ struct SumberDanaView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -85,14 +84,14 @@ struct SumberDanaView: View {
                                     
                                     RadioButtonGroup(
                                         items: sumberDana,
-                                        selectedId: $sumberDanaId) { selected in
+                                        selectedId: $registerData.sumberDanaId) { selected in
                                         
                                         if let i = sumberDana.firstIndex(where: { $0.id == selected }) {
                                             print(sumberDana[i])
                                             registerData.sumberDana = sumberDana[i].name
                                         }
                                         
-                                        print("Selected is: \(registerData.sumberDana)")
+                                        print("Selected is: \(registerData.sumberDanaId)")
                                         
                                     }
                                     .padding()
@@ -114,6 +113,7 @@ struct SumberDanaView: View {
                                             .frame(maxWidth: .infinity, maxHeight: 40)
                                         
                                     }
+                                    .disabled(registerData.sumberDanaId == 0)
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)
@@ -135,7 +135,6 @@ struct SumberDanaView: View {
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
                                 }
-                                
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)

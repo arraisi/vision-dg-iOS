@@ -12,8 +12,6 @@ struct SumberPenyandangDanaView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var sumberPenyandangDanaId: Int?
-    
     let sumberPenyandangDana: [MasterModel] = load("sumberPenyandangDana.json")
     
     var body: some View {
@@ -25,7 +23,7 @@ struct SumberPenyandangDanaView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -35,7 +33,7 @@ struct SumberPenyandangDanaView: View {
                 CustomNavigationBarView(presentationMode: _presentationMode)
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
-
+                
                 ScrollView {
                     
                     // Title
@@ -45,7 +43,7 @@ struct SumberPenyandangDanaView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -85,7 +83,7 @@ struct SumberPenyandangDanaView: View {
                                     
                                     RadioButtonGroup(
                                         items: sumberPenyandangDana,
-                                        selectedId: $sumberPenyandangDanaId) { selected in
+                                        selectedId: $registerData.sumberPenyandangDanaId) { selected in
                                         
                                         if let i = sumberPenyandangDana.firstIndex(where: { $0.id == selected }) {
                                             print(sumberPenyandangDana[i])
@@ -113,6 +111,7 @@ struct SumberPenyandangDanaView: View {
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
                                 })
+                                .disabled(registerData.sumberPenyandangDanaId == 0)
                                 .frame(height: 50)
                                 .background(Color(hex: "#2334D0"))
                                 .cornerRadius(12)
@@ -138,7 +137,7 @@ struct SumberPenyandangDanaView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
-
+        
     }
 }
 

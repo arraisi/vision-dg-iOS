@@ -11,7 +11,6 @@ struct PerkerjaanView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var pekerjaanId: Int?
     @State var editMode: EditMode = .inactive
     
     let pekerjaan: [MasterModel] = load("pekerjaan.json")
@@ -26,7 +25,7 @@ struct PerkerjaanView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -46,7 +45,7 @@ struct PerkerjaanView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -87,7 +86,7 @@ struct PerkerjaanView: View {
                                     
                                     RadioButtonGroup(
                                         items: pekerjaan,
-                                        selectedId: $pekerjaanId) { selected in
+                                        selectedId: $registerData.pekerjaanId) { selected in
                                         
                                         if let i = pekerjaan.firstIndex(where: { $0.id == selected }) {
                                             print(pekerjaan[i])
@@ -106,7 +105,7 @@ struct PerkerjaanView: View {
                                 
                                 // Button
                                 if (editMode == .inactive) {
-                                    if pekerjaanId == 9 {
+                                    if registerData.pekerjaanId == 9 {
                                         NavigationLink(destination: SumberPenyandangDanaView().environmentObject(registerData)) {
                                             
                                             Text("Berikutnya")
@@ -116,6 +115,7 @@ struct PerkerjaanView: View {
                                                 .frame(maxWidth: .infinity, maxHeight: 40)
                                             
                                         }
+                                        .disabled(registerData.pekerjaanId == 0)
                                         .frame(height: 50)
                                         .background(Color(hex: "#2334D0"))
                                         .cornerRadius(12)
@@ -131,6 +131,7 @@ struct PerkerjaanView: View {
                                                 .frame(maxWidth: .infinity, maxHeight: 40)
                                             
                                         }
+                                        .disabled(registerData.pekerjaanId == 0)
                                         .frame(height: 50)
                                         .background(Color(hex: "#2334D0"))
                                         .cornerRadius(12)

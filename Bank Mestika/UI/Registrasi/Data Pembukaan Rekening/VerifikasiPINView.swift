@@ -43,7 +43,7 @@ struct VerifikasiPINView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -63,9 +63,8 @@ struct VerifikasiPINView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
-                        .fixedSize(horizontal: false, vertical: true)
                     
                     // Content
                     ZStack {
@@ -77,77 +76,76 @@ struct VerifikasiPINView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
                             .padding(.horizontal, 60)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                            .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
                             .padding(.horizontal, 40)
-                            .padding(.top, 15)
-                            
-                            VStack {
-                                Spacer()
-                                
-                                // Sub title
-                                Text("Masukan Kembali PIN Transaksi Baru Anda")
-                                    .font(Font.system(size: 18))
-                                    .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(.semibold)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 20)
-                                
-                                Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
-                                    .font(.caption2)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 3)
-                                    .padding(.bottom, 20)
-                                
-                                ZStack {
-                                    pinDots
-                                    backgroundField
-                                }
-                                
-                                VStack {
-                                    NavigationLink(destination: Term_ConditionView().environmentObject(registerData), isActive: self.$isPinValid) {
-                                        Text("")
-                                    }
-                                }
-                                
-                                Button(action: {
-                                    print(pin)
-                                    if (pin == self.registerData.pin) {
-                                        self.isPinValid = true
-                                    } else {
-                                        print("Not Valid")
-                                        showingModal.toggle()
-                                    }
-                                }) {
-                                    Text("Simpan PIN Transaksi")
-                                        .foregroundColor(.white)
-                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                        .font(.system(size: 13))
-                                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                                }
-                                .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
-                                .cornerRadius(12)
-                                .padding(.horizontal, 20)
-                                .padding(.top, 10)
-                                .padding(.bottom, 20)
-                                .disabled(disableForm)
-                                
-                            }
-                            .background(Color(.white))
-                            .cornerRadius(25.0)
-                            .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
-                            .padding(.horizontal, 20)
-                            .padding(.top, 40)
+                            .padding(.top, 10)
                             
                         }
+                        
+                        VStack {
+                            Spacer()
+                            
+                            // Sub title
+                            Text("Masukan Kembali PIN Transaksi Baru Anda")
+                                .font(Font.system(size: 18))
+                                .foregroundColor(Color(hex: "#232175"))
+                                .fontWeight(.semibold)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 20)
+                            
+                            Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
+                                .font(.caption2)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+                                .padding(.top, 3)
+                                .padding(.bottom, 20)
+                            
+                            ZStack {
+                                pinDots
+                                backgroundField
+                            }
+                            
+                            VStack {
+                                NavigationLink(destination: Term_ConditionView().environmentObject(registerData), isActive: self.$isPinValid) {
+                                    Text("")
+                                }
+                            }
+                            
+                            Button(action: {
+                                print(pin)
+                                if (pin == self.registerData.pin) {
+                                    self.isPinValid = true
+                                } else {
+                                    print("Not Valid")
+                                    showingModal.toggle()
+                                }
+                            }) {
+                                Text("Simpan PIN Transaksi")
+                                    .foregroundColor(.white)
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                    .font(.system(size: 13))
+                                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                            }
+                            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+                            .cornerRadius(12)
+                            .padding(.horizontal, 20)
+                            .padding(.top, 10)
+                            .padding(.bottom, 20)
+                            .disabled(disableForm)
+                            
+                        }
+                        .background(Color(.white))
+                        .cornerRadius(25.0)
+                        .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 25)
                         
                     }
                     .padding(.bottom, 25)

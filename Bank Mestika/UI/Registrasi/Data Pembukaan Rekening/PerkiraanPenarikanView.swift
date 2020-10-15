@@ -10,8 +10,6 @@ import SwiftUI
 struct PerkiraanPenarikanView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @State var perkiraanPenarikanId: Int?
     @State var editMode: EditMode = .inactive
     
     let perkiraanPenarikan: [MasterModel] = load("perkiraanPenarikan.json")
@@ -26,7 +24,7 @@ struct PerkiraanPenarikanView: View {
                 Spacer()
                 Rectangle()
                     .fill(Color.white)
-                    .frame(height: 42 / 100 * UIScreen.main.bounds.height)
+                    .frame(height: 45 / 100 * UIScreen.main.bounds.height)
                     .cornerRadius(radius: 25.0, corners: .topLeft)
                     .cornerRadius(radius: 25.0, corners: .topRight)
             }
@@ -46,7 +44,7 @@ struct PerkiraanPenarikanView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
-                        .padding(.bottom, 30)
+                        .padding(.vertical, 45)
                         .padding(.horizontal, 40)
                     
                     // Content
@@ -87,7 +85,7 @@ struct PerkiraanPenarikanView: View {
                                     
                                     RadioButtonGroup(
                                         items: perkiraanPenarikan,
-                                        selectedId: $perkiraanPenarikanId) { selected in
+                                        selectedId: $registerData.perkiraanPenarikanId) { selected in
                                         
                                         if let i = perkiraanPenarikan.firstIndex(where: { $0.id == selected }) {
                                             print(perkiraanPenarikan[i])
@@ -116,6 +114,7 @@ struct PerkiraanPenarikanView: View {
                                             .frame(maxWidth: .infinity, maxHeight: 40)
                                         
                                     }
+                                    .disabled(registerData.perkiraanPenarikanId == 0)
                                     .frame(height: 50)
                                     .background(Color(hex: "#2334D0"))
                                     .cornerRadius(12)
