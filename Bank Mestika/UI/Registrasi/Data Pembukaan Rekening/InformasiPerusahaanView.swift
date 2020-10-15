@@ -125,8 +125,9 @@ struct InformasiPerusahaanView: View {
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
                                 })
+                                .disabled(isValid())
                                 .frame(height: 50)
-                                .background(Color(hex: "#2334D0"))
+                                .background(isValid() ? Color(.lightGray) : Color(hex: "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 20)
@@ -162,18 +163,36 @@ struct InformasiPerusahaanView: View {
         
     }
     
+    // MARK : - Check form is fill
+    func isValid() -> Bool {
+        if registerData.namaPerusahaan == "" {
+            return true
+        }
+        if registerData.alamatPerusahaan == "" {
+            return true
+        }
+        if registerData.kodePos == "" {
+            return true
+        }
+        if registerData.kecamatan == "" {
+            return true
+        }
+        if registerData.noTeleponPerusahaan == "" {
+            return true
+        }
+        return false
+    }
+    
     // MARK: - Form Group
     
     var cardForm: some View {
         
         VStack(alignment: .leading) {
             
-            LabelTextField(value: $namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan"){ (Bool) in
+            LabelTextField(value: $registerData.namaPerusahaan, label: "Nama Perusahaan", placeHolder: "Nama Perusahaan"){ (Bool) in
                 print("on edit")
-                registerData.namaPerusahaan = namaPerusahaan
             } onCommit: {
                 print("on commit")
-                registerData.namaPerusahaan = namaPerusahaan
             }
             .padding(.horizontal, 20)
             
@@ -187,10 +206,8 @@ struct InformasiPerusahaanView: View {
                 
                 HStack {
                     
-                    TextField("Alamat Perusahaan", text: $alamatPerusahaan) { changed in
-                        registerData.alamatPerusahaan = alamatPerusahaan
+                    TextField("Alamat Perusahaan", text: $registerData.alamatPerusahaan) { changed in
                     } onCommit: {
-                        registerData.alamatPerusahaan = alamatPerusahaan
                     }
                     .font(Font.system(size: 14))
                     .frame(height: 36)
@@ -211,21 +228,17 @@ struct InformasiPerusahaanView: View {
             }
             .padding(.horizontal, 20)
             
-            LabelTextField(value: $kodePos, label: "Kode Pos", placeHolder: "Kode Pos") { (Bool) in
+            LabelTextField(value: $registerData.kodePos, label: "Kode Pos", placeHolder: "Kode Pos") { (Bool) in
                 print("on edit")
-                registerData.kodePos = kodePos
             } onCommit: {
                 print("on commit")
-                registerData.kodePos = kodePos
             }
             .padding(.horizontal, 20)
             
-            LabelTextField(value: $kecamatan, label: "Kecamatan", placeHolder: "Kecamatan") { (Bool) in
+            LabelTextField(value: $registerData.kecamatan, label: "Kecamatan", placeHolder: "Kecamatan") { (Bool) in
                 print("on edit")
-                registerData.kecamatan = kecamatan
             } onCommit: {
                 print("on commit")
-                registerData.kecamatan = kecamatan
             }
             .padding(.horizontal, 20)
             
@@ -247,10 +260,8 @@ struct InformasiPerusahaanView: View {
                     Divider()
                         .frame(height: 30)
                     
-                    TextField("No. Telepon", text: $noTlpPerusahaan) {change in
-                        registerData.noTeleponPerusahaan = noTlpPerusahaan
+                    TextField("No. Telepon", text: $registerData.noTeleponPerusahaan) {change in
                     } onCommit: {
-                        registerData.noTeleponPerusahaan = noTlpPerusahaan
                     }
                     .keyboardType(.numberPad)
                     .font(Font.system(size: 14))
@@ -308,10 +319,9 @@ struct InformasiPerusahaanView: View {
                 .contentShape(Rectangle())
                 .onTapGesture(perform: {
                     print(cities[index])
-                    alamatPerusahaan = cities[index].city
-                    kodePos = cities[index].kodePos
-                    kecamatan = cities[index].kecamatan
-                    registerData.alamatPerusahaan = alamatPerusahaan
+                    registerData.alamatPerusahaan = cities[index].city
+                    registerData.kodePos = cities[index].kodePos
+                    registerData.kecamatan = cities[index].kecamatan
                     self.showingModal.toggle()
                 })
                 

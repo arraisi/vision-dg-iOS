@@ -102,21 +102,21 @@ struct PenghasilanKotorView: View {
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
                                 
                                 // Button
-                                    NavigationLink(destination: SumberPendapatanLainnyaView().environmentObject(registerData), label:{
-                                        
-                                        Text("Berikutnya")
-                                            .foregroundColor(.white)
-                                            .fontWeight(.bold)
-                                            .font(.system(size: 14))
-                                            .frame(maxWidth: .infinity, maxHeight: 40)
-                                        
-                                    })
-                                    .disabled(registerData.penghasilanKotorId == 0)
-                                    .frame(height: 50)
-                                    .background(Color(hex: "#2334D0"))
-                                    .cornerRadius(12)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 20)
+                                NavigationLink(destination: SumberPendapatanLainnyaView().environmentObject(registerData), label:{
+                                    
+                                    Text("Berikutnya")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 14))
+                                        .frame(maxWidth: .infinity, maxHeight: 40)
+                                    
+                                })
+                                .disabled(registerData.penghasilanKotorId == 0)
+                                .frame(height: 50)
+                                .background(registerData.penghasilanKotorId == 0 ? Color(.lightGray) : Color(hex: "#2334D0"))
+                                .cornerRadius(12)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 20)
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)

@@ -12,13 +12,6 @@ struct KeluargaTerdekat: View {
     @EnvironmentObject var registerData: RegistrasiModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var namaKeluarga: String = ""
-    @State var alamatKeluarga: String = ""
-    @State var kelurahanKeluarga: String = ""
-    @State var kodePosKeluarga : String = ""
-    @State var kecamatanKeluarga : String = ""
-    @State var noTlpKeluarga : String = ""
-    @State var hubunganKekerabatan : String? = ""
     @State var selectionID : Int = 0
     @State var location : String = ""
     @State var showingModal = false
@@ -114,8 +107,9 @@ struct KeluargaTerdekat: View {
                                             .frame(maxWidth: .infinity, maxHeight: 40)
                                         
                                     })
+                                    .disabled(isValid())
                                     .frame(height: 50)
-                                    .background(Color(hex: "#2334D0"))
+                                    .background(isValid() ? Color(.lightGray) : Color(hex: "#2334D0"))
                                     .cornerRadius(12)
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
@@ -149,6 +143,32 @@ struct KeluargaTerdekat: View {
         }
     }
     
+    // MARK : - Check form is fill
+    func isValid() -> Bool {
+        if registerData.hubunganKekerabatan == "" || registerData.hubunganKekerabatan == nil {
+            return true
+        }
+        if registerData.namaKeluarga == "" {
+            return true
+        }
+        if registerData.alamatKeluarga == "" {
+            return true
+        }
+        if registerData.kodePosKeluarga == "" {
+            return true
+        }
+        if registerData.kecamatanKeluarga == "" {
+            return true
+        }
+        if registerData.kelurahanKeluarga == "" {
+            return true
+        }
+        if registerData.noTlpKeluarga == ""  {
+            return true
+        }
+        return false
+    }
+    
     // MARK: - Form Group
     
     var cardForm: some View {
@@ -162,7 +182,7 @@ struct KeluargaTerdekat: View {
                     .foregroundColor(Color(hex: "#707070"))
                     .multilineTextAlignment(.leading)
                 
-                TextFieldWithPickerAsInputView(data: ["Ayah", "Ibu", "Kaka", "Adik", "Saudara", "Teman"], placeholder: "Hubungan kekerabatan", selectionIndex: $selectionID, text: $hubunganKekerabatan)
+                TextFieldWithPickerAsInputView(data: ["Ayah", "Ibu", "Kaka", "Adik", "Saudara", "Teman"], placeholder: "Hubungan kekerabatan", selectionIndex: $selectionID, text: $registerData.hubunganKekerabatan)
                     .frame(height: 36)
                     .font(Font.system(size: 14))
                     .padding(.horizontal)
@@ -171,7 +191,7 @@ struct KeluargaTerdekat: View {
                 
             }
             
-            LabelTextField(value: $namaKeluarga, label: "Nama", placeHolder: "Nama") { (change) in
+            LabelTextField(value: $registerData.namaKeluarga, label: "Nama", placeHolder: "Nama") { (change) in
                 
             } onCommit: {
                 
@@ -187,10 +207,8 @@ struct KeluargaTerdekat: View {
                 
                 HStack {
                     
-                    TextField("Alamat", text: $alamatKeluarga) { changed in
-                        registerData.alamatKeluarga = alamatKeluarga
+                    TextField("Alamat", text: $registerData.alamatKeluarga) { changed in
                     } onCommit: {
-                        registerData.alamatKeluarga = alamatKeluarga
                     }
                     .font(Font.system(size: 14))
                     .frame(height: 36)
@@ -210,19 +228,19 @@ struct KeluargaTerdekat: View {
                 
             }
             
-            LabelTextField(value: $kodePosKeluarga, label: "Kode Pos", placeHolder: "Kode Pos") { (change) in
+            LabelTextField(value: $registerData.kodePosKeluarga, label: "Kode Pos", placeHolder: "Kode Pos") { (change) in
                 
             } onCommit: {
                 
             }
             
-            LabelTextField(value: $kecamatanKeluarga, label: "Kecamatan", placeHolder: "Kecamatan") { (change) in
+            LabelTextField(value: $registerData.kecamatanKeluarga, label: "Kecamatan", placeHolder: "Kecamatan") { (change) in
                 
             } onCommit: {
                 
             }
             
-            LabelTextField(value: $kelurahanKeluarga, label: "Kelurahan", placeHolder: "Kelurahan") { (change) in
+            LabelTextField(value: $registerData.kelurahanKeluarga, label: "Kelurahan", placeHolder: "Kelurahan") { (change) in
                 
             } onCommit: {
                 
@@ -246,10 +264,8 @@ struct KeluargaTerdekat: View {
                     Divider()
                         .frame(height: 30)
                     
-                    TextField("No. Telepon", text: $noTlpKeluarga) {change in
-                        registerData.noTlpKeluarga = noTlpKeluarga
+                    TextField("No. Telepon", text: $registerData.noTlpKeluarga) {change in
                     } onCommit: {
-                        registerData.noTlpKeluarga = noTlpKeluarga
                     }
                     .keyboardType(.numberPad)
                     .font(Font.system(size: 14))
@@ -307,10 +323,10 @@ struct KeluargaTerdekat: View {
                 .contentShape(Rectangle())
                 .onTapGesture(perform: {
                     print(cities[index])
-                    alamatKeluarga = cities[index].city
-                    kodePosKeluarga = cities[index].kodePos
-                    kecamatanKeluarga = cities[index].kecamatan
-                    kelurahanKeluarga = cities[index].kelurahan
+                    registerData.alamatKeluarga = cities[index].city
+                    registerData.kodePosKeluarga = cities[index].kodePos
+                    registerData.kecamatanKeluarga = cities[index].kecamatan
+                    registerData.kelurahanKeluarga = cities[index].kelurahan
                     
                     //                    registerData.alamatKeluarga = alamatKeluarga
                     self.showingModal.toggle()

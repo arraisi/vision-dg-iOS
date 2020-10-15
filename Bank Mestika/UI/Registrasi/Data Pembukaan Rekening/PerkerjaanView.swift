@@ -117,7 +117,7 @@ struct PerkerjaanView: View {
                                         }
                                         .disabled(registerData.pekerjaanId == 0)
                                         .frame(height: 50)
-                                        .background(Color(hex: "#2334D0"))
+                                        .background(registerData.pekerjaanId == 0 ? Color(.lightGray) : Color(hex: "#2334D0"))
                                         .cornerRadius(12)
                                         .padding(.horizontal, 20)
                                         .padding(.vertical, 20)

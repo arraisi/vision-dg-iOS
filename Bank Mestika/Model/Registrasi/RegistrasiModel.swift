@@ -44,6 +44,8 @@ class RegistrasiModel: ObservableObject {
     @Published var noTeleponPerusahaan = ""
     @Published var penghasilanKotorId = 0
     @Published var penghasilanKotor = ""
+    @Published var namaKeluarga: String = ""
+    @Published var hubunganKekerabatan : String? = ""
     @Published var password = ""
     @Published var pin = ""
     @Published var verificationAddressId = 1

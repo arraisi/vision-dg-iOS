@@ -118,7 +118,7 @@ struct PerkiraanSetoranView: View {
                                     }
                                     .disabled(registerData.perkiraanSetoranId == 0)
                                     .frame(height: 50)
-                                    .background(Color(hex: "#2334D0"))
+                                    .background(registerData.perkiraanSetoranId == 0 ? Color(.lightGray) : Color(hex: "#2334D0"))
                                     .cornerRadius(12)
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 20)
