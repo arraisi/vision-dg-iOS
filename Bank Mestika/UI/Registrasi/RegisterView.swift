@@ -18,6 +18,7 @@ struct RegisterView: View {
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.aple.com")
     
     @State var isActive : Bool = false
+    @State var isActiveRoot : Bool = false
     @ObservedObject var viewModel: AssetsViewModel
     
     var registerData = RegistrasiModel()
@@ -186,7 +187,7 @@ struct RegisterView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 30)
             
-            NavigationLink(destination: RegisterProvisionView().environmentObject(registerData)) {
+            NavigationLink(destination: RegisterProvisionView(rootIsActive: self.$isActiveRoot).environmentObject(registerData), isActive: self.$isActiveRoot) {
                 Text("Tidak, Saya Bukan")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

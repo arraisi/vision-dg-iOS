@@ -2,28 +2,21 @@ import SwiftUI
 import ExytePopupView
 
 struct ChooseSavingsView: View {
+    /*
+     Environtment Object
+     */
     @EnvironmentObject var UIState: UIStateModel
     @EnvironmentObject var registerData: RegistrasiModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     /*
      Boolean for Show Modal
      */
-    
     @State var showingModal = false
-    /*
-     Fuction for Create Bottom Floater (Modal)
-     */
-    func createBottomFloater() -> some View {
-        SavingSelectionModalView()
-            .environmentObject(registerData)
-            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height - 100)
-            .background(Color(.white))
-            .cornerRadius(50)
-            .shadow(radius: 60)
-    }
-    
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    // MARK: -MAIN CONTENT
     var body: some View {
-        let spacing: CGFloat = 16 /// UIScreen.main.bounds.width - 10
+        let spacing: CGFloat = 16
         let cardHeight: CGFloat = 200
         
         let items = [
@@ -43,62 +36,62 @@ struct ChooseSavingsView: View {
                     .padding(.top, 45)
                     .padding(.horizontal, 30)
                 
-                ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
-                    VStack(alignment: .center) {
-                        Text("Pilih Jenis Tabungan Anda")
-                            .font(.subheadline)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .foregroundColor(Color(hex: "#232175"))
-                            .padding(.horizontal, 15)
-                            .padding(.top, 20)
-                            .padding(.bottom, 25)
-                    }
-                    
-                    VStack {
-                        Canvas {
-                            CarouselTabungan(
-                                numberOfItems: CGFloat(items.count),
-                                spacing: spacing,
-                                widthOfHiddenCards: 15
-                            ) {
-                                ForEach(items, id: \.self.id) { item in
-                                    Item(
-                                        _id: Int(item.id),
-                                        spacing: spacing,
-                                        widthOfHiddenCards: 0,
-                                        cardHeight: .infinity
-                                    ) {
-                                        VStack {
-                                            Item(
-                                                _id: Int(item.id),
-                                                spacing: spacing,
-                                                widthOfHiddenCards: 15,
-                                                cardHeight: cardHeight
-                                            ) {
-                                                Image("\(item.image)")
-                                                    .resizable()
-                                                    .frame(width: 200, height: 160)
-                                            }
-                                            .cornerRadius(8)
-                                            .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
-                                            .transition(AnyTransition.slide)
-                                            .animation(.spring())
+                VStack(alignment: .center) {
+                    Text("Pilih Jenis Tabungan Anda")
+                        .font(.subheadline)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(Color(hex: "#232175"))
+                        .padding(.horizontal, 15)
+                        .padding(.top, 20)
+                        .padding(.bottom, 25)
+                }
+                
+                VStack {
+                    Canvas {
+                        CarouselTabungan(
+                            numberOfItems: CGFloat(items.count),
+                            spacing: spacing,
+                            widthOfHiddenCards: 15
+                        ) {
+                            ForEach(items, id: \.self.id) { item in
+                                Item(
+                                    _id: Int(item.id),
+                                    spacing: spacing,
+                                    widthOfHiddenCards: 0,
+                                    cardHeight: .infinity
+                                ) {
+                                    VStack {
+                                        Item(
+                                            _id: Int(item.id),
+                                            spacing: spacing,
+                                            widthOfHiddenCards: 15,
+                                            cardHeight: cardHeight
+                                        ) {
+                                            Image("\(item.image)")
+                                                .resizable()
+                                                .frame(width: 200, height: 160)
+                                        }
+                                        .cornerRadius(8)
+                                        .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+                                        .transition(AnyTransition.slide)
+                                        .animation(.spring())
+                                        
+                                        VStack(alignment: .leading) {
+                                            Text("Deposit Tabungan")
+                                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                .foregroundColor(Color(hex: "#3756DF"))
+                                                .padding(.top, 10)
+                                                .padding(.horizontal, 15)
+                                                .frame(maxWidth: .infinity, alignment: .leading)
                                             
-                                            VStack(alignment: .leading) {
-                                                Text("Deposit Tabungan")
-                                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                                    .foregroundColor(Color(hex: "#3756DF"))
-                                                    .padding(.top, 10)
-                                                    .padding(.horizontal, 15)
-                                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                                
-                                                Text("Keunggulan Tabungan :")
-                                                    .font(.footnote)
-                                                    .padding(.top, 10)
-                                                    .padding(.horizontal, 15)
-                                                    .foregroundColor(Color(hex: "#5A6876"))
-                                                
+                                            Text("Keunggulan Tabungan :")
+                                                .font(.footnote)
+                                                .padding(.top, 10)
+                                                .padding(.horizontal, 15)
+                                                .foregroundColor(Color(hex: "#5A6876"))
+                                            
+                                            ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
                                                 HStack(alignment: .top) {
                                                     Text("01")
                                                         .font(.subheadline)
@@ -158,38 +151,38 @@ struct ChooseSavingsView: View {
                                                 }
                                                 .padding(.top, 5)
                                                 .padding(.horizontal, 15)
-                                                
-                                                Button(action: {
-                                                    showingModal.toggle()
-                                                }) {
-                                                    Text("Pilih Tabungan ini")
-                                                        .foregroundColor(.white)
-                                                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                                        .font(.system(size: 13))
-                                                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                                                }
-                                                .background(Color(hex: "#2334D0"))
-                                                .cornerRadius(12)
-                                                .padding(.horizontal, 20)
-                                                .padding(.bottom, 10)
-                                                .padding(.top, 10)
-                                                
                                             }
-                                            .frame(width: UIScreen.main.bounds.width - 40)
-                                            .background(Color.white)
-                                            .cornerRadius(15)
-                                            .shadow(radius: 30)
+                                            
+                                            Button(action: {
+                                                showingModal.toggle()
+                                            }) {
+                                                Text("Pilih Tabungan ini")
+                                                    .foregroundColor(.white)
+                                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                                    .font(.system(size: 13))
+                                                    .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                                            }
+                                            .background(Color(hex: "#2334D0"))
+                                            .cornerRadius(12)
+                                            .padding(.horizontal, 20)
+                                            .padding(.bottom, 10)
+                                            .padding(.top, 10)
+                                            
                                         }
-                                        .cornerRadius(8)
-                                        .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
-                                        .transition(AnyTransition.slide)
-                                        .animation(.spring())
+                                        .frame(width: UIScreen.main.bounds.width - 40)
+                                        .background(Color.white)
+                                        .cornerRadius(15)
+                                        .shadow(radius: 30)
                                     }
+                                    .cornerRadius(8)
+                                    .shadow(color: Color.gray, radius: 4, x: 0, y: 4)
+                                    .transition(AnyTransition.slide)
+                                    .animation(.spring())
                                 }
                             }
                         }
-                        
                     }
+                    
                 }
                 
                 if self.showingModal {
@@ -228,6 +221,16 @@ struct ChooseSavingsView: View {
                 .font(.system(size: 20))
                 .bold()
         }
+    }
+    
+    // MARK: -Function Create Bottom Loader
+    private func createBottomFloater() -> some View {
+        SavingSelectionModalView()
+            .environmentObject(registerData)
+            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height - 100)
+            .background(Color(.white))
+            .cornerRadius(50)
+            .shadow(radius: 60)
     }
 }
 

@@ -176,58 +176,56 @@ struct VerifikasiPINView: View {
         HStack {
             Spacer()
             ForEach(0..<maxDigits) { index in
-                Image(systemName: self.getImageName(at: index))
-                    .font(.system(size: 45, weight: .thin, design: .default))
+                Text("\(self.getImageName(at: index))")
+                    .font(.title)
                     .foregroundColor(Color(hex: "#232175"))
-                    .background(Color.white)
+                    .bold()
+                    .frame(width: 40, height: 40)
+                    .multilineTextAlignment(.center)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                    .shadow(color: Color(hex: "#3756DF").opacity(0.2), radius: 15, x: 0, y: 4)
             }
             Spacer()
-        }
+        }.onTapGesture(perform: {
+            isDisabled = false
+        })
     }
     
     private var backgroundField: some View {
         let boundPin = Binding<String>(get: { self.pin }, set: { newValue in
             self.pin = newValue
+            self.submitPin()
         })
         
-        return TextField("", text: boundPin)
-            .accentColor(.clear)
-            .foregroundColor(.clear)
-            .keyboardType(.numberPad)
-            .disabled(isDisabled)
+        return TextField("", text: boundPin, onCommit: submitPin)
+           .accentColor(.clear)
+           .foregroundColor(.clear)
+           .keyboardType(.numberPad)
+           .disabled(isDisabled)
     }
     
-    private var showPinStack: some View {
-        HStack {
-            Spacer()
-            if !pin.isEmpty {
-                showPinButton
-            }
+    private func submitPin() {
+        if pin.count == maxDigits {
+           isDisabled = true
         }
-        .frame(height: 300)
-        .padding([.trailing])
-    }
-    
-    private var showPinButton: some View {
-        Button(action: {
-            self.showPin.toggle()
-        }, label: {
-            self.showPin ?
-                Image(systemName: "eye.slash.fill").foregroundColor(.primary) :
-                Image(systemName: "eye.fill").foregroundColor(.primary)
-        })
+        
+        if pin.count > maxDigits {
+            pin = String(pin.prefix(maxDigits))
+            submitPin()
+        }
     }
     
     private func getImageName(at index: Int) -> String {
         if index >= self.pin.count {
-            return "square"
+            return ""
         }
         
         if self.showPin {
-            return self.pin.digits[index].numberString + ".square"
+            return self.pin.digits[index].numberString
         }
         
-        return "square"
+        return ""
     }
     
     /*

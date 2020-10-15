@@ -85,14 +85,14 @@ struct EmailVerificationView: View {
     var cardForm: some View {
         VStack(alignment: .center) {
             Text("Email Verification")
-                .font(.title3)
+                .font(.subheadline)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
             
             Text("Silahkan masukan Alamat Email Anda")
-                .font(.subheadline)
+                .font(.caption)
                 .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)

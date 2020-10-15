@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct RegisterProvisionView: View {
-    
+    /*
+     Environtment Object
+     */
     @EnvironmentObject var registerData: RegistrasiModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    /*
+     Data Binding
+     */
+    @Binding var rootIsActive : Bool
+    
+    /*
+     Data Model
+     */
     @State var data = [
         ProvisionModel(
             id: 1,
@@ -34,7 +45,7 @@ struct RegisterProvisionView: View {
         ),
     ]
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    // MARK: -MAIN CONTENT
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -121,7 +132,7 @@ struct RegisterProvisionView: View {
                 .fixedSize(horizontal: false, vertical: true)
             }
             
-            NavigationLink(destination: PhoneVerificationView().environmentObject(registerData)) {
+            NavigationLink(destination: PhoneVerificationView(rootIsActive: self.$rootIsActive).environmentObject(registerData)) {
                 Text("Lanjut Membuat Rekening")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -156,7 +167,7 @@ struct RegisterProvisionView: View {
 
 struct RegisterProvisionView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterProvisionView().environmentObject(RegistrasiModel())
+        RegisterProvisionView(rootIsActive: .constant(false)).environmentObject(RegistrasiModel())
     }
 }
 
