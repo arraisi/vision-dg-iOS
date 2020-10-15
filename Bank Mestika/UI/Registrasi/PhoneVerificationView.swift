@@ -9,14 +9,30 @@ import SwiftUI
 
 struct PhoneVerificationView: View {
     
+    /*
+     Environtment Object
+     */
     @EnvironmentObject var registerData: RegistrasiModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    /*
+     Variable Data
+     */
     @State var phoneNumber: String = ""
     
+    /*
+     Disabled Form
+     */
     var disableForm: Bool {
         phoneNumber.count < 11
     }
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    /*
+     Data Binding
+     */
+    @Binding var rootIsActive : Bool
+    
+    // MARK: -MAIN CONTENT
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -75,14 +91,14 @@ struct PhoneVerificationView: View {
     var cardForm: some View {
         VStack(alignment: .center) {
             Text("Phone Verification")
-                .font(.title3)
+                .font(.subheadline)
                 .foregroundColor(Color(hex: "#232175"))
                 .fontWeight(.bold)
                 .padding(.top, 20)
                 .padding(.horizontal, 20)
             
             Text("Silahkan masukan No. Telepon Anda")
-                .font(.subheadline)
+                .font(.caption)
                 .foregroundColor(Color(hex: "#707070"))
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
@@ -90,7 +106,7 @@ struct PhoneVerificationView: View {
                 .padding(.horizontal, 20)
             
             HStack {
-                Text("🇮🇩 +62 ").foregroundColor(.gray)
+                Text("🇮🇩 +62 ").foregroundColor(.black)
                 
                 Divider()
                     .frame(height: 30)
@@ -101,6 +117,7 @@ struct PhoneVerificationView: View {
                     self.registerData.noTelepon = "0" + phoneNumber
                 }, onCommit: {
                     print("Commited")
+                    self.registerData.noTelepon = "0" + phoneNumber
                 })
                 .keyboardType(.numberPad)
             }
@@ -111,7 +128,7 @@ struct PhoneVerificationView: View {
             .cornerRadius(15)
             .padding(.horizontal, 20)
             
-            NavigationLink(destination: OTPVerificationView().environmentObject(registerData)) {
+            NavigationLink(destination: OTPVerificationView(rootIsActive: self.$rootIsActive).environmentObject(registerData)) {
                 Text("Verifikasi No. Telepon")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -134,7 +151,7 @@ struct PhoneVerificationView: View {
 
 struct PhoneVerificationView_Previews: PreviewProvider {
     static var previews: some View {
-        PhoneVerificationView().environmentObject(RegistrasiModel())
+        PhoneVerificationView(rootIsActive: .constant(false)).environmentObject(RegistrasiModel())
     }
 }
 

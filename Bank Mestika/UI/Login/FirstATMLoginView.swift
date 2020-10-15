@@ -42,6 +42,9 @@ struct FirstATMLoginView: View {
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
+        .onTapGesture() {
+            UIApplication.shared.endEditing()
+        }
     }
     
     var appbar: some View {
