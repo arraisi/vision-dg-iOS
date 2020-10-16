@@ -19,7 +19,8 @@ struct PINView: View {
     @State var isDisabled = false
     
     var disableForm: Bool {
-        pin.count < 6
+//        pin.count < 6
+        isPINValidated(with: pin)
     }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -113,11 +114,11 @@ struct PINView: View {
                                 
                             })
                             .frame(height: 50)
-                            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+                            .background(Color(hex: !disableForm ? "#CBD1D9" : "#2334D0"))
                             .cornerRadius(12)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 20)
-                            .disabled(disableForm)
+                            .disabled(!disableForm)
                             .onAppear {
                                 self.registerData.pin = pin
                             }
@@ -173,21 +174,34 @@ struct PINView: View {
         })
         
         return TextField("", text: boundPin, onCommit: submitPin)
-           .accentColor(.clear)
-           .foregroundColor(.clear)
-           .keyboardType(.numberPad)
-           .disabled(isDisabled)
+            .accentColor(.clear)
+            .foregroundColor(.clear)
+            .keyboardType(.numberPad)
+            .disabled(isDisabled)
     }
     
     private func submitPin() {
         if pin.count == maxDigits {
-           isDisabled = true
+            isDisabled = true
         }
         
         if pin.count > maxDigits {
             pin = String(pin.prefix(maxDigits))
             submitPin()
         }
+        
+        registerData.pin = pin
+    }
+    
+    private func isPINValidated(with pin: String) -> Bool {
+        if pin.count < 6 {
+            return false
+        }
+        
+        let pattern = #"^(?!(.)\1{3})(?!19|20)(?!012345|123456|234567|345678|456789|567890|098765|987654|876543|765432|654321|543210)\d{6}$"#
+        
+        let pinPredicate = NSPredicate(format:"SELF MATCHES %@", pattern)
+        return pinPredicate.evaluate(with: pin)
     }
     
     private func getImageName(at index: Int) -> String {

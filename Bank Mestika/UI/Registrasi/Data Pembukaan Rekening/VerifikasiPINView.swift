@@ -29,7 +29,8 @@ struct VerifikasiPINView: View {
     @State var showingModal = false
     
     var disableForm: Bool {
-        pin.count < 6
+//        pin.count < 6
+        isPINValidated(with: pin)
     }
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -120,6 +121,7 @@ struct VerifikasiPINView: View {
                             
                             Button(action: {
                                 print(pin)
+                                print(registerData.pin)
                                 if (pin == self.registerData.pin) {
                                     self.isPinValid = true
                                 } else {
@@ -133,12 +135,12 @@ struct VerifikasiPINView: View {
                                     .font(.system(size: 13))
                                     .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
                             }
-                            .background(Color(hex: disableForm ? "#CBD1D9" : "#2334D0"))
+                            .background(Color(hex: !disableForm ? "#CBD1D9" : "#2334D0"))
                             .cornerRadius(12)
                             .padding(.horizontal, 20)
                             .padding(.top, 10)
                             .padding(.bottom, 20)
-                            .disabled(disableForm)
+                            .disabled(!disableForm)
                             
                         }
                         .background(Color(.white))
@@ -214,6 +216,17 @@ struct VerifikasiPINView: View {
             pin = String(pin.prefix(maxDigits))
             submitPin()
         }
+    }
+    
+    private func isPINValidated(with pin: String) -> Bool {
+        if pin.count < 6 {
+            return false
+        }
+        
+        let pattern = #"^(?!(.)\1{3})(?!19|20)(?!012345|123456|234567|345678|456789|567890|098765|987654|876543|765432|654321|543210)\d{6}$"#
+        
+        let pinPredicate = NSPredicate(format:"SELF MATCHES %@", pattern)
+        return pinPredicate.evaluate(with: pin)
     }
     
     private func getImageName(at index: Int) -> String {
