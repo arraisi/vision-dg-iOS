@@ -1,5 +1,5 @@
 //
-//  FirstOTPLoginView.swift
+//  FirstLoginView.swift
 //  Bank Mestika
 //
 //  Created by Prima Jatnika on 12/10/20.
@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct FirstOTPLoginView: View {
-    @Binding var rootIsActive : Bool
-    @State private var numberOfCells: Int = 6
-    @State private var currentlySelectedCell = 0
-    
-    @State private var timeRemaining = 40
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+struct FirstLoginView: View {
+    /*
+     Environtment Object
+     */
+    @EnvironmentObject var loginData: LoginBindingModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @Binding var rootIsActive : Bool
+    @State var phoneNumber: String = ""
+    
     var body: some View {
         ZStack(alignment: .top) {
             Image("bg_splash")
@@ -27,12 +28,13 @@ struct FirstOTPLoginView: View {
                     .padding(.horizontal, 30)
                 
                 VStack {
-                    Text("MASUKKAN KODE OTP")
-                        .font(.title2)
-                        .bold()
+                    Text("LOGIN APPS")
+                        .font(.title3)
+                        .fontWeight(.heavy)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 20)
+                        .padding(.top, 20)
+                        .padding(.bottom, 5)
                         .padding(.horizontal, 20)
                         .fixedSize(horizontal: false, vertical: true)
                     
@@ -48,30 +50,13 @@ struct FirstOTPLoginView: View {
         .onTapGesture() {
             UIApplication.shared.endEditing()
         }
-        .onReceive(timer) { time in
-            if self.timeRemaining > 0 {
-                self.timeRemaining -= 1
-            }
-        }
     }
     
     var appbar: some View {
         HStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "arrow.left")
-                    .foregroundColor(.white)
-            }
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -82,15 +67,16 @@ struct FirstOTPLoginView: View {
                 .frame(width: 25, height: 25)
             Text("BANK MESTIKA")
                 .foregroundColor(.white)
-                .font(.system(size: 20))
+                .font(.system(size: 25))
                 .bold()
         }
     }
     
     var cardForm: some View {
         VStack(alignment: .center) {
-            Text("Kode OTP telah dikirimkan ke nomor")
-                .font(.subheadline)
+            Text("Silahkan Masukkan Nomor Handphone Anda")
+                .font(.caption)
+                .bold()
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .padding(.top, 5)
@@ -98,39 +84,36 @@ struct FirstOTPLoginView: View {
                 .padding(.horizontal, 20)
             
             HStack {
-                ForEach(0 ..< self.numberOfCells) { index in
-                    CharacterInputCell(currentlySelectedCell: self.$currentlySelectedCell, index: index)
-                }
-            }.lineSpacing(10)
-            
-            HStack {
-                Text("Tidak Menerima Kode?")
-                    .font(.caption2)
-                    .foregroundColor(.white)
-                Button(action: {
-                    print("-> Resend OTP")
-                }) {
-                    Text("Resend OTP")
-                        .font(.caption2)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.white)
-                }
-                Text("(00:\(timeRemaining))")
-                    .font(.caption2)
-                    .foregroundColor(.white)
+                Text("🇮🇩 +62 ").foregroundColor(.gray)
+                
+                Divider()
+                    .frame(height: 20)
+                
+                TextField("No. Telepon", text: $phoneNumber, onEditingChanged: { changed in
+                    print("\($phoneNumber)")
+                    
+                    self.loginData.noTelepon = "0" + phoneNumber
+                })
+                .keyboardType(.numberPad)
             }
-            .padding(.top, 5)
+            .frame(height: 20)
+            .font(.subheadline)
+            .padding()
+            .background(Color.white)
+            .cornerRadius(15)
+            .padding(.horizontal, 20)
             
-            Text("Pastikan Anda terkoneksi ke Internet dan pulsa mencukupi untuk menerima OTP")
+            Text("Pastikan nomor handphone Anda telah sesuai sebelum melanjutkan ketahap berikutnya")
                 .font(.caption)
+                .bold()
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .padding(.top, 15)
-                .padding(.bottom, 20)
+                .padding(.top, 20)
+                .padding(.bottom, 10)
                 .padding(.horizontal, 20)
             
-            NavigationLink(destination: FirstATMLoginView(rootIsActive: self.$rootIsActive)) {
-                Text("Masukkan Kode OTP")
+            NavigationLink(destination: FirstOTPLoginView(rootIsActive: self.$rootIsActive).environmentObject(loginData)) {
+                Text("Masukkan No. HP Anda")
                     .foregroundColor(Color(hex: "#232175"))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 13))
@@ -147,9 +130,9 @@ struct FirstOTPLoginView: View {
 }
 
 #if DEBUG
-struct FirstOTPLoginView_Previews: PreviewProvider {
+struct FirstLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstOTPLoginView(rootIsActive: .constant(false))
+        FirstLoginView(rootIsActive: .constant(false))
     }
 }
 #endif

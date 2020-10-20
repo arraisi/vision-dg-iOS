@@ -25,6 +25,9 @@
 		521B5E2B253E866E0046A4DF /* SliderAssetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B5E2A253E866E0046A4DF /* SliderAssetsViewModel.swift */; };
 		521B5E3E253EBD5A0046A4DF /* RegisterSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B5E3D253EBD5A0046A4DF /* RegisterSliderView.swift */; };
 		521B5E46253EC19E0046A4DF /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 521B5E45253EC19E0046A4DF /* SDWebImageSwiftUI */; };
+		521B5E54253EC8F40046A4DF /* NetworkReachbility+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B5E53253EC8F40046A4DF /* NetworkReachbility+Extensions.swift */; };
+		521B5E64253ED45A0046A4DF /* StringMasking+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B5E63253ED45A0046A4DF /* StringMasking+Extensions.swift */; };
+		521B5E6A253ED6300046A4DF /* LoginBindingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B5E69253ED6300046A4DF /* LoginBindingModel.swift */; };
 		5233DBA2251C7D310064C59D /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */; };
 		5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */; };
 		5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */; };
@@ -148,6 +151,9 @@
 		521B5E1C253E84D50046A4DF /* SliderAssetsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderAssetsResponse.swift; sourceTree = "<group>"; };
 		521B5E2A253E866E0046A4DF /* SliderAssetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderAssetsViewModel.swift; sourceTree = "<group>"; };
 		521B5E3D253EBD5A0046A4DF /* RegisterSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSliderView.swift; sourceTree = "<group>"; };
+		521B5E53253EC8F40046A4DF /* NetworkReachbility+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkReachbility+Extensions.swift"; sourceTree = "<group>"; };
+		521B5E63253ED45A0046A4DF /* StringMasking+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringMasking+Extensions.swift"; sourceTree = "<group>"; };
+		521B5E69253ED6300046A4DF /* LoginBindingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBindingModel.swift; sourceTree = "<group>"; };
 		5233DBA1251C7D310064C59D /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProvisionView.swift; sourceTree = "<group>"; };
 		5233DBAB251C87CF0064C59D /* PhoneVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationView.swift; sourceTree = "<group>"; };
@@ -325,11 +331,8 @@
 		5202BA59251B1FDB00FCE527 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				521B5E52253EC8A90046A4DF /* Screen */,
 				521B5E3C253EBD360046A4DF /* Views */,
-				5294ADDE2534314B0075D285 /* Login */,
-				52F01FC7251DD6DA00B0ABA5 /* Components */,
-				5294ADDE2534314B0075D285 /* Login */,
-				5202BA5A251B200300FCE527 /* Registrasi */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -385,6 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				521B5E11253E846F0046A4DF /* URL+Extensions.swift */,
+				521B5E53253EC8F40046A4DF /* NetworkReachbility+Extensions.swift */,
+				521B5E63253ED45A0046A4DF /* StringMasking+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +400,24 @@
 				521B5E3D253EBD5A0046A4DF /* RegisterSliderView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		521B5E52253EC8A90046A4DF /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				52F01FC7251DD6DA00B0ABA5 /* Components */,
+				5202BA5A251B200300FCE527 /* Registrasi */,
+				5294ADDE2534314B0075D285 /* Login */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		521B5E68253ED61C0046A4DF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				521B5E69253ED6300046A4DF /* LoginBindingModel.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		524F958C252EEAF4003D7FFF /* Main */ = {
@@ -473,6 +496,7 @@
 		52BE52E925295D3B00ADE164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				521B5E68253ED61C0046A4DF /* Login */,
 				C07558FC2534213B0067AF7E /* Master */,
 				52056D38252DD34F008D99D2 /* Registrasi */,
 				52BE52EA25295D4C00ADE164 /* Jenis Tabungan */,
@@ -784,6 +808,7 @@
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
 				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,
 				52794C0425245C0C0031392E /* EmailConfirmationView.swift in Sources */,
+				521B5E6A253ED6300046A4DF /* LoginBindingModel.swift in Sources */,
 				C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */,
 				C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */,
 				52D274672525B56C00DD1443 /* ModalOverlay.swift in Sources */,
@@ -808,6 +833,7 @@
 				C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */,
 				5294ADEF253439F20075D285 /* FirstPasswordLoginView.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
+				521B5E64253ED45A0046A4DF /* StringMasking+Extensions.swift in Sources */,
 				52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */,
 				C075590D253421FD0067AF7E /* MasterModel.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
@@ -834,6 +860,7 @@
 				C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */,
 				C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */,
 				C09EA8982525ABEC007ABF8A /* PerkiraanSetoranView.swift in Sources */,
+				521B5E54253EC8F40046A4DF /* NetworkReachbility+Extensions.swift in Sources */,
 				C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
 				5233DBB1251C95450064C59D /* OTPVerificationView.swift in Sources */,

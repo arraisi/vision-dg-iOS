@@ -12,7 +12,7 @@ import SystemConfiguration
 struct RegisterView: View {
     
     /*
-        For Check Internet Connection
+     For Check Internet Connection
      */
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.aple.com")
     
@@ -21,12 +21,13 @@ struct RegisterView: View {
     @ObservedObject var assetsSliderVM = SliderAssetsSummaryViewModel()
     
     var registerData = RegistrasiModel()
+    var loginData = LoginBindingModel()
     
     @FetchRequest(entity: User.entity(), sortDescriptors: []) var user: FetchedResults<User>
     @State var isViewActivity: Bool = false
     
     /*
-     Boolean for Show Modal
+     Boolean for Show Modal & Alert
      */
     @State var showingModal = false
     @State var showAlert = false
@@ -80,11 +81,11 @@ struct RegisterView: View {
             var flags = SCNetworkReachabilityFlags()
             SCNetworkReachabilityGetFlags(self.reachability!, &flags)
             
-            if self.isNetworkReachable(with: flags) {
-                self.showAlert = false
-            } else {
-                self.showAlert = true
-            }
+//            if self.(with: flags) {
+//                self.showAlert = false
+//            } else {
+//                self.showAlert = true
+//            }
             
             assetsSliderVM.getSliderAssets()
             
@@ -98,15 +99,15 @@ struct RegisterView: View {
         VStack(alignment: .leading) {
             Text("Welcome to")
                 .fontWeight(.semibold)
-                .font(.system(size: 17))
+                .font(.system(size: 14))
                 .foregroundColor(.white)
             HStack(alignment: .center, spacing: .none) {
                 Image("Logo M")
                     .resizable()
-                    .frame(width: 35, height: 35)
+                    .frame(width: 30, height: 30)
                 Text("BANK MESTIKA")
                     .foregroundColor(.white)
-                    .font(.system(size: 30))
+                    .font(.system(size: 25))
                     .bold()
             }.padding(.top, -5)
         }.padding(.top, 30)
@@ -133,7 +134,7 @@ struct RegisterView: View {
             .background(Color(hex: "#2334D0"))
             .cornerRadius(12)
             
-            NavigationLink(destination: FirstLoginView(rootIsActive: self.$isActive), isActive: self.$isActive) {
+            NavigationLink(destination: FirstLoginView(rootIsActive: self.$isActive).environmentObject(loginData), isActive: self.$isActive) {
                 Text("LOGIN")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -141,31 +142,10 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
-            
-//            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData), isActive: self.$isActive) {
-//                Text("LOGIN")
-//                    .foregroundColor(.white)
-//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                    .font(.system(size: 12))
-//                    .frame(maxWidth: .infinity, maxHeight: 40)
-//            }
-//            .cornerRadius(12)
         }
     }
     
-    private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
-        let isReachable = flags.contains(.reachable)
-        let needsConnection = flags.contains(.connectionRequired)
-        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
-        let canConnectWithoutInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
-        
-        
-        return isReachable && (!needsConnection || canConnectWithoutInteraction)
-    }
-    
-    /*
-     Fuction for Create Bottom Floater (Modal)
-     */
+    // MARK: -BOTTOM FLOATER FOR MESSAGE
     func createBottomFloater() -> some View {
         VStack(alignment: .leading) {
             Image("ic_bell")
