@@ -141,6 +141,15 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
+            
+//            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData), isActive: self.$isActive) {
+//                Text("LOGIN")
+//                    .foregroundColor(.white)
+//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                    .font(.system(size: 12))
+//                    .frame(maxWidth: .infinity, maxHeight: 40)
+//            }
+//            .cornerRadius(12)
         }
     }
     

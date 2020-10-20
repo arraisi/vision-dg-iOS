@@ -11,7 +11,7 @@ struct EmailOTPVerificationView: View {
     @EnvironmentObject var registerData: RegistrasiModel
     
     /*
-        Variable PIN OTP
+     Variable PIN OTP
      */
     var maxDigits: Int = 6
     @State var pin: String = ""
@@ -19,7 +19,7 @@ struct EmailOTPVerificationView: View {
     @State var isDisabled = false
     
     /*
-        Variable Validation
+     Variable Validation
      */
     @State var isOtpValid = false
     @State var isResendOtpDisabled = true
@@ -127,7 +127,7 @@ struct EmailOTPVerificationView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
                 .fixedSize(horizontal: false, vertical: true)
-        
+            
             ZStack {
                 pinDots
                 backgroundField
@@ -223,15 +223,15 @@ struct EmailOTPVerificationView: View {
         })
         
         return TextField("", text: boundPin, onCommit: submitPin)
-           .accentColor(.clear)
-           .foregroundColor(.clear)
-           .keyboardType(.numberPad)
-           .disabled(isDisabled)
+            .accentColor(.clear)
+            .foregroundColor(.clear)
+            .keyboardType(.numberPad)
+            .disabled(isDisabled)
     }
     
     private func submitPin() {
         if pin.count == maxDigits {
-           isDisabled = true
+            isDisabled = true
         }
         
         if pin.count > maxDigits {
@@ -254,11 +254,12 @@ struct EmailOTPVerificationView: View {
     
     private func replace(myString: String, _ index: [Int], _ newChar: Character) -> String {
         var chars = Array(myString)
-        
-        chars[index[0]] = newChar
-        chars[index[1]] = chars[index[0]]
-        chars[index[2]] = chars[index[1]]
-        chars[index[3]] = chars[index[2]]
+        if chars.count > 2 {
+            chars[index[0]] = newChar
+            chars[index[1]] = chars[index[0]]
+            chars[index[2]] = chars[index[1]]
+            chars[index[3]] = chars[index[2]]
+        }
         let modifiedString = String(chars)
         return modifiedString
     }

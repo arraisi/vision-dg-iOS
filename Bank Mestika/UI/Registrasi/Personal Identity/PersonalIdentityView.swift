@@ -187,7 +187,16 @@ struct PersonalIdentityView: View {
             }
         }
         .sheet(isPresented: $shouldPresentImagePicker) {
-            SUImagePickerView(sourceType: self.shouldPresentCamera ? .camera : .photoLibrary, image: collapsedFormPersonal ? self.$imageNPWP : self.$imageSelfie, isPresented: self.$shouldPresentImagePicker)
+            ZStack {
+                SUImagePickerView(sourceType: self.shouldPresentCamera ? .camera : .photoLibrary, image: collapsedFormPersonal ? self.$imageNPWP : self.$imageSelfie, isPresented: self.$shouldPresentImagePicker)
+                
+                if self.shouldPresentCamera {
+                    Image("pattern_selfie_white")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .opacity(0.5)
+                }
+            }
         }
         .actionSheet(isPresented: $shouldPresentActionScheet) { () -> ActionSheet in
             ActionSheet(title: Text("Choose mode"), message: Text("Please choose your preferred mode to set your profile image"), buttons: [ActionSheet.Button.default(Text("Camera"), action: {
