@@ -146,7 +146,7 @@ struct RegisterView: View {
             }
             .cornerRadius(12)
             
-//            NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData), isActive: self.$isActive) {
+//            NavigationLink(destination: PersonalIdentityView().environmentObject(registerData), isActive: self.$isActive) {
 //                Text("LOGIN")
 //                    .foregroundColor(.white)
 //                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

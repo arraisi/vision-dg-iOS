@@ -334,8 +334,8 @@
 		5202BA59251B1FDB00FCE527 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5294ADDE2534314B0075D285 /* Login */,
 				52F01FC7251DD6DA00B0ABA5 /* Components */,
+				5294ADDE2534314B0075D285 /* Login */,
 				5202BA5A251B200300FCE527 /* Registrasi */,
 			);
 			path = UI;
@@ -1045,14 +1045,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Bank Mestika/Preview Content\"";
-				DEVELOPMENT_TEAM = RPKUZP5NC7;
+				DEVELOPMENT_TEAM = 8ZTJDGA48U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bank Mestika/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.multipolar.Bank-Mestika";
+				PRODUCT_BUNDLE_IDENTIFIER = com.multipolar.BankMestika;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1067,14 +1067,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Bank Mestika/Preview Content\"";
-				DEVELOPMENT_TEAM = RPKUZP5NC7;
+				DEVELOPMENT_TEAM = 8ZTJDGA48U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bank Mestika/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.multipolar.Bank-Mestika";
+				PRODUCT_BUNDLE_IDENTIFIER = com.multipolar.BankMestika;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
