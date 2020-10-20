@@ -196,7 +196,7 @@ struct InterviewRegistrationView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 30)
             
-            NavigationLink(destination: RegisterView(viewModel: AssetsViewModel())) {
+            NavigationLink(destination: RegisterView()) {
                 Text("Kembali ke Halaman Utama")
                     .foregroundColor(.white)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)

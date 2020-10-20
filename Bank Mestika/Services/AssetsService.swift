@@ -6,26 +6,44 @@
 //
 
 import Foundation
-import SwiftyJSON
+
+enum NetworkError: Error {
+    case badUrl
+    case decodingError
+    case noData
+}
 
 class AssetsService {
     
-    public func getAssetsAPI(onSuccess successCallback: ((_ response: [AssetsResponse]) -> Void)?,
-                             onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    private init() {}
+    
+    static let shared = AssetsService()
+    
+    func getSliderAssets(completion: @escaping(Result<[SliderAssetsResponse]?, NetworkError>) -> Void) {
+        print("API ASSETS")
         
-        let url = "https://my-json-server.typicode.com/primajatnika271995/dummy-json/assets-landing"
-        
-        APICallManager.shared.createRequest(url, method: .get, headers: nil, parameters: nil) { (responseObject: JSON) in
-            var data = [AssetsResponse]()
-            
-            if let assetsList = responseObject.arrayObject as? [[String: Any]] {
-                data = AssetsResponse.getModels(assetsList)
-            }
-            successCallback?(data)
-            
-        } onFailure: { (errorMessage: String) in
-            failureCallback?(errorMessage)
+        guard let url = URL.urlForSliderAssets() else {
+            return completion(.failure(.badUrl))
         }
-
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data, error == nil else {
+                return completion(.failure(.noData))
+            }
+            
+            let assetsResponse = try? JSONDecoder().decode([SliderAssetsResponse].self, from: data)
+            
+            if assetsResponse == nil {
+                completion(.failure(.decodingError))
+            } else {
+                completion(.success(assetsResponse!))
+            }
+            
+        }.resume()
     }
 }

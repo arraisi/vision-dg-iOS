@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ExytePopupView
-import SDWebImageSwiftUI
 import SystemConfiguration
 
 struct RegisterView: View {
@@ -19,7 +18,7 @@ struct RegisterView: View {
     
     @State var isActive : Bool = false
     @State var isActiveRoot : Bool = false
-    @ObservedObject var viewModel: AssetsViewModel
+    @ObservedObject var assetsSliderVM = SliderAssetsSummaryViewModel()
     
     var registerData = RegistrasiModel()
     
@@ -35,7 +34,6 @@ struct RegisterView: View {
     /*
      Variable for Image Carousel
      */
-    @State var menu = 0
     @State var page = 0
     
     var body: some View {
@@ -47,11 +45,9 @@ struct RegisterView: View {
                     header
                         .padding(.top, 20)
                         .padding(.horizontal, 30)
-                    LoadingView(isShowing: .constant(viewModel.isLoading)) {
-                        NavigationLink(destination: IncomingVideoCallView()) {
-                            imageSlider
-                        }
-                    }
+                    
+                    imageSlider
+                    
                     footerBtn
                         .padding(.top, 20)
                         .padding(.bottom, 35)
@@ -90,7 +86,7 @@ struct RegisterView: View {
                 self.showAlert = true
             }
             
-            viewModel.getAssets()
+            assetsSliderVM.getSliderAssets()
             
             UINavigationBar.appearance().barTintColor = UIColor(Color(hex: "#232175"))
             UINavigationBar.appearance().tintColor = .white
@@ -118,7 +114,7 @@ struct RegisterView: View {
     
     var imageSlider: some View {
         GeometryReader{g in
-            Carousel(width: UIScreen.main.bounds.width, page: self.$page, height: UIScreen.main.bounds.height - 300, data: viewModel.assetsList)
+            RegisterSliderView(page: self.$page, assets: self.assetsSliderVM.assets)
         }
     }
     
@@ -145,15 +141,6 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
-            
-//            NavigationLink(destination: TujuanPembukaanRekeningView().environmentObject(registerData), isActive: self.$isActive) {
-//                Text("LOGIN")
-//                    .foregroundColor(.white)
-//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-//                    .font(.system(size: 12))
-//                    .frame(maxWidth: .infinity, maxHeight: 40)
-//            }
-//            .cornerRadius(12)
         }
     }
     
@@ -215,116 +202,8 @@ struct RegisterView: View {
     }
 }
 
-private struct RegisterView_Previews: PreviewProvider {
+struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView(viewModel: AssetsViewModel()).environmentObject(RegistrasiModel())
-    }
-}
-
-private struct ListCard : View {
-    
-    @Binding var page : Int
-    var data: [AssetsResponse]
-    
-    var body: some View{
-        HStack(spacing: 0){
-            ForEach(data){ i in
-                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i, responseData: data, height: UIScreen.main.bounds.height)
-            }
-        }
-    }
-}
-
-private struct Card : View {
-    
-    @Binding var page : Int
-    var width : CGFloat
-    var data : AssetsResponse
-    var responseData : [AssetsResponse]
-    var height : CGFloat
-    
-    var body: some View{
-        VStack{
-            VStack{
-                AnimatedImage(url: URL(string: self.data.imageUrl)!)
-                    .resizable()
-                
-                PageControl(page: self.$page, data: responseData)
-                    .padding([.top], 10)
-            }
-            .background(Color(hex: "#2334D0"))
-            .cornerRadius(50)
-            .padding(.top, 25)
-        }
-        .padding(.horizontal, 30)
-        .frame(width: self.width)
-        .animation(.default)
-    }
-}
-
-private struct Carousel : UIViewRepresentable {
-    
-    func makeCoordinator() -> Coordinator {
-        return Carousel.Coordinator(parent1: self)
-    }
-    
-    var width : CGFloat
-    @Binding var page : Int
-    var height : CGFloat
-    var data: [AssetsResponse]
-    
-    func makeUIView(context: Context) -> UIScrollView{
-        let total = width * CGFloat(data.count)
-        let view = UIScrollView()
-        view.isPagingEnabled = true
-        //1.0  For Disabling Vertical Scroll....
-        view.contentSize = CGSize(width: total, height: 1.0)
-        view.bounces = true
-        view.showsVerticalScrollIndicator = false
-        view.showsHorizontalScrollIndicator = false
-        view.delegate = context.coordinator
-        
-        let view1 = UIHostingController(rootView: ListCard(page: self.$page, data: self.data))
-        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
-        view1.view.backgroundColor = .clear
-        
-        view.addSubview(view1.view)
-        
-        return view
-        
-    }
-    
-    func updateUIView(_ uiView: UIScrollView, context: Context) {}
-    
-    class Coordinator : NSObject,UIScrollViewDelegate{
-        var parent : Carousel
-        init(parent1: Carousel) {
-            parent = parent1
-        }
-        
-        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-            let page = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
-            self.parent.page = page
-        }
-    }
-}
-
-private struct PageControl : UIViewRepresentable {
-    
-    @Binding var page : Int
-    var data: [AssetsResponse]
-    func makeUIView(context: Context) -> UIPageControl {
-        
-        let view = UIPageControl()
-        view.currentPageIndicatorTintColor = .black
-        view.pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
-        view.numberOfPages = data.count
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIPageControl, context: Context) {
-        DispatchQueue.main.async {
-            uiView.currentPage = self.page
-        }
+        RegisterView()
     }
 }
