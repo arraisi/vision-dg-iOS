@@ -81,11 +81,11 @@ struct RegisterView: View {
             var flags = SCNetworkReachabilityFlags()
             SCNetworkReachabilityGetFlags(self.reachability!, &flags)
             
-//            if self.(with: flags) {
-//                self.showAlert = false
-//            } else {
-//                self.showAlert = true
-//            }
+            //            if self.(with: flags) {
+            //                self.showAlert = false
+            //            } else {
+            //                self.showAlert = true
+            //            }
             
             assetsSliderVM.getSliderAssets()
             
@@ -142,6 +142,15 @@ struct RegisterView: View {
                     .frame(maxWidth: .infinity, maxHeight: 40)
             }
             .cornerRadius(12)
+            
+            //            NavigationLink(destination: PilihJenisATMView()) {
+            //                Text("LOGIN")
+            //                    .foregroundColor(.white)
+            //                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            //                    .font(.system(size: 12))
+            //                    .frame(maxWidth: .infinity, maxHeight: 40)
+            //            }
+            //            .cornerRadius(12)
         }
     }
     
