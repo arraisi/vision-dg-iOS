@@ -21,10 +21,10 @@ struct PilihJenisATMView: View {
             ScrollView{
                 
                 Text("Pilih Desain Kartu ATM Anda")
-                    .fontWeight(.semibold)
-                    .font(.system(size: 18))
+                    .font(.custom("Montserrat-SemiBold", size: 18))
+                    .foregroundColor(Color(hex: "#232175"))
                     .padding(.top, 25)
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 10)
                 
                 TabView(selection: $selectedTab) {
                     ForEach(cardData) {
@@ -69,8 +69,7 @@ struct PilihJenisATMView: View {
                 VStack {
                     HStack {
                         Text("Detail Limit Kartu ATM")
-                            .fontWeight(.semibold)
-                            .font(.system(size: 15))
+                            .font(.custom("Montserrat-SemiBold", size: 15))
                         
                         Spacer()
                     }
@@ -84,8 +83,7 @@ struct PilihJenisATMView: View {
                         label: {
                             Text("PILIH KARTU ATM INI")
                                 .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .font(.system(size: 14))
+                                .font(.custom("Montserrat-SemiBold", size: 14))
                                 .frame(maxWidth: .infinity, maxHeight: 40)
                         })
                         .frame(height: 50)
@@ -100,8 +98,8 @@ struct PilihJenisATMView: View {
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .fill(Color(.white))
                         .shadow(color: Color(hex: "#2334D0").opacity(0.5), radius: 15, y: 4))
-                .padding(.leading, 25)
-                .padding(.trailing, 25)
+                .padding(.leading, 30)
+                .padding(.trailing, 30)
                 .padding(.bottom)
             }
             
@@ -162,8 +160,7 @@ struct RowDetailATM: View {
             VStack {
                 HStack {
                     Text(title)
-                        .fontWeight(.semibold)
-                        .font(.system(size: 14))
+                        .font(.custom("Montserrat-Light", size: 10))
                     
                     Spacer()
                 }
@@ -171,8 +168,8 @@ struct RowDetailATM: View {
                 
                 HStack {
                     Text(value)
-                        .fontWeight(.bold)
-                        .font(.system(size: 20))
+                        .font(.custom("Montserrat-Bold", size: 20))
+                        .foregroundColor(Color(hex: "#232175"))
                     Spacer()
                 }
                 .padding(.horizontal)

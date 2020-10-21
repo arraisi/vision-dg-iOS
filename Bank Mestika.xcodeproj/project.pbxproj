@@ -112,6 +112,12 @@
 		C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DE72522F88F005B811C /* LabelTextField.swift */; };
 		C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */; };
 		C0CA1615253441D400A93EF5 /* KeluargaTerdekat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */; };
+		C0CD5E8C254022E5000126C0 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E87254022E5000126C0 /* Montserrat-ExtraBold.ttf */; };
+		C0CD5E8D254022E5000126C0 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E88254022E5000126C0 /* Montserrat-SemiBold.ttf */; };
+		C0CD5E8E254022E5000126C0 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E89254022E5000126C0 /* Montserrat-Black.ttf */; };
+		C0CD5E8F254022E5000126C0 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E8A254022E5000126C0 /* Montserrat-Bold.ttf */; };
+		C0CD5E90254022E5000126C0 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E8B254022E5000126C0 /* Montserrat-Regular.ttf */; };
+		C0CD5E952540254B000126C0 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E942540254B000126C0 /* Montserrat-Light.ttf */; };
 		C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */; };
 		C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */; };
 		FA60340F070F2764EC457BF0 /* Pods_Bank_Mestika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEBBC9D36209243AEC88C34 /* Pods_Bank_Mestika.framework */; };
@@ -249,6 +255,12 @@
 		C0C94DE72522F88F005B811C /* LabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeluargaTerdekat.swift; sourceTree = "<group>"; };
+		C0CD5E87254022E5000126C0 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C0CD5E88254022E5000126C0 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		C0CD5E89254022E5000126C0 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		C0CD5E8A254022E5000126C0 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		C0CD5E8B254022E5000126C0 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		C0CD5E942540254B000126C0 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenghasilanKotorView.swift; sourceTree = "<group>"; };
 		C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBarKeyBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -455,6 +467,7 @@
 		524F958D252EEB0F003D7FFF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C0CD5E83254022B3000126C0 /* Fonts */,
 				5202BA2C251B1FA300FCE527 /* Assets.xcassets */,
 				5202BA31251B1FA300FCE527 /* LaunchScreen.storyboard */,
 			);
@@ -642,6 +655,19 @@
 			path = "Data Pembukaan Rekening";
 			sourceTree = "<group>";
 		};
+		C0CD5E83254022B3000126C0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C0CD5E942540254B000126C0 /* Montserrat-Light.ttf */,
+				C0CD5E89254022E5000126C0 /* Montserrat-Black.ttf */,
+				C0CD5E8A254022E5000126C0 /* Montserrat-Bold.ttf */,
+				C0CD5E87254022E5000126C0 /* Montserrat-ExtraBold.ttf */,
+				C0CD5E8B254022E5000126C0 /* Montserrat-Regular.ttf */,
+				C0CD5E88254022E5000126C0 /* Montserrat-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -755,21 +781,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0CD5E952540254B000126C0 /* Montserrat-Light.ttf in Resources */,
 				C0AA672A25342D0900DF3F02 /* besarPerkiraanSetoran.json in Resources */,
 				C0AA672E25342D0900DF3F02 /* verificationAddress.json in Resources */,
 				C0AA672825342D0900DF3F02 /* sumberPenyandangDana.json in Resources */,
 				C0AA672C25342D0900DF3F02 /* penghasilanKotor.json in Resources */,
 				52BE52EC25295D8200ADE164 /* tabungan.json in Resources */,
+				C0CD5E8C254022E5000126C0 /* Montserrat-ExtraBold.ttf in Resources */,
 				5202BA33251B1FA300FCE527 /* LaunchScreen.storyboard in Resources */,
 				C0AA672F25342D0900DF3F02 /* perkiraanSetoran.json in Resources */,
+				C0CD5E90254022E5000126C0 /* Montserrat-Regular.ttf in Resources */,
 				5202BA30251B1FA300FCE527 /* Preview Assets.xcassets in Resources */,
 				C0AA672B25342D0900DF3F02 /* perkiraanPenarikan.json in Resources */,
 				C0AA672925342D0900DF3F02 /* pekerjaan.json in Resources */,
 				C0755935253424D20067AF7E /* sumberDana.json in Resources */,
 				C0AA672725342D0900DF3F02 /* sumberPendapatanLainnya.json in Resources */,
+				C0CD5E8F254022E5000126C0 /* Montserrat-Bold.ttf in Resources */,
+				C0CD5E8D254022E5000126C0 /* Montserrat-SemiBold.ttf in Resources */,
 				5202BA2D251B1FA300FCE527 /* Assets.xcassets in Resources */,
 				C00B536825340E6600141070 /* tujuanPembukaanRekening.json in Resources */,
 				C0AA672D25342D0900DF3F02 /* besarPerkiraanPenarikan.json in Resources */,
+				C0CD5E8E254022E5000126C0 /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

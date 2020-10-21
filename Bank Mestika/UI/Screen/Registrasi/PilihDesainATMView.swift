@@ -22,10 +22,10 @@ struct PilihDesainATMView: View {
             ScrollView{
                 
                 Text("Pilih Desain Kartu ATM Anda")
-                    .fontWeight(.semibold)
-                    .font(.system(size: 18))
+                    .font(.custom("Montserrat-SemiBold", size: 18))
+                    .foregroundColor(Color(hex: "#232175"))
                     .padding(.top, 25)
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 10)
                 
                 TabView(selection: $selectedTab) {
                     ForEach(cardDesainData) {
@@ -71,8 +71,7 @@ struct PilihDesainATMView: View {
                 VStack {
                     HStack {
                         Text(cardDesainData[selectedTab].name)
-                            .fontWeight(.semibold)
-                            .font(.system(size: 15))
+                            .font(.custom("Montserrat-SemiBold", size: 15))
                         
                         Spacer()
                     }
@@ -80,8 +79,7 @@ struct PilihDesainATMView: View {
                     
                     HStack{
                         Text(cardDesainData[selectedTab].description)
-                            .fontWeight(.regular)
-                            .font(.system(size: 14))
+                            .font(.custom("Montserrat-Light", size: 10))
                         Spacer()
                     }
                     .padding(.horizontal)
@@ -90,8 +88,7 @@ struct PilihDesainATMView: View {
                         label: {
                             Text("PILIH DESAIN KARTU")
                                 .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .font(.system(size: 14))
+                                .font(.custom("Montserrat-SemiBold", size: 14))
                                 .frame(maxWidth: .infinity, maxHeight: 40)
                         })
                         .frame(height: 50)

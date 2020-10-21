@@ -21,10 +21,8 @@ struct DetailKartuATMView: View {
                 VStack(spacing: 25){
                     HStack {
                         Text("KARTU ATM ANDA \nAKAN SEGERA DIKIRIM")
-                            .fontWeight(.bold)
-                            .font(.system(size: 24))
+                            .font(.custom("Montserrat-Bold", size: 24))
                             .foregroundColor(Color(hex: "#2334D0"))
-                            .kerning(2)
                             .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                     }
@@ -35,18 +33,16 @@ struct DetailKartuATMView: View {
                     
                     HStack {
                         Text("Selamat data kartu ATM baru Anda telah berhasil disimpan.")
+                            .font(.custom("Montserrat-Regular", size: 12))
                             .foregroundColor(Color(hex: "#1D2238"))
-                            .fontWeight(.regular)
-                            .font(.system(size: 16))
                         Spacer()
                     }
                     
                     VStack {
                         HStack{
                             Text("Nama")
+                                .font(.custom("Montserrat-Regular", size: 12))
                                 .foregroundColor(Color(hex: "#707070"))
-                                .fontWeight(.regular)
-                                .font(.system(size: 16))
                             
                             Spacer()
                             
@@ -55,7 +51,7 @@ struct DetailKartuATMView: View {
                             } onCommit: {
                                 
                             }
-                            .font(Font.system(size: 14))
+                            .font(.custom("Montserrat-Regular", size: 12))
                             .frame(width: 200, height: 36)
                             .padding(.horizontal)
                             .background(Color.gray.opacity(0.1))
@@ -63,9 +59,8 @@ struct DetailKartuATMView: View {
                         }
                         HStack{
                             Text("No. Kartu")
+                                .font(.custom("Montserrat-Regular", size: 12))
                                 .foregroundColor(Color(hex: "#707070"))
-                                .fontWeight(.regular)
-                                .font(.system(size: 16))
                             
                             Spacer()
                             
@@ -74,7 +69,7 @@ struct DetailKartuATMView: View {
                             } onCommit: {
                                 
                             }
-                            .font(Font.system(size: 14))
+                            .font(.custom("Montserrat-Regular", size: 12))
                             .frame(width: 200, height: 36)
                             .padding(.horizontal)
                             .background(Color.gray.opacity(0.1))
@@ -82,9 +77,8 @@ struct DetailKartuATMView: View {
                         }
                         HStack{
                             Text("Expired")
+                                .font(.custom("Montserrat-Regular", size: 12))
                                 .foregroundColor(Color(hex: "#707070"))
-                                .fontWeight(.regular)
-                                .font(.system(size: 16))
                             
                             Spacer()
                             
@@ -93,7 +87,7 @@ struct DetailKartuATMView: View {
                             } onCommit: {
                                 
                             }
-                            .font(Font.system(size: 14))
+                            .font(.custom("Montserrat-Regular", size: 12))
                             .frame(width: 200, height: 36)
                             .padding(.horizontal)
                             .background(Color.gray.opacity(0.1))
@@ -103,9 +97,8 @@ struct DetailKartuATMView: View {
                     
                     HStack {
                         Text("Silahkan tunggu beberapa saat sampai kartu ATM Anda diterima.")
+                            .font(.custom("Montserrat-Regular", size: 12))
                             .foregroundColor(Color(hex: "#1D2238"))
-                            .fontWeight(.regular)
-                            .font(.system(size: 16))
                         Spacer()
                     }
                     
@@ -114,20 +107,19 @@ struct DetailKartuATMView: View {
                         
                     }, label: {
                         Text("KEMBALI KE HALAMAN UTAMA")
+                            .font(.custom("Montserrat-SemiBold", size: 14))
                             .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .font(.system(size: 14))
-                            .frame(maxWidth: .infinity, maxHeight: 40)
+                            .frame(maxWidth: .infinity)
                     })
                     .frame(height: 50)
                     .background(Color(hex: "#2334D0"))
                     .cornerRadius(12)
                 }
-                .padding(.horizontal, 25)
+                .padding(.horizontal, 30)
                 .padding(.vertical, 25)
             }
         }
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
     }
     
