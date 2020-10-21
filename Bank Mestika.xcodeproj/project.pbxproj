@@ -83,6 +83,7 @@
 		C02D4E6E25400E080006B648 /* PilihDesainATMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D4E6D25400E080006B648 /* PilihDesainATMView.swift */; };
 		C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */; };
 		C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */; };
+		C0702C552540109800AC993D /* DetailKartuATMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0702C542540109800AC993D /* DetailKartuATMView.swift */; };
 		C0755903253421760067AF7E /* MasterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0755902253421760067AF7E /* MasterData.swift */; };
 		C075590D253421FD0067AF7E /* MasterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07558FE2534213B0067AF7E /* MasterModel.swift */; };
 		C075591F2534232F0067AF7E /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C075591E2534232F0067AF7E /* LoadJson.swift */; };
@@ -219,6 +220,7 @@
 		C02D4E6D25400E080006B648 /* PilihDesainATMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilihDesainATMView.swift; sourceTree = "<group>"; };
 		C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPendapatanLainnyaView.swift; sourceTree = "<group>"; };
 		C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxGroup.swift; sourceTree = "<group>"; };
+		C0702C542540109800AC993D /* DetailKartuATMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailKartuATMView.swift; sourceTree = "<group>"; };
 		C07558FE2534213B0067AF7E /* MasterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterModel.swift; sourceTree = "<group>"; };
 		C0755902253421760067AF7E /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
 		C075591E2534232F0067AF7E /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				524F95DB252F0F3E003D7FFF /* IncomingVideoCallView.swift */,
 				C02D4E5825400C8D0006B648 /* PilihJenisATMView.swift */,
 				C02D4E6D25400E080006B648 /* PilihDesainATMView.swift */,
+				C0702C542540109800AC993D /* DetailKartuATMView.swift */,
 			);
 			path = Registrasi;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				C075590D253421FD0067AF7E /* MasterModel.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
 				524F95BD252EF08E003D7FFF /* LoadingView.swift in Sources */,
+				C0702C552540109800AC993D /* DetailKartuATMView.swift in Sources */,
 				C0755903253421760067AF7E /* MasterData.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,

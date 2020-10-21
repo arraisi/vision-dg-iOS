@@ -86,20 +86,19 @@ struct PilihDesainATMView: View {
                     }
                     .padding(.horizontal)
                     
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("PILIH DESAIN KARTU")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .font(.system(size: 14))
-                            .frame(maxWidth: .infinity, maxHeight: 40)
-                    })
-                    .frame(height: 50)
-                    .background(Color(hex: "#2334D0"))
-                    .cornerRadius(12)
-                    .padding(.horizontal)
-                    .padding(.vertical, 20)
+                    NavigationLink(destination: DetailKartuATMView(),
+                        label: {
+                            Text("PILIH DESAIN KARTU")
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .font(.system(size: 14))
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                        })
+                        .frame(height: 50)
+                        .background(Color(hex: "#2334D0"))
+                        .cornerRadius(12)
+                        .padding(.horizontal)
+                        .padding(.vertical, 20)
                     
                 }
                 .animation(nil)

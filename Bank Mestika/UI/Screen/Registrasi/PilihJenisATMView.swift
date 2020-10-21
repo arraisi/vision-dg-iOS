@@ -80,9 +80,7 @@ struct PilihJenisATMView: View {
                         RowDetailATM(title: item.title, value: item.value)
                     }
                     
-                    
-                    NavigationLink(
-                        destination: PilihDesainATMView(),
+                    NavigationLink(destination: PilihDesainATMView(),
                         label: {
                             Text("PILIH KARTU ATM INI")
                                 .foregroundColor(.white)
