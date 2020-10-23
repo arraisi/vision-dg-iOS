@@ -122,16 +122,18 @@ struct LoginView: View {
                 .padding(.horizontal, 20)
             }
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                Text("Forgot Password?")
-                    .font(.subheadline)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 5)
-                    .padding(.bottom, 40)
-                    .padding(.horizontal, 20)
-            })
+            NavigationLink(
+                destination: ForgotPasswordView(rootIsActive: self.$rootIsActive),
+                label: {
+                    Text("Forgot Password?")
+                        .font(.subheadline)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 5)
+                        .padding(.bottom, 40)
+                        .padding(.horizontal, 20)
+                })
             
             HStack {
                 Button(action: {}) {

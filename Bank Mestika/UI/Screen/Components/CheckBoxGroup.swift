@@ -50,7 +50,7 @@ struct CheckBoxField: View {
                     .frame(width: self.size, height: self.size)
                 
                 Text(label)
-                    .font(Font.system(size: textSize))
+                    .font(.custom("Montserrat-Regular", size: textSize))
                 
                 Spacer()
                 

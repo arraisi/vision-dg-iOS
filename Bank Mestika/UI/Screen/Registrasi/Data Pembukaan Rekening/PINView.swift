@@ -50,8 +50,7 @@ struct PINView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(Font.system(size: 24))
-                        .fontWeight(.bold)
+                        .font(.custom("Montserrat-ExtraBold", size: 24))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
@@ -68,14 +67,14 @@ struct PINView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .padding(.horizontal, 60)
+                            .padding(.horizontal, 70)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
                             .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
-                            .padding(.horizontal, 40)
+                            .padding(.horizontal, 50)
                             .padding(.top, 10)
                             
                         }
@@ -84,8 +83,8 @@ struct PINView: View {
                             Spacer()
                             
                             // Sub title
-                            Text("Masukan PIN Transaksi Baru Anda")
-                                .font(Font.system(size: 18))
+                            Text("Masukan PIN \nTransaksi Baru Anda")
+                                .font(.custom("Montserrat-SemiBold", size: 18))
                                 .foregroundColor(Color(hex: "#232175"))
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.center)
@@ -93,7 +92,7 @@ struct PINView: View {
                                 .padding(.top, 20)
                             
                             Text("Pin ini digunakan untuk setiap kegiatan transaksi keuangan")
-                                .font(.caption2)
+                                .font(.custom("Montserrat-Regular", size: 8))
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal, 20)
                                 .padding(.top, 3)
@@ -108,8 +107,7 @@ struct PINView: View {
                                 
                                 Text("Konfirmasi PIN Transaksi")
                                     .foregroundColor(.white)
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 14))
+                                    .font(.custom("Montserrat-SemiBold", size: 14))
                                     .frame(maxWidth: .infinity, maxHeight: 40)
                                 
                             })
@@ -117,7 +115,7 @@ struct PINView: View {
                             .background(Color(hex: !disableForm ? "#CBD1D9" : "#2334D0"))
                             .cornerRadius(12)
                             .padding(.horizontal, 20)
-                            .padding(.vertical, 20)
+                            .padding(.vertical, 25)
                             .disabled(!disableForm)
                             .onAppear {
                                 self.registerData.pin = pin
@@ -127,7 +125,7 @@ struct PINView: View {
                         .background(Color(.white))
                         .cornerRadius(25.0)
                         .shadow(color: Color(hex: "#D6DAF0"), radius: 5)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 30)
                         .padding(.top, 25)
                         
                     }

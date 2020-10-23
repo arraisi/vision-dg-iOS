@@ -120,6 +120,10 @@
 		C0CD5E952540254B000126C0 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CD5E942540254B000126C0 /* Montserrat-Light.ttf */; };
 		C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */; };
 		C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */; };
+		C0FB3F6C254140E100B98358 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3F6B254140E100B98358 /* ForgotPasswordView.swift */; };
+		C0FB3F7B2541492600B98358 /* ForgotPasswordOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3F7A2541492600B98358 /* ForgotPasswordOTPView.swift */; };
+		C0FB3F8025416A6200B98358 /* ForgotPasswordATMPINView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3F7F25416A6200B98358 /* ForgotPasswordATMPINView.swift */; };
+		C0FB3F8525416DCF00B98358 /* ForgotPasswordResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3F8425416DCF00B98358 /* ForgotPasswordResetPasswordView.swift */; };
 		FA60340F070F2764EC457BF0 /* Pods_Bank_Mestika.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEBBC9D36209243AEC88C34 /* Pods_Bank_Mestika.framework */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +267,10 @@
 		C0CD5E942540254B000126C0 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../../../../../../Assets/Fonts/Montserrat/Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenghasilanKotorView.swift; sourceTree = "<group>"; };
 		C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBarKeyBoard.swift; sourceTree = "<group>"; };
+		C0FB3F6B254140E100B98358 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		C0FB3F7A2541492600B98358 /* ForgotPasswordOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordOTPView.swift; sourceTree = "<group>"; };
+		C0FB3F7F25416A6200B98358 /* ForgotPasswordATMPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordATMPINView.swift; sourceTree = "<group>"; };
+		C0FB3F8425416DCF00B98358 /* ForgotPasswordResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordResetPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +382,7 @@
 				52794C0825245ED00031392E /* Validation Form */,
 				52794BF0252452D20031392E /* Personal Identity */,
 				C09EA88325259D4F007ABF8A /* Data Pembukaan Rekening */,
+				5294ADDE2534314B0075D285 /* Login */,
 				5202BA5B251B207500FCE527 /* RegisterView.swift */,
 				527A6B14251B661B0030A3E2 /* RegisterRekeningCardView.swift */,
 				5233DBA6251C7F1E0064C59D /* RegisterProvisionView.swift */,
@@ -441,7 +450,6 @@
 			children = (
 				52F01FC7251DD6DA00B0ABA5 /* Components */,
 				5202BA5A251B200300FCE527 /* Registrasi */,
-				5294ADDE2534314B0075D285 /* Login */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -516,6 +524,10 @@
 				5294ADE9253437AE0075D285 /* FirstATMLoginView.swift */,
 				5294ADEE253439F20075D285 /* FirstPasswordLoginView.swift */,
 				5294ADF325343B700075D285 /* LoginView.swift */,
+				C0FB3F6B254140E100B98358 /* ForgotPasswordView.swift */,
+				C0FB3F7A2541492600B98358 /* ForgotPasswordOTPView.swift */,
+				C0FB3F7F25416A6200B98358 /* ForgotPasswordATMPINView.swift */,
+				C0FB3F8425416DCF00B98358 /* ForgotPasswordResetPasswordView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -903,6 +915,7 @@
 				C02D4E462540093F0006B648 /* DesainATMData.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				521B5E64253ED45A0046A4DF /* StringMasking+Extensions.swift in Sources */,
+				C0FB3F8525416DCF00B98358 /* ForgotPasswordResetPasswordView.swift in Sources */,
 				52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */,
 				C075590D253421FD0067AF7E /* MasterModel.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
@@ -910,6 +923,7 @@
 				C0702C552540109800AC993D /* DetailKartuATMView.swift in Sources */,
 				C0755903253421760067AF7E /* MasterData.swift in Sources */,
 				52794BF2252452F80031392E /* PersonalIdentityView.swift in Sources */,
+				C0FB3F8025416A6200B98358 /* ForgotPasswordATMPINView.swift in Sources */,
 				5202BA28251B1FA000FCE527 /* ContentView.swift in Sources */,
 				52794C0A25245EE60031392E /* Term&ConditionView.swift in Sources */,
 				C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */,
@@ -926,6 +940,7 @@
 				52794BFA2524530F0031392E /* Coordinator.swift in Sources */,
 				52794C21252471370031392E /* VerificationPINView.swift in Sources */,
 				527A6B15251B661B0030A3E2 /* RegisterRekeningCardView.swift in Sources */,
+				C0FB3F7B2541492600B98358 /* ForgotPasswordOTPView.swift in Sources */,
 				5294ADF425343B700075D285 /* LoginView.swift in Sources */,
 				C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */,
 				C0CA1615253441D400A93EF5 /* KeluargaTerdekat.swift in Sources */,
@@ -956,6 +971,7 @@
 				C02D4E31254008A00006B648 /* CardModel.swift in Sources */,
 				C09EA8B12525AD73007ABF8A /* PerkerjaanView.swift in Sources */,
 				C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */,
+				C0FB3F6C254140E100B98358 /* ForgotPasswordView.swift in Sources */,
 				52794C17252468490031392E /* VerificationAddressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

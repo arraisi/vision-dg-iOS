@@ -38,8 +38,7 @@ struct SumberPendapatanLainnyaView: View {
                     
                     // Title
                     Text("DATA PEMBUKAAN REKENING")
-                        .font(Font.system(size: 24))
-                        .fontWeight(.bold)
+                        .font(.custom("Montserrat-ExtraBold", size: 24))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 30)
@@ -55,14 +54,14 @@ struct SumberPendapatanLainnyaView: View {
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
-                            .padding(.horizontal, 60)
+                            .padding(.horizontal, 70)
                             
                             VStack{
                                 LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom)
                             }
                             .cornerRadius(25.0)
                             .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 5, y: -2)
-                            .padding(.horizontal, 40)
+                            .padding(.horizontal, 50)
                             .padding(.top, 10)
                             
                             VStack {
@@ -71,14 +70,14 @@ struct SumberPendapatanLainnyaView: View {
                                 
                                 // Sub title
                                 Text("Apakah Anda Memiliki Sumber Pendapatan Lainnya")
-                                    .font(Font.system(size: 18))
+                                    .font(.custom("Montserrat-SemiBold", size: 18))
                                     .foregroundColor(Color(hex: "#232175"))
-                                    .fontWeight(.semibold)
                                     .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 20)
+                                    .padding(.horizontal, 40)
                                     .padding(.vertical, 30)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 
-                                //                                // Forms input
+                                // Forms input
                                 ZStack {
                                     
                                     RadioButtonGroup(
@@ -96,7 +95,7 @@ struct SumberPendapatanLainnyaView: View {
                                     .padding()
                                     
                                 }
-                                .frame(width: UIScreen.main.bounds.width - 70)
+                                .frame(width: UIScreen.main.bounds.width - 100)
                                 .background(Color.white)
                                 .cornerRadius(15)
                                 .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
@@ -106,8 +105,7 @@ struct SumberPendapatanLainnyaView: View {
                                     
                                     Text("Berikutnya")
                                         .foregroundColor(.white)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 14))
+                                        .font(.custom("Montserrat-SemiBold", size: 14))
                                         .frame(maxWidth: .infinity, maxHeight: 40)
                                     
                                 })
@@ -116,14 +114,14 @@ struct SumberPendapatanLainnyaView: View {
                                 .background(registerData.sumberPendapatanLainnyaId == 0 ? Color(.lightGray) : Color(hex: "#2334D0"))
                                 .cornerRadius(12)
                                 .padding(.horizontal, 20)
-                                .padding(.vertical, 20)
+                                .padding(.vertical, 25)
                                 
                             }
                             .background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: "#D6DAF0")]), startPoint: .top, endPoint: .bottom))
                             .cornerRadius(25.0)
                             .shadow(color: Color(hex: "#2334D0").opacity(0.2), radius: 10, y: -2)
-                            .padding(.horizontal, 20)
-                            .padding(.top, 25)
+                            .padding(.horizontal, 30)
+                            .padding(.top, 24)
                         }
                     }
                 }
