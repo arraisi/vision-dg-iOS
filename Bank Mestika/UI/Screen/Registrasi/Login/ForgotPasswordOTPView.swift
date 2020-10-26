@@ -91,9 +91,21 @@ struct ForgotPasswordOTPView: View {
     
     var AppBar: some View {
         HStack {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "arrow.left")
+                    .foregroundColor(.white)
+            }
             Spacer()
             logo
             Spacer()
+            Button(action: {
+                self.rootIsActive = false
+            }) {
+                Text("Cancel")
+                    .foregroundColor(.white)
+            }
         }
     }
     
@@ -104,7 +116,7 @@ struct ForgotPasswordOTPView: View {
                 .frame(width: 30, height: 30)
             Text("BANK MESTIKA")
                 .foregroundColor(.white)
-                .font(.system(size: 30))
+                .font(.system(size: 24))
                 .bold()
         }
     }

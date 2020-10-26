@@ -1,13 +1,13 @@
 //
-//  ForgotPasswordResetPasswordView.swift
+//  ForgotPasswordInputNewPasswordView.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 22/10/20.
+//  Created by Abdul R. Arraisi on 26/10/20.
 //
 
 import SwiftUI
 
-struct ForgotPasswordResetPasswordView: View {
+struct ForgotPasswordInputNewPasswordView: View {
     @Binding var rootIsActive : Bool
     @State var password: String = ""
     @State var confirmationPassword: String = ""
@@ -27,7 +27,7 @@ struct ForgotPasswordResetPasswordView: View {
                     .padding(.horizontal, 30)
                 
                 VStack {
-                    Text("PASSWORD BARU")
+                    Text("MASUKKAN PASSWORD")
                         .font(.custom("Montserrat-ExtraBold", size: 24))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
@@ -83,7 +83,7 @@ struct ForgotPasswordResetPasswordView: View {
     
     var cardForm: some View {
         VStack(alignment: .center) {
-            Text("Password Aplikasi harus berjumlah minimal 8 karakter huruf. Terdiri dari Uppercase, Number, etc.")
+            Text("Proses verifikasi berhasil.\nSilahkan masukkan password aplikasi Anda.")
                 .font(.custom("Montserrat-Regular", size: 12))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
@@ -142,56 +142,6 @@ struct ForgotPasswordResetPasswordView: View {
                     }.padding(.leading, 15)
                 }
                 
-                Divider()
-                    .padding(.horizontal, 15)
-                
-                if (securedConfirmation) {
-                    ZStack {
-                        HStack (spacing: 0) {
-                            SecureField("Konfirmasi Password", text: $confirmationPassword)
-                                .font(.custom("Montserrat-Regular", size: 14))
-                                .padding()
-                                .frame(width: 200, height: 50)
-                                .foregroundColor(Color(hex: "#232175"))
-                                .keyboardType(.phonePad)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                self.securedConfirmation.toggle()
-                            }) {
-                                Text("show")
-                                    .font(.custom("Montserrat-Regular", size: 12))
-                                    .frame(width: 80, height: 50)
-                                    .cornerRadius(10)
-                                    .foregroundColor(Color(hex: "#3756DF"))
-                            }
-                        }
-                    }.padding(.leading, 15)
-                } else {
-                    ZStack {
-                        HStack (spacing: 0) {
-                            TextField("Konfirmasi Password", text: $confirmationPassword)
-                                .font(.custom("Montserrat-Regular", size: 14))
-                                .padding()
-                                .frame(width: 200, height: 50)
-                                .foregroundColor(Color(hex: "#232175"))
-                                .keyboardType(.phonePad)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                self.securedConfirmation.toggle()
-                            }) {
-                                Text("show")
-                                    .font(.custom("Montserrat-Regular", size: 12))
-                                    .frame(width: 80, height: 50)
-                                    .cornerRadius(10)
-                                    .foregroundColor(Color(hex: "#3756DF"))
-                            }
-                        }
-                    }.padding(.leading, 15)
-                }
             }
             .frame(width: UIScreen.main.bounds.width - 70)
             .background(Color.white)
@@ -199,7 +149,7 @@ struct ForgotPasswordResetPasswordView: View {
             .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
 
             NavigationLink(destination: LoginView(rootIsActive: self.$rootIsActive)) {
-                Text("SIMPAN DATA LOGIN")
+                Text("MASUKAN PASSWORD")
                     .font(.custom("Montserrat-Bold", size: 14))
                     .foregroundColor(Color(hex: "#232175"))
                     .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
@@ -214,8 +164,8 @@ struct ForgotPasswordResetPasswordView: View {
     }
 }
 
-struct ForgotPasswordResetPasswordView_Previews: PreviewProvider {
+struct ForgotPasswordInputNewPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordResetPasswordView(rootIsActive: Binding.constant(false))
+        ForgotPasswordInputNewPasswordView(rootIsActive: Binding.constant(false))
     }
 }

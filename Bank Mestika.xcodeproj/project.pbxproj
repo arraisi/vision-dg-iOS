@@ -89,6 +89,7 @@
 		C075591F2534232F0067AF7E /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C075591E2534232F0067AF7E /* LoadJson.swift */; };
 		C0755935253424D20067AF7E /* sumberDana.json in Resources */ = {isa = PBXBuildFile; fileRef = C0755934253424D20067AF7E /* sumberDana.json */; };
 		C094DCD225469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */; };
+		C094DCDD2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
 		C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */; };
 		C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */; };
@@ -237,6 +238,7 @@
 		C075591E2534232F0067AF7E /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
 		C0755934253424D20067AF7E /* sumberDana.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sumberDana.json; sourceTree = "<group>"; };
 		C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNoRekeningOrKTPView.swift; sourceTree = "<group>"; };
+		C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInputNewPasswordView.swift; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
 		C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformasiPerusahaanView.swift; sourceTree = "<group>"; };
 		C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				C0FB3F7F25416A6200B98358 /* ForgotPasswordATMPINView.swift */,
 				C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */,
 				C0FB3F8425416DCF00B98358 /* ForgotPasswordResetPasswordView.swift */,
+				C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -951,6 +954,7 @@
 				C02D4E5125400C6E0006B648 /* TabItemView.swift in Sources */,
 				C09EA8A02525AC94007ABF8A /* BesarPerkiraanSetoranView.swift in Sources */,
 				C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */,
+				C094DCDD2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift in Sources */,
 				C09EA8982525ABEC007ABF8A /* PerkiraanSetoranView.swift in Sources */,
 				521B5E54253EC8F40046A4DF /* NetworkReachbility+Extensions.swift in Sources */,
 				C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */,
