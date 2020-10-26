@@ -31,6 +31,11 @@ struct ForgotPasswordOTPView: View {
     @State var isResendOtpDisabled = true
     
     /*
+     Boolean for Show Modal
+     */
+    @State var showingModal = false
+    
+    /*
      Timer
      */
     @State private var timeRemaining = 40
@@ -47,8 +52,8 @@ struct ForgotPasswordOTPView: View {
                     .padding(.horizontal, 30)
                 
                 VStack {
-                    Text("LUPA PASSWORD")
-                        .font(.custom("Montserrat-SemiBold", size: 24))
+                    Text("VERIFIKASI KODE OTP")
+                        .font(.custom("Montserrat-Bold", size: 24))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
@@ -62,6 +67,12 @@ struct ForgotPasswordOTPView: View {
                 .padding(.horizontal, 30)
                 .padding(.top, 35)
             }
+            
+            // Background Color When Modal Showing
+            if self.showingModal {
+                ModalOverlay(tapAction: { withAnimation { self.showingModal = false } })
+            }
+            
         }
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         .navigationBarHidden(true)
@@ -72,6 +83,9 @@ struct ForgotPasswordOTPView: View {
             if self.timeRemaining > 0 {
                 self.timeRemaining -= 1
             }
+        }
+        .popup(isPresented: $showingModal, type: .default, position: .bottom, animation: Animation.spring(), closeOnTap: false, closeOnTapOutside: true) {
+            createBottomFloater()
         }
     }
     
@@ -105,13 +119,13 @@ struct ForgotPasswordOTPView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 20)
                     
-                    //                    Text("".replace(myString: loginData.noTelepon, [6, 7, 8, 9], "x"))
-                    //                        .font(.caption)
-                    //                        .foregroundColor(.white)
-                    //                        .fontWeight(.bold)
-                    //                        .multilineTextAlignment(.center)
-                    //                        .padding(.horizontal, 20)
-                    //                        .padding(.bottom, 20)
+//                                        Text("".replace(myString: loginData.noTelepon, [6, 7, 8, 9], "x"))
+//                                            .font(.caption)
+//                                            .foregroundColor(.white)
+//                                            .fontWeight(.bold)
+//                                            .multilineTextAlignment(.center)
+//                                            .padding(.horizontal, 20)
+//                                            .padding(.bottom, 20)
                 }
             }
             
@@ -146,20 +160,22 @@ struct ForgotPasswordOTPView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            NavigationLink(
-                destination: ForgotPasswordATMPINView(rootIsActive: self.$rootIsActive),
-                isActive: self.$rootIsActive,
-                label: {
-                    Text("Masukkan Kode OTP")
-                        .font(.custom("Montserrat-SemiBold", size: 14))
-                        .foregroundColor(Color(hex: "#2334D0"))
-                        .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
-                })
-                .background(Color.white)
-                .cornerRadius(12)
-                .padding(.horizontal, 20)
-                .padding(.top, 30)
-                .padding(.bottom, 10)
+            Button(action: {
+                
+                showingModal.toggle()
+                
+            }, label: {
+                
+                Text("Masukkan Kode OTP")
+                    .font(.custom("Montserrat-SemiBold", size: 14))
+                    .foregroundColor(Color(hex: "#2334D0"))
+                    .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+            })
+            .background(Color.white)
+            .cornerRadius(12)
+            .padding(.horizontal, 20)
+            .padding(.top, 30)
+            .padding(.bottom, 10)
         }
         .frame(width: UIScreen.main.bounds.width - 30)
     }
@@ -218,6 +234,53 @@ struct ForgotPasswordOTPView: View {
         }
         
         return ""
+    }
+    
+    // MARK: -BOTTOM FLOATER FOR MESSAGE
+    func createBottomFloater() -> some View {
+        VStack(alignment: .leading) {
+            Image("ic_bell")
+                .resizable()
+                .frame(width: 95, height: 95)
+                .padding(.top, 20)
+            Text("Sebelum Melanjutkan Proses")
+                .font(.custom("Montserrat-Bold", size: 12))
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size: 16))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding(.bottom, 20)
+            Text("Apakah Anda \nMasih Mengingat PIN \nTransaksi Anda?")
+                .font(.custom("Montserrat-Bold", size: 24))
+                .foregroundColor(Color(hex: "#232175"))
+                .padding(.bottom, 30)
+            
+            Button(action: {
+                
+            }, label: {
+                Text("Ya, Saya Masih Mengingat")
+                    .font(.custom("Montserrat-SemiBold", size: 14))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            })
+            .padding(.bottom, 2)
+            .background(Color(hex: "#2334D0"))
+            .cornerRadius(12)
+            
+            Button(action: {
+                
+            }, label: {
+                Text("Tidak, Saya Tidak Ingat")
+                    .font(.custom("Montserrat-Regular", size: 12))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            })
+            .padding(.bottom, 30)
+            .cornerRadius(12)
+        }
+        .frame(width: UIScreen.main.bounds.width - 100)
+        .padding(.horizontal, 30)
+        .background(Color.white)
+        .cornerRadius(20)
     }
 }
 

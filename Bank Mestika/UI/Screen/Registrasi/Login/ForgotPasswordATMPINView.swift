@@ -26,8 +26,8 @@ struct ForgotPasswordATMPINView: View {
                     .padding(.horizontal, 30)
                 
                 VStack {
-                    Text("LUPA PASSWORD")
-                        .font(.custom("Montserrat-SemiBold", size: 24))
+                    Text("INPUT DATA ATM")
+                        .font(.custom("Montserrat-Bold", size: 24))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 20)
@@ -69,7 +69,7 @@ struct ForgotPasswordATMPINView: View {
     }
     
     var Forms: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 20) {
             Text("Masukkan nomor kartu ATM dan PIN ATM Anda yang sudah terdaftar")
                 .font(.custom("Montserrat-Regular", size: 12))
                 .foregroundColor(.white)
@@ -95,20 +95,30 @@ struct ForgotPasswordATMPINView: View {
             .padding()
             .background(Color.white)
             .cornerRadius(20)
-        
-        NavigationLink(
-            destination: ForgotPasswordResetPasswordView(),
-            isActive: self.$rootIsActive,
-            label: {
-                Text("Masukkan Data Kartu ATM Anda")
-                    .font(.custom("Montserrat-SemiBold", size: 14))
+            
+            NavigationLink(
+                destination: ForgotPasswordResetPasswordView(rootIsActive: $rootIsActive),
+                isActive: self.$rootIsActive,
+                label: {
+                    Text("AKTIVASI KARTU ATM BARU")
+                        .font(.custom("Montserrat-Bold", size: 14))
+                        .foregroundColor(Color(hex: "#2334D0"))
+                        .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
+                })
+                .background(Color.white)
+                .cornerRadius(12)
+                .padding(.top, 30)
+            
+            Button(action: {
+                
+            }, label: {
+                Text("KONFIRMASI DATA")
+                    .font(.custom("Montserrat-Bold", size: 14))
                     .foregroundColor(Color(hex: "#2334D0"))
                     .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
             })
             .background(Color.white)
             .cornerRadius(12)
-            .padding(.top, 30)
-            .padding(.bottom, 10)
         }
     }
 }

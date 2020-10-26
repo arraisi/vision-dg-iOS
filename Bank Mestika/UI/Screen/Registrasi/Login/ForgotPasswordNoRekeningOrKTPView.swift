@@ -1,18 +1,19 @@
 //
-//  ForgotPasswordView.swift
+//  ForgotPasswordNoRekeningOrKTP.swift
 //  Bank Mestika
 //
-//  Created by Abdul R. Arraisi on 22/10/20.
+//  Created by Abdul R. Arraisi on 26/10/20.
 //
 
 import SwiftUI
 
-struct ForgotPasswordView: View {
+struct ForgotPasswordNoRekeningOrKTPView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var phoneNumber: String = ""
     @Binding var rootIsActive : Bool
+    @State var noRekeningOrKTP: String = ""
+    @State var pin: String = ""
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -25,13 +26,12 @@ struct ForgotPasswordView: View {
                     .padding(.horizontal, 30)
                 
                 VStack {
-                    Text("VERIFIKASI NO. HP ANDA")
+                    Text("INPUT NO REKENING/KTP")
                         .font(.custom("Montserrat-Bold", size: 24))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
-                        .padding(.top, 20)
-                        .padding(.bottom, 5)
-                        .padding(.horizontal, 20)
+                        .padding(.vertical, 15)
+                        .padding(.horizontal, 15)
                         .fixedSize(horizontal: false, vertical: true)
                     
                     Forms
@@ -69,8 +69,8 @@ struct ForgotPasswordView: View {
     }
     
     var Forms: some View {
-        VStack(alignment: .center) {
-            Text("Silahkan Masukkan Nomor Handphone Anda")
+        VStack(alignment: .center, spacing: 20) {
+            Text("Masukkan nomor rekening / KTP \ndan PIN ATM Anda.")
                 .font(.custom("Montserrat-Regular", size: 12))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
@@ -78,61 +78,42 @@ struct ForgotPasswordView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             
-            HStack {
-                HStack {
-                    Image("indo_flag")
-                    Text("+62 ")
-                        .font(.system(size: 12))
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                }
-                
-                Divider()
-                    .frame(height: 20)
-                
-                TextField("Phone Number", text: $phoneNumber, onEditingChanged: { changed in
-                    print("\($phoneNumber)")
-                    
-//                    self.loginData.noTelepon = "0" + phoneNumber
-                })
-                .font(.custom("Montserrat-Regular", size: 12))
-                .keyboardType(.numberPad)
-            }
-            .frame(height: 20)
-            .font(.subheadline)
+            TextField("Masukan nomor Rekening/KTP Anda", text: $noRekeningOrKTP, onEditingChanged: { changed in
+                print("\($noRekeningOrKTP)")
+            })
+            .frame(height: 30)
+            .font(.custom("Montserrat-Regular", size: 14))
             .padding()
             .background(Color.white)
-            .cornerRadius(15)
-            .padding(.horizontal, 20)
+            .cornerRadius(20)
             
-            Text("Pastikan nomor handphone Anda telah sesuai sebelum melanjutkan ketahap berikutnya")
-                .font(.custom("Montserrat-Regular", size: 12))
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .padding(.top, 20)
-                .padding(.bottom, 10)
-                .padding(.horizontal, 20)
+            TextField("Masukan PIN ATM Anda", text: $pin, onEditingChanged: { changed in
+                print("\($pin)")
+            })
+            .frame(height: 30)
+            .font(.custom("Montserrat-Regular", size: 14))
+            .padding()
+            .background(Color.white)
+            .cornerRadius(20)
             
             NavigationLink(
-                destination: ForgotPasswordOTPView(rootIsActive: self.$rootIsActive),
+                destination: ForgotPasswordResetPasswordView(rootIsActive: $rootIsActive),
                 isActive: self.$rootIsActive,
                 label: {
-                    Text("Masukkan No. HP Anda")
-                        .font(.custom("Montserrat-SemiBold", size: 14))
+                    Text("KONFIRMASI DATA")
+                        .font(.custom("Montserrat-Bold", size: 14))
                         .foregroundColor(Color(hex: "#2334D0"))
                         .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                 })
-            .background(Color.white)
-            .cornerRadius(12)
-            .padding(.horizontal, 20)
-            .padding(.top, 30)
-            .padding(.bottom, 20)
+                .background(Color.white)
+                .cornerRadius(12)
+                .padding(.top, 30)
         }
-        .frame(width: UIScreen.main.bounds.width - 30)
     }
 }
 
-struct ForgotPasswordView_Previews: PreviewProvider {
+struct ForgotPasswordNoRekeningOrKTP_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView(rootIsActive: Binding.constant(false))
+        ForgotPasswordNoRekeningOrKTPView(rootIsActive: Binding.constant(false))
     }
 }
