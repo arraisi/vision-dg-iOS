@@ -12,7 +12,6 @@ struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var phoneNumber: String = ""
-    @Binding var rootIsActive : Bool
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -59,12 +58,6 @@ struct ForgotPasswordView: View {
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -125,8 +118,7 @@ struct ForgotPasswordView: View {
                 .padding(.horizontal, 20)
             
             NavigationLink(
-                destination: ForgotPasswordOTPView(rootIsActive: self.$rootIsActive),
-                isActive: self.$rootIsActive,
+                destination: ForgotPasswordOTPView(),
                 label: {
                     Text("Masukkan No. HP Anda")
                         .font(.custom("Montserrat-SemiBold", size: 14))
@@ -145,6 +137,6 @@ struct ForgotPasswordView: View {
 
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView(rootIsActive: Binding.constant(false))
+        ForgotPasswordView()
     }
 }

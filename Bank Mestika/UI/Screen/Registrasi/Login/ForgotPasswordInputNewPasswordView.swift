@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ForgotPasswordInputNewPasswordView: View {
-    @Binding var rootIsActive : Bool
+    
     @State var password: String = ""
     @State var confirmationPassword: String = ""
     
@@ -60,12 +60,6 @@ struct ForgotPasswordInputNewPasswordView: View {
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -148,7 +142,7 @@ struct ForgotPasswordInputNewPasswordView: View {
             .cornerRadius(15)
             .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
 
-            NavigationLink(destination: LoginView(rootIsActive: self.$rootIsActive)) {
+            NavigationLink(destination: LoginView(rootIsActive: Binding.constant(false))) {
                 Text("MASUKAN PASSWORD")
                     .font(.custom("Montserrat-Bold", size: 14))
                     .foregroundColor(Color(hex: "#232175"))
@@ -166,6 +160,6 @@ struct ForgotPasswordInputNewPasswordView: View {
 
 struct ForgotPasswordInputNewPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordInputNewPasswordView(rootIsActive: Binding.constant(false))
+        ForgotPasswordInputNewPasswordView()
     }
 }

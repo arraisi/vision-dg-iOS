@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ForgotPasswordResetPasswordView: View {
-    @Binding var rootIsActive : Bool
+    
     @State var password: String = ""
     @State var confirmationPassword: String = ""
     
@@ -60,12 +60,6 @@ struct ForgotPasswordResetPasswordView: View {
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -198,7 +192,7 @@ struct ForgotPasswordResetPasswordView: View {
             .cornerRadius(15)
             .shadow(color: Color.gray, radius: 1, x: 0, y: 0)
 
-            NavigationLink(destination: LoginView(rootIsActive: self.$rootIsActive)) {
+            NavigationLink(destination: ForgotPasswordInputNewPasswordView()) {
                 Text("SIMPAN DATA LOGIN")
                     .font(.custom("Montserrat-Bold", size: 14))
                     .foregroundColor(Color(hex: "#232175"))
@@ -216,6 +210,6 @@ struct ForgotPasswordResetPasswordView: View {
 
 struct ForgotPasswordResetPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordResetPasswordView(rootIsActive: Binding.constant(false))
+        ForgotPasswordResetPasswordView()
     }
 }

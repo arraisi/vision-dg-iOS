@@ -123,7 +123,7 @@ struct LoginView: View {
             }
             
             NavigationLink(
-                destination: ForgotPasswordView(rootIsActive: self.$rootIsActive),
+                destination: ForgotPasswordView(),
                 label: {
                     Text("Forgot Password?")
                         .font(.subheadline)

@@ -11,7 +11,6 @@ struct ForgotPasswordATMPINView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @Binding var rootIsActive : Bool
     @State var atmNumber: String = ""
     @State var pin: String = ""
     
@@ -59,12 +58,6 @@ struct ForgotPasswordATMPINView: View {
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -109,8 +102,7 @@ struct ForgotPasswordATMPINView: View {
             .cornerRadius(20)
             
             NavigationLink(
-                destination: ForgotPasswordResetPasswordView(rootIsActive: $rootIsActive),
-                isActive: self.$rootIsActive,
+                destination: ForgotPasswordResetPasswordView(),
                 label: {
                     Text("AKTIVASI KARTU ATM BARU")
                         .font(.custom("Montserrat-Bold", size: 14))
@@ -121,9 +113,8 @@ struct ForgotPasswordATMPINView: View {
                 .cornerRadius(12)
                 .padding(.top, 30)
             
-            Button(action: {
-                
-            }, label: {
+            NavigationLink(
+                destination: ForgotPasswordResetPasswordView(), label: {
                 Text("KONFIRMASI DATA")
                     .font(.custom("Montserrat-Bold", size: 14))
                     .foregroundColor(Color(hex: "#2334D0"))
@@ -137,6 +128,6 @@ struct ForgotPasswordATMPINView: View {
 
 struct ForgotPasswordATMPIN_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordATMPINView(rootIsActive: Binding.constant(false))
+        ForgotPasswordATMPINView()
     }
 }

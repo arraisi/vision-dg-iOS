@@ -13,7 +13,6 @@ struct ForgotPasswordOTPView: View {
      */
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var loginData: LoginBindingModel
-    @Binding var rootIsActive : Bool
     
     /*
      Variable PIN OTP
@@ -100,12 +99,6 @@ struct ForgotPasswordOTPView: View {
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -266,28 +259,24 @@ struct ForgotPasswordOTPView: View {
                 .foregroundColor(Color(hex: "#232175"))
                 .padding(.bottom, 30)
             
-            Button(action: {
-                
-            }, label: {
+            NavigationLink(destination: ForgotPasswordNoRekeningOrKTPView(), label: {
                 Text("Ya, Saya Masih Mengingat")
-                    .font(.custom("Montserrat-SemiBold", size: 14))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, maxHeight: 50)
-            })
-            .padding(.bottom, 2)
-            .background(Color(hex: "#2334D0"))
-            .cornerRadius(12)
-            
-            Button(action: {
-                
-            }, label: {
-                Text("Tidak, Saya Tidak Ingat")
                     .font(.custom("Montserrat-Regular", size: 12))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, maxHeight: 50)
             })
-            .padding(.bottom, 30)
+            .padding(.bottom, 2)
             .cornerRadius(12)
+            
+            NavigationLink(destination: ForgotPasswordATMPINView(), label: {
+                Text("Tidak, Saya Tidak Ingat")
+                    .font(.custom("Montserrat-SemiBold", size: 14))
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+            })
+            .background(Color(hex: "#2334D0"))
+            .cornerRadius(12)
+            .padding(.bottom, 30)
         }
         .frame(width: UIScreen.main.bounds.width - 100)
         .padding(.horizontal, 30)
@@ -298,6 +287,6 @@ struct ForgotPasswordOTPView: View {
 
 struct ForgotPasswordOTP_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordOTPView(rootIsActive: Binding.constant(false))
+        ForgotPasswordOTPView()
     }
 }

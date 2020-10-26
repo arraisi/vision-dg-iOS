@@ -11,7 +11,6 @@ struct ForgotPasswordNoRekeningOrKTPView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @Binding var rootIsActive : Bool
     @State var noRekeningOrKTP: String = ""
     @State var pin: String = ""
     
@@ -59,12 +58,6 @@ struct ForgotPasswordNoRekeningOrKTPView: View {
             Spacer()
             logo
             Spacer()
-            Button(action: {
-                self.rootIsActive = false
-            }) {
-                Text("Cancel")
-                    .foregroundColor(.white)
-            }
         }
     }
     
@@ -109,8 +102,7 @@ struct ForgotPasswordNoRekeningOrKTPView: View {
             .cornerRadius(20)
             
             NavigationLink(
-                destination: ForgotPasswordResetPasswordView(rootIsActive: $rootIsActive),
-                isActive: self.$rootIsActive,
+                destination: ForgotPasswordResetPasswordView(),
                 label: {
                     Text("KONFIRMASI DATA")
                         .font(.custom("Montserrat-Bold", size: 14))
@@ -126,6 +118,6 @@ struct ForgotPasswordNoRekeningOrKTPView: View {
 
 struct ForgotPasswordNoRekeningOrKTP_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordNoRekeningOrKTPView(rootIsActive: Binding.constant(false))
+        ForgotPasswordNoRekeningOrKTPView()
     }
 }
