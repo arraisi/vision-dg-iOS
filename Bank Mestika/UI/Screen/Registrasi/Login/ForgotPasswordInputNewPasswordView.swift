@@ -16,6 +16,7 @@ struct ForgotPasswordInputNewPasswordView: View {
     @State private var securedConfirmation: Bool = true
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         ZStack(alignment: .top) {
             Image("bg_splash")

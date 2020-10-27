@@ -115,7 +115,7 @@ struct FirstLoginView: View {
             NavigationLink(destination: FirstOTPLoginView(rootIsActive: self.$rootIsActive).environmentObject(loginData)) {
                 Text("Masukkan No. HP Anda")
                     .foregroundColor(Color(hex: "#232175"))
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
                     .font(.system(size: 13))
                     .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
             }

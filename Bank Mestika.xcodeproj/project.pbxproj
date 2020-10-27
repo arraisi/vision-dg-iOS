@@ -88,6 +88,7 @@
 		C075590D253421FD0067AF7E /* MasterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07558FE2534213B0067AF7E /* MasterModel.swift */; };
 		C075591F2534232F0067AF7E /* LoadJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C075591E2534232F0067AF7E /* LoadJson.swift */; };
 		C0755935253424D20067AF7E /* sumberDana.json in Resources */ = {isa = PBXBuildFile; fileRef = C0755934253424D20067AF7E /* sumberDana.json */; };
+		C07D410E2547CFE9006A69AD /* LoginInputCVVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D410D2547CFE9006A69AD /* LoginInputCVVView.swift */; };
 		C094DCD225469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */; };
 		C094DCDD2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
@@ -237,6 +238,7 @@
 		C0755902253421760067AF7E /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
 		C075591E2534232F0067AF7E /* LoadJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadJson.swift; sourceTree = "<group>"; };
 		C0755934253424D20067AF7E /* sumberDana.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sumberDana.json; sourceTree = "<group>"; };
+		C07D410D2547CFE9006A69AD /* LoginInputCVVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputCVVView.swift; sourceTree = "<group>"; };
 		C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNoRekeningOrKTPView.swift; sourceTree = "<group>"; };
 		C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInputNewPasswordView.swift; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */,
 				C0FB3F8425416DCF00B98358 /* ForgotPasswordResetPasswordView.swift */,
 				C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */,
+				C07D410D2547CFE9006A69AD /* LoginInputCVVView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				521B5E64253ED45A0046A4DF /* StringMasking+Extensions.swift in Sources */,
 				C0FB3F8525416DCF00B98358 /* ForgotPasswordResetPasswordView.swift in Sources */,
+				C07D410E2547CFE9006A69AD /* LoginInputCVVView.swift in Sources */,
 				52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */,
 				C075590D253421FD0067AF7E /* MasterModel.swift in Sources */,
 				C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */,
