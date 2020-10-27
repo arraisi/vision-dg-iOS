@@ -72,6 +72,10 @@
 		52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC2251D94C300B0ABA5 /* ChooseSavingsView.swift */; };
 		52F01FC9251DD6FD00B0ABA5 /* SavingSelectionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01FC8251DD6FD00B0ABA5 /* SavingSelectionModalView.swift */; };
 		C00B536825340E6600141070 /* tujuanPembukaanRekening.json in Resources */ = {isa = PBXBuildFile; fileRef = C00B536725340E6600141070 /* tujuanPembukaanRekening.json */; };
+		C017E4DB2548496A00132F77 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C017E4D72548496900132F77 /* Montserrat-ExtraLight.ttf */; };
+		C017E4DC2548496A00132F77 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C017E4D82548496900132F77 /* Montserrat-ExtraBold.ttf */; };
+		C017E4DD2548496A00132F77 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C017E4D92548496900132F77 /* Montserrat-Medium.ttf */; };
+		C017E4DE2548496A00132F77 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C017E4DA2548496900132F77 /* Montserrat-Light.ttf */; };
 		C02A408A252C210900C5CEB1 /* SumberPenyandangDanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */; };
 		C02D4E31254008A00006B648 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D4E30254008A00006B648 /* CardModel.swift */; };
 		C02D4E41254009260006B648 /* JenisATMData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D4E40254009260006B648 /* JenisATMData.swift */; };
@@ -220,6 +224,10 @@
 		664167E6493D4E103BFEB59F /* Pods-Bank Mestika.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bank Mestika.release.xcconfig"; path = "Target Support Files/Pods-Bank Mestika/Pods-Bank Mestika.release.xcconfig"; sourceTree = "<group>"; };
 		C00B536325340A7A00141070 /* masterData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = masterData.json; sourceTree = "<group>"; };
 		C00B536725340E6600141070 /* tujuanPembukaanRekening.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tujuanPembukaanRekening.json; sourceTree = "<group>"; };
+		C017E4D72548496900132F77 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C017E4D82548496900132F77 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		C017E4D92548496900132F77 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		C017E4DA2548496900132F77 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		C02A4089252C210900C5CEB1 /* SumberPenyandangDanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPenyandangDanaView.swift; sourceTree = "<group>"; };
 		C02D4E30254008A00006B648 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		C02D4E40254009260006B648 /* JenisATMData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JenisATMData.swift; sourceTree = "<group>"; };
@@ -679,6 +687,10 @@
 				C07BD87D254847AA00BF0BEB /* Montserrat-Regular.ttf */,
 				C07BD87C254847AA00BF0BEB /* Montserrat-SemiBold.ttf */,
 				C07BD87E254847AA00BF0BEB /* Montserrat-Thin.ttf */,
+				C017E4D82548496900132F77 /* Montserrat-ExtraBold.ttf */,
+				C017E4D72548496900132F77 /* Montserrat-ExtraLight.ttf */,
+				C017E4DA2548496900132F77 /* Montserrat-Light.ttf */,
+				C017E4D92548496900132F77 /* Montserrat-Medium.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -805,6 +817,8 @@
 				52BE52EC25295D8200ADE164 /* tabungan.json in Resources */,
 				5202BA33251B1FA300FCE527 /* LaunchScreen.storyboard in Resources */,
 				C0AA672F25342D0900DF3F02 /* perkiraanSetoran.json in Resources */,
+				C017E4DB2548496A00132F77 /* Montserrat-ExtraLight.ttf in Resources */,
+				C017E4DE2548496A00132F77 /* Montserrat-Light.ttf in Resources */,
 				5202BA30251B1FA300FCE527 /* Preview Assets.xcassets in Resources */,
 				C0AA672B25342D0900DF3F02 /* perkiraanPenarikan.json in Resources */,
 				C0AA672925342D0900DF3F02 /* pekerjaan.json in Resources */,
@@ -814,6 +828,8 @@
 				C07BD882254847AA00BF0BEB /* Montserrat-SemiBold.ttf in Resources */,
 				5202BA2D251B1FA300FCE527 /* Assets.xcassets in Resources */,
 				C00B536825340E6600141070 /* tujuanPembukaanRekening.json in Resources */,
+				C017E4DC2548496A00132F77 /* Montserrat-ExtraBold.ttf in Resources */,
+				C017E4DD2548496A00132F77 /* Montserrat-Medium.ttf in Resources */,
 				C0AA672D25342D0900DF3F02 /* besarPerkiraanPenarikan.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -133,6 +133,6 @@ struct FirstCVVLoginView: View {
 
 struct LoginInputCVVView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstCVVLoginView()
+        FirstCVVLoginView(rootIsActive: Binding.constant(false))
     }
 }
