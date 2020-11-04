@@ -87,6 +87,9 @@
 		C02D4E6E25400E080006B648 /* PilihDesainATMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D4E6D25400E080006B648 /* PilihDesainATMView.swift */; };
 		C032ADA5252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */; };
 		C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */; };
+		C065A45225511D1B003B6C6A /* KartuKuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065A45125511D1B003B6C6A /* KartuKuView.swift */; };
+		C065A45A25511F5D003B6C6A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065A45925511F5D003B6C6A /* Card.swift */; };
+		C065A45F255123E7003B6C6A /* SnapCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C065A45E255123E7003B6C6A /* SnapCarouselView.swift */; };
 		C0702C552540109800AC993D /* DetailKartuATMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0702C542540109800AC993D /* DetailKartuATMView.swift */; };
 		C0755903253421760067AF7E /* MasterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0755902253421760067AF7E /* MasterData.swift */; };
 		C075590D253421FD0067AF7E /* MasterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07558FE2534213B0067AF7E /* MasterModel.swift */; };
@@ -100,6 +103,7 @@
 		C094DCD225469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */; };
 		C094DCDD2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */; };
 		C099F39625269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */; };
+		C09A31382552216800167FE7 /* ScrollCarousellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09A31372552216800167FE7 /* ScrollCarousellView.swift */; };
 		C09C57DA2521A1CE008AD865 /* InformasiPerusahaanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */; };
 		C09EA867252592D5007ABF8A /* RadioButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */; };
 		C09EA86F25259758007ABF8A /* TujuanPembukaanRekeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09EA86E25259758007ABF8A /* TujuanPembukaanRekeningView.swift */; };
@@ -123,6 +127,8 @@
 		C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DE72522F88F005B811C /* LabelTextField.swift */; };
 		C0C94DED252309FE005B811C /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */; };
 		C0CA1615253441D400A93EF5 /* KeluargaTerdekat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */; };
+		C0E0BD3D25515468000487B2 /* InfiniteCarousellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0BD3C25515468000487B2 /* InfiniteCarousellView.swift */; };
+		C0E0BD4325515526000487B2 /* Kartu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0BD4225515526000487B2 /* Kartu.swift */; };
 		C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */; };
 		C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */; };
 		C0FB3F6C254140E100B98358 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB3F6B254140E100B98358 /* ForgotPasswordView.swift */; };
@@ -239,6 +245,9 @@
 		C02D4E6D25400E080006B648 /* PilihDesainATMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilihDesainATMView.swift; sourceTree = "<group>"; };
 		C032ADA4252C2B3F002BD8BA /* SumberPendapatanLainnyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumberPendapatanLainnyaView.swift; sourceTree = "<group>"; };
 		C04B6FD5252AD5EE00A29A45 /* CheckBoxGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxGroup.swift; sourceTree = "<group>"; };
+		C065A45125511D1B003B6C6A /* KartuKuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KartuKuView.swift; sourceTree = "<group>"; };
+		C065A45925511F5D003B6C6A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		C065A45E255123E7003B6C6A /* SnapCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarouselView.swift; sourceTree = "<group>"; };
 		C0702C542540109800AC993D /* DetailKartuATMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailKartuATMView.swift; sourceTree = "<group>"; };
 		C07558FE2534213B0067AF7E /* MasterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterModel.swift; sourceTree = "<group>"; };
 		C0755902253421760067AF7E /* MasterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterData.swift; sourceTree = "<group>"; };
@@ -252,6 +261,7 @@
 		C094DCD125469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordNoRekeningOrKTPView.swift; sourceTree = "<group>"; };
 		C094DCDC2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInputNewPasswordView.swift; sourceTree = "<group>"; };
 		C099F39525269CFF004EFB74 /* TextFieldWithPickerAsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPickerAsInputView.swift; sourceTree = "<group>"; };
+		C09A31372552216800167FE7 /* ScrollCarousellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCarousellView.swift; sourceTree = "<group>"; };
 		C09C57D92521A1CE008AD865 /* InformasiPerusahaanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformasiPerusahaanView.swift; sourceTree = "<group>"; };
 		C09EA866252592D5007ABF8A /* RadioButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonGroup.swift; sourceTree = "<group>"; };
 		C09EA86E25259758007ABF8A /* TujuanPembukaanRekeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TujuanPembukaanRekeningView.swift; sourceTree = "<group>"; };
@@ -275,6 +285,8 @@
 		C0C94DE72522F88F005B811C /* LabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextField.swift; sourceTree = "<group>"; };
 		C0C94DEC252309FE005B811C /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		C0CA1614253441D400A93EF5 /* KeluargaTerdekat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeluargaTerdekat.swift; sourceTree = "<group>"; };
+		C0E0BD3C25515468000487B2 /* InfiniteCarousellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteCarousellView.swift; sourceTree = "<group>"; };
+		C0E0BD4225515526000487B2 /* Kartu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kartu.swift; sourceTree = "<group>"; };
 		C0E978382524685400FC5BDB /* PenghasilanKotorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenghasilanKotorView.swift; sourceTree = "<group>"; };
 		C0EB9864252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBarKeyBoard.swift; sourceTree = "<group>"; };
 		C0FB3F6B254140E100B98358 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -388,6 +400,7 @@
 		5202BA5A251B200300FCE527 /* Registrasi */ = {
 			isa = PBXGroup;
 			children = (
+				C065A45025511CFD003B6C6A /* Kartu Ku */,
 				521861C32535787700C3E824 /* Registrasi Baru Berhasil */,
 				52794C0825245ED00031392E /* Validation Form */,
 				52794BF0252452D20031392E /* Personal Identity */,
@@ -556,6 +569,7 @@
 		52BE52E925295D3B00ADE164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C0E0BD4125515517000487B2 /* KartuKu */,
 				521B5E68253ED61C0046A4DF /* Login */,
 				C07558FC2534213B0067AF7E /* Master */,
 				52056D38252DD34F008D99D2 /* Registrasi */,
@@ -563,6 +577,7 @@
 				C07558E725341ADF0067AF7E /* Pembukaan Rekening */,
 				C075591E2534232F0067AF7E /* LoadJson.swift */,
 				521B5E1C253E84D50046A4DF /* SliderAssetsResponse.swift */,
+				C065A45925511F5D003B6C6A /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -597,6 +612,9 @@
 				52B81E0F253065B1002703E3 /* TextRecognizer.swift */,
 				521861C7253583AE00C3E824 /* SUImagePickerView.swift */,
 				C02D4E5025400C6E0006B648 /* TabItemView.swift */,
+				C065A45E255123E7003B6C6A /* SnapCarouselView.swift */,
+				C0E0BD3C25515468000487B2 /* InfiniteCarousellView.swift */,
+				C09A31372552216800167FE7 /* ScrollCarousellView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -628,6 +646,14 @@
 				C02D4E452540093F0006B648 /* DesainATMData.swift */,
 			);
 			path = PilihATM;
+			sourceTree = "<group>";
+		};
+		C065A45025511CFD003B6C6A /* Kartu Ku */ = {
+			isa = PBXGroup;
+			children = (
+				C065A45125511D1B003B6C6A /* KartuKuView.swift */,
+			);
+			path = "Kartu Ku";
 			sourceTree = "<group>";
 		};
 		C07558E725341ADF0067AF7E /* Pembukaan Rekening */ = {
@@ -693,6 +719,14 @@
 				C017E4D92548496900132F77 /* Montserrat-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C0E0BD4125515517000487B2 /* KartuKu */ = {
+			isa = PBXGroup;
+			children = (
+				C0E0BD4225515526000487B2 /* Kartu.swift */,
+			);
+			path = KartuKu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -902,6 +936,7 @@
 				C0C94DE82522F88F005B811C /* LabelTextField.swift in Sources */,
 				52B81E06253064A5002703E3 /* RecognizedText.swift in Sources */,
 				C094DCD225469E48008E9244 /* ForgotPasswordNoRekeningOrKTPView.swift in Sources */,
+				C0E0BD3D25515468000487B2 /* InfiniteCarousellView.swift in Sources */,
 				5202BA24251B1F9F00FCE527 /* AppDelegate.swift in Sources */,
 				52D274622525AECB00DD1443 /* VerificationRegisterDataView.swift in Sources */,
 				52794C0425245C0C0031392E /* EmailConfirmationView.swift in Sources */,
@@ -916,6 +951,7 @@
 				52794C12252462710031392E /* VerificationDataPersonalView.swift in Sources */,
 				5233DBAC251C87CF0064C59D /* PhoneVerificationView.swift in Sources */,
 				C09EA8882525A7CC007ABF8A /* PerkiraanPenarikanView.swift in Sources */,
+				C065A45225511D1B003B6C6A /* KartuKuView.swift in Sources */,
 				52794BFF2524532D0031392E /* EmailVerificationView.swift in Sources */,
 				C09EA87C25259C9B007ABF8A /* SumberDanaView.swift in Sources */,
 				C075591F2534232F0067AF7E /* LoadJson.swift in Sources */,
@@ -933,6 +969,7 @@
 				C02D4E462540093F0006B648 /* DesainATMData.swift in Sources */,
 				52BE531125297C3F00ADE164 /* PINView.swift in Sources */,
 				521B5E64253ED45A0046A4DF /* StringMasking+Extensions.swift in Sources */,
+				C0E0BD4325515526000487B2 /* Kartu.swift in Sources */,
 				C0FB3F8525416DCF00B98358 /* ForgotPasswordResetPasswordView.swift in Sources */,
 				C07D410E2547CFE9006A69AD /* FirstCVVLoginView.swift in Sources */,
 				52B81E0B2530655E002703E3 /* ScanningView.swift in Sources */,
@@ -948,6 +985,7 @@
 				C0EB9865252C30A400BEBA4F /* TextFieldWithToolBarKeyBoard.swift in Sources */,
 				521B5E12253E846F0046A4DF /* URL+Extensions.swift in Sources */,
 				52D2745025258FD200DD1443 /* OTPTextField.swift in Sources */,
+				C09A31382552216800167FE7 /* ScrollCarousellView.swift in Sources */,
 				5294ADEA253437AE0075D285 /* FirstATMLoginView.swift in Sources */,
 				52056D3A252DD366008D99D2 /* RegistrasiModel.swift in Sources */,
 				521B5E2B253E866E0046A4DF /* SliderAssetsViewModel.swift in Sources */,
@@ -968,6 +1006,7 @@
 				C09EA8BC2525B454007ABF8A /* CornerRadiusStyle.swift in Sources */,
 				C094DCDD2546A670008E9244 /* ForgotPasswordInputNewPasswordView.swift in Sources */,
 				C09EA8982525ABEC007ABF8A /* PerkiraanSetoranView.swift in Sources */,
+				C065A45F255123E7003B6C6A /* SnapCarouselView.swift in Sources */,
 				521B5E54253EC8F40046A4DF /* NetworkReachbility+Extensions.swift in Sources */,
 				C0C44EE12524602F002F592B /* KeyboardAwareModifier.swift in Sources */,
 				5233DBA7251C7F1E0064C59D /* RegisterProvisionView.swift in Sources */,
@@ -975,6 +1014,7 @@
 				C04B6FD6252AD5EE00A29A45 /* CheckBoxGroup.swift in Sources */,
 				52F01FC3251D94C300B0ABA5 /* ChooseSavingsView.swift in Sources */,
 				C0E978392524685400FC5BDB /* PenghasilanKotorView.swift in Sources */,
+				C065A45A25511F5D003B6C6A /* Card.swift in Sources */,
 				C09EA8902525AAA9007ABF8A /* BesarPerkiraanPenarikanView.swift in Sources */,
 				52BE530C2529793800ADE164 /* PasswordView.swift in Sources */,
 				C02D4E41254009260006B648 /* JenisATMData.swift in Sources */,
